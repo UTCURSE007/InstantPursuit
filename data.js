@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { href: 'blog.html', label: 'Blog', icon: '✍️' },
   { href: 'about.html', label: 'About', icon: '📖' },
 ];
-function getTheme(){return localStorage.getItem('ip-theme')||'light'}
+function getTheme(){return localStorage.getItem('ip-theme')||'dark'}
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ip-theme',t);const b=document.querySelector('.theme-toggle');if(b)b.textContent=t==='dark'?'☀️':'🌙'}
 function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}
 function initTheme(){setTheme(getTheme())}
@@ -25,7 +25,11 @@ function injectFooter(){
   f.innerHTML=`<div class="ip-footer-logo">${SITE.icon} ${SITE.name}</div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Open source &amp; free to use.</div>`;
   document.body.appendChild(f);
 }
-function initPage(){initTheme();injectNav();injectFooter()}
+function initPage(){
+  initTheme();
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter()})}
+  else{injectNav();injectFooter()}
+}
 
 // ═══════════════════════════════════════════
 // CAREER DATA — Full tree with details

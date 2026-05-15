@@ -6,10 +6,10 @@
 <meta name="description" content="Instant Pursuit — Free, gamified career exploration for Indian students. Navigate paths from Class 6 to working professional.">
 <title>Instant Pursuit — Career Explorer</title>
 <link rel="stylesheet" href="styles.css">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
+<script src="data.js"></script>
 </head>
 <body>
-<script src="data.js"></script>
-<script>initPage();</script>
 
 <main style="padding-top:60px">
   <!-- Hero -->
@@ -81,5 +81,6 @@ stats.forEach(s => {
   sEl.appendChild(d);
 });
 </script>
+<script>initPage();</script>
 </body>
 </html>
