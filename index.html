@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PathForge — Career Explorer</title>
+<meta name="description" content="Instant Pursuit — A free, gamified career exploration platform for Indian students. Navigate career paths from Class 6 to working professional with interactive skill trees, expert insights, and career blogs." />
+<meta name="keywords" content="career guidance India, career path explorer, JEE NEET career options, after 12th career options, gamified career planning" />
+<title>Instant Pursuit — Career Explorer</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -102,7 +104,12 @@ const DEFAULT_CAREER_DATA = {
                       drawbacks: ["Rapidly evolving — constant learning needed", "Highly competitive", "Screen-heavy lifestyle"],
                       tip: "Learn to code early — even basic Python opens huge doors."
                     },
-                    children: {}
+                    children: {
+                      "sde": { label: "Software Development", icon: "🖥️", info: { benefits: ["Core tech role in every company", "Product-building skills", "₹8-40 LPA at top companies", "Remote-friendly"], drawbacks: ["Leetcode grind for interviews", "Long hours at startups", "Burnout common"], tip: "Build projects on GitHub — they speak louder than your CGPA." }, children: {} },
+                      "datascience": { label: "Data Science / Analytics", icon: "📊", info: { benefits: ["Data-driven decision making", "₹8-30 LPA", "Every industry needs it", "Mix of stats + coding"], drawbacks: ["Needs strong statistics foundation", "Tool landscape changes fast", "Can be repetitive without good projects"], tip: "Master SQL and Python — they're the bread and butter of data roles." }, children: {} },
+                      "cybersecurity": { label: "Cybersecurity", icon: "🔐", info: { benefits: ["Massive talent shortage globally", "₹6-25 LPA", "Critical for every organization", "Ethical hacking is exciting"], drawbacks: ["Needs constant updating on threats", "Certifications can be expensive", "High-pressure on-call rotations"], tip: "Start with CompTIA Security+ and participate in CTF competitions." }, children: {} },
+                      "devops": { label: "DevOps / Cloud Engineering", icon: "☁️", info: { benefits: ["Bridges dev and ops — always in demand", "₹8-30 LPA", "Cloud skills are future-proof", "Automation-focused"], drawbacks: ["Steep learning curve (AWS/Azure/GCP)", "On-call duties common", "Less creative than frontend roles"], tip: "Get AWS Certified — it's the most recognized cloud certification." }, children: {} }
+                    }
                   },
                   "mech": {
                     label: "Mechanical Engineering",
@@ -112,7 +119,11 @@ const DEFAULT_CAREER_DATA = {
                       drawbacks: ["Fewer IT-sector jobs", "May need masters for research roles", "Hardware-oriented — limited remote work"],
                       tip: "Combine with coding skills (CAD, robotics) for best opportunities."
                     },
-                    children: {}
+                    children: {
+                      "automotive": { label: "Automotive Engineering", icon: "🚗", info: { benefits: ["EV revolution creating new roles", "Work with top OEMs (Tata, Maruti, Tesla)", "Design + manufacturing blend"], drawbacks: ["Location-dependent (factory towns)", "Slow initial growth", "Cyclical industry"], tip: "EV and autonomous vehicle skills are the golden ticket right now." }, children: {} },
+                      "robotics": { label: "Robotics & Automation", icon: "🦾", info: { benefits: ["Cutting-edge field", "Industry 4.0 demand", "Interdisciplinary skills", "₹6-18 LPA"], drawbacks: ["Requires coding + hardware knowledge", "Expensive equipment for self-learning", "Limited roles in India currently"], tip: "ROS (Robot Operating System) is the skill to invest in." }, children: {} },
+                      "aerospace": { label: "Aerospace / Defence", icon: "✈️", info: { benefits: ["Prestigious sector", "ISRO, DRDO, HAL opportunities", "High intellectual satisfaction", "₹5-15 LPA"], drawbacks: ["Limited private sector jobs in India", "Security clearance requirements", "Slow hiring cycles"], tip: "GATE exam is your gateway to ISRO — start prep in 3rd year." }, children: {} }
+                    }
                   },
                   "ece": {
                     label: "Electronics & Communication",
@@ -122,7 +133,11 @@ const DEFAULT_CAREER_DATA = {
                       drawbacks: ["Can overlap with CS — confusing scope", "Lab-intensive coursework", "Hardware roles less flexible"],
                       tip: "Focus on embedded systems or VLSI for niche advantage."
                     },
-                    children: {}
+                    children: {
+                      "vlsi": { label: "VLSI / Chip Design", icon: "🔌", info: { benefits: ["India semiconductor push (₹76K cr investment)", "₹8-25 LPA", "Intel, Qualcomm, AMD hiring", "Deep technical satisfaction"], drawbacks: ["Very niche skill set", "Long learning curve", "Limited to specific cities (Bangalore, Hyderabad)"], tip: "Learn Verilog/VHDL and get comfortable with EDA tools." }, children: {} },
+                      "iot": { label: "IoT & Embedded Systems", icon: "📶", info: { benefits: ["Smart devices everywhere", "Arduino/Raspberry Pi accessible start", "₹5-18 LPA", "Startup opportunities"], drawbacks: ["Hardware debugging is painful", "Fragmented ecosystem", "Security challenges"], tip: "Build a home automation project — it's the best portfolio piece." }, children: {} },
+                      "telecom": { label: "Telecom / 5G Networks", icon: "📱", info: { benefits: ["5G rollout creating jobs", "Jio, Airtel, Nokia, Ericsson hiring", "Infrastructure backbone", "₹5-15 LPA"], drawbacks: ["Shift-based work common", "Rapid technology changes", "Field work required"], tip: "Network certifications (CCNA) add massive value to your profile." }, children: {} }
+                    }
                   },
                   "civil": {
                     label: "Civil Engineering",
@@ -132,7 +147,10 @@ const DEFAULT_CAREER_DATA = {
                       drawbacks: ["Field work in tough conditions", "Slower career growth vs IT", "Lower starting salaries"],
                       tip: "Great for those who want to literally build the world around them."
                     },
-                    children: {}
+                    children: {
+                      "structural": { label: "Structural Engineering", icon: "🏢", info: { benefits: ["Design skyscrapers and bridges", "Always needed", "Satisfying tangible output"], drawbacks: ["Liability-heavy", "Slow career progression", "Needs PE license for some roles"], tip: "Learn STAAD Pro and ETABS — they're industry standard software." }, children: {} },
+                      "environmental": { label: "Environmental Engineering", icon: "🌿", info: { benefits: ["Climate change making this urgent", "Government + NGO roles", "Meaningful work", "Growing ESG compliance demand"], drawbacks: ["Lower pay initially", "Policy-dependent growth", "Field work in remote areas"], tip: "Water treatment and waste management are the most employable niches." }, children: {} }
+                    }
                   },
                   "electrical": {
                     label: "Electrical Engineering",
@@ -142,7 +160,10 @@ const DEFAULT_CAREER_DATA = {
                       drawbacks: ["Can feel niche", "Field postings common", "Less glamorous perception"],
                       tip: "Renewable energy and EV sectors are making this a hot choice again."
                     },
-                    children: {}
+                    children: {
+                      "power": { label: "Power Systems / Grid", icon: "🔋", info: { benefits: ["NTPC, PGCIL, State Electricity Boards", "Job security in PSUs", "₹5-12 LPA", "Essential infrastructure"], drawbacks: ["Remote postings", "Slow promotions", "Bureaucratic environments"], tip: "GATE EE is your ticket — PSUs hire directly from the merit list." }, children: {} },
+                      "renewable": { label: "Renewable Energy", icon: "☀️", info: { benefits: ["Solar and wind boom", "Green energy subsidies growing", "Global demand", "₹5-15 LPA"], drawbacks: ["Project-based work", "Location constraints", "Policy-dependent"], tip: "Solar PV system design certification is highly valued." }, children: {} }
+                    }
                   },
                   "aiml": {
                     label: "AI & Machine Learning",
@@ -151,6 +172,30 @@ const DEFAULT_CAREER_DATA = {
                       benefits: ["Cutting edge field", "Extremely high demand", "Research + industry paths", "Avg salary ₹8-30 LPA"],
                       drawbacks: ["Requires strong math (linear algebra, stats)", "Rapidly changing landscape", "New branch — curriculum still evolving"],
                       tip: "Build projects on Kaggle and GitHub — portfolio matters more than marks."
+                    },
+                    children: {
+                      "nlp": { label: "NLP / LLMs", icon: "🗣️", info: { benefits: ["ChatGPT era — hottest AI subfield", "₹12-50 LPA at top firms", "Research + product roles", "Transformers are everywhere"], drawbacks: ["Compute-intensive (needs GPU access)", "Field moves extremely fast", "PhD preferred for research roles"], tip: "Fine-tune an open-source LLM on a custom dataset — best portfolio piece in 2026." }, children: {} },
+                      "cv": { label: "Computer Vision", icon: "👁️", info: { benefits: ["Self-driving cars, medical imaging, surveillance", "₹10-35 LPA", "Tangible visual output", "Growing Indian startup ecosystem"], drawbacks: ["Large dataset requirements", "GPU-intensive training", "Niche skill set"], tip: "Start with OpenCV, then move to PyTorch — build a face detection or OCR project." }, children: {} },
+                      "mlops": { label: "MLOps / AI Infrastructure", icon: "🏭", info: { benefits: ["Bridge between ML and production", "₹10-30 LPA", "Every AI company needs this", "Less competitive than core ML"], drawbacks: ["Less glamorous than model building", "DevOps skills required", "Tooling changes rapidly"], tip: "Learn Docker, Kubernetes, and MLflow — you'll be indispensable." }, children: {} }
+                    }
+                  },
+                  "chemical": {
+                    label: "Chemical Engineering",
+                    icon: "🧪",
+                    info: {
+                      benefits: ["Petrochemical, pharma, FMCG industries", "Process optimization skills", "PSU opportunities (IOCL, BPCL)", "₹4-12 LPA"],
+                      drawbacks: ["Limited private sector roles", "Factory/plant locations", "Niche specialization"],
+                      tip: "Combine with data skills for process analytics — a growing niche."
+                    },
+                    children: {}
+                  },
+                  "biotech": {
+                    label: "Biotechnology Engineering",
+                    icon: "🧬",
+                    info: {
+                      benefits: ["Post-COVID pharma boom", "Research-oriented", "Genomics and drug discovery", "₹4-10 LPA (higher with MS/PhD)"],
+                      drawbacks: ["Masters almost mandatory for good roles", "Slow career start", "Limited core biotech companies in India"],
+                      tip: "Bioinformatics (biology + coding) is where the real jobs are."
                     },
                     children: {}
                   }
@@ -164,7 +209,10 @@ const DEFAULT_CAREER_DATA = {
                   drawbacks: ["Fewer direct industry jobs", "Often needs a masters degree", "Limited awareness of career paths"],
                   tip: "Pair with coding skills for a powerful combination."
                 },
-                children: {}
+                children: {
+                  "actuarial": { label: "Actuarial Science", icon: "📉", info: { benefits: ["₹8-30 LPA", "Global demand", "Insurance & finance sectors", "Highly respected niche"], drawbacks: ["Extremely difficult exams (10+ papers)", "Takes 4-6 years to qualify", "Very few fully qualified actuaries in India"], tip: "Start IAI/IFoA exams during graduation — every paper you clear raises your salary." }, children: {} },
+                  "stats_research": { label: "Statistics / Research", icon: "📊", info: { benefits: ["ISI, CMI prestigious institutes", "Foundation for ML/AI", "Government statistical services", "Academic careers"], drawbacks: ["Abstract and theoretical", "Limited industry awareness", "Needs higher education"], tip: "Indian Statistical Institute (ISI) is the gold standard — aim for it." }, children: {} }
+                }
               },
               "architecture": {
                 label: "Architecture (B.Arch)",
@@ -173,6 +221,39 @@ const DEFAULT_CAREER_DATA = {
                   benefits: ["Creative + technical blend", "5-year professional degree", "Design, urban planning, interiors", "Growing smart city demand"],
                   drawbacks: ["Long course duration (5 years)", "Portfolio-heavy applications", "Income grows slowly early on"],
                   tip: "Keep a sketch diary — observation is an architect's superpower."
+                },
+                children: {
+                  "urban_planning": { label: "Urban Planning", icon: "🌆", info: { benefits: ["Smart Cities Mission creating demand", "Government + private roles", "Shape how cities grow", "₹4-12 LPA"], drawbacks: ["Bureaucratic processes", "Slow project timelines", "Location-dependent"], tip: "GIS and AutoCAD skills are non-negotiable in this field." }, children: {} },
+                  "interior": { label: "Interior Design", icon: "🛋️", info: { benefits: ["Freelance-friendly", "Creative satisfaction", "Growing luxury market", "₹3-15 LPA"], drawbacks: ["Client management challenges", "Irregular income initially", "Physically demanding site visits"], tip: "Build an Instagram portfolio — 80% of clients find interior designers on social media." }, children: {} }
+                }
+              },
+              "bsc_physics": {
+                label: "B.Sc. Physics",
+                icon: "⚛️",
+                info: {
+                  benefits: ["Deep scientific understanding", "Research careers (TIFR, IISC, ISRO)", "Foundation for quantum computing", "Teaches rigorous thinking"],
+                  drawbacks: ["Very academic-oriented", "Industry jobs limited without higher education", "Abstract at advanced levels"],
+                  tip: "IISc, IISER, and top central universities offer excellent physics programs."
+                },
+                children: {}
+              },
+              "merchant_navy": {
+                label: "Merchant Navy",
+                icon: "🚢",
+                info: {
+                  benefits: ["Tax-free salary (₹6-20 LPA)", "Travel the world", "Quick career growth", "No office politics"],
+                  drawbacks: ["Months away from family", "Physically demanding", "Monotonous life at sea", "Strict medical requirements"],
+                  tip: "IMU (Indian Maritime University) entrance is the standard route — apply in Class 12."
+                },
+                children: {}
+              },
+              "nda": {
+                label: "NDA / Defence (after 12th)",
+                icon: "🎖️",
+                info: {
+                  benefits: ["Serve the nation", "Highly respected career", "Free education at top academies", "Pension + benefits for life"],
+                  drawbacks: ["Rigorous physical + mental training", "Postings across India", "Risk involved", "Difficult selection process"],
+                  tip: "Start physical fitness prep in Class 11 — NDA written exam is only half the battle."
                 },
                 children: {}
               }
@@ -195,6 +276,19 @@ const DEFAULT_CAREER_DATA = {
                   drawbacks: ["5.5 years + specialization", "Extremely competitive (NEET)", "Emotional toll", "Long working hours"],
                   tip: "Shadowing a doctor before committing can clarify if this is truly your calling."
                 },
+                children: {
+                  "md_ms": { label: "MD / MS (Specialization)", icon: "🏥", info: { benefits: ["₹15-60 LPA+", "Expert status", "Private practice potential", "Life-saving work"], drawbacks: ["3 more years after MBBS", "NEET PG extremely competitive", "Sleep deprivation during residency"], tip: "Dermatology, Radiology, and Ortho are the most sought-after — but follow your interest, not just money." }, children: {} },
+                  "public_health": { label: "Public Health / MPH", icon: "🌍", info: { benefits: ["Post-COVID awareness boom", "WHO, UNICEF, government roles", "Policy impact at scale", "₹6-20 LPA"], drawbacks: ["Less clinical, more administrative", "Lower pay than clinical practice", "Needs policy aptitude"], tip: "MPH from a good university (AIIMS, IIPH) opens global doors." }, children: {} }
+                }
+              },
+              "bds": {
+                label: "BDS (Dentistry)",
+                icon: "🦷",
+                info: {
+                  benefits: ["Shorter than MBBS (4 years + internship)", "Own clinic potential", "Less emergency stress", "Growing cosmetic dentistry market"],
+                  drawbacks: ["Lower earning than MBBS initially", "Oversaturated in urban areas", "Standing work for long hours"],
+                  tip: "Cosmetic and implant dentistry are where the money is — specialize early."
+                },
                 children: {}
               },
               "bsc_bio": {
@@ -216,8 +310,38 @@ const DEFAULT_CAREER_DATA = {
                   tip: "Clinical research and pharmacovigilance are booming sub-fields."
                 },
                 children: {}
+              },
+              "nursing": {
+                label: "B.Sc. Nursing",
+                icon: "🏥",
+                info: {
+                  benefits: ["Global demand (especially US, UK, Gulf)", "Job security", "Noble profession", "₹3-8 LPA in India, much higher abroad"],
+                  drawbacks: ["Physically and emotionally demanding", "Undervalued in India", "Shift work mandatory"],
+                  tip: "International nursing license (NCLEX for US, NMC for UK) can 5x your salary."
+                },
+                children: {}
+              },
+              "veterinary": {
+                label: "Veterinary Science (BVSc)",
+                icon: "🐾",
+                info: {
+                  benefits: ["Serve animals and livestock", "Government roles in animal husbandry", "Dairy & poultry industry", "Less competitive than MBBS"],
+                  drawbacks: ["Rural postings common", "Lower pay than human medicine", "Physically demanding with large animals"],
+                  tip: "Pet care industry is booming in cities — urban vet clinics are very profitable."
+                },
+                children: {}
               }
             }
+          },
+          "pcmb": {
+            label: "PCMB (All four subjects)",
+            icon: "🎯",
+            info: {
+              benefits: ["Maximum flexibility — eligible for both JEE and NEET", "Can decide later between engineering and medicine", "Broadest foundation"],
+              drawbacks: ["Extremely heavy workload", "Difficult to excel in all four subjects", "Less time for each subject"],
+              tip: "Only take PCMB if you're genuinely undecided AND can handle the workload. Otherwise, commit early."
+            },
+            children: {}
           }
         }
       },
@@ -238,6 +362,29 @@ const DEFAULT_CAREER_DATA = {
               drawbacks: ["Very low pass rates (~5-10%)", "Multiple levels over 4-5 years", "Articleship can be demanding"],
               tip: "Start with CA Foundation right after 12th for the best timeline."
             },
+            children: {
+              "audit": { label: "Audit & Assurance", icon: "🔍", info: { benefits: ["Big 4 firms (Deloitte, PwC, EY, KPMG)", "₹8-25 LPA", "Systematic analytical work", "Global mobility"], drawbacks: ["Extremely busy during audit season", "Repetitive after a few years", "Heavy documentation"], tip: "Get into a Big 4 firm during articleship — it shapes your entire career trajectory." }, children: {} },
+              "taxation": { label: "Taxation / Transfer Pricing", icon: "💰", info: { benefits: ["Always in demand", "Can run independent practice", "₹8-30 LPA", "GST expertise is gold"], drawbacks: ["Constantly changing tax laws", "Deadline-driven stress", "Dry subject matter for some"], tip: "Specialize in international taxation — MNCs pay a premium for it." }, children: {} }
+            }
+          },
+          "cs_professional": {
+            label: "Company Secretary (CS)",
+            icon: "📋",
+            info: {
+              benefits: ["Corporate governance expert", "₹5-15 LPA", "Can practice independently", "Board-level interactions"],
+              drawbacks: ["Less well-known than CA", "Pass rates low", "Niche specialization"],
+              tip: "CS + CA combination makes you a corporate governance powerhouse."
+            },
+            children: {}
+          },
+          "cma": {
+            label: "CMA (Cost & Management Accountant)",
+            icon: "🧮",
+            info: {
+              benefits: ["Manufacturing sector demand", "Cost optimization skills", "Government recognition", "₹5-12 LPA"],
+              drawbacks: ["Least known of the three (CA/CS/CMA)", "Limited awareness among employers", "Pass rates moderate"],
+              tip: "CMA is underrated — manufacturing companies specifically seek CMA-qualified professionals."
+            },
             children: {}
           },
           "bcom": {
@@ -248,7 +395,10 @@ const DEFAULT_CAREER_DATA = {
               drawbacks: ["Generic without specialization", "Lower starting salaries", "MBA often needed for growth"],
               tip: "Pick up internships and certifications during graduation — they matter more than marks."
             },
-            children: {}
+            children: {
+              "mba": { label: "MBA", icon: "🎓", info: { benefits: ["Career accelerator", "₹10-40 LPA from top IIMs", "Network is worth gold", "Switches possible (engineering to finance)"], drawbacks: ["₹15-25 lakh fee at top colleges", "CAT exam very competitive (2 lakh+ aspirants)", "2 years of opportunity cost"], tip: "CAT score matters, but so do your essays, interview, and work experience." }, children: {} },
+              "startup": { label: "Entrepreneurship / Startup", icon: "🚀", info: { benefits: ["Be your own boss", "Unlimited earning potential", "Creative freedom", "India's startup ecosystem is thriving"], drawbacks: ["90% startups fail", "No fixed income initially", "Extreme stress and uncertainty"], tip: "Validate your idea with 100 potential customers before writing a single line of code." }, children: {} }
+            }
           },
           "economics": {
             label: "B.A. Economics",
@@ -257,6 +407,19 @@ const DEFAULT_CAREER_DATA = {
               benefits: ["Analytical + social science blend", "Policy, consulting, finance paths", "Research opportunities", "UPSC friendly"],
               drawbacks: ["Abstract at higher levels", "Needs quantitative skills", "Limited direct placements"],
               tip: "Economics + data analytics is a powerful modern combination."
+            },
+            children: {
+              "ias_ips": { label: "Civil Services (IAS / IPS)", icon: "🏛️", info: { benefits: ["Most prestigious career in India", "Direct policy impact", "Job security + benefits", "Respect and authority"], drawbacks: ["UPSC has ~0.1% selection rate", "3-5 attempts common", "Age limit pressure", "Posting transfers"], tip: "Start reading The Hindu and making notes from Day 1. Optional subject choice is crucial." }, children: {} },
+              "rbi_sebi": { label: "RBI / SEBI / Economic Services", icon: "🏦", info: { benefits: ["Intellectual work", "Policy-level influence", "Good pay + perks", "Work-life balance"], drawbacks: ["Competitive exams required", "Bureaucratic environment", "Limited lateral moves"], tip: "Indian Economic Service (IES) exam is less known but an excellent career path." }, children: {} }
+            }
+          },
+          "banking": {
+            label: "Banking & Finance",
+            icon: "🏧",
+            info: {
+              benefits: ["Stable career", "Government bank jobs (SBI, RBI)", "Private banks pay well", "Financial literacy is valuable"],
+              drawbacks: ["Competitive exams (IBPS, SBI PO)", "Sales pressure in private banks", "Branch postings initially"],
+              tip: "CFA or FRM certification makes you stand out in private banking."
             },
             children: {}
           }
@@ -279,7 +442,11 @@ const DEFAULT_CAREER_DATA = {
               drawbacks: ["5-year integrated course", "CLAT exam competitive", "Litigation takes years to establish"],
               tip: "Moot courts and internships from year 1 are crucial."
             },
-            children: {}
+            children: {
+              "corporate_law": { label: "Corporate / M&A Law", icon: "🏢", info: { benefits: ["₹15-50 LPA at top firms", "Intellectual challenge", "Global transactions", "Prestigious Tier 1 firms"], drawbacks: ["80+ hour work weeks", "Extreme competition at top firms", "Burnout common"], tip: "NLU rank matters — top 5 NLUs place directly into Tier 1 law firms." }, children: {} },
+              "litigation": { label: "Litigation / Court Practice", icon: "🏛️", info: { benefits: ["Independence", "Unlimited earning potential eventually", "Courtroom drama satisfaction", "Social impact through PIL"], drawbacks: ["Zero income for first 3-5 years", "Depends on mentoring/connections", "Unpredictable schedule"], tip: "Juniorwork under a good senior advocate — the mentorship is worth more than any salary." }, children: {} },
+              "cyber_law": { label: "Cyber Law / IP Law", icon: "🌐", info: { benefits: ["Niche and growing", "Tech companies need legal expertise", "₹8-20 LPA", "Less crowded field"], drawbacks: ["Needs tech understanding", "Evolving regulations", "Limited practitioners in India"], tip: "IT Act + GDPR + upcoming Digital India Bill — master all three." }, children: {} }
+            }
           },
           "design": {
             label: "Design (B.Des)",
@@ -289,7 +456,10 @@ const DEFAULT_CAREER_DATA = {
               drawbacks: ["Portfolio-dependent admissions", "Subjective evaluation", "Needs continuous upskilling"],
               tip: "Start building a portfolio now — NID and NIFT love seeing raw creativity."
             },
-            children: {}
+            children: {
+              "ux_ui": { label: "UX/UI Design", icon: "📱", info: { benefits: ["₹8-30 LPA", "Every tech company needs designers", "Remote-friendly", "Creative + analytical blend"], drawbacks: ["Stakeholder management heavy", "Figma/tools keep changing", "Imposter syndrome common"], tip: "Case studies on your portfolio website matter more than which college you went to." }, children: {} },
+              "fashion": { label: "Fashion Design", icon: "👗", info: { benefits: ["Creative expression", "NIFT is world-class", "Bollywood + bridal market huge", "Entrepreneurship-friendly"], drawbacks: ["Volatile industry", "Long hours", "Success depends on personal brand"], tip: "Sustainability in fashion is the next big wave — position yourself there." }, children: {} }
+            }
           },
           "journalism": {
             label: "Journalism & Mass Communication",
@@ -299,8 +469,238 @@ const DEFAULT_CAREER_DATA = {
               drawbacks: ["Irregular hours", "Modest starting pay", "Industry disruption ongoing"],
               tip: "Start a blog or YouTube channel — your portfolio is your resume."
             },
+            children: {
+              "digital_media": { label: "Digital Media / Content Creation", icon: "📹", info: { benefits: ["YouTube, Instagram, LinkedIn — platforms are hiring", "Freelance potential", "₹4-20 LPA", "Creative freedom"], drawbacks: ["Algorithm-dependent", "Inconsistent income as freelancer", "Content burnout"], tip: "Build your personal brand on one platform first, then expand." }, children: {} },
+              "filmmaking": { label: "Film / Video Production", icon: "🎬", info: { benefits: ["FTII, Whistling Woods top institutes", "OTT boom (Netflix, Prime)", "Creative satisfaction", "Global opportunities"], drawbacks: ["Extremely competitive", "Unstable income initially", "Project-based work"], tip: "Short films on YouTube are your audition reel — start making them now." }, children: {} }
+            }
+          },
+          "psychology": {
+            label: "B.A. Psychology",
+            icon: "🧠",
+            info: {
+              benefits: ["Mental health awareness growing", "Counselling careers in demand", "HR and OB roles", "Understanding human behaviour"],
+              drawbacks: ["Masters mandatory for practice", "Low starting pay in India", "Long path to clinical practice (M.Phil + RCI)"],
+              tip: "Clinical psychology needs RCI license (M.Phil mandatory) — plan the long game."
+            },
+            children: {}
+          },
+          "political_science": {
+            label: "Political Science / IR",
+            icon: "🌐",
+            info: {
+              benefits: ["UPSC preparation alignment", "Think tanks and policy roles", "Diplomatic service pathway", "Understanding governance"],
+              drawbacks: ["Limited private sector roles", "Academic-oriented", "Needs strong writing skills"],
+              tip: "International Relations specialization opens doors to UN, embassies, and foreign policy think tanks."
+            },
+            children: {}
+          },
+          "teaching": {
+            label: "Teaching / Education",
+            icon: "👩‍🏫",
+            info: {
+              benefits: ["Noble profession", "Job security (government teachers)", "Vacations", "Work-life balance"],
+              drawbacks: ["Lower salaries in private sector", "TET/CTET exams required", "Undervalued in society"],
+              tip: "EdTech (Byju's, Unacademy model) has opened ₹10-25 LPA opportunities for good teachers."
+            },
             children: {}
           }
+        }
+      },
+      "vocational": {
+        label: "Vocational / Skill-Based",
+        icon: "🛠️",
+        info: {
+          benefits: ["Practical, job-ready skills", "ITI, polytechnic, diploma options", "Earn while learning", "Growing respect for skilled trades"],
+          drawbacks: ["Social stigma still exists", "Lower ceiling without further education", "Limited in some sectors"],
+          tip: "Germany, Australia, and Canada have huge demand for skilled Indian workers — think global."
+        },
+        children: {
+          "iti": { label: "ITI / Diploma (Polytechnic)", icon: "🔩", info: { benefits: ["Job-ready in 1-2 years", "Government + private sector roles", "Electrician, fitter, welder demand high", "Can upgrade to B.Tech later"], drawbacks: ["Perception issues", "Lower starting salary", "Manual work involved"], tip: "German dual-education model values these skills — explore Germany's Ausbildung programs." }, children: {} },
+          "hospitality": { label: "Hotel Management", icon: "🏨", info: { benefits: ["Global career opportunities", "IHM institutes well-regarded", "Cruise ships, luxury hotels", "₹3-10 LPA (much higher abroad)"], drawbacks: ["Long standing hours", "Weekend/holiday work", "Service-oriented mindset needed"], tip: "International hotel chains (Marriott, Taj) have structured management trainee programs." }, children: {} },
+          "paramedical": { label: "Paramedical Courses", icon: "🩻", info: { benefits: ["Short duration (2-3 years)", "Hospital jobs readily available", "Lab tech, radiology, physiotherapy", "Growing healthcare sector"], drawbacks: ["Capped growth without higher education", "Repetitive work", "Lower pay than doctors"], tip: "Physiotherapy and radiology have the best growth trajectories in paramedical." }, children: {} }
+        }
+      }
+    }
+  },
+  "11-12": {
+    label: "Classes 11–12",
+    description: "Specialization begins — choose wisely!",
+    icon: "🎯",
+    children: {
+      "competitive_exams": {
+        label: "Competitive Exam Preparation",
+        icon: "📝",
+        info: {
+          benefits: ["Structured path to top institutes", "Coaching ecosystem well-developed", "Clear goals and timelines"],
+          drawbacks: ["Immense pressure", "Mental health impact", "2-year intense focus needed"],
+          tip: "Balance is key — students who sleep well and exercise actually perform better in exams."
+        },
+        children: {
+          "jee": { label: "JEE Main + Advanced", icon: "🎯", info: { benefits: ["IITs are globally recognized", "₹10-40 LPA starting at top IITs", "Alumni network is priceless", "Opens global doors"], drawbacks: ["Only ~10,000 seats in IITs vs 12 lakh applicants", "2 years of intense preparation", "Coaching costs ₹2-5 lakh", "Mental health strain"], tip: "Quality of preparation > quantity of hours. One good coaching + self-study beats three tuitions." }, children: {} },
+          "neet_ug": { label: "NEET UG", icon: "🩺", info: { benefits: ["Single exam for all medical colleges", "Clear syllabus from NCERT", "Government college MBBS at ₹50K/year", "Noble career path"], drawbacks: ["20 lakh+ aspirants", "One exam decides everything", "Private medical colleges cost ₹50L-1Cr", "Biology-heavy preparation"], tip: "NCERT is the bible for NEET — read it 5 times minimum before touching any reference book." }, children: {} },
+          "clat": { label: "CLAT (Law Entrance)", icon: "⚖️", info: { benefits: ["Gateway to NLUs", "5-year integrated program", "Growing legal market", "Less competition than JEE/NEET"], drawbacks: ["Aptitude-based — hard to prepare conventionally", "Current affairs weightage is heavy", "Limited seats at top NLUs"], tip: "Read newspapers daily and practice logical reasoning — CLAT rewards breadth over depth." }, children: {} },
+          "nda_entrance": { label: "NDA Entrance", icon: "🎖️", info: { benefits: ["Free world-class training", "Serve the nation", "Adventure + discipline", "Lifetime benefits"], drawbacks: ["Only for men (Army/Navy/Air Force) — women through CDS/AFCAT", "Rigorous SSB interview", "Physical fitness mandatory"], tip: "Mathematics paper is where most candidates fail — focus there." }, children: {} },
+          "cuet": { label: "CUET (Central University Entrance)", icon: "🏫", info: { benefits: ["Single exam for 40+ central universities (DU, JNU, BHU)", "Domain + aptitude based", "Multiple subject options", "Levels the playing field vs board marks"], drawbacks: ["New exam — pattern still evolving", "Logistical issues in past years", "Generic preparation doesn't work"], tip: "Pick your domain subjects carefully — CUET rewards specialization." }, children: {} }
+        }
+      },
+      "alternative_paths": {
+        label: "Alternative Paths After 12th",
+        icon: "🔀",
+        info: {
+          benefits: ["Not everyone needs a traditional degree", "Skill-based economy is growing", "Earn earlier, learn practically"],
+          drawbacks: ["Social pressure against non-traditional paths", "Fewer safety nets", "Self-discipline required"],
+          tip: "The most successful people often took the unconventional path — but with a plan."
+        },
+        children: {
+          "abroad_ug": { label: "Study Abroad (UG)", icon: "✈️", info: { benefits: ["World-class education", "Global exposure", "Better research facilities", "Immigration pathways"], drawbacks: ["₹20-60 lakh+ total cost", "Cultural adjustment", "Visa uncertainties", "Far from family"], tip: "SAT + good extracurriculars + essays matter more than 12th marks for US universities." }, children: {} },
+          "gap_year": { label: "Gap Year / Exploration", icon: "🧭", info: { benefits: ["Time to discover interests", "Travel, intern, volunteer", "Mental health reset", "Many successful people took gap years"], drawbacks: ["Social stigma in India", "Can lose momentum", "Need self-discipline", "Peer pressure when friends move ahead"], tip: "A structured gap year (with goals, internships, learning) is gold. An unplanned one is risky." }, children: {} },
+          "freelancing": { label: "Freelancing / Digital Skills", icon: "💻", info: { benefits: ["Start earning at 18", "Graphic design, video editing, coding", "Global clients on Upwork/Fiverr", "Portfolio > degree"], drawbacks: ["No stable income initially", "No employee benefits", "Self-marketing needed", "Isolation"], tip: "Pick ONE skill, get really good at it, build 5 portfolio pieces, then start pitching." }, children: {} }
+        }
+      }
+    }
+  },
+  "graduation": {
+    label: "Graduation",
+    description: "Degree in progress — plan your next move!",
+    icon: "🎓",
+    children: {
+      "higher_education": {
+        label: "Higher Education",
+        icon: "📚",
+        info: {
+          benefits: ["Deeper expertise", "Better career positioning", "Research opportunities", "Academic career path"],
+          drawbacks: ["2-5 more years of study", "Opportunity cost of not working", "Expensive (especially abroad)"],
+          tip: "Only pursue higher education if it adds clear value to your career goal — not as a default."
+        },
+        children: {
+          "mtech_ms": { label: "M.Tech / MS (Engineering)", icon: "⚙️", info: { benefits: ["Specialization depth", "Research + industry roles", "GATE scholarship for M.Tech", "MS abroad = immigration pathway"], drawbacks: ["2-3 years more", "Research can be isolating", "ROI unclear for some branches"], tip: "If India: GATE → IIT M.Tech (free + stipend). If abroad: GRE + strong profile → US/Germany MS." }, children: {} },
+          "mba_path": { label: "MBA (Management)", icon: "📊", info: { benefits: ["Career switcher's best friend", "₹15-40 LPA from IIMs", "Network worth crores", "General management skills"], drawbacks: ["CAT/GMAT competitive", "₹15-25L fees at top schools", "2-year break from earning", "ROI depends heavily on college tier"], tip: "Work experience of 2-4 years before MBA gives the best ROI and learning." }, children: {} },
+          "msc_research": { label: "M.Sc. / Research (Sciences)", icon: "🔬", info: { benefits: ["Deep domain expertise", "PhD pathway", "CSIR/UGC fellowships available", "IISc, IISERs, TIFR world-class"], drawbacks: ["Limited industry roles with just M.Sc.", "Low stipends (₹25-35K/month)", "Long PhD journey ahead"], tip: "JAM exam for IIT M.Sc., JEST for physics, CSIR-NET for fellowship — know your exams." }, children: {} },
+          "abroad_ms": { label: "Study Abroad (MS/Masters)", icon: "🌍", info: { benefits: ["Global education", "Better research infrastructure", "Immigration + work permit", "₹15-50 LPA post-MS abroad"], drawbacks: ["₹25-60 lakh total investment", "Visa uncertainties", "Cultural adjustment", "Away from family 2+ years"], tip: "Germany offers tuition-free MS programs — explore DAAD scholarships." }, children: {} }
+        }
+      },
+      "placements_jobs": {
+        label: "Campus Placements / Jobs",
+        icon: "💼",
+        info: {
+          benefits: ["Start earning immediately", "Practical experience", "Financial independence", "Career momentum"],
+          drawbacks: ["Entry-level salaries can be modest", "First job may not be dream job", "Corporate adjustment period"],
+          tip: "Your first job is for learning, not earning. Optimize for growth, mentorship, and skill-building."
+        },
+        children: {
+          "tech_roles": { label: "Tech / IT Roles", icon: "💻", info: { benefits: ["Largest recruiter in campus placements", "₹4-20 LPA range", "TCS, Infosys to Google, Microsoft", "Remote work options"], drawbacks: ["Service companies can be monotonous", "Bench period in some companies", "Support/maintenance roles common initially"], tip: "DSA + system design + projects = placement trifecta. Start 6 months before placement season." }, children: {} },
+          "consulting": { label: "Consulting", icon: "📋", info: { benefits: ["McKinsey, BCG, Bain (MBB) prestige", "Steep learning curve = fast growth", "₹15-30 LPA entry", "Diverse problem-solving"], drawbacks: ["80+ hour weeks common", "Constant travel", "Up-or-out culture", "Burnout risk high"], tip: "Case interview prep is everything — start with 'Case in Point' book and practice 50+ cases." }, children: {} },
+          "govt_exams": { label: "Government Exams", icon: "🏛️", info: { benefits: ["Job security", "Pension + benefits", "Respect and authority", "UPSC, SSC, Banking, Railways"], drawbacks: ["1-5 year preparation", "Low selection rates", "Age limit pressure", "Uncertain timeline"], tip: "Have a Plan B while preparing — the average UPSC aspirant takes 3-4 attempts." }, children: {} },
+          "core_jobs": { label: "Core Engineering / Domain Jobs", icon: "🏭", info: { benefits: ["Apply what you studied", "PSUs (ONGC, BHEL, SAIL)", "Manufacturing sector roles", "Tangible output"], drawbacks: ["Fewer openings than IT", "Factory/plant locations", "Slower salary growth", "GATE required for PSUs"], tip: "GATE score is the single biggest factor — a good rank opens 50+ PSUs and M.Tech seats." }, children: {} }
+        }
+      },
+      "certifications": {
+        label: "Certifications & Upskilling",
+        icon: "📜",
+        info: {
+          benefits: ["Focused skill acquisition", "Industry-recognized credentials", "Can be done alongside degree", "Immediate resume boost"],
+          drawbacks: ["Some are expensive", "Certificate ≠ competence", "Market is flooded with low-quality options"],
+          tip: "Only invest in certifications that hiring managers actually ask for — check job descriptions first."
+        },
+        children: {
+          "cloud_certs": { label: "AWS / Azure / GCP", icon: "☁️", info: { benefits: ["Cloud skills in massive demand", "₹2-8 LPA salary bump", "Self-paced learning", "Global validity"], drawbacks: ["Exam fees ₹10-25K each", "Needs renewal", "Hands-on experience more valued than cert alone"], tip: "AWS Solutions Architect Associate is the most sought-after — start there." }, children: {} },
+          "data_certs": { label: "Data / Analytics Certs", icon: "📊", info: { benefits: ["Google Data Analytics, IBM Data Science", "Coursera/edX affordable options", "Portfolio-building alongside", "Growing demand"], drawbacks: ["Self-paced requires discipline", "Too many options = analysis paralysis", "Needs supplementing with real projects"], tip: "One solid Kaggle competition result beats five Coursera certificates." }, children: {} },
+          "finance_certs": { label: "CFA / FRM / ACCA", icon: "📈", info: { benefits: ["CFA: gold standard in finance", "FRM: risk management niche", "ACCA: global accounting", "₹10-30 LPA with experience"], drawbacks: ["CFA has 3 levels over 2-4 years", "Pass rates 40-50%", "Expensive (₹2-5 lakh total)", "Needs work experience for charter"], tip: "Start CFA Level 1 in final year of graduation — the earlier, the better." }, children: {} }
+        }
+      }
+    }
+  },
+  "post-graduation": {
+    label: "Post-Graduation",
+    description: "Specialize and accelerate your career!",
+    icon: "🎓",
+    children: {
+      "phd_research": {
+        label: "PhD / Research",
+        icon: "🔬",
+        info: {
+          benefits: ["Become a domain expert", "Academic career pathway", "₹30-40K/month fellowship (CSIR/UGC)", "Intellectual freedom"],
+          drawbacks: ["4-6 years commitment", "Low stipend during tenure", "Isolation and mental health challenges", "Academic job market is tough"],
+          tip: "Choose your advisor carefully — a good PhD advisor matters more than the university name."
+        },
+        children: {
+          "academia": { label: "Academic Career (Professor)", icon: "👨‍🏫", info: { benefits: ["Intellectual freedom", "Summers off", "₹10-20 LPA as Assistant Professor", "Contribute to knowledge"], drawbacks: ["Publish-or-perish pressure", "Low starting pay vs industry", "Limited positions at top institutes", "Politics in departments"], tip: "Strong publication record + NET/SET qualification + postdoc = best shot at a good position." }, children: {} },
+          "industry_research": { label: "Industry R&D", icon: "🏢", info: { benefits: ["Apply research to real products", "Google, Microsoft, IBM research labs", "₹20-50 LPA", "Best of both worlds"], drawbacks: ["Very competitive positions", "Research direction set by company", "Publication restrictions sometimes"], tip: "Top conferences (NeurIPS, CVPR, ACL) publications are your resume for these roles." }, children: {} }
+        }
+      },
+      "professional_masters": {
+        label: "Professional Masters",
+        icon: "📖",
+        info: {
+          benefits: ["Specialized expertise", "Career acceleration", "Higher salary band", "Network building"],
+          drawbacks: ["Time and money investment", "Not all programs are equal", "May over-qualify for some roles"],
+          tip: "ROI varies wildly — a tier-1 MBA and a tier-3 MBA are completely different propositions."
+        },
+        children: {
+          "exec_mba": { label: "Executive MBA", icon: "👔", info: { benefits: ["For working professionals", "Weekend/online formats", "₹10-25 lakh fee", "Immediate salary jump"], drawbacks: ["Exhausting with full-time job", "Less immersive than full-time MBA", "Quality varies significantly"], tip: "ISB, IIM executive programs have the best brand value — choose carefully." }, children: {} },
+          "mca": { label: "MCA / M.Tech (Career Switch)", icon: "💻", info: { benefits: ["Non-CS to tech career switch", "NIMCET for top NITs", "Coding bootcamp alternative", "₹6-15 LPA after"], drawbacks: ["2-3 years time", "Stigma of 'not real CS'", "Self-learning needed beyond curriculum"], tip: "Build a strong GitHub profile during MCA — your projects matter more than the degree." }, children: {} },
+          "llm": { label: "LLM (Masters in Law)", icon: "⚖️", info: { benefits: ["Specialization in IP, corporate, international law", "1-year program", "Opens international legal market", "Academic career option"], drawbacks: ["Expensive abroad (₹30-50 lakh)", "Limited jobs specifically requiring LLM in India", "Bar exam if practicing abroad"], tip: "LLM from UK/US opens international law firm doors — consider scholarships seriously." }, children: {} }
+        }
+      },
+      "career_transition": {
+        label: "Career Transition",
+        icon: "🔄",
+        info: {
+          benefits: ["Fresh start in a field you love", "Transferable skills are valuable", "Many successful people switched careers", "Age 25-35 is ideal for transitions"],
+          drawbacks: ["Starting salary may drop", "Learning curve is steep", "Imposter syndrome", "Social pressure to stay in lane"],
+          tip: "Transition gradually — freelance or moonlight in the new field before making the full switch."
+        },
+        children: {
+          "tech_transition": { label: "Non-Tech → Tech", icon: "💻", info: { benefits: ["Tech pays significantly more", "Coding bootcamps (3-6 months)", "Remote work options", "Always hiring"], drawbacks: ["Steep learning curve", "May start at junior level", "Ageism in some companies"], tip: "Full-stack web development is the fastest non-tech to tech transition path." }, children: {} },
+          "product_management": { label: "Product Management", icon: "📦", info: { benefits: ["No specific degree needed", "₹15-40 LPA", "Strategic + creative + technical", "CEO of the product"], drawbacks: ["Ambiguous role — hard to break in", "Lots of responsibility, little authority", "Needs cross-functional skills"], tip: "Build a side project, write a product teardown blog, and get APM certification." }, children: {} }
+        }
+      }
+    }
+  },
+  "working": {
+    label: "Working Professionals",
+    description: "Level up your career from where you are!",
+    icon: "💼",
+    children: {
+      "growth": {
+        label: "Career Growth",
+        icon: "📈",
+        info: {
+          benefits: ["Move up the ladder", "Higher compensation", "More impact and responsibility", "Leadership development"],
+          drawbacks: ["Politics increase at higher levels", "Work-life balance harder", "Skills that got you here won't get you there"],
+          tip: "Visibility matters as much as ability — make sure the right people know your work."
+        },
+        children: {
+          "leadership": { label: "Management / Leadership Track", icon: "👥", info: { benefits: ["People management skills", "₹20-60 LPA at senior levels", "Organizational impact", "Executive path"], drawbacks: ["Less hands-on technical work", "People problems are hard", "Meeting-heavy days", "Responsible for others' performance"], tip: "Read 'The Manager's Path' by Camille Fournier — best book on tech management transition." }, children: {} },
+          "ic_track": { label: "Individual Contributor (IC) Track", icon: "🧑‍💻", info: { benefits: ["Stay technical", "Staff/Principal engineer roles pay ₹30-80 LPA", "Deep expertise valued", "Less people management"], drawbacks: ["Fewer positions at top levels", "Can plateau", "Need to stay cutting-edge", "Less organizational influence"], tip: "System design skills + technical writing + mentoring juniors = recipe for Staff Engineer." }, children: {} },
+          "intl_career": { label: "International Career Move", icon: "🌍", info: { benefits: ["2-5x salary in US/Europe/Gulf", "Global experience", "Better work-life balance in some countries", "Immigration pathways"], drawbacks: ["Visa sponsorship challenges", "Cultural adjustment", "Away from family", "Cost of living higher"], tip: "US (H1B), Canada (Express Entry), Germany (Job Seeker Visa), UAE — research the right pathway for your field." }, children: {} }
+        }
+      },
+      "side_income": {
+        label: "Side Income / Passive Income",
+        icon: "💰",
+        info: {
+          benefits: ["Financial security", "Explore interests outside day job", "Multiple income streams", "Potential to replace primary income"],
+          drawbacks: ["Time management challenge", "Burnout if not careful", "Some employers restrict side work", "Tax implications"],
+          tip: "Start with something that uses your existing skills — the activation energy is lowest."
+        },
+        children: {
+          "content_creation": { label: "Content Creation / Teaching", icon: "📹", info: { benefits: ["YouTube, Udemy, LinkedIn courses", "Passive income potential", "Personal brand building", "₹0 to ₹50 LPA+ range"], drawbacks: ["Consistency required", "Results take 6-12 months", "Algorithm changes can hurt", "Public exposure"], tip: "Technical content on YouTube (coding tutorials, career advice) has massive demand in India." }, children: {} },
+          "consulting_freelance": { label: "Consulting / Freelancing", icon: "📋", info: { benefits: ["Use expertise for premium rates", "₹2-10 lakh/month possible", "Flexibility", "Choose your clients"], drawbacks: ["Inconsistent income", "Client management overhead", "Scope creep", "No benefits/insurance"], tip: "Start on Toptal or Upwork for tech, Clarity.fm for advice — build reputation before going independent." }, children: {} },
+          "investing": { label: "Investing & Wealth Building", icon: "📊", info: { benefits: ["Money working for you", "Compound interest effect", "Financial independence", "Multiple vehicles (stocks, MF, real estate)"], drawbacks: ["Risk of loss", "Needs financial literacy", "Emotional discipline required", "Scams and misinformation rampant"], tip: "Start with index funds (Nifty 50), learn for 2 years, then explore direct stocks." }, children: {} }
+        }
+      },
+      "upskilling": {
+        label: "Upskilling / Reskilling",
+        icon: "🔄",
+        info: {
+          benefits: ["Stay relevant in changing market", "Salary bump with new skills", "Career pivots possible", "Employer-sponsored options"],
+          drawbacks: ["Time commitment alongside job", "Decision fatigue on what to learn", "ROI not always clear"],
+          tip: "Learn in public — share your learning journey on LinkedIn. It attracts opportunities."
+        },
+        children: {
+          "ai_upskill": { label: "AI / GenAI Skills", icon: "🤖", info: { benefits: ["Every role now needs AI literacy", "Prompt engineering is a real job", "₹5-15 LPA bump for AI skills", "Future-proofing your career"], drawbacks: ["Hype vs reality confusion", "Tools change every month", "Depth vs breadth tradeoff"], tip: "Don't just use ChatGPT — understand how to build with AI APIs. That's where the value is." }, children: {} },
+          "soft_skills": { label: "Communication & Soft Skills", icon: "🗣️", info: { benefits: ["Differentiator at senior levels", "Public speaking, negotiation, writing", "Leadership readiness", "Works in any industry"], drawbacks: ["Hard to measure improvement", "Takes practice over years", "Often ignored by technical people"], tip: "Join Toastmasters for public speaking — it's the best ROI time investment for your career." }, children: {} }
         }
       }
     }
@@ -409,7 +809,7 @@ function Navbar({ page, setPage }) {
           style: { fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, 
             background: 'linear-gradient(135deg, var(--accent), var(--accent3))',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }
-        }, 'PathForge')
+        }, 'Instant Pursuit')
       ),
       // Desktop nav
       React.createElement('div', {
@@ -924,7 +1324,7 @@ function BlogPage({ blogs }) {
     });
   }, [blogs, searchTerm, selectedTag]);
 
-  const shareUrl = (blog) => encodeURIComponent(`Check out: "${blog.title}" on PathForge`);
+  const shareUrl = (blog) => encodeURIComponent(`Check out: "${blog.title}" on Instant Pursuit`);
 
   if (selectedBlog) {
     return React.createElement('div', { style: { paddingTop: 80, minHeight: '100vh' } },
@@ -1025,7 +1425,7 @@ function BlogPage({ blogs }) {
             }, s.label)
           ),
           React.createElement('button', {
-            onClick: () => { navigator.clipboard.writeText(`"${selectedBlog.title}" — PathForge Career Blog`); alert('Link copied!'); },
+            onClick: () => { navigator.clipboard.writeText(`"${selectedBlog.title}" — Instant Pursuit Career Blog`); alert('Link copied!'); },
             style: {
               padding: '6px 14px', borderRadius: 8, background: 'var(--surface)', border: '1px solid var(--border)',
               color: 'var(--text2)', fontSize: 13, cursor: 'pointer',
@@ -1208,7 +1608,7 @@ function AdminPanel({ careerData, setCareerData, blogs, setBlogs }) {
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'pathforge-data.json'; a.click();
+    a.href = url; a.download = 'instantpursuit-data.json'; a.click();
     URL.revokeObjectURL(url);
     showMsg('📥 Data exported!');
   };
@@ -1449,10 +1849,11 @@ function Footer() {
   },
     React.createElement('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 8 } },
       React.createElement('span', { style: { fontSize: 20 } }, '🔥'),
-      React.createElement('span', { style: { fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 16, color: 'var(--text2)' } }, 'PathForge'),
+      React.createElement('span', { style: { fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 16, color: 'var(--text2)' } }, 'Instant Pursuit'),
     ),
     React.createElement('p', { style: { color: 'var(--text2)', fontSize: 13 } }, 'Navigate your career path with confidence.'),
-    React.createElement('p', { style: { color: 'var(--text2)', fontSize: 12, marginTop: 8, opacity: 0.5 } }, '© 2026 PathForge. Open source & free to use.'),
+    React.createElement('p', { style: { color: 'var(--text2)', fontSize: 12, marginTop: 8, opacity: 0.5 } }, '© 2026 Instant Pursuit. Open source & free to use.'),
+    React.createElement('p', { style: { color: 'var(--text2)', fontSize: 10, marginTop: 12, opacity: 0.4, maxWidth: 600, margin: '12px auto 0', lineHeight: 1.5 } }, 'Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department. No official information or government resources are used in its creation or maintenance.'),
   );
 }
 
@@ -1462,8 +1863,8 @@ function Footer() {
 
 function App() {
   const [page, setPage] = useState('home');
-  const [careerData, setCareerData] = useLocalData('pathforge-career', DEFAULT_CAREER_DATA);
-  const [blogs, setBlogs] = useLocalData('pathforge-blogs', DEFAULT_BLOG_DATA);
+  const [careerData, setCareerData] = useLocalData('instantpursuit-career', DEFAULT_CAREER_DATA);
+  const [blogs, setBlogs] = useLocalData('instantpursuit-blogs', DEFAULT_BLOG_DATA);
 
   useEffect(() => { window.scrollTo(0, 0); }, [page]);
 
