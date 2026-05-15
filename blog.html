@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Instant Pursuit</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script src="data.js"></script>
+<script>initPage();</script>
+
+<main style="padding-top:60px">
+<section class="ip-section" style="max-width:860px">
+  <div id="blog-root"></div>
+</section>
+</main>
+
+<script>
+const blogs = loadData('instantpursuit-blogs', DEFAULT_BLOG_DATA);
+let selectedBlog = null;
+let filterCat = 'All';
+
+function renderBlog() {
+  const el = document.getElementById('blog-root');
+  const cats = ['All', ...new Set(blogs.map(b => b.category))];
+
+  if (selectedBlog) {
+    const b = selectedBlog;
+    el.innerHTML = `
+      <button onclick="selectedBlog=null;renderBlog()" class="ip-btn ip-btn-outline" style="margin-bottom:1.5rem;font-size:0.85rem">← Back to all posts</button>
+      <article style="animation:fadeUp 0.4s ease">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
+          <span class="ip-badge ip-badge-accent">${b.category}</span>
+          <span class="ip-badge ip-badge-purple">${b.readTime}</span>
+        </div>
+        <h1 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.3;margin-bottom:16px">${b.title}</h1>
+        <div style="display:flex;align-items:center;gap:12px;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:24px">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:0.85rem">${b.authorAvatar}</div>
+          <div>
+            <div style="font-weight:600;font-size:0.9rem">${b.author}</div>
+            <div style="color:var(--text3);font-size:0.8rem">${new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</div>
+          </div>
+        </div>
+        <div style="font-size:1.05rem;line-height:1.85;color:var(--text2)">
+          ${b.content.split('\n\n').map(p => `<p style="margin-bottom:1.2rem">${p}</p>`).join('')}
+        </div>
+        <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap">
+          ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">${t}</span>`).join('')}
+        </div>
+      </article>
+    `;
+    window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+
+  let html = `
+    <h1 class="ip-section-title">✍️ Career Stories & Guides</h1>
+    <p class="ip-section-sub">Real insights from students and professionals who've walked these paths.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem">
+      ${cats.map(c => `<button onclick="filterCat='${c}';renderBlog()" class="ip-btn ${filterCat===c?'ip-btn-primary':'ip-btn-outline'}" style="padding:6px 16px;font-size:0.82rem">${c}</button>`).join('')}
+    </div>
+    <div style="display:grid;gap:1.25rem">
+  `;
+
+  const filtered = filterCat === 'All' ? blogs : blogs.filter(b => b.category === filterCat);
+  filtered.forEach((b, i) => {
+    html += `
+      <div class="blog-card" style="cursor:pointer;animation:fadeUp 0.4s ease ${i*0.06}s both" onclick="selectedBlog=blogs.find(x=>x.id===${b.id});renderBlog()">
+        <div class="blog-card-body">
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <span class="ip-badge ip-badge-accent">${b.category}</span>
+            <span class="ip-badge ip-badge-purple">${b.readTime}</span>
+          </div>
+          <div class="blog-card-title">${b.title}</div>
+          <div class="blog-card-excerpt">${b.excerpt}</div>
+          <div class="blog-card-meta">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:0.7rem">${b.authorAvatar}</div>
+            <span>${b.author}</span>
+            <span>·</span>
+            <span>${new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  html += '</div>';
+
+  if (filtered.length === 0) {
+    html += `<div style="text-align:center;padding:3rem;color:var(--text3)"><p>No posts in this category yet.</p></div>`;
+  }
+
+  el.innerHTML = html;
+}
+
+renderBlog();
+</script>
+</body>
+</html>

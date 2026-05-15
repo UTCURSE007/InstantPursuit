@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Careers — Instant Pursuit</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script src="data.js"></script>
+<script>initPage();</script>
+
+<main style="padding-top:60px">
+<section class="ip-section" style="max-width:960px">
+  <div id="explorer"></div>
+</section>
+</main>
+
+<script>
+const careerData = loadData('instantpursuit-career', DEFAULT_CAREER_DATA);
+let path = [];
+
+function getNode(p) {
+  let node = careerData;
+  for (const k of p) {
+    if (node.children && node.children[k]) node = node.children[k];
+    else if (node[k]) node = node[k];
+    else return null;
+  }
+  return node;
+}
+
+function render() {
+  const el = document.getElementById('explorer');
+  const node = path.length === 0 ? careerData : getNode(path);
+  if (!node) { path.pop(); render(); return; }
+
+  let html = '';
+
+  // Breadcrumb
+  html += '<div class="career-breadcrumb">';
+  html += `<button onclick="path=[];render()">🏠 Home</button>`;
+  let trail = [];
+  for (const k of path) {
+    trail.push(k);
+    const t = [...trail];
+    const n = getNode(t);
+    html += `<span class="sep">›</span><button onclick="path=${JSON.stringify(t)};render()">${n ? n.label || k : k}</button>`;
+  }
+  html += '</div>';
+
+  // Title
+  if (path.length === 0) {
+    html += `<h1 class="ip-section-title">🗺️ Career Explorer</h1>`;
+    html += `<p class="ip-section-sub">Select your education stage to begin exploring career paths.</p>`;
+  } else {
+    html += `<h1 class="ip-section-title">${node.icon || ''} ${node.label}</h1>`;
+    if (node.description) html += `<p class="ip-section-sub">${node.description}</p>`;
+  }
+
+  // Info panel (for nodes with info)
+  const info = node.info;
+  if (info) {
+    html += '<div class="career-detail-box career-node">';
+
+    // Detail paragraph
+    if (info.detail) {
+      html += `<p class="career-detail-para">${info.detail}</p>`;
+    }
+
+    // Tip
+    if (info.tip) {
+      html += `<div style="background:var(--accent-soft);border:1px solid var(--accent-med);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:0.9rem"><strong style="color:var(--accent)">💡 Pro Tip:</strong> <span style="color:var(--text2)">${info.tip}</span></div>`;
+    }
+
+    // Benefits & Drawbacks
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">';
+    if (info.benefits && info.benefits.length) {
+      html += '<div>';
+      html += '<h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px">✅ Benefits</h4>';
+      info.benefits.forEach(b => { html += `<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ${b}</div>`; });
+      html += '</div>';
+    }
+    if (info.drawbacks && info.drawbacks.length) {
+      html += '<div>';
+      html += '<h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:8px">⚠️ Drawbacks</h4>';
+      info.drawbacks.forEach(d => { html += `<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ${d}</div>`; });
+      html += '</div>';
+    }
+    html += '</div>';
+
+    // Meta cards: colleges, recruiters, CTC
+    const hasMeta = info.topColleges || info.topRecruiters || info.avgCTC;
+    if (hasMeta) {
+      html += '<div class="career-meta-grid">';
+      if (info.topColleges) {
+        html += '<div class="career-meta-card"><h4>🏫 Top Colleges</h4><ul>';
+        info.topColleges.forEach(c => { html += `<li>${c}</li>`; });
+        html += '</ul></div>';
+      }
+      if (info.topRecruiters) {
+        html += '<div class="career-meta-card"><h4>🏢 Top Recruiters</h4><ul>';
+        info.topRecruiters.forEach(r => { html += `<li>${r}</li>`; });
+        html += '</ul></div>';
+      }
+      if (info.avgCTC) {
+        html += `<div class="career-meta-card"><h4>💰 Average CTC</h4><div style="font-size:1.1rem;font-weight:700;color:var(--accent);margin-top:4px">${info.avgCTC}</div></div>`;
+      }
+      html += '</div>';
+    }
+
+    html += '</div>';
+  }
+
+  // Children cards
+  const children = node.children || (path.length === 0 ? node : {});
+  const keys = Object.keys(children);
+  if (keys.length > 0) {
+    if (path.length > 0) {
+      html += `<h3 style="font-family:var(--font-display);font-weight:600;margin:1.5rem 0 1rem;font-size:1.1rem">Explore further:</h3>`;
+    }
+    html += '<div class="grid-2">';
+    keys.forEach((k, i) => {
+      const child = children[k];
+      const hasKids = child.children && Object.keys(child.children).length > 0;
+      const childCount = hasKids ? Object.keys(child.children).length : 0;
+      html += `<div class="ip-card career-node" style="animation-delay:${i*0.05}s" onclick="path.push('${k}');render()">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <span style="font-size:1.5rem">${child.icon || '📁'}</span>
+          <span style="font-family:var(--font-display);font-weight:600;font-size:1.05rem">${child.label}</span>
+        </div>
+        ${child.info && child.info.tip ? `<p style="color:var(--text2);font-size:0.85rem;line-height:1.5;margin-bottom:8px">${child.info.tip}</p>` : ''}
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          ${child.info && child.info.avgCTC ? `<span class="ip-badge ip-badge-green">💰 ${child.info.avgCTC}</span>` : ''}
+          ${hasKids ? `<span class="ip-badge ip-badge-accent">${childCount} paths →</span>` : '<span class="ip-badge ip-badge-purple">🔍 Details</span>'}
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  } else if (path.length > 0) {
+    html += `<div style="text-align:center;padding:2rem;color:var(--text3)">
+      <div style="font-size:2rem;margin-bottom:8px">🏁</div>
+      <p>This is a leaf career node. More sub-paths will be added soon!</p>
+      <button onclick="path.pop();render()" class="ip-btn ip-btn-outline" style="margin-top:16px">← Go Back</button>
+    </div>`;
+  }
+
+  el.innerHTML = html;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+render();
+</script>
+</body>
+</html>
