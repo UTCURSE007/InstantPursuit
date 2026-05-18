@@ -17,12 +17,13 @@
 </main>
 
 <script>
-const careerData = loadData('instantpursuit-career', DEFAULT_CAREER_DATA);
-let path = [];
+var careerData = loadData('instantpursuit-career', DEFAULT_CAREER_DATA);
+var path = [];
 
 function getNode(p) {
-  let node = careerData;
-  for (const k of p) {
+  var node = careerData;
+  for (var i = 0; i < p.length; i++) {
+    var k = p[i];
     if (node.children && node.children[k]) node = node.children[k];
     else if (node[k]) node = node[k];
     else return null;
@@ -30,123 +31,192 @@ function getNode(p) {
   return node;
 }
 
+function navTo(idx) {
+  path = path.slice(0, idx);
+  render();
+}
+
+function navPush(key) {
+  path.push(key);
+  render();
+}
+
+function navBack() {
+  path.pop();
+  render();
+}
+
+function linkMeta(url) {
+  try {
+    var u = new URL(url);
+    var host = u.hostname.replace('www.','');
+    var isYT = host.indexOf('youtube.com') >= 0 || host.indexOf('youtu.be') >= 0;
+    return { icon: isYT ? '▶' : '🔗', css: isYT ? 'further-link-yt' : 'further-link-web', domain: host };
+  } catch(e) {
+    return { icon: '🔗', css: 'further-link-web', domain: '' };
+  }
+}
+
 function render() {
-  const el = document.getElementById('explorer');
-  const node = path.length === 0 ? careerData : getNode(path);
+  var el = document.getElementById('explorer');
+  var node = path.length === 0 ? careerData : getNode(path);
   if (!node) { path.pop(); render(); return; }
 
-  let html = '';
+  var h = '';
 
-  // Breadcrumb
-  html += '<div class="career-breadcrumb">';
-  html += `<button onclick="path=[];render()">🏠 Home</button>`;
-  let trail = [];
-  for (const k of path) {
-    trail.push(k);
-    const t = [...trail];
-    const n = getNode(t);
-    html += `<span class="sep">›</span><button onclick="path=${JSON.stringify(t)};render()">${n ? n.label || k : k}</button>`;
+  // ── Breadcrumb ──
+  h += '<div class="career-breadcrumb">';
+  h += '<button onclick="navTo(0)">🏠 Home</button>';
+  for (var i = 0; i < path.length; i++) {
+    var bn = getNode(path.slice(0, i + 1));
+    var bl = bn ? (bn.label || path[i]) : path[i];
+    h += '<span class="sep">›</span>';
+    if (i < path.length - 1) {
+      h += '<button onclick="navTo(' + (i + 1) + ')">' + bl + '</button>';
+    } else {
+      h += '<button style="color:var(--text);font-weight:600;cursor:default">' + bl + '</button>';
+    }
   }
-  html += '</div>';
+  h += '</div>';
 
-  // Title
+  // ── Title ──
   if (path.length === 0) {
-    html += `<h1 class="ip-section-title">🗺️ Career Explorer</h1>`;
-    html += `<p class="ip-section-sub">Select your education stage to begin exploring career paths.</p>`;
+    h += '<h1 class="ip-section-title">🗺️ Career Explorer</h1>';
+    h += '<p class="ip-section-sub">Select your education stage to begin exploring career paths.</p>';
   } else {
-    html += `<h1 class="ip-section-title">${node.icon || ''} ${node.label}</h1>`;
-    if (node.description) html += `<p class="ip-section-sub">${node.description}</p>`;
+    h += '<h1 class="ip-section-title">' + (node.icon || '') + ' ' + node.label + '</h1>';
+    if (node.description) h += '<p class="ip-section-sub">' + node.description + '</p>';
   }
 
-  // Info panel (for nodes with info)
-  const info = node.info;
+  // ── Info panel ──
+  var info = node.info;
   if (info) {
-    html += '<div class="career-detail-box career-node">';
+    h += '<div class="career-detail-box career-node">';
 
-    // Detail paragraph
     if (info.detail) {
-      html += `<p class="career-detail-para">${info.detail}</p>`;
+      h += '<p class="career-detail-para">' + info.detail + '</p>';
     }
 
-    // Tip
     if (info.tip) {
-      html += `<div style="background:var(--accent-soft);border:1px solid var(--accent-med);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:0.9rem"><strong style="color:var(--accent)">💡 Pro Tip:</strong> <span style="color:var(--text2)">${info.tip}</span></div>`;
+      h += '<div style="background:var(--accent-soft);border:1px solid var(--accent-med);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:0.9rem">';
+      h += '<strong style="color:var(--accent)">💡 Pro Tip:</strong> <span style="color:var(--text2)">' + info.tip + '</span></div>';
     }
 
     // Benefits & Drawbacks
-    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">';
+    h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">';
     if (info.benefits && info.benefits.length) {
-      html += '<div>';
-      html += '<h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px">✅ Benefits</h4>';
-      info.benefits.forEach(b => { html += `<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ${b}</div>`; });
-      html += '</div>';
+      h += '<div><h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px">✅ Benefits</h4>';
+      for (var bi = 0; bi < info.benefits.length; bi++) h += '<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ' + info.benefits[bi] + '</div>';
+      h += '</div>';
     }
     if (info.drawbacks && info.drawbacks.length) {
-      html += '<div>';
-      html += '<h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:8px">⚠️ Drawbacks</h4>';
-      info.drawbacks.forEach(d => { html += `<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ${d}</div>`; });
-      html += '</div>';
+      h += '<div><h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:8px">⚠️ Drawbacks</h4>';
+      for (var di = 0; di < info.drawbacks.length; di++) h += '<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ' + info.drawbacks[di] + '</div>';
+      h += '</div>';
     }
-    html += '</div>';
+    h += '</div>';
 
-    // Meta cards: colleges, recruiters, CTC
-    const hasMeta = info.topColleges || info.topRecruiters || info.avgCTC;
-    if (hasMeta) {
-      html += '<div class="career-meta-grid">';
+    // Meta cards
+    if (info.topColleges || info.topRecruiters || info.avgCTC) {
+      h += '<div class="career-meta-grid">';
       if (info.topColleges) {
-        html += '<div class="career-meta-card"><h4>🏫 Top Colleges</h4><ul>';
-        info.topColleges.forEach(c => { html += `<li>${c}</li>`; });
-        html += '</ul></div>';
+        h += '<div class="career-meta-card"><h4>🏫 Top Colleges</h4><ul>';
+        for (var ci = 0; ci < info.topColleges.length; ci++) h += '<li>' + info.topColleges[ci] + '</li>';
+        h += '</ul></div>';
       }
       if (info.topRecruiters) {
-        html += '<div class="career-meta-card"><h4>🏢 Top Recruiters</h4><ul>';
-        info.topRecruiters.forEach(r => { html += `<li>${r}</li>`; });
-        html += '</ul></div>';
+        h += '<div class="career-meta-card"><h4>🏢 Top Recruiters</h4><ul>';
+        for (var ri = 0; ri < info.topRecruiters.length; ri++) h += '<li>' + info.topRecruiters[ri] + '</li>';
+        h += '</ul></div>';
       }
       if (info.avgCTC) {
-        html += `<div class="career-meta-card"><h4>💰 Average CTC</h4><div style="font-size:1.1rem;font-weight:700;color:var(--accent);margin-top:4px">${info.avgCTC}</div></div>`;
+        h += '<div class="career-meta-card"><h4>💰 Average CTC</h4><div style="font-size:1.1rem;font-weight:700;color:var(--accent);margin-top:4px">' + info.avgCTC + '</div></div>';
       }
-      html += '</div>';
+      h += '</div>';
     }
 
-    html += '</div>';
+    // ── Further Viewing ──
+    if (info.furtherLinks && info.furtherLinks.length) {
+      h += '<div class="further-links"><h4>📺 Further Viewing</h4>';
+      for (var fi = 0; fi < info.furtherLinks.length; fi++) {
+        var fl = info.furtherLinks[fi];
+        var fm = linkMeta(fl.url);
+        h += '<a href="' + fl.url + '" target="_blank" rel="noopener" class="further-link">';
+        h += '<div class="further-link-icon ' + fm.css + '">' + fm.icon + '</div>';
+        h += '<div style="flex:1;min-width:0"><div class="further-link-title">' + (fl.title || fl.url) + '</div>';
+        h += '<div class="further-link-domain">' + fm.domain + '</div></div>';
+        h += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+      }
+      h += '</div>';
+    }
+
+    h += '</div>';
   }
 
-  // Children cards
-  const children = node.children || (path.length === 0 ? node : {});
-  const keys = Object.keys(children);
-  if (keys.length > 0) {
-    if (path.length > 0) {
-      html += `<h3 style="font-family:var(--font-display);font-weight:600;margin:1.5rem 0 1rem;font-size:1.1rem">Explore further:</h3>`;
+  // ── Children ──
+  var children = node.children || (path.length === 0 ? node : {});
+  var keys = Object.keys(children);
+
+  if (keys.length > 0 && path.length > 0) {
+    // Tree layout with connectors
+    h += '<h3 style="font-family:var(--font-display);font-weight:600;margin:1.5rem 0 0;font-size:1.1rem">Explore further</h3>';
+    h += '<div style="display:flex;flex-direction:column;align-items:center;margin:12px 0 0">';
+    h += '<div class="tree-root-dot"></div>';
+    h += '<div class="tree-trunk-line"></div>';
+    h += '</div>';
+    h += '<div class="tree-children-wrap">';
+    for (var ki = 0; ki < keys.length; ki++) {
+      var k = keys[ki];
+      var child = children[k];
+      var hasKids = child.children && Object.keys(child.children).length > 0;
+      var cc = hasKids ? Object.keys(child.children).length : 0;
+      var isLast = ki === keys.length - 1;
+      h += '<div class="tree-child-item career-node" style="animation-delay:' + (ki * 0.06) + 's">';
+      if (isLast) h += '<div class="tree-trim"></div>';
+      h += '<div class="ip-card" style="margin-bottom:0" onclick="navPush(\'' + k + '\')">';
+      h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">';
+      h += '<span style="font-size:1.4rem">' + (child.icon || '📁') + '</span>';
+      h += '<span style="font-family:var(--font-display);font-weight:600;font-size:1.02rem">' + child.label + '</span>';
+      h += '</div>';
+      if (child.info && child.info.tip) {
+        h += '<p style="color:var(--text2);font-size:0.84rem;line-height:1.5;margin-bottom:8px">' + child.info.tip + '</p>';
+      }
+      h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
+      if (child.info && child.info.avgCTC) h += '<span class="ip-badge ip-badge-green">💰 ' + child.info.avgCTC + '</span>';
+      if (hasKids) h += '<span class="ip-badge ip-badge-accent">' + cc + ' paths →</span>';
+      else h += '<span class="ip-badge ip-badge-purple">🔍 Details</span>';
+      h += '</div></div></div>';
     }
-    html += '<div class="grid-2">';
-    keys.forEach((k, i) => {
-      const child = children[k];
-      const hasKids = child.children && Object.keys(child.children).length > 0;
-      const childCount = hasKids ? Object.keys(child.children).length : 0;
-      html += `<div class="ip-card career-node" style="animation-delay:${i*0.05}s" onclick="path.push('${k}');render()">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-          <span style="font-size:1.5rem">${child.icon || '📁'}</span>
-          <span style="font-family:var(--font-display);font-weight:600;font-size:1.05rem">${child.label}</span>
-        </div>
-        ${child.info && child.info.tip ? `<p style="color:var(--text2);font-size:0.85rem;line-height:1.5;margin-bottom:8px">${child.info.tip}</p>` : ''}
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          ${child.info && child.info.avgCTC ? `<span class="ip-badge ip-badge-green">💰 ${child.info.avgCTC}</span>` : ''}
-          ${hasKids ? `<span class="ip-badge ip-badge-accent">${childCount} paths →</span>` : '<span class="ip-badge ip-badge-purple">🔍 Details</span>'}
-        </div>
-      </div>`;
-    });
-    html += '</div>';
+    h += '</div>';
+
+  } else if (keys.length > 0 && path.length === 0) {
+    // Root level — grid, no connectors
+    h += '<div class="grid-2">';
+    for (var ri2 = 0; ri2 < keys.length; ri2++) {
+      var rk = keys[ri2];
+      var rc = children[rk];
+      var rHasKids = rc.children && Object.keys(rc.children).length > 0;
+      var rcc = rHasKids ? Object.keys(rc.children).length : 0;
+      h += '<div class="ip-card career-node" style="animation-delay:' + (ri2 * 0.05) + 's" onclick="navPush(\'' + rk + '\')">';
+      h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">';
+      h += '<span style="font-size:1.5rem">' + (rc.icon || '📁') + '</span>';
+      h += '<span style="font-family:var(--font-display);font-weight:600;font-size:1.05rem">' + rc.label + '</span></div>';
+      if (rc.description) h += '<p style="color:var(--text2);font-size:0.85rem;line-height:1.5;margin-bottom:8px">' + rc.description + '</p>';
+      h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
+      if (rHasKids) h += '<span class="ip-badge ip-badge-accent">' + rcc + ' paths →</span>';
+      h += '</div></div>';
+    }
+    h += '</div>';
+
   } else if (path.length > 0) {
-    html += `<div style="text-align:center;padding:2rem;color:var(--text3)">
-      <div style="font-size:2rem;margin-bottom:8px">🏁</div>
-      <p>This is a leaf career node. More sub-paths will be added soon!</p>
-      <button onclick="path.pop();render()" class="ip-btn ip-btn-outline" style="margin-top:16px">← Go Back</button>
-    </div>`;
+    h += '<div style="text-align:center;padding:2rem;color:var(--text3)">';
+    h += '<div style="font-size:2rem;margin-bottom:8px">🏁</div>';
+    h += '<p>This is a leaf career node. More sub-paths will be added soon!</p>';
+    h += '<button onclick="navBack()" class="ip-btn ip-btn-outline" style="margin-top:16px">← Go Back</button></div>';
   }
 
-  el.innerHTML = html;
-  window.scrollTo({top:0,behavior:'smooth'});
+  el.innerHTML = h;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 render();
