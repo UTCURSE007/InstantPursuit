@@ -148,20 +148,22 @@ a:hover{text-decoration:underline}
 .further-link-domain{font-size:.7rem;color:var(--text3);font-family:var(--font-mono)}
 
 /* Tree connector layout */
-.tree-header{display:flex;flex-direction:column;align-items:center;margin:16px 0 0}
-.tree-root-dot{width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);position:relative;z-index:2}
-.tree-trunk-line{width:2px;height:28px;background:var(--accent);opacity:.4}
-.tree-children-wrap{position:relative;margin-left:24px;padding-left:32px;border-left:2px solid var(--accent);border-image:linear-gradient(to bottom,var(--accent),var(--accent) calc(100% - 32px),transparent) 1}
+.tree-header{display:flex;flex-direction:column;align-items:flex-start;margin:16px 0 0;padding-left:30px}
+.tree-root-dot{width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tree-trunk-line{width:2px;height:28px;background:var(--accent);opacity:.5;margin-left:7px}
+.tree-children-wrap{position:relative;margin-left:30px;padding-left:38px}
+.tree-vline{position:absolute;left:0;top:0;bottom:24px;width:2px;background:var(--accent);opacity:.35}
 .tree-child-item{position:relative;margin-bottom:16px}
-.tree-child-item::before{content:'';position:absolute;top:26px;left:-32px;width:32px;height:2px;background:var(--accent)}
-.tree-child-item::after{content:'';position:absolute;top:20px;left:-8px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);z-index:2}
 .tree-child-item:last-child{margin-bottom:0}
+.tree-child-hline{position:absolute;top:26px;left:-38px;width:28px;height:2px;background:var(--accent);opacity:.5}
+.tree-child-dot{position:absolute;top:19px;left:-14px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);z-index:2}
 .tree-child-item .ip-card{margin-bottom:0}
 
 @media(max-width:640px){
-  .tree-children-wrap{margin-left:8px;padding-left:24px}
-  .tree-child-item::before{left:-24px;width:24px}
-  .tree-child-item::after{left:-6px;width:12px;height:12px}
+  .tree-header{padding-left:16px}
+  .tree-children-wrap{margin-left:16px;padding-left:28px}
+  .tree-child-hline{left:-28px;width:20px}
+  .tree-child-dot{left:-10px;width:12px;height:12px}
 }
 
 /* ── Blog ── */

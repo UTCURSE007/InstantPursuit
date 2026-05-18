@@ -158,19 +158,22 @@ function render() {
   var keys = Object.keys(children);
 
   if (keys.length > 0 && path.length > 0) {
-    // Tree layout with connectors
+    // Tree layout with connectors (real divs, not pseudo-elements)
     h += '<h3 style="font-family:var(--font-display);font-weight:600;margin:1.5rem 0 0;font-size:1.1rem">Explore further</h3>';
-    h += '<div class="tree-header" style="align-items:flex-start;margin-left:24px">';
+    h += '<div class="tree-header">';
     h += '<div class="tree-root-dot"></div>';
     h += '<div class="tree-trunk-line"></div>';
     h += '</div>';
     h += '<div class="tree-children-wrap">';
+    h += '<div class="tree-vline"></div>';
     for (var ki = 0; ki < keys.length; ki++) {
       var k = keys[ki];
       var child = children[k];
       var hasKids = child.children && Object.keys(child.children).length > 0;
       var cc = hasKids ? Object.keys(child.children).length : 0;
       h += '<div class="tree-child-item career-node" style="animation-delay:' + (ki * 0.06) + 's">';
+      h += '<div class="tree-child-hline"></div>';
+      h += '<div class="tree-child-dot"></div>';
       h += '<div class="ip-card" onclick="navPush(\'' + k + '\')">';
       h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">';
       h += '<span style="font-size:1.4rem">' + (child.icon || '📁') + '</span>';
