@@ -160,7 +160,7 @@ function render() {
   if (keys.length > 0 && path.length > 0) {
     // Tree layout with connectors
     h += '<h3 style="font-family:var(--font-display);font-weight:600;margin:1.5rem 0 0;font-size:1.1rem">Explore further</h3>';
-    h += '<div style="display:flex;flex-direction:column;align-items:center;margin:12px 0 0">';
+    h += '<div class="tree-header" style="align-items:flex-start;margin-left:24px">';
     h += '<div class="tree-root-dot"></div>';
     h += '<div class="tree-trunk-line"></div>';
     h += '</div>';
@@ -170,10 +170,8 @@ function render() {
       var child = children[k];
       var hasKids = child.children && Object.keys(child.children).length > 0;
       var cc = hasKids ? Object.keys(child.children).length : 0;
-      var isLast = ki === keys.length - 1;
       h += '<div class="tree-child-item career-node" style="animation-delay:' + (ki * 0.06) + 's">';
-      if (isLast) h += '<div class="tree-trim"></div>';
-      h += '<div class="ip-card" style="margin-bottom:0" onclick="navPush(\'' + k + '\')">';
+      h += '<div class="ip-card" onclick="navPush(\'' + k + '\')">';
       h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">';
       h += '<span style="font-size:1.4rem">' + (child.icon || '📁') + '</span>';
       h += '<span style="font-family:var(--font-display);font-weight:600;font-size:1.02rem">' + child.label + '</span>';
