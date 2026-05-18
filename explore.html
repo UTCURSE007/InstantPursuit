@@ -9,6 +9,7 @@
 <script src="data.js"></script>
 </head>
 <body>
+<script src="bg.js"></script>
 
 <main style="padding-top:60px">
 <section class="ip-section" style="max-width:960px">
@@ -160,10 +161,6 @@ function render() {
   if (keys.length > 0 && path.length > 0) {
     // Tree layout with connectors (real divs, not pseudo-elements)
     h += '<h3 style="font-family:var(--font-display);font-weight:600;margin:1.5rem 0 0;font-size:1.1rem">Explore further</h3>';
-    h += '<div class="tree-header">';
-    h += '<div class="tree-root-dot"></div>';
-    h += '<div class="tree-trunk-line"></div>';
-    h += '</div>';
     h += '<div class="tree-children-wrap">';
     h += '<div class="tree-vline"></div>';
     for (var ki = 0; ki < keys.length; ki++) {
