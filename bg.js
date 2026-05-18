@@ -24,7 +24,7 @@
     }
     .ip-bg-orb{
       position:absolute;border-radius:50%;
-      filter:blur(70px);opacity:0.18;
+      filter:blur(70px);opacity:0.40;
       animation:ipOrbPulse 8s ease-in-out infinite alternate;
     }
     [data-theme="dark"] .ip-bg-orb{opacity:0.1}
