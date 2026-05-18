@@ -9,12 +9,12 @@
   style.textContent = `
     .ip-bg-layer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
     .ip-bg-icon{
-      position:absolute;opacity:0.07;
+      position:absolute;opacity:0.18;
       animation:ipFloat linear infinite;
       will-change:transform;
       user-select:none;
     }
-    [data-theme="dark"] .ip-bg-icon{opacity:0.09}
+    [data-theme="dark"] .ip-bg-icon{opacity:0.1}
     @keyframes ipFloat{
       0%{transform:translateY(0) rotate(0deg) scale(1)}
       25%{transform:translateY(-20px) rotate(4deg) scale(1.04)}
@@ -24,10 +24,10 @@
     }
     .ip-bg-orb{
       position:absolute;border-radius:50%;
-      filter:blur(70px);opacity:0.1;
+      filter:blur(70px);opacity:0.18;
       animation:ipOrbPulse 8s ease-in-out infinite alternate;
     }
-    [data-theme="dark"] .ip-bg-orb{opacity:0.08}
+    [data-theme="dark"] .ip-bg-orb{opacity:0.1}
     @keyframes ipOrbPulse{
       0%{transform:scale(1) translate(0,0)}
       100%{transform:scale(1.3) translate(10px,-10px)}
