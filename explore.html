@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
 <script src="data.js"></script>
+<script src="share.js"></script>
 </head>
 <body>
 <script src="bg.js"></script>
@@ -150,6 +151,10 @@ function render() {
       }
       h += '</div>';
     }
+
+    // ── Share bar ──
+    var shareUrl = 'https://instantpursuit.in/explore.html#' + path.join('/');
+    h += shareBar(node.label || 'Career Path', shareUrl);
 
     h += '</div>';
   }

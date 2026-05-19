@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
 <script src="data.js"></script>
+<script src="share.js"></script>
 </head>
 <body>
 <script src="bg.js"></script>
@@ -28,9 +29,15 @@ function renderBlog() {
 
   if (selectedBlog) {
     const b = selectedBlog;
+    const blogUrl = 'https://instantpursuit.in/blog.html#post-' + b.id;
+    let coverHtml = '';
+    if (b.coverImage) {
+      coverHtml = '<img src="' + b.coverImage + '" alt="' + b.title + '" class="blog-cover" style="border-radius:var(--radius-lg);margin-bottom:24px;width:100%;max-height:360px;object-fit:cover">';
+    }
     el.innerHTML = `
       <button onclick="selectedBlog=null;renderBlog()" class="ip-btn ip-btn-outline" style="margin-bottom:1.5rem;font-size:0.85rem">← Back to all posts</button>
       <article style="animation:fadeUp 0.4s ease">
+        ${coverHtml}
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
           <span class="ip-badge ip-badge-accent">${b.category}</span>
           <span class="ip-badge ip-badge-purple">${b.readTime}</span>
@@ -49,6 +56,7 @@ function renderBlog() {
         <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap">
           ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">${t}</span>`).join('')}
         </div>
+        ${shareBar(b.title, blogUrl)}
       </article>
     `;
     window.scrollTo({top:0,behavior:'smooth'});
@@ -68,6 +76,7 @@ function renderBlog() {
   filtered.forEach((b, i) => {
     html += `
       <div class="blog-card" style="cursor:pointer;animation:fadeUp 0.4s ease ${i*0.06}s both" onclick="selectedBlog=blogs.find(x=>x.id===${b.id});renderBlog()">
+        ${b.coverImage ? '<img src="' + b.coverImage + '" alt="" class="blog-cover">' : ''}
         <div class="blog-card-body">
           <div style="display:flex;gap:8px;margin-bottom:8px">
             <span class="ip-badge ip-badge-accent">${b.category}</span>

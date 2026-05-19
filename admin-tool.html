@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Pursuit — Admin Tool</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111118;--bg2:#1a1a24;--bg3:#222233;--surface:#1e1e2e;--border:#2d2d44;--text:#e0e0f0;--text2:#8888aa;--accent:#6C5CE7;--accent2:#a29bfe;--green:#34d399;--red:#f87171;--orange:#fbbf24;--font:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--radius:8px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5}
+a{color:var(--accent2)}
+.admin-wrap{max-width:960px;margin:0 auto;padding:24px 20px}
+h1{font-size:1.5rem;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.subtitle{color:var(--text2);font-size:.85rem;margin-bottom:24px}
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.tab{padding:8px 18px;border-radius:var(--radius) var(--radius) 0 0;border:none;background:transparent;color:var(--text2);font-family:var(--font);font-size:.88rem;font-weight:500;cursor:pointer}
+.tab.active{background:var(--bg3);color:var(--accent2)}
+.panel{display:none;animation:fadeIn .2s ease}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* Forms */
+label{display:block;font-size:.78rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:4px;margin-top:14px}
+input,textarea,select{width:100%;padding:10px 12px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg2);color:var(--text);font-family:var(--font);font-size:.9rem;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+textarea{resize:vertical;min-height:80px;font-size:.85rem}
+
+.btn{padding:10px 22px;border-radius:var(--radius);border:none;font-family:var(--font);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#5b4bd6}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{background:#e05555}
+.btn-green{background:var(--green);color:#111}
+.btn-green:hover{background:#2bc48a}
+.btn-sm{padding:6px 14px;font-size:.8rem}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.card-title{font-weight:600;font-size:.95rem;margin-bottom:4px}
+.card-sub{color:var(--text2);font-size:.82rem}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.7rem;font-family:var(--mono);font-weight:600}
+.badge-green{background:rgba(52,211,153,.15);color:var(--green)}
+.badge-orange{background:rgba(251,191,36,.15);color:var(--orange)}
+
+.tree-path{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:12px;font-size:.82rem}
+.tree-path button{background:none;border:none;color:var(--accent2);cursor:pointer;font-family:var(--font);font-size:.82rem;padding:2px 4px;border-radius:4px}
+.tree-path button:hover{background:rgba(108,92,231,.15)}
+.tree-path .sep{color:var(--text2)}
+
+.tree-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;cursor:pointer;transition:all .15s}
+.tree-item:hover{border-color:var(--accent);background:var(--bg3)}
+.tree-item-left{display:flex;align-items:center;gap:10px}
+.tree-item-icon{font-size:1.3rem}
+.tree-item-label{font-weight:500;font-size:.92rem}
+.tree-item-count{color:var(--text2);font-size:.75rem;font-family:var(--mono)}
+
+.msg{padding:10px 14px;border-radius:var(--radius);margin-bottom:16px;font-size:.88rem;display:none}
+.msg.show{display:block}
+.msg-success{background:rgba(52,211,153,.1);border:1px solid var(--green);color:var(--green)}
+.msg-error{background:rgba(248,113,113,.1);border:1px solid var(--red);color:var(--red)}
+
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+
+#json-area{font-family:var(--mono);font-size:.78rem;min-height:200px}
+.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="admin-wrap">
+  <h1>⚙️ Instant Pursuit Admin</h1>
+  <p class="subtitle">Manage career data and blog posts. Changes are saved to localStorage.</p>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('career')">🗺️ Career Nodes</button>
+    <button class="tab" onclick="switchTab('blog')">✍️ Blog Posts</button>
+    <button class="tab" onclick="switchTab('export')">📦 Import / Export</button>
+  </div>
+
+  <!-- CAREER PANEL -->
+  <div id="panel-career" class="panel active">
+    <div id="tree-breadcrumb" class="tree-path"></div>
+    <div id="tree-list"></div>
+    <div style="margin-top:16px">
+      <button class="btn btn-primary" onclick="showAddNodeForm()">+ Add Node Here</button>
+    </div>
+    <div id="add-node-form" style="display:none;margin-top:16px" class="card">
+      <h3 style="font-size:1rem;margin-bottom:8px">Add / Edit Career Node</h3>
+      <div class="row">
+        <div><label>Key (unique, no spaces)</label><input id="n-key" placeholder="e.g. data_engineering"></div>
+        <div><label>Label (display name)</label><input id="n-label" placeholder="e.g. Data Engineering"></div>
+      </div>
+      <div class="row">
+        <div><label>Icon (emoji)</label><input id="n-icon" placeholder="e.g. 📊" maxlength="4"></div>
+        <div><label>Average CTC</label><input id="n-ctc" placeholder="e.g. ₹10-25 LPA"></div>
+      </div>
+      <label>Detail (1 paragraph description)</label>
+      <textarea id="n-detail" rows="4" placeholder="A detailed paragraph about this career path..."></textarea>
+      <label>Pro Tip</label>
+      <input id="n-tip" placeholder="One insider tip for students">
+      <label>Benefits (comma-separated)</label>
+      <input id="n-benefits" placeholder="High demand, Good salary, Remote friendly">
+      <label>Drawbacks (comma-separated)</label>
+      <input id="n-drawbacks" placeholder="Competitive, Burnout risk, Needs constant upskilling">
+      <label>Top Colleges (comma-separated)</label>
+      <input id="n-colleges" placeholder="IIT Bombay, IIT Delhi, BITS Pilani">
+      <label>Top Recruiters (comma-separated)</label>
+      <input id="n-recruiters" placeholder="Google, Microsoft, Amazon">
+      <label>Further Viewing Links (one per line: Title | URL)</label>
+      <textarea id="n-links" rows="3" placeholder="JEE Roadmap by Alakh Pandey | https://youtube.com/watch?v=abc123&#10;CS career guide | https://example.com/guide"></textarea>
+      <div class="actions">
+        <button class="btn btn-green" onclick="saveNode()">💾 Save Node</button>
+        <button class="btn btn-outline" onclick="cancelNodeForm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG PANEL -->
+  <div id="panel-blog" class="panel">
+    <div id="blog-list"></div>
+    <div style="margin-top:16px">
+      <button class="btn btn-primary" onclick="showAddBlogForm()">+ Add Blog Post</button>
+    </div>
+    <div id="add-blog-form" style="display:none;margin-top:16px" class="card">
+      <h3 style="font-size:1rem;margin-bottom:8px">Add / Edit Blog Post</h3>
+      <label>Title</label>
+      <input id="b-title" placeholder="Post title">
+      <div class="row">
+        <div><label>Author</label><input id="b-author" placeholder="Author name"></div>
+        <div><label>Author Initials (avatar)</label><input id="b-avatar" placeholder="e.g. AK" maxlength="3"></div>
+      </div>
+      <div class="row">
+        <div><label>Category</label><input id="b-category" placeholder="e.g. Career Paths, Student Stories, Exam Guide"></div>
+        <div><label>Read Time</label><input id="b-readtime" placeholder="e.g. 5 min"></div>
+      </div>
+      <label>Excerpt (short summary)</label>
+      <input id="b-excerpt" placeholder="One-line summary shown on card">
+      <label>Tags (comma-separated)</label>
+      <input id="b-tags" placeholder="Engineering, Career Choice, Personal Story">
+      <label>Cover Image URL (optional — paste any image URL)</label>
+      <input id="b-cover" placeholder="https://images.unsplash.com/photo-xxx?w=800">
+      <label>Content (use double newlines for paragraphs)</label>
+      <textarea id="b-content" rows="10" placeholder="Full blog post content..."></textarea>
+      <input type="hidden" id="b-edit-id" value="">
+      <div class="actions">
+        <button class="btn btn-green" onclick="saveBlog()">💾 Save Post</button>
+        <button class="btn btn-outline" onclick="cancelBlogForm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPORT PANEL -->
+  <div id="panel-export" class="panel">
+    <div class="card">
+      <h3 style="font-size:1rem;margin-bottom:12px">📤 Export Data</h3>
+      <p style="color:var(--text2);font-size:.85rem;margin-bottom:12px">Download your career and blog data as JSON files.</p>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="exportCareer()">Export Career Data</button>
+        <button class="btn btn-primary" onclick="exportBlog()">Export Blog Data</button>
+        <button class="btn btn-outline" onclick="exportAll()">Export All</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3 style="font-size:1rem;margin-bottom:12px">📥 Import Data</h3>
+      <p style="color:var(--text2);font-size:.85rem;margin-bottom:12px">Paste JSON data below or load a file. This will REPLACE the existing data.</p>
+      <div class="row" style="margin-bottom:12px">
+        <div>
+          <label>Data Type</label>
+          <select id="import-type">
+            <option value="career">Career Data</option>
+            <option value="blog">Blog Data</option>
+          </select>
+        </div>
+        <div>
+          <label>Or load from file</label>
+          <input type="file" id="import-file" accept=".json" onchange="loadFile(this)" style="padding:7px">
+        </div>
+      </div>
+      <textarea id="json-area" placeholder="Paste JSON here..."></textarea>
+      <div class="actions">
+        <button class="btn btn-danger" onclick="importData()">⚠️ Import & Replace</button>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3 style="font-size:1rem;margin-bottom:12px">🗑️ Reset Data</h3>
+      <p style="color:var(--text2);font-size:.85rem;margin-bottom:12px">Clear all custom data and revert to defaults.</p>
+      <div class="actions">
+        <button class="btn btn-danger btn-sm" onclick="resetCareer()">Reset Career Data</button>
+        <button class="btn btn-danger btn-sm" onclick="resetBlog()">Reset Blog Data</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Load data.js DEFAULT values inline (admin is standalone)
+function loadLS(k, fb) { try { const d = localStorage.getItem(k); return d ? JSON.parse(d) : fb; } catch { return fb; } }
+function saveLS(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+
+let careerData = loadLS('instantpursuit-career', null);
+let blogData = loadLS('instantpursuit-blogs', null);
+
+if (!careerData) {
+  // Try to access DEFAULT_CAREER_DATA from data.js if loaded
+  try { careerData = typeof DEFAULT_CAREER_DATA !== 'undefined' ? JSON.parse(JSON.stringify(DEFAULT_CAREER_DATA)) : {}; } catch { careerData = {}; }
+}
+if (!blogData) {
+  try { blogData = typeof DEFAULT_BLOG_DATA !== 'undefined' ? [...DEFAULT_BLOG_DATA] : []; } catch { blogData = []; }
+}
+
+let treePath = [];
+let editingNodeKey = null;
+
+function showMsg(text, type) {
+  const m = document.getElementById('msg');
+  m.textContent = text;
+  m.className = `msg show msg-${type}`;
+  setTimeout(() => m.className = 'msg', 3000);
+}
+
+// Tabs
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  if (tab === 'career') renderTree();
+  if (tab === 'blog') renderBlogList();
+}
+
+// === CAREER TREE ===
+function getNodeAtPath(p) {
+  let node = careerData;
+  for (const k of p) {
+    if (node.children && node.children[k]) node = node.children[k];
+    else if (node[k]) node = node[k];
+    else return null;
+  }
+  return node;
+}
+
+function getChildrenAtPath(p) {
+  if (p.length === 0) return careerData;
+  const node = getNodeAtPath(p);
+  return node ? (node.children || {}) : {};
+}
+
+function renderTree() {
+  // Breadcrumb
+  let bc = '<button onclick="treePath=[];renderTree()">🏠 Root</button>';
+  let trail = [];
+  for (const k of treePath) {
+    trail.push(k);
+    const t = JSON.stringify([...trail]);
+    const n = getNodeAtPath([...trail]);
+    bc += `<span class="sep">›</span><button onclick="treePath=${t};renderTree()">${n?n.label||k:k}</button>`;
+  }
+  document.getElementById('tree-breadcrumb').innerHTML = bc;
+
+  // List children
+  const children = getChildrenAtPath(treePath);
+  const keys = Object.keys(children);
+  let html = '';
+
+  if (keys.length === 0) {
+    html = '<div style="color:var(--text2);padding:20px;text-align:center">No child nodes here. Add one below.</div>';
+  }
+
+  keys.forEach(k => {
+    const c = children[k];
+    const childCount = c.children ? Object.keys(c.children).length : 0;
+    html += `<div class="tree-item">
+      <div class="tree-item-left" onclick="treePath.push('${k}');renderTree()">
+        <span class="tree-item-icon">${c.icon||'📁'}</span>
+        <span class="tree-item-label">${c.label||k}</span>
+        ${childCount > 0 ? `<span class="tree-item-count">${childCount} children</span>` : ''}
+        ${c.info && c.info.avgCTC ? `<span class="badge badge-green">${c.info.avgCTC}</span>` : ''}
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();editNode('${k}')">✏️</button>
+        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteNode('${k}')">🗑️</button>
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('tree-list').innerHTML = html;
+  document.getElementById('add-node-form').style.display = 'none';
+}
+
+function showAddNodeForm() {
+  editingNodeKey = null;
+  ['n-key','n-label','n-icon','n-ctc','n-detail','n-tip','n-benefits','n-drawbacks','n-colleges','n-recruiters','n-links'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('n-key').disabled = false;
+  document.getElementById('add-node-form').style.display = 'block';
+}
+
+function editNode(key) {
+  editingNodeKey = key;
+  const children = getChildrenAtPath(treePath);
+  const node = children[key];
+  if (!node) return;
+  document.getElementById('n-key').value = key;
+  document.getElementById('n-key').disabled = true;
+  document.getElementById('n-label').value = node.label || '';
+  document.getElementById('n-icon').value = node.icon || '';
+  const info = node.info || {};
+  document.getElementById('n-ctc').value = info.avgCTC || '';
+  document.getElementById('n-detail').value = info.detail || '';
+  document.getElementById('n-tip').value = info.tip || '';
+  document.getElementById('n-benefits').value = (info.benefits || []).join(', ');
+  document.getElementById('n-drawbacks').value = (info.drawbacks || []).join(', ');
+  document.getElementById('n-colleges').value = (info.topColleges || []).join(', ');
+  document.getElementById('n-recruiters').value = (info.topRecruiters || []).join(', ');
+  document.getElementById('n-links').value = (info.furtherLinks || []).map(l => (l.title || '') + ' | ' + l.url).join('\n');
+  document.getElementById('add-node-form').style.display = 'block';
+}
+
+function cancelNodeForm() {
+  document.getElementById('add-node-form').style.display = 'none';
+  editingNodeKey = null;
+}
+
+function saveNode() {
+  const key = document.getElementById('n-key').value.trim().replace(/\s+/g, '_').toLowerCase();
+  if (!key) { showMsg('Key is required', 'error'); return; }
+  const label = document.getElementById('n-label').value.trim();
+  if (!label) { showMsg('Label is required', 'error'); return; }
+
+  const splitCSV = v => v.split(',').map(s => s.trim()).filter(Boolean);
+
+  const nodeData = {
+    label,
+    icon: document.getElementById('n-icon').value.trim() || '📁',
+    info: {
+      detail: document.getElementById('n-detail').value.trim() || undefined,
+      tip: document.getElementById('n-tip').value.trim() || undefined,
+      benefits: splitCSV(document.getElementById('n-benefits').value),
+      drawbacks: splitCSV(document.getElementById('n-drawbacks').value),
+      topColleges: splitCSV(document.getElementById('n-colleges').value) || undefined,
+      topRecruiters: splitCSV(document.getElementById('n-recruiters').value) || undefined,
+      avgCTC: document.getElementById('n-ctc').value.trim() || undefined,
+      furtherLinks: document.getElementById('n-links').value.trim().split('\n').map(line => {
+        const parts = line.split('|').map(s => s.trim());
+        if (parts.length >= 2 && parts[1]) return { title: parts[0], url: parts[1] };
+        if (parts[0] && parts[0].startsWith('http')) return { title: '', url: parts[0] };
+        return null;
+      }).filter(Boolean) || undefined,
+    },
+    children: {}
+  };
+  // Clean undefined
+  Object.keys(nodeData.info).forEach(k => { if (!nodeData.info[k] || (Array.isArray(nodeData.info[k]) && nodeData.info[k].length === 0)) delete nodeData.info[k]; });
+
+  // If editing, preserve existing children
+  if (editingNodeKey) {
+    const parent = getChildrenAtPath(treePath);
+    if (parent[editingNodeKey] && parent[editingNodeKey].children) {
+      nodeData.children = parent[editingNodeKey].children;
+    }
+  }
+
+  // Insert into tree
+  if (treePath.length === 0) {
+    careerData[key] = nodeData;
+  } else {
+    const parent = getNodeAtPath(treePath);
+    if (!parent.children) parent.children = {};
+    parent.children[key] = nodeData;
+  }
+
+  saveLS('instantpursuit-career', careerData);
+  showMsg(`Node "${label}" saved!`, 'success');
+  cancelNodeForm();
+  renderTree();
+}
+
+function deleteNode(key) {
+  const children = getChildrenAtPath(treePath);
+  const label = children[key]?.label || key;
+  if (!confirm(`Delete "${label}" and all its children?`)) return;
+  if (treePath.length === 0) {
+    delete careerData[key];
+  } else {
+    const parent = getNodeAtPath(treePath);
+    delete parent.children[key];
+  }
+  saveLS('instantpursuit-career', careerData);
+  showMsg(`Deleted "${label}"`, 'success');
+  renderTree();
+}
+
+// === BLOG ===
+function renderBlogList() {
+  let html = '';
+  if (blogData.length === 0) {
+    html = '<div style="color:var(--text2);padding:20px;text-align:center">No blog posts. Add one below.</div>';
+  }
+  blogData.forEach((b, i) => {
+    html += `<div class="card" style="display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div class="card-title">${b.title}</div>
+        <div class="card-sub">${b.author} · ${b.category} · ${b.date}</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-outline btn-sm" onclick="editBlog(${i})">✏️</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteBlog(${i})">🗑️</button>
+      </div>
+    </div>`;
+  });
+  document.getElementById('blog-list').innerHTML = html;
+  document.getElementById('add-blog-form').style.display = 'none';
+}
+
+function showAddBlogForm() {
+  document.getElementById('b-edit-id').value = '';
+  ['b-title','b-author','b-avatar','b-category','b-readtime','b-excerpt','b-tags','b-content'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('add-blog-form').style.display = 'block';
+}
+
+function editBlog(idx) {
+  const b = blogData[idx];
+  document.getElementById('b-edit-id').value = idx;
+  document.getElementById('b-title').value = b.title;
+  document.getElementById('b-author').value = b.author;
+  document.getElementById('b-avatar').value = b.authorAvatar;
+  document.getElementById('b-category').value = b.category;
+  document.getElementById('b-readtime').value = b.readTime;
+  document.getElementById('b-excerpt').value = b.excerpt;
+  document.getElementById('b-tags').value = (b.tags || []).join(', ');
+  document.getElementById('b-cover').value = b.coverImage || '';
+  document.getElementById('b-content').value = b.content;
+  document.getElementById('add-blog-form').style.display = 'block';
+}
+
+function cancelBlogForm() {
+  document.getElementById('add-blog-form').style.display = 'none';
+}
+
+function saveBlog() {
+  const title = document.getElementById('b-title').value.trim();
+  if (!title) { showMsg('Title is required', 'error'); return; }
+
+  const post = {
+    id: Date.now(),
+    title,
+    author: document.getElementById('b-author').value.trim() || 'Anonymous',
+    authorAvatar: document.getElementById('b-avatar').value.trim() || 'A',
+    category: document.getElementById('b-category').value.trim() || 'General',
+    readTime: document.getElementById('b-readtime').value.trim() || '5 min',
+    excerpt: document.getElementById('b-excerpt').value.trim(),
+    tags: document.getElementById('b-tags').value.split(',').map(s => s.trim()).filter(Boolean),
+    coverImage: document.getElementById('b-cover').value.trim() || undefined,
+    content: document.getElementById('b-content').value.trim(),
+    date: new Date().toISOString().split('T')[0],
+  };
+
+  const editIdx = document.getElementById('b-edit-id').value;
+  if (editIdx !== '') {
+    post.id = blogData[parseInt(editIdx)].id;
+    post.date = blogData[parseInt(editIdx)].date;
+    blogData[parseInt(editIdx)] = post;
+  } else {
+    blogData.push(post);
+  }
+
+  saveLS('instantpursuit-blogs', blogData);
+  showMsg(`Post "${title}" saved!`, 'success');
+  cancelBlogForm();
+  renderBlogList();
+}
+
+function deleteBlog(idx) {
+  if (!confirm(`Delete "${blogData[idx].title}"?`)) return;
+  blogData.splice(idx, 1);
+  saveLS('instantpursuit-blogs', blogData);
+  showMsg('Post deleted', 'success');
+  renderBlogList();
+}
+
+// === IMPORT / EXPORT ===
+function downloadJSON(data, filename) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function exportCareer() { downloadJSON(careerData, 'instantpursuit-career.json'); showMsg('Career data exported', 'success'); }
+function exportBlog() { downloadJSON(blogData, 'instantpursuit-blogs.json'); showMsg('Blog data exported', 'success'); }
+function exportAll() { downloadJSON({career: careerData, blogs: blogData}, 'instantpursuit-all.json'); showMsg('All data exported', 'success'); }
+
+function loadFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => { document.getElementById('json-area').value = e.target.result; };
+  reader.readAsText(file);
+}
+
+function importData() {
+  const raw = document.getElementById('json-area').value.trim();
+  if (!raw) { showMsg('Paste JSON data first', 'error'); return; }
+  try {
+    const data = JSON.parse(raw);
+    const type = document.getElementById('import-type').value;
+    if (type === 'career') {
+      if (!confirm('This will REPLACE all career data. Continue?')) return;
+      careerData = data;
+      saveLS('instantpursuit-career', careerData);
+      showMsg('Career data imported!', 'success');
+    } else {
+      if (!confirm('This will REPLACE all blog data. Continue?')) return;
+      blogData = Array.isArray(data) ? data : [];
+      saveLS('instantpursuit-blogs', blogData);
+      showMsg('Blog data imported!', 'success');
+    }
+  } catch (e) {
+    showMsg('Invalid JSON: ' + e.message, 'error');
+  }
+}
+
+function resetCareer() {
+  if (!confirm('Reset career data to defaults?')) return;
+  localStorage.removeItem('instantpursuit-career');
+  try { careerData = typeof DEFAULT_CAREER_DATA !== 'undefined' ? JSON.parse(JSON.stringify(DEFAULT_CAREER_DATA)) : {}; } catch { careerData = {}; }
+  showMsg('Career data reset to defaults', 'success');
+  renderTree();
+}
+
+function resetBlog() {
+  if (!confirm('Reset blog data to defaults?')) return;
+  localStorage.removeItem('instantpursuit-blogs');
+  try { blogData = typeof DEFAULT_BLOG_DATA !== 'undefined' ? [...DEFAULT_BLOG_DATA] : []; } catch { blogData = []; }
+  showMsg('Blog data reset to defaults', 'success');
+  renderBlogList();
+}
+
+// Init
+renderTree();
+</script>
+<!-- Optionally include data.js for defaults access -->
+<script src="data.js" onerror="console.log('data.js not loaded — defaults unavailable for reset')"></script>
+</body>
+</html>
