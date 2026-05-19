@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Instant Pursuit</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -15,71 +16,356 @@
 <script src="bg.js"></script>
 
 <main style="padding-top:64px">
-<section class="ip-section" style="max-width:740px">
-  <h1 class="ip-section-title" style="animation:fadeUp 0.5s ease">About Instant Pursuit</h1>
-  <p class="ip-section-sub" style="animation:fadeUp 0.5s ease 0.1s both">Free, honest career guidance for Indian students.</p>
+<section class="ip-section" style="max-width:1080px">
 
-  <div style="animation:fadeUp 0.5s ease 0.15s both">
-    <div class="career-detail-box" style="margin-bottom:2rem">
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:12px">🎯 Our Mission</h2>
-      <p class="career-detail-para">Every year, millions of Indian students face life-altering career decisions with limited access to quality guidance. Coaching centres sell dreams, relatives offer outdated advice, and Google results are cluttered with SEO spam. Instant Pursuit exists to change this.</p>
-      <p class="career-detail-para">We provide a free, interactive career exploration platform that maps out every major career path available in India — from Class 6 through working professional — with honest pros and cons, salary data, top colleges, and insider tips. No ads. No paywalls. No data collection.</p>
-    </div>
+  <!-- Hero / Manifesto -->
+  <div class="about-hero">
+    <div class="ip-eyebrow">📖 ABOUT INSTANT PURSUIT</div>
+    <h1>
+      Honest career guidance,<br>
+      <span class="ip-grad-text">free for every Indian student</span>.
+    </h1>
+    <p class="about-lede">No ads. No paywalls. No data collection. No motivational fluff. Just the unvarnished facts you wish a senior had told you before Class 11.</p>
+  </div>
 
-    <div class="career-detail-box" style="margin-bottom:2rem">
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:12px">📊 What We Cover</h2>
-      <div class="career-meta-grid">
-        <div class="career-meta-card">
-          <h4>Education Stages</h4>
-          <ul>
-            <li>Classes 6–10 (Foundation)</li>
-            <li>Classes 11–12 (Specialization)</li>
-            <li>Graduation</li>
-            <li>Post-Graduation</li>
-            <li>Working Professionals</li>
-          </ul>
-        </div>
-        <div class="career-meta-card">
-          <h4>Career Streams</h4>
-          <ul>
-            <li>Science (Engineering, Medicine, Research)</li>
-            <li>Commerce (CA, MBA, Finance, Banking)</li>
-            <li>Arts (Law, Design, Media, Psychology)</li>
-            <li>Vocational (ITI, Hotel Management)</li>
-            <li>Alternative Paths (Freelancing, Abroad)</li>
-          </ul>
-        </div>
-        <div class="career-meta-card">
-          <h4>For Each Path</h4>
-          <ul>
-            <li>Detailed description</li>
-            <li>Benefits & drawbacks</li>
-            <li>Top colleges</li>
-            <li>Top recruiters</li>
-            <li>Average CTC / salary</li>
-            <li>Insider tips</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <!-- Stat strip -->
+  <div class="about-stats">
+    <div class="about-stat"><div class="num">128+</div><div class="lbl">Career Paths</div></div>
+    <div class="about-stat"><div class="num">4</div><div class="lbl">Life Stages</div></div>
+    <div class="about-stat"><div class="num">100+</div><div class="lbl">Colleges Listed</div></div>
+    <div class="about-stat"><div class="num">14+</div><div class="lbl">State MBBS Quotas</div></div>
+    <div class="about-stat"><div class="num">₹0</div><div class="lbl">Cost to You</div></div>
+  </div>
 
-    <div class="career-detail-box" style="margin-bottom:2rem">
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:12px">🤝 Contributing</h2>
-      <p class="career-detail-para">Instant Pursuit is open source. If you'd like to contribute career data, blog posts, or code improvements, visit our <a href="https://github.com/utcurse007" target="_blank">GitHub repository</a>. We especially welcome contributions from professionals sharing insights about their career paths.</p>
-    </div>
-
-    <div class="career-detail-box" style="margin-bottom:2rem;background:var(--orange-soft);border-color:var(--orange)">
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:12px">⚠️ Disclaimer</h2>
-      <p class="career-detail-para" style="margin-bottom:0">This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof. No official information or government resources are used in its creation or maintenance. Salary figures are approximate market estimates and may vary based on location, experience, and market conditions. Career advice is general in nature — individual circumstances may differ.</p>
-    </div>
-
-    <div class="career-detail-box">
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:12px">📬 Contact</h2>
-      <p class="career-detail-para" style="margin-bottom:0">Have feedback, corrections, or want to share your career story? Reach out via <a href="https://github.com/utcurse007" target="_blank">GitHub</a>.</p>
+  <!-- Mission split -->
+  <div class="about-mission">
+    <div class="about-mission-mark">🎯</div>
+    <div>
+      <div class="about-mission-eyebrow">THE MISSION</div>
+      <h2 class="about-h2">Every year, millions face life-altering decisions with terrible information.</h2>
+      <p class="about-mission-body">Coaching centres sell dreams. Relatives offer two-decade-old advice. Google is cluttered with SEO spam. Career counsellors charge ₹15,000 for a personality test and a generic PDF.</p>
+      <p class="about-mission-body">We built a different thing: an interactive map of every major career path from Class 6 onwards — with honest pros and cons, real salary ranges, and the kind of insider tips your cousin who actually went through JEE or NEET would give you over chai.</p>
     </div>
   </div>
+
+  <!-- Pillars -->
+  <div class="section-eyebrow"><span>WHAT WE COVER</span></div>
+  <div class="pillar-grid">
+    <div class="pillar">
+      <div class="pillar-icon">🗺️</div>
+      <h3>Every Stage, Every Stream</h3>
+      <p>From Class 6–12 (school + stream choice) through college, post-graduation, and the working-pro phase. Science, Commerce, Arts, Vocational — plus alternative paths like study abroad, gap years, and freelancing.</p>
+      <ul class="pillar-list">
+        <li>Foundation years &amp; stream choice</li>
+        <li>Entrance exams (national + state)</li>
+        <li>Graduation branches</li>
+        <li>Career growth + transitions</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-icon">📊</div>
+      <h3>Real Numbers, Real Colleges</h3>
+      <p>Salary ranges in ₹ LPA, not vague "good package". Actual top colleges per path, not Wikipedia lists. Recruiter names you'd recognize. Government cost vs private cost — explicit and honest.</p>
+      <ul class="pillar-list">
+        <li>Average CTC ranges by tier</li>
+        <li>Top colleges for each branch</li>
+        <li>Top recruiters by industry</li>
+        <li>State-wise quotas + counselling</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-icon">💡</div>
+      <h3>Insider Tips, No Sugar-Coating</h3>
+      <p>For every path: real benefits, real drawbacks, and a single pro tip from someone who's walked it. Burnout warnings. Plan-B suggestions. "Don't just do this if you love prestige" reality checks.</p>
+      <ul class="pillar-list">
+        <li>Honest pros and cons</li>
+        <li>Insider pro tips per node</li>
+        <li>Career-switch realities</li>
+        <li>Further reading + videos</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Why exists / values band -->
+  <div class="values-band">
+    <div class="values-eyebrow">WHY THIS EXISTS</div>
+    <h2 class="values-h">
+      <span class="ip-grad-text">"Arts leke kya karega?"</span> deserves a better answer than your uncle's.
+    </h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-tag">100% FREE</div>
+        <p>No ads, no premium tier, no paywall. Honest career advice shouldn't be paid product placement.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-tag">NO TRACKING</div>
+        <p>We don't collect emails, run analytics, or sell data to coaching centres. What you click stays in your browser.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-tag">PRIVACY-FIRST</div>
+        <p>Built quietly, maintained for India's students. No tracking pixels, no analytics, no career-counselling kickbacks.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-tag">INDIA-FIRST</div>
+        <p>Currency in ₹, exams in initials (JEE/NEET/GATE), PSUs by name, code-mixed Hindi-English when it lands harder.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact / Contributing -->
+  <div class="contrib-card">
+    <div class="contrib-icon">📬</div>
+    <div class="contrib-body">
+      <div class="contrib-eyebrow">CONTACT &amp; CONTRIBUTING</div>
+      <h3 class="contrib-h">Walked a path? Share what you learned.</h3>
+      <p>If you've finished an MBBS, switched from non-CS to tech, cracked CAT, or done a Toptal stint — your first-person account is more useful than any career counsellor's PDF. We especially welcome contributions from professionals 3–10 years in. Spotted incorrect data? Drop us a note.</p>
+      <div class="contrib-actions">
+        <a href="mailto:instantpursuit@gmail.com" class="ip-btn ip-btn-primary">📧 instantpursuit@gmail.com</a>
+        <a href="blog.html" class="ip-btn ip-btn-outline">📖 Read existing stories</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <div class="disclaimer-eyebrow">⚠️ DISCLAIMER</div>
+    <p>This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof. No official information or government resources are used. Salary figures are approximate market estimates and vary by location, experience, and conditions. Career advice is general — individual circumstances differ.</p>
+  </div>
+
 </section>
 </main>
+
+<style>
+/* ── About page ── */
+.about-hero{
+  text-align:center;max-width:780px;margin:0 auto 3rem;
+  animation:fadeUp .5s ease both;
+}
+.about-hero .ip-eyebrow{margin-bottom:18px}
+.about-hero h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2.3rem,5.5vw,3.6rem);
+  line-height:1.08;letter-spacing:-1.2px;margin-bottom:18px;
+}
+.about-lede{
+  font-family:var(--font-display);font-style:italic;font-weight:500;
+  font-size:clamp(1.05rem,2vw,1.3rem);
+  color:var(--text2);line-height:1.55;
+  max-width:620px;margin:0 auto;
+}
+
+/* Stat strip */
+.about-stats{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;
+  padding:1.5rem 1.6rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  margin-bottom:3.5rem;
+  position:relative;z-index:1;
+  background-image:var(--grad-callout);
+  animation:fadeUp .5s ease .1s both;
+}
+.about-stat{text-align:center}
+.about-stat .num{
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(1.6rem,2.6vw,2rem);line-height:1;
+  color:var(--accent);
+  background:var(--grad-brand);
+  -webkit-background-clip:text;background-clip:text;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .about-stat .num{ -webkit-text-fill-color:transparent;color:transparent; }
+}
+.about-stat .lbl{
+  font-family:var(--font-mono);font-size:.65rem;font-weight:700;
+  letter-spacing:.8px;text-transform:uppercase;
+  color:var(--text3);margin-top:8px;
+}
+
+/* Mission split */
+.about-mission{
+  display:grid;grid-template-columns:120px 1fr;gap:1.8rem;align-items:flex-start;
+  background:var(--surface);
+  border:1px solid var(--accent-med);
+  background-image:var(--grad-callout);
+  border-radius:var(--radius-lg);
+  padding:2.2rem 2rem;
+  margin-bottom:4rem;
+  animation:fadeUp .5s ease .15s both;
+}
+.about-mission-mark{
+  font-size:4rem;line-height:1;text-align:center;
+  filter:drop-shadow(0 4px 16px rgba(108,92,231,.4));
+}
+.about-mission-eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:10px;
+}
+.about-h2{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.4rem,2.6vw,1.8rem);
+  line-height:1.25;letter-spacing:-.4px;
+  margin-bottom:14px;color:var(--text);
+}
+.about-mission-body{
+  color:var(--text2);font-size:1rem;line-height:1.75;
+  margin-bottom:.85rem;
+}
+.about-mission-body:last-child{margin-bottom:0}
+
+/* Section eyebrow divider */
+.section-eyebrow{
+  display:flex;align-items:center;gap:14px;
+  margin:0 0 1.8rem;
+}
+.section-eyebrow::after{content:"";flex:1;height:1px;background:var(--border)}
+.section-eyebrow span{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);
+}
+
+/* Pillar grid */
+.pillar-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;
+  margin-bottom:4rem;
+}
+.pillar{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.8rem 1.6rem;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+  animation:fadeUp .5s ease both;
+}
+.pillar:nth-child(1){animation-delay:.05s}
+.pillar:nth-child(2){animation-delay:.12s}
+.pillar:nth-child(3){animation-delay:.19s}
+.pillar:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow-glow)}
+.pillar-icon{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--accent-soft);border:1px solid var(--accent-med);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.7rem;line-height:1;margin-bottom:18px;
+}
+.pillar h3{
+  font-family:var(--font-display);font-weight:700;
+  font-size:1.25rem;line-height:1.25;letter-spacing:-.3px;
+  margin-bottom:12px;color:var(--text);
+}
+.pillar p{
+  color:var(--text2);font-size:.92rem;line-height:1.65;
+  margin-bottom:14px;
+}
+.pillar-list{list-style:none;padding:0;border-top:1px solid var(--border);padding-top:14px}
+.pillar-list li{
+  font-family:var(--font-mono);font-size:.78rem;
+  color:var(--text2);padding:4px 0;line-height:1.4;
+}
+.pillar-list li::before{content:"›";color:var(--accent2);margin-right:8px;font-weight:700}
+
+/* Values band */
+.values-band{
+  background:linear-gradient(135deg, rgba(108,92,231,0.10), rgba(253,121,168,0.05));
+  border:1px solid var(--accent-med);
+  border-radius:var(--radius-lg);
+  padding:2.5rem 2rem;margin-bottom:4rem;
+  animation:fadeUp .5s ease both;
+}
+.values-eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:14px;text-align:center;
+}
+.values-h{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.4rem,3vw,2rem);
+  line-height:1.25;letter-spacing:-.4px;text-align:center;
+  margin-bottom:2rem;
+}
+.values-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;
+}
+.value-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.2rem 1.4rem;
+  transition:border-color .2s,transform .2s;
+}
+.value-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.value-tag{
+  display:inline-block;
+  font-family:var(--font-mono);font-size:.66rem;font-weight:700;
+  letter-spacing:1.2px;
+  padding:3px 10px;border-radius:20px;
+  background:var(--accent-soft);color:var(--accent2);
+  border:1px solid var(--accent-med);
+  margin-bottom:10px;
+}
+.value-card p{color:var(--text2);font-size:.9rem;line-height:1.6}
+
+/* Contributing card */
+.contrib-card{
+  display:grid;grid-template-columns:100px 1fr;gap:1.8rem;align-items:flex-start;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:2.2rem 2rem;margin-bottom:3rem;
+  animation:fadeUp .5s ease both;
+}
+.contrib-icon{
+  font-size:3.5rem;line-height:1;text-align:center;
+}
+.contrib-eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:8px;
+}
+.contrib-h{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.3rem,2.4vw,1.7rem);
+  line-height:1.25;letter-spacing:-.3px;
+  margin-bottom:14px;color:var(--text);
+}
+.contrib-card p{color:var(--text2);font-size:.95rem;line-height:1.7;margin-bottom:1.4rem}
+.contrib-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Disclaimer */
+.disclaimer{
+  background:var(--orange-soft);
+  border:1px solid rgba(253,203,110,.3);
+  border-left:3px solid var(--orange);
+  border-radius:var(--radius);
+  padding:1.2rem 1.4rem;
+  margin-bottom:1rem;
+}
+.disclaimer-eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--orange);margin-bottom:10px;
+}
+.disclaimer p{
+  color:var(--text2);font-size:.85rem;line-height:1.7;
+}
+
+@media(max-width:880px){
+  .about-stats{grid-template-columns:repeat(3,1fr)}
+  .about-mission{grid-template-columns:1fr;gap:1.2rem;text-align:center}
+  .about-mission-mark{text-align:center}
+  .pillar-grid{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr}
+  .contrib-card{grid-template-columns:1fr;text-align:center;gap:1.2rem}
+}
+@media(max-width:520px){
+  .about-stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+
 <script>initPage();</script>
 </body>
 </html>

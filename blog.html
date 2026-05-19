@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog — Instant Pursuit</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,10 +17,273 @@
 <script src="bg.js"></script>
 
 <main style="padding-top:64px">
-<section class="ip-section" style="max-width:860px">
+<section class="ip-section" style="max-width:1100px">
   <div id="blog-root"></div>
 </section>
 </main>
+
+<style>
+/* ── Blog index — editorial layout ── */
+.blog-hero{text-align:center;margin-bottom:2.5rem;animation:fadeUp .5s ease both}
+.blog-hero .ip-eyebrow{margin-bottom:14px}
+.blog-hero h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2.2rem,5vw,3.2rem);
+  letter-spacing:-1px;line-height:1.1;margin-bottom:12px;
+}
+.blog-hero p{
+  color:var(--text2);font-size:1.05rem;max-width:580px;
+  margin:0 auto;line-height:1.65;
+}
+
+/* Category filter strip */
+.cat-filter{
+  display:flex;gap:8px;flex-wrap:wrap;
+  justify-content:center;margin-bottom:2.5rem;
+}
+.cat-pill{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  padding:8px 16px;border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--surface);color:var(--text2);
+  cursor:pointer;transition:all .2s;
+}
+.cat-pill:hover{border-color:var(--accent);color:var(--accent2)}
+.cat-pill.active{
+  background:var(--grad-cta);color:#fff;border-color:transparent;
+  box-shadow:0 4px 14px rgba(108,92,231,.4);
+}
+
+/* Featured hero card (latest post) */
+.featured{
+  display:grid;grid-template-columns:1.15fr 1fr;
+  gap:0;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin-bottom:3rem;
+  cursor:pointer;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+  animation:fadeUp .5s ease .1s both;
+}
+.featured:hover{
+  border-color:var(--accent);
+  box-shadow:var(--shadow-glow);
+  transform:translateY(-3px);
+}
+.featured-cover{
+  position:relative;min-height:360px;
+  background:#1a1a2a;
+}
+.featured-cover img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+  filter:saturate(.95) brightness(.95);
+}
+.featured-cover::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 60%,rgba(108,92,231,.18));
+}
+.featured-tag{
+  position:absolute;top:18px;left:18px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:6px 14px;border-radius:20px;
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
+}
+.featured-tag::before{content:"✦ ";color:var(--accent3)}
+.featured-body{
+  padding:2.2rem 2rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.featured-cat{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.featured-cat .dot{width:6px;height:6px;border-radius:50%;background:var(--accent3)}
+.featured-title{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.5rem,2.6vw,2rem);
+  line-height:1.2;letter-spacing:-.5px;
+  margin-bottom:14px;color:var(--text);
+}
+.featured-excerpt{
+  font-size:1rem;color:var(--text2);
+  line-height:1.65;margin-bottom:20px;
+}
+.featured-byline{
+  display:flex;align-items:center;gap:12px;
+  padding-top:18px;border-top:1px solid var(--border);
+  margin-top:auto;
+}
+.featured-avatar{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-body);font-weight:700;font-size:.85rem;
+  color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.featured-author{font-weight:600;font-size:.92rem;color:var(--text)}
+.featured-meta{
+  font-family:var(--font-mono);font-size:.7rem;
+  color:var(--text3);letter-spacing:.4px;margin-top:2px;
+}
+
+/* Section divider with eyebrow */
+.section-divider{
+  display:flex;align-items:center;gap:14px;
+  margin:0 0 1.5rem;
+}
+.section-divider::after{
+  content:"";flex:1;height:1px;background:var(--border);
+}
+.section-divider span{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);
+}
+
+/* Secondary cards grid */
+.posts-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;
+}
+.post-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;cursor:pointer;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  display:flex;flex-direction:column;
+  animation:fadeUp .4s ease both;
+}
+.post-card:hover{
+  border-color:var(--accent);
+  box-shadow:var(--shadow-glow);
+  transform:translateY(-4px);
+}
+.post-card-cover{
+  position:relative;height:180px;overflow:hidden;
+  background:#1a1a2a;
+}
+.post-card-cover img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+  transition:transform .35s;
+}
+.post-card:hover .post-card-cover img{transform:scale(1.04)}
+.post-card-body{padding:1.4rem;display:flex;flex-direction:column;flex:1}
+.post-card-cat{
+  font-family:var(--font-mono);font-size:.65rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:10px;
+}
+.post-card-title{
+  font-family:var(--font-display);font-weight:700;
+  font-size:1.15rem;line-height:1.3;
+  letter-spacing:-.2px;color:var(--text);
+  margin-bottom:10px;
+}
+.post-card-excerpt{
+  color:var(--text2);font-size:.88rem;line-height:1.55;
+  margin-bottom:14px;flex:1;
+}
+.post-card-byline{
+  display:flex;align-items:center;gap:10px;
+  padding-top:14px;border-top:1px solid var(--border);
+  font-family:var(--font-mono);font-size:.72rem;color:var(--text3);
+}
+.post-card-avatar{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-body);font-weight:700;font-size:.7rem;color:#fff;
+  flex-shrink:0;
+}
+.post-card-author{color:var(--text2);font-weight:600;font-family:var(--font-body)}
+
+/* Author avatar palette */
+.av-1{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
+.av-2{background:linear-gradient(135deg,#fd79a8,#e84a8a)}
+.av-3{background:linear-gradient(135deg,#81ecec,#3aa8a8);color:#0a3a3a !important}
+.av-4{background:linear-gradient(135deg,#fdcb6e,#e17055);color:#3a1f10 !important}
+.av-5{background:linear-gradient(135deg,#00b894,#00cec9)}
+.av-6{background:linear-gradient(135deg,#a29bfe,#6c5ce7)}
+
+/* Article view */
+.article-back{
+  font-family:var(--font-mono);font-size:.78rem;font-weight:700;
+  letter-spacing:.5px;color:var(--text2);
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:8px;
+  border:1px solid var(--border);background:var(--surface);
+  margin-bottom:2rem;cursor:pointer;transition:all .2s;
+}
+.article-back:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-soft)}
+
+.article-hero{
+  max-width:760px;margin:0 auto 2.5rem;text-align:center;
+}
+.article-tags{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;
+}
+.article-title{
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2rem,4.8vw,3rem);
+  line-height:1.1;letter-spacing:-1px;
+  margin-bottom:20px;
+}
+.article-meta{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  font-family:var(--font-mono);font-size:.78rem;color:var(--text3);
+}
+.article-meta .ma{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-body);font-weight:700;font-size:.78rem;color:#fff;
+}
+.article-meta strong{color:var(--text);font-family:var(--font-body);font-weight:600;font-size:.92rem}
+
+.article-cover{
+  max-width:900px;margin:0 auto 2.5rem;
+  border-radius:var(--radius-lg);overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.article-cover img{width:100%;display:block;max-height:440px;object-fit:cover}
+
+.article-body{
+  max-width:680px;margin:0 auto;
+  font-family:var(--font-body);
+  font-size:1.08rem;line-height:1.85;color:var(--text2);
+}
+.article-body p{margin-bottom:1.3rem}
+.article-body p:first-child::first-letter{
+  font-family:var(--font-display);font-weight:800;
+  font-size:3.5rem;line-height:.85;
+  float:left;margin:6px 12px 0 0;
+  color:var(--accent);
+}
+
+.article-tags-wrap{
+  max-width:680px;margin:2.5rem auto 0;
+  display:flex;gap:8px;flex-wrap:wrap;
+}
+
+@media(max-width:780px){
+  .featured{grid-template-columns:1fr}
+  .featured-cover{min-height:240px}
+  .featured-body{padding:1.5rem}
+  .post-card-cover{height:160px}
+}
+</style>
 
 <script>
 const blogs = loadData('instantpursuit-blogs', DEFAULT_BLOG_DATA);
@@ -39,7 +303,7 @@ function blogLinkMeta(url) {
 
 function renderFurtherReads(reads) {
   if (!reads || !reads.length) return '';
-  var html = '<div class="further-links" style="margin-top:2rem"><h4>📚 Continue Reading</h4>';
+  var html = '<div class="further-links" style="max-width:680px;margin:2.5rem auto 0"><h4>📚 Continue Reading</h4>';
   for (var i = 0; i < reads.length; i++) {
     var r = reads[i];
     var m = blogLinkMeta(r.url);
@@ -55,98 +319,133 @@ function renderFurtherReads(reads) {
   return html;
 }
 
+function avatarClass(i){ return 'av-' + ((i % 6) + 1); }
+
 function renderBlog() {
   const el = document.getElementById('blog-root');
-  const cats = ['All', ...new Set(blogs.map(b => b.category))];
 
+  // ── Article view ──
   if (selectedBlog) {
     const b = selectedBlog;
     const blogUrl = 'https://instantpursuit.in/blog.html#post-' + b.id;
-    let coverHtml = '';
-    if (b.coverImage) {
-      coverHtml = '<img src="' + b.coverImage + '" alt="' + b.title + '" class="blog-cover" style="border-radius:var(--radius-lg);margin-bottom:24px;width:100%;max-height:360px;object-fit:cover">';
-    }
+    const avClass = avatarClass(b.id - 1);
+    const dateStr = new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'});
+
     el.innerHTML = `
-      <button onclick="selectedBlog=null;history.replaceState(null,'',location.pathname);renderBlog()" class="ip-btn ip-btn-outline" style="margin-bottom:1.5rem;font-size:0.85rem">← Back to all posts</button>
-      <article style="animation:fadeUp 0.4s ease">
-        ${coverHtml}
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
-          <span class="ip-badge ip-badge-accent">${b.category}</span>
-          <span class="ip-badge ip-badge-purple">${b.readTime}</span>
-        </div>
-        <h1 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.3;margin-bottom:16px">${b.title}</h1>
-        <div style="display:flex;align-items:center;gap:12px;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:24px">
-          <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:0.85rem">${b.authorAvatar}</div>
-          <div>
-            <div style="font-weight:600;font-size:0.9rem">${b.author}</div>
-            <div style="color:var(--text3);font-size:0.8rem">${new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</div>
+      <button class="article-back" onclick="selectedBlog=null;history.replaceState(null,'',location.pathname);renderBlog()">← All Stories</button>
+      <article style="animation:fadeUp .4s ease both">
+        <div class="article-hero">
+          <div class="article-tags">
+            <span class="ip-badge ip-badge-accent">${b.category}</span>
+            <span class="ip-badge ip-badge-purple">${b.readTime}</span>
+          </div>
+          <h1 class="article-title">${b.title}</h1>
+          <div class="article-meta">
+            <div class="ma ${avClass}">${b.authorAvatar}</div>
+            <div style="text-align:left">
+              <div><strong>${b.author}</strong></div>
+              <div>${dateStr} · ${b.readTime}</div>
+            </div>
           </div>
         </div>
-        <div style="font-size:1.05rem;line-height:1.85;color:var(--text2)">
-          ${b.content.split('\n\n').map(p => `<p style="margin-bottom:1.2rem">${p}</p>`).join('')}
+        ${b.coverImage ? `<div class="article-cover"><img src="${b.coverImage}" alt="${b.title}"></div>` : ''}
+        <div class="article-body">
+          ${b.content.split('\n\n').map(p => '<p>' + p + '</p>').join('')}
         </div>
-        <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap">
-          ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">${t}</span>`).join('')}
+        <div class="article-tags-wrap">
+          ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">#${t}</span>`).join('')}
         </div>
         ${renderFurtherReads(b.furtherReads)}
-        ${shareBar(b.title, blogUrl)}
+        <div style="max-width:680px;margin:0 auto">${shareBar(b.title, blogUrl)}</div>
       </article>
     `;
     window.scrollTo({top:0,behavior:'smooth'});
     return;
   }
 
-  let html = `
-    <h1 class="ip-section-title">✍️ Career Stories & Guides</h1>
-    <p class="ip-section-sub">Real insights from students and professionals who've walked these paths.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem">
-      ${cats.map(c => `<button onclick="filterCat='${c}';renderBlog()" class="ip-btn ${filterCat===c?'ip-btn-primary':'ip-btn-outline'}" style="padding:6px 16px;font-size:0.82rem">${c}</button>`).join('')}
-    </div>
-    <div style="display:grid;gap:1.25rem">
-  `;
-
+  // ── Index view ──
+  const cats = ['All', ...new Set(blogs.map(b => b.category))];
   const filtered = filterCat === 'All' ? blogs : blogs.filter(b => b.category === filterCat);
-  filtered.forEach((b, i) => {
-    html += `
-      <div class="blog-card" style="cursor:pointer;animation:fadeUp 0.4s ease ${i*0.06}s both" onclick="selectedBlog=blogs.find(x=>x.id===${b.id});window.location.hash='post-'+${b.id};renderBlog()">
-        ${b.coverImage ? '<img src="' + b.coverImage + '" alt="" class="blog-cover">' : ''}
-        <div class="blog-card-body">
-          <div style="display:flex;gap:8px;margin-bottom:8px">
-            <span class="ip-badge ip-badge-accent">${b.category}</span>
-            <span class="ip-badge ip-badge-purple">${b.readTime}</span>
-          </div>
-          <div class="blog-card-title">${b.title}</div>
-          <div class="blog-card-excerpt">${b.excerpt}</div>
-          <div class="blog-card-meta">
-            <div style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:0.7rem">${b.authorAvatar}</div>
-            <span>${b.author}</span>
-            <span>·</span>
-            <span>${new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</span>
-          </div>
-        </div>
-      </div>
-    `;
-  });
 
-  html += '</div>';
+  let html = `
+    <div class="blog-hero">
+      <h1>Career Stories &amp; <span class="ip-grad-text">Honest Guides</span></h1>
+      <p>Real journeys from students and professionals who've walked these paths. No motivational fluff — just the stuff they wish someone had told them.</p>
+    </div>
+
+    <div class="cat-filter">
+      ${cats.map(c => `<button class="cat-pill ${filterCat===c?'active':''}" onclick="filterCat='${c}';renderBlog()">${c}</button>`).join('')}
+    </div>
+  `;
 
   if (filtered.length === 0) {
     html += `<div style="text-align:center;padding:3rem;color:var(--text3)"><p>No posts in this category yet.</p></div>`;
+    el.innerHTML = html;
+    return;
+  }
+
+  // Featured = first post
+  const feat = filtered[0];
+  const featAvClass = avatarClass(feat.id - 1);
+  const featDateStr = new Date(feat.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'});
+  html += `
+    <div class="featured" onclick="selectedBlog=blogs.find(x=>x.id===${feat.id});window.location.hash='post-'+${feat.id};renderBlog()">
+      <div class="featured-cover">
+        ${feat.coverImage ? `<img src="${feat.coverImage}" alt="${feat.title}">` : '<div style="width:100%;height:100%;background:var(--grad-cta)"></div>'}
+        <div class="featured-tag">Featured</div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-cat"><span class="dot"></span>${feat.category}</div>
+        <div class="featured-title">${feat.title}</div>
+        <div class="featured-excerpt">${feat.excerpt}</div>
+        <div class="featured-byline">
+          <div class="featured-avatar ${featAvClass}">${feat.authorAvatar}</div>
+          <div>
+            <div class="featured-author">${feat.author}</div>
+            <div class="featured-meta">${featDateStr} · ${feat.readTime}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Rest as grid
+  if (filtered.length > 1) {
+    html += `<div class="section-divider"><span>More Stories</span></div>`;
+    html += `<div class="posts-grid">`;
+    filtered.slice(1).forEach((b, i) => {
+      const av = avatarClass(b.id - 1);
+      const dt = new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'});
+      html += `
+        <div class="post-card" style="animation-delay:${i*0.06}s" onclick="selectedBlog=blogs.find(x=>x.id===${b.id});window.location.hash='post-'+${b.id};renderBlog()">
+          ${b.coverImage ? `<div class="post-card-cover"><img src="${b.coverImage}" alt=""></div>` : ''}
+          <div class="post-card-body">
+            <div class="post-card-cat">${b.category} · ${b.readTime}</div>
+            <div class="post-card-title">${b.title}</div>
+            <div class="post-card-excerpt">${b.excerpt}</div>
+            <div class="post-card-byline">
+              <div class="post-card-avatar ${av}">${b.authorAvatar}</div>
+              <span class="post-card-author">${b.author}</span>
+              <span>·</span>
+              <span>${dt}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
   }
 
   el.innerHTML = html;
 }
 
-// Deep link: check URL hash for #post-ID
 function checkBlogHash() {
   var hash = window.location.hash;
   if (hash && hash.indexOf('#post-') === 0) {
     var postId = parseInt(hash.replace('#post-', ''));
     if (postId) {
       var found = blogs.find(function(b) { return b.id === postId; });
-      if (found) {
-        selectedBlog = found;
-      }
+      if (found) selectedBlog = found;
     }
   }
 }
@@ -154,7 +453,6 @@ function checkBlogHash() {
 checkBlogHash();
 renderBlog();
 
-// Also listen for hash changes (back/forward)
 window.addEventListener('hashchange', function() {
   checkBlogHash();
   renderBlog();

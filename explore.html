@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Explore Careers — Instant Pursuit</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,10 +17,165 @@
 <script src="bg.js"></script>
 
 <main style="padding-top:64px">
-<section class="ip-section" style="max-width:960px">
+<section class="ip-section" style="max-width:1080px">
   <div id="explorer"></div>
 </section>
 </main>
+
+<style>
+/* ── Explore root — journey timeline ── */
+.journey-hero{text-align:center;margin-bottom:2.5rem;animation:fadeUp .5s ease both}
+.journey-hero .ip-eyebrow{margin-bottom:14px}
+.journey-hero h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2rem,4.5vw,2.8rem);
+  letter-spacing:-.5px;line-height:1.15;margin-bottom:10px;
+}
+.journey-hero p{
+  color:var(--text2);font-size:1.02rem;max-width:560px;
+  margin:0 auto;line-height:1.65;
+}
+
+.journey-track{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  position:relative;margin-bottom:2.5rem;
+}
+.journey-cue{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-mono);
+  font-size:.8rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent2);
+  margin-bottom:1.4rem;
+  animation:fadeUp .5s ease both, cueBob 1.6s ease-in-out infinite;
+}
+.journey-cue span{
+  background:var(--accent-soft);
+  border:1px solid var(--accent-med);
+  padding:6px 14px;border-radius:20px;
+  letter-spacing:1.2px;
+}
+@keyframes cueBob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(4px)}
+}
+.journey-track::before{
+  content:"";position:absolute;
+  top:80px;left:8%;right:8%;height:3px;
+  background:linear-gradient(90deg,
+    rgba(108,92,231,0.2) 0%,
+    var(--accent) 30%,
+    var(--accent3) 70%,
+    rgba(129,236,236,0.5) 100%);
+  border-radius:2px;
+  z-index:0;
+  opacity:.55;
+}
+.journey-station{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;cursor:pointer;
+  animation:fadeUp .5s ease both;
+}
+.journey-icon{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--surface);
+  border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;line-height:1;
+  margin-bottom:14px;
+  transition:transform .25s,border-color .25s,box-shadow .25s,background .25s;
+  position:relative;
+  box-shadow:0 4px 18px rgba(0,0,0,0.35);
+}
+.journey-icon::before{
+  content:"";position:absolute;inset:-6px;border-radius:50%;
+  background:radial-gradient(circle,rgba(108,92,231,0.3),transparent 70%);
+  filter:blur(8px);z-index:-1;opacity:0;transition:opacity .25s;
+}
+.journey-station:hover .journey-icon{
+  transform:translateY(-6px) scale(1.08);
+  border-color:var(--accent);
+  background:var(--card-hover);
+}
+.journey-station:hover .journey-icon::before{opacity:1}
+.journey-age{
+  font-family:var(--font-mono);
+  font-size:.66rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--accent2);
+  background:var(--accent-soft);
+  padding:3px 10px;border-radius:20px;
+  border:1px solid var(--accent-med);
+  margin-bottom:10px;
+  display:inline-block;
+}
+.journey-label{
+  font-family:var(--font-display);
+  font-weight:700;font-size:1.1rem;
+  color:var(--text);line-height:1.25;
+  margin-bottom:6px;letter-spacing:-.2px;
+}
+.journey-desc{
+  color:var(--text2);font-size:.82rem;
+  line-height:1.5;
+  max-width:200px;margin-bottom:10px;
+}
+.journey-count{
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:.5px;color:var(--text3);
+  display:flex;align-items:center;gap:5px;
+}
+.journey-count strong{
+  color:var(--accent2);font-weight:700;
+}
+.journey-station:hover .journey-count strong{color:var(--accent3)}
+
+/* Quick-stats strip below the timeline */
+.journey-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  padding:1.4rem 1.6rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  margin-bottom:2rem;
+}
+.journey-stat{text-align:center}
+.journey-stat-num{
+  font-family:var(--font-display);font-weight:800;
+  font-size:1.5rem;
+  color:var(--accent);
+  background:var(--grad-brand);
+  -webkit-background-clip:text;background-clip:text;
+  line-height:1;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .journey-stat-num{ -webkit-text-fill-color:transparent; color:transparent; }
+}
+.journey-stat-label{
+  font-family:var(--font-mono);font-size:.65rem;
+  color:var(--text3);letter-spacing:.8px;text-transform:uppercase;
+  margin-top:4px;
+}
+
+@media(max-width:780px){
+  .journey-track{grid-template-columns:1fr;gap:14px}
+  .journey-track::before{
+    top:8%;bottom:8%;left:40px;right:auto;
+    width:3px;height:auto;
+    background:linear-gradient(180deg,
+      rgba(108,92,231,0.2) 0%,
+      var(--accent) 30%,
+      var(--accent3) 70%,
+      rgba(129,236,236,0.5) 100%);
+  }
+  .journey-station{flex-direction:row;text-align:left;gap:18px;align-items:flex-start}
+  .journey-icon{width:64px;height:64px;font-size:1.8rem;flex-shrink:0;margin-bottom:0}
+  .journey-desc{max-width:none;margin-bottom:6px}
+  .journey-stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 
 <script>
 var careerData = loadData('instantpursuit-career', DEFAULT_CAREER_DATA);
@@ -89,8 +245,12 @@ function render() {
 
   // ── Title ──
   if (path.length === 0) {
-    h += '<h1 class="ip-section-title">🗺️ Career Explorer</h1>';
-    h += '<p class="ip-section-sub">Select your education stage to begin exploring career paths.</p>';
+    // Root — journey timeline hero
+    h += '<div class="journey-hero">';
+    h += '<div class="ip-eyebrow">✦ YOUR CAREER QUEST</div>';
+    h += '<h1>Where are you on the <span class="ip-grad-text">journey?</span></h1>';
+    h += '<p>Pick your current stage. Every path branches into the next — explore where you stand and where you could go.</p>';
+    h += '</div>';
   } else {
     h += '<h1 class="ip-section-title">' + (node.icon || '') + ' ' + node.label + '</h1>';
     if (node.description) h += '<p class="ip-section-sub">' + node.description + '</p>';
@@ -103,6 +263,14 @@ function render() {
 
     if (info.detail) {
       h += '<p class="career-detail-para">' + info.detail + '</p>';
+    }
+
+    // State / council badge (for state-level exams)
+    if (info.state || info.council) {
+      h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">';
+      if (info.state) h += '<span class="ip-badge ip-badge-purple" style="font-size:.7rem">📍 ' + info.state + '</span>';
+      if (info.council) h += '<span class="ip-badge ip-badge-accent" style="font-size:.7rem">🏛️ ' + info.council + '</span>';
+      h += '</div>';
     }
 
     if (info.tip) {
@@ -199,22 +367,49 @@ function render() {
     h += '</div>';
 
   } else if (keys.length > 0 && path.length === 0) {
-    // Root level — grid, no connectors
-    h += '<div class="grid-2">';
+    // Root level — journey timeline visualization
+    var stageMeta = {
+      '6-10':       { age: 'Ages 10–17', short: 'Foundation + stream choice through school' },
+      'graduation': { age: 'Ages 17–22', short: 'College, degree, first internships' },
+      'post-grad':  { age: 'Ages 22–25', short: 'Masters, PhD, professional specialization' },
+      'working':    { age: 'Ages 25+',   short: 'Career growth, switches, side income' }
+    };
+
+    function countLeaves(n){
+      if (!n.children) return 1;
+      var ks = Object.keys(n.children);
+      if (ks.length === 0) return 1;
+      var total = 0;
+      for (var i = 0; i < ks.length; i++) total += countLeaves(n.children[ks[i]]);
+      return total;
+    }
+
+    var totalPaths = 0;
+    h += '<div class="journey-cue">👇 <span>Tap a stage to start</span></div>';
+    h += '<div class="journey-track">';
     for (var ri2 = 0; ri2 < keys.length; ri2++) {
       var rk = keys[ri2];
       var rc = children[rk];
-      var rHasKids = rc.children && Object.keys(rc.children).length > 0;
-      var rcc = rHasKids ? Object.keys(rc.children).length : 0;
-      h += '<div class="ip-card career-node" style="animation-delay:' + (ri2 * 0.05) + 's" onclick="navPush(\'' + rk + '\')">';
-      h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">';
-      h += '<span style="font-size:1.5rem">' + (rc.icon || '📁') + '</span>';
-      h += '<span style="font-family:var(--font-display);font-weight:600;font-size:1.05rem">' + rc.label + '</span></div>';
-      if (rc.description) h += '<p style="color:var(--text2);font-size:0.85rem;line-height:1.5;margin-bottom:8px">' + rc.description + '</p>';
-      h += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
-      if (rHasKids) h += '<span class="ip-badge ip-badge-accent">' + rcc + ' paths →</span>';
-      h += '</div></div>';
+      var meta = stageMeta[rk] || { age: '', short: rc.description || '' };
+      var leaves = countLeaves(rc);
+      totalPaths += leaves;
+      var subBranches = rc.children ? Object.keys(rc.children).length : 0;
+      h += '<div class="journey-station" onclick="navPush(\'' + rk + '\')" style="animation-delay:' + (ri2 * 0.10) + 's">';
+      h += '<div class="journey-icon">' + (rc.icon || '📁') + '</div>';
+      h += '<div class="journey-age">' + meta.age + '</div>';
+      h += '<div class="journey-label">' + rc.label + '</div>';
+      h += '<div class="journey-desc">' + meta.short + '</div>';
+      h += '<div class="journey-count">→ <strong>' + leaves + '</strong> paths inside</div>';
+      h += '</div>';
     }
+    h += '</div>';
+
+    // Quick stats strip
+    h += '<div class="journey-stats">';
+    h += '<div class="journey-stat"><div class="journey-stat-num">' + totalPaths + '+</div><div class="journey-stat-label">Total Paths</div></div>';
+    h += '<div class="journey-stat"><div class="journey-stat-num">' + keys.length + '</div><div class="journey-stat-label">Life Stages</div></div>';
+    h += '<div class="journey-stat"><div class="journey-stat-num">100+</div><div class="journey-stat-label">Colleges</div></div>';
+    h += '<div class="journey-stat"><div class="journey-stat-num">₹0</div><div class="journey-stat-label">Cost to You</div></div>';
     h += '</div>';
 
   } else if (path.length > 0) {

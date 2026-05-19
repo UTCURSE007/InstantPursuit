@@ -25,18 +25,21 @@
     }
     [data-theme="light"] .ip-bg-grid{--ip-grid-line: rgba(20,20,40,0.05)}
 
-    /* Glow orbs */
+    /* Glow orbs — drift across the viewport */
     .ip-bg-orb{
       position:absolute;border-radius:50%;
       filter:blur(60px);opacity:.55;
-      animation:ipOrbDrift 14s ease-in-out infinite alternate;
+      animation:ipOrbDrift var(--dur, 28s) ease-in-out infinite alternate;
       will-change:transform;
     }
     [data-theme="light"] .ip-bg-orb{opacity:.3;filter:blur(70px)}
     @keyframes ipOrbDrift{
       0%   {transform:translate(-50%,-50%) scale(1)}
-      50%  {transform:translate(calc(-50% + 25px),calc(-50% - 30px)) scale(1.10)}
-      100% {transform:translate(calc(-50% - 18px),calc(-50% + 18px)) scale(.95)}
+      20%  {transform:translate(calc(-50% + 18vw), calc(-50% - 12vh)) scale(1.15)}
+      40%  {transform:translate(calc(-50% - 14vw), calc(-50% - 22vh)) scale(.92)}
+      60%  {transform:translate(calc(-50% + 22vw), calc(-50% + 18vh)) scale(1.20)}
+      80%  {transform:translate(calc(-50% - 10vw), calc(-50% + 25vh)) scale(.95)}
+      100% {transform:translate(calc(-50% + 6vw),  calc(-50% - 8vh)) scale(1.08)}
     }
 
     /* Floating career emoji — career-explorer ambiance */
@@ -89,13 +92,13 @@
   grid.className = 'ip-bg-grid';
   layer.appendChild(grid);
 
-  // Glow orbs (the brand three)
+  // Glow orbs (the brand three) — slow drift across the viewport
   var orbs = [
-    { color: '108,92,231', x: 12, y: 14, size: 420, delay: 0, dur: 14 },
-    { color: '253,121,168', x: 78, y: 20, size: 360, delay: 3, dur: 16 },
-    { color: '129,236,236', x: 50, y: 80, size: 320, delay: 6, dur: 18 },
-    { color: '108,92,231', x: 85, y: 68, size: 260, delay: 2, dur: 13 },
-    { color: '253,121,168', x: 8,  y: 72, size: 240, delay: 5, dur: 15 }
+    { color: '108,92,231', x: 12, y: 14, size: 420, delay: 0, dur: 32 },
+    { color: '253,121,168', x: 78, y: 20, size: 360, delay: 5, dur: 38 },
+    { color: '129,236,236', x: 50, y: 80, size: 320, delay: 11, dur: 44 },
+    { color: '108,92,231', x: 85, y: 68, size: 260, delay: 3, dur: 28 },
+    { color: '253,121,168', x: 8,  y: 72, size: 240, delay: 8, dur: 36 }
   ];
   for (var i = 0; i < orbs.length; i++) {
     var o = orbs[i];
