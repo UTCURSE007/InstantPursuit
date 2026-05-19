@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════
    INSTANT PURSUIT — Shared Data & Utilities
    ═══════════════════════════════════════════ */
-const SITE = { name: 'Instant Pursuit', tagline: 'Navigate your career with confidence.', url: 'https://instantpursuit.in', icon: '🧭' };
+const SITE = { name: 'Instant Pursuit', tagline: 'Navigate your career with confidence.', url: 'https://instantpursuit.in', icon: '🔥' };
 const NAV_LINKS = [
   { href: 'index.html', label: 'Home', icon: '🏠' },
   { href: 'explore.html', label: 'Explore', icon: '🗺️' },
@@ -17,12 +17,42 @@ function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function injectNav(){
   const cur=location.pathname.split('/').pop()||'index.html';
   const n=document.createElement('nav');n.className='ip-nav';
-  n.innerHTML=`<div class="ip-nav-inner"><a href="index.html" class="ip-nav-logo"><span>${SITE.icon}</span> ${SITE.name}</a><div class="ip-nav-links">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.label}</a>`).join('')}</div><div class="ip-nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button><button class="ip-hamburger" onclick="document.querySelector('.ip-mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="ip-mobile-menu">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.icon} ${l.label}</a>`).join('')}</div>`;
+  n.innerHTML=`<div class="ip-nav-inner"><a href="index.html" class="ip-nav-logo">
+    <span class="ip-logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ip-flame-g" x1="0" y1="2" x2="0" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.45" stop-color="#ffeaa7"/>
+            <stop offset="1" stop-color="#fd79a8"/>
+          </linearGradient>
+        </defs>
+        <path d="M13.2 2.2c-.4 2.8-2.6 4.2-3.5 6.4-.9 2.2-.4 4.1.8 5-1.4-.4-2.4-1.6-2.7-2.6-1.4 1.4-2.3 3.4-2.3 5.5a6.5 6.5 0 0 0 13 0c0-3.5-1.8-5.4-3-7.7-1-1.8-1.6-3.5-2.3-6.6Z" fill="url(#ip-flame-g)"/>
+        <path d="M12.6 13c-.4 1.2-1.7 1.9-1.7 3.5a2.4 2.4 0 0 0 4.8 0c0-1.4-1-2.2-1.5-3.1-.5-.7-.9-.7-1.6-.4Z" fill="#fff" opacity=".85"/>
+      </svg>
+    </span>
+    <span class="ip-logo-word"><span class="ip-logo-word-1">Instant</span><span class="ip-logo-word-2">Pursuit</span></span>
+  </a><div class="ip-nav-links">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.label}</a>`).join('')}</div><div class="ip-nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button><button class="ip-hamburger" onclick="document.querySelector('.ip-mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="ip-mobile-menu">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.icon} ${l.label}</a>`).join('')}</div>`;
   document.body.prepend(n);
 }
 function injectFooter(){
   const f=document.createElement('footer');f.className='ip-footer';
-  f.innerHTML=`<div class="ip-footer-logo">${SITE.icon} ${SITE.name}</div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Open source &amp; free to use.</div>`;
+  f.innerHTML=`<div class="ip-footer-logo">
+    <span class="ip-logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ip-flame-g-f" x1="0" y1="2" x2="0" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.45" stop-color="#ffeaa7"/>
+            <stop offset="1" stop-color="#fd79a8"/>
+          </linearGradient>
+        </defs>
+        <path d="M13.2 2.2c-.4 2.8-2.6 4.2-3.5 6.4-.9 2.2-.4 4.1.8 5-1.4-.4-2.4-1.6-2.7-2.6-1.4 1.4-2.3 3.4-2.3 5.5a6.5 6.5 0 0 0 13 0c0-3.5-1.8-5.4-3-7.7-1-1.8-1.6-3.5-2.3-6.6Z" fill="url(#ip-flame-g-f)"/>
+        <path d="M12.6 13c-.4 1.2-1.7 1.9-1.7 3.5a2.4 2.4 0 0 0 4.8 0c0-1.4-1-2.2-1.5-3.1-.5-.7-.9-.7-1.6-.4Z" fill="#fff" opacity=".85"/>
+      </svg>
+    </span>
+    <span class="ip-logo-word"><span class="ip-logo-word-1">Instant</span><span class="ip-logo-word-2">Pursuit</span></span>
+  </div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Open source &amp; free to use.</div>`;
   document.body.appendChild(f);
 }
 function initPage(){
@@ -141,7 +171,19 @@ const DEFAULT_CAREER_DATA = {
 // BLOG DATA
 // ═══════════════════════════════════════════
 const DEFAULT_BLOG_DATA = [
-{id:1,title:"Why I Chose CS Over Medicine — And What I Wish I Knew",excerpt:"Navigating the PCM vs PCB decision and the unexpected turns that followed.",coverImage:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",content:"Making the choice between PCM and PCB in Class 11 felt like the biggest decision of my life. And in many ways, it was.\n\nI was good at both biology and maths. My parents, both doctors, naturally assumed I'd follow tradition. But something about building things — seeing code turn into a working application — fascinated me in a way memorizing anatomical terms never could.\n\nHere's what I wish someone had told me: the choice isn't permanent. Many CS batchmates came from biology backgrounds. Some doctors code on weekends. The rigid boxes we put ourselves in at 16 don't define us at 26.\n\nThat said, there ARE practical implications. MBBS needs biology. Core engineering needs maths. But meta-skills — problem-solving, critical thinking, communication — transfer everywhere.\n\nFollow your curiosity, not expectations or society's rankings. The best career is one where Monday mornings don't feel like punishment.",author:"Arjun Krishnan",authorAvatar:"AK",date:"2026-04-28",readTime:"5 min",tags:["Career Choice","Engineering","Personal Story"],category:"Student Stories"},
-{id:2,title:"The Arts Student's Guide to a ₹20 LPA Career",excerpt:"Breaking the myth that humanities degrees lead nowhere. UX Design, Policy, and Data Journalism are hiring.",coverImage:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",content:"Let's address the elephant: 'Arts leke kya karega?'\n\nThis question haunted me through college. Today, as a UX Designer at a leading tech company earning well above the 'engineer average,' I have my answer.\n\nFive high-paying careers for arts graduates:\n1. UX/UI Design — understanding human psychology IS the job\n2. Content Strategy — tech companies need people who can WRITE\n3. Data Journalism — storytelling with numbers\n4. Public Policy — think tanks need social scientists\n5. EdTech Curriculum Design — education meets technology\n\nThe key: combine your humanities foundation with one technical skill. Learn Figma. Learn basic Python. That combination makes you rare and valuable.\n\nArts is not a dead end. It's a secret passage.",author:"Priya Menon",authorAvatar:"PM",date:"2026-05-10",readTime:"7 min",tags:["Arts","Career Growth","UX Design"],category:"Career Paths"},
-{id:3,title:"NEET vs JEE: An Honest Comparison",excerpt:"Preparation intensity, career outcomes, and lifestyle — a data-driven comparison of India's two biggest exams.",coverImage:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80",content:"Every year, ~20 lakh students appear for NEET and ~12 lakh for JEE Main. Which is 'harder'? Wrong question.\n\nReframe: which exam ecosystem fits YOUR temperament?\n\nNEET: single exam, one format. Tests biology, chemistry, physics. Rewards memory + application. Finite syllabus.\n\nJEE: two-tier (Main + Advanced). Tests physics, chemistry, maths. Rewards speed + deep problem-solving. Unpredictable questions.\n\nBeyond the exam:\n- MBBS: 5.5 years study, earn properly ~28-30. High ceiling.\n- B.Tech: 4 years, earn at 22. Easier career switches. Lower floor without good college.\n\nMost important factor? Genuine interest. Forced NEET prep when you love coding = misery. And vice versa.\n\nTalk to actual doctors and engineers. Not Instagram highlights — the real ones.",author:"Dr. Rahul Sharma",authorAvatar:"RS",date:"2026-05-02",readTime:"6 min",tags:["NEET","JEE","Comparison"],category:"Exam Guide"}
+{id:1,title:"Why I Chose CS Over Medicine — And What I Wish I Knew",excerpt:"Navigating the PCM vs PCB decision and the unexpected turns that followed.",coverImage:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",content:"Making the choice between PCM and PCB in Class 11 felt like the biggest decision of my life. And in many ways, it was.\n\nI was good at both biology and maths. My parents, both doctors, naturally assumed I'd follow tradition. But something about building things — seeing code turn into a working application — fascinated me in a way memorizing anatomical terms never could.\n\nHere's what I wish someone had told me: the choice isn't permanent. Many CS batchmates came from biology backgrounds. Some doctors code on weekends. The rigid boxes we put ourselves in at 16 don't define us at 26.\n\nThat said, there ARE practical implications. MBBS needs biology. Core engineering needs maths. But meta-skills — problem-solving, critical thinking, communication — transfer everywhere.\n\nFollow your curiosity, not expectations or society's rankings. The best career is one where Monday mornings don't feel like punishment.",author:"Arjun Krishnan",authorAvatar:"AK",date:"2026-04-28",readTime:"5 min",tags:["Career Choice","Engineering","Personal Story"],category:"Student Stories",furtherReads:[
+  {title:"How to Choose Between PCM and PCB — Career Insights",url:"https://www.shiksha.com/science/articles/how-to-choose-between-pcm-and-pcb-blogId-19311"},
+  {title:"CS50 Lecture 0: This is CS50",url:"https://www.youtube.com/watch?v=IDDmrzzB14M"},
+  {title:"Computer Science Roadmap 2024",url:"https://roadmap.sh/computer-science"}
+]},
+{id:2,title:"The Arts Student's Guide to a ₹20 LPA Career",excerpt:"Breaking the myth that humanities degrees lead nowhere. UX Design, Policy, and Data Journalism are hiring.",coverImage:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",content:"Let's address the elephant: 'Arts leke kya karega?'\n\nThis question haunted me through college. Today, as a UX Designer at a leading tech company earning well above the 'engineer average,' I have my answer.\n\nFive high-paying careers for arts graduates:\n1. UX/UI Design — understanding human psychology IS the job\n2. Content Strategy — tech companies need people who can WRITE\n3. Data Journalism — storytelling with numbers\n4. Public Policy — think tanks need social scientists\n5. EdTech Curriculum Design — education meets technology\n\nThe key: combine your humanities foundation with one technical skill. Learn Figma. Learn basic Python. That combination makes you rare and valuable.\n\nArts is not a dead end. It's a secret passage.",author:"Priya Menon",authorAvatar:"PM",date:"2026-05-10",readTime:"7 min",tags:["Arts","Career Growth","UX Design"],category:"Career Paths",furtherReads:[
+  {title:"Don't Become a UX Designer — Watch This First",url:"https://www.youtube.com/watch?v=v8VG-fJhMnY"},
+  {title:"Interaction Design Foundation — UX Career Guide",url:"https://www.interaction-design.org/literature/article/how-to-become-a-ux-designer"},
+  {title:"Nielsen Norman Group — UX Career Advice",url:"https://www.nngroup.com/articles/ux-career-advice/"}
+]},
+{id:3,title:"NEET vs JEE: An Honest Comparison",excerpt:"Preparation intensity, career outcomes, and lifestyle — a data-driven comparison of India's two biggest exams.",coverImage:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80",content:"Every year, ~20 lakh students appear for NEET and ~12 lakh for JEE Main. Which is 'harder'? Wrong question.\n\nReframe: which exam ecosystem fits YOUR temperament?\n\nNEET: single exam, one format. Tests biology, chemistry, physics. Rewards memory + application. Finite syllabus.\n\nJEE: two-tier (Main + Advanced). Tests physics, chemistry, maths. Rewards speed + deep problem-solving. Unpredictable questions.\n\nBeyond the exam:\n- MBBS: 5.5 years study, earn properly ~28-30. High ceiling.\n- B.Tech: 4 years, earn at 22. Easier career switches. Lower floor without good college.\n\nMost important factor? Genuine interest. Forced NEET prep when you love coding = misery. And vice versa.\n\nTalk to actual doctors and engineers. Not Instagram highlights — the real ones.",author:"Dr. Rahul Sharma",authorAvatar:"RS",date:"2026-05-02",readTime:"6 min",tags:["NEET","JEE","Comparison"],category:"Exam Guide",furtherReads:[
+  {title:"NEET vs JEE — Difficulty, Career & Lifestyle Compared",url:"https://www.youtube.com/watch?v=xPVpq3SKXhM"},
+  {title:"NTA Official — JEE Main",url:"https://jeemain.nta.nic.in"},
+  {title:"NTA Official — NEET UG",url:"https://neet.nta.nic.in"}
+]}
 ];

@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Explore Careers — Instant Pursuit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
 <script src="data.js"></script>
@@ -135,7 +138,7 @@ function render() {
         h += '</ul></div>';
       }
       if (info.avgCTC) {
-        h += '<div class="career-meta-card"><h4>💰 Average CTC</h4><div style="font-size:1.15rem;font-weight:700;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-top:4px;font-family:var(--font-display)">' + info.avgCTC + '</div></div>';
+        h += '<div class="career-meta-card"><h4>💰 Average CTC</h4><div class="grad-brand-text" style="font-size:1.15rem;font-weight:700;margin-top:4px;font-family:var(--font-display)">' + info.avgCTC + '</div></div>';
       }
       h += '</div>';
     }

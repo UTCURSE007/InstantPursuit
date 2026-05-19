@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Instant Pursuit — Free, gamified career exploration for Indian students. Navigate paths from Class 6 to working professional.">
 <title>Instant Pursuit — Career Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
 <script src="data.js"></script>
@@ -133,10 +136,13 @@
   font-family:var(--font-display);font-weight:800;
   font-size:clamp(2rem,4.5vw,2.6rem);line-height:1;
   letter-spacing:-1px;
+  color:var(--accent2);
   background:var(--grad-headline);
   -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
   margin:auto 0 6px;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .salary-figure{ -webkit-text-fill-color:transparent; color:transparent; }
 }
 .salary-row{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:14px}
 .salary-meta{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);letter-spacing:.5px;text-transform:uppercase}
@@ -158,10 +164,13 @@
   font-family:var(--font-display);font-weight:800;
   font-size:clamp(3.5rem,8vw,5.5rem);line-height:.9;
   letter-spacing:-3px;
+  color:var(--accent);
   background:var(--grad-brand);
   -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
   margin:auto 0 4px;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .free-figure{ -webkit-text-fill-color:transparent; color:transparent; }
 }
 .free-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .free-chip{
@@ -203,9 +212,12 @@
   position:absolute;left:-2px;top:-4px;
   font-family:var(--font-display);
   font-size:3.4rem;line-height:1;
+  color:var(--accent);
   background:var(--grad-brand);
   -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .tip-quote::before{ -webkit-text-fill-color:transparent; color:transparent; }
 }
 .tip-attr{
   margin-top:10px;font-family:var(--font-mono);
@@ -404,7 +416,7 @@ var stats=[{num:'128+',label:'Career Paths'},{num:'5',label:'Education Stages'},
 var sEl=document.getElementById('stats');
 for(var si=0;si<stats.length;si++){
   var s=stats[si];var sd=document.createElement('div');
-  sd.innerHTML='<div style="font-family:var(--font-display);font-size:2.4rem;font-weight:800;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">'+s.num+'</div><div style="color:var(--text3);font-size:.78rem;margin-top:4px;font-family:var(--font-mono);letter-spacing:.8px;text-transform:uppercase">'+s.label+'</div>';
+  sd.innerHTML='<div style="font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--accent)" class="grad-brand-text">'+s.num+'</div><div style="color:var(--text3);font-size:.78rem;margin-top:4px;font-family:var(--font-mono);letter-spacing:.8px;text-transform:uppercase">'+s.label+'</div>';
   sEl.appendChild(sd);
 }
 </script>

@@ -3,7 +3,7 @@
    Dark-first, deep-violet, gamified editorial
    Grounded in the Instant Pursuit Design System
    ═══════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+/* Fonts are loaded via <link> in each HTML head — more reliable than @import. */
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -206,10 +206,13 @@ a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 }
 .ip-logo-word-1{color:var(--text)}
 .ip-logo-word-2{
+  color:var(--accent);
   background:var(--grad-brand);
   -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
   font-style:italic;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ip-logo-word-2{ -webkit-text-fill-color:transparent; color:transparent; }
 }
 .ip-nav-links{display:flex;align-items:center;gap:2px}
 .ip-nav-links a{
@@ -364,11 +367,35 @@ a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 }
 .ip-section-sub{color:var(--text2);font-size:1.05rem;margin-bottom:2rem;line-height:1.7}
 
-/* Gradient-text utility (use on hero punchline only) */
+/* Gradient-text utility (use on hero punchline only)
+   Uses a solid accent color as fallback; only goes transparent
+   when background-clip:text is actually supported. */
 .ip-grad-text{
+  color:var(--accent2);
   background:var(--grad-headline);
   -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ip-grad-text{ -webkit-text-fill-color:transparent; color:transparent; }
+}
+
+/* Reusable for any inline element that should use the brand gradient */
+.grad-brand-text{
+  color:var(--accent);
+  background:var(--grad-brand);
+  -webkit-background-clip:text;background-clip:text;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .grad-brand-text{ -webkit-text-fill-color:transparent; color:transparent; }
+}
+
+.grad-headline-text{
+  color:var(--accent2);
+  background:var(--grad-headline);
+  -webkit-background-clip:text;background-clip:text;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .grad-headline-text{ -webkit-text-fill-color:transparent; color:transparent; }
 }
 
 /* ── Explorer ── */
