@@ -35,16 +35,19 @@ function getNode(p) {
 
 function navTo(idx) {
   path = path.slice(0, idx);
+  syncHash();
   render();
 }
 
 function navPush(key) {
   path.push(key);
+  syncHash();
   render();
 }
 
 function navBack() {
   path.pop();
+  syncHash();
   render();
 }
 
@@ -222,6 +225,37 @@ function render() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function syncHash() {
+  if (path.length > 0) {
+    window.location.hash = path.join('/');
+  } else {
+    history.replaceState(null, '', location.pathname);
+  }
+}
+
+function loadFromHash() {
+  var hash = window.location.hash.replace('#', '');
+  if (hash) {
+    var parts = hash.split('/');
+    // Verify the path is valid
+    var test = careerData;
+    var valid = [];
+    for (var i = 0; i < parts.length; i++) {
+      if (test.children && test.children[parts[i]]) {
+        test = test.children[parts[i]];
+        valid.push(parts[i]);
+      } else if (test[parts[i]]) {
+        test = test[parts[i]];
+        valid.push(parts[i]);
+      } else {
+        break;
+      }
+    }
+    if (valid.length > 0) path = valid;
+  }
+}
+
+loadFromHash();
 render();
 </script>
 <script>initPage();</script>

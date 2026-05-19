@@ -175,14 +175,16 @@ a:hover{text-decoration:underline}
 /* Share bar */
 .share-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
 .share-bar-label{font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;color:var(--text3);margin-right:4px}
-.share-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font-body);font-size:.78rem;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none!important}
-.share-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
-.share-btn-wa:hover{border-color:#25D366;color:#25D366;background:rgba(37,211,102,.06)}
-.share-btn-fb:hover{border-color:#1877F2;color:#1877F2;background:rgba(24,119,242,.06)}
-.share-btn-li:hover{border-color:#0A66C2;color:#0A66C2;background:rgba(10,102,194,.06)}
-.share-btn-tw:hover{border-color:#1DA1F2;color:#1DA1F2;background:rgba(29,161,242,.06)}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;border:none;font-family:var(--font-body);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none!important;color:#fff}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2);text-decoration:none!important}
+.share-btn-wa{background:#25D366}
+.share-btn-fb{background:#1877F2}
+.share-btn-li{background:#0A66C2}
+.share-btn-tw{background:#1A1A1A}
+[data-theme="dark"] .share-btn-tw{background:#E7E9EA;color:#1A1A1A}
+.share-btn-copy{background:var(--surface);color:var(--text);border:1px solid var(--border)}
 .share-btn-copy:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-.share-btn-copy.copied{border-color:var(--green);color:var(--green);background:var(--green-soft)}
+.share-btn-copy.copied{background:var(--green-soft);color:var(--green);border-color:var(--green)}
 
 /* ── Utility ── */
 .grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}

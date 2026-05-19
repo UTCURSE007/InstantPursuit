@@ -35,7 +35,7 @@ function renderBlog() {
       coverHtml = '<img src="' + b.coverImage + '" alt="' + b.title + '" class="blog-cover" style="border-radius:var(--radius-lg);margin-bottom:24px;width:100%;max-height:360px;object-fit:cover">';
     }
     el.innerHTML = `
-      <button onclick="selectedBlog=null;renderBlog()" class="ip-btn ip-btn-outline" style="margin-bottom:1.5rem;font-size:0.85rem">← Back to all posts</button>
+      <button onclick="selectedBlog=null;history.replaceState(null,'',location.pathname);renderBlog()" class="ip-btn ip-btn-outline" style="margin-bottom:1.5rem;font-size:0.85rem">← Back to all posts</button>
       <article style="animation:fadeUp 0.4s ease">
         ${coverHtml}
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px">
@@ -75,7 +75,7 @@ function renderBlog() {
   const filtered = filterCat === 'All' ? blogs : blogs.filter(b => b.category === filterCat);
   filtered.forEach((b, i) => {
     html += `
-      <div class="blog-card" style="cursor:pointer;animation:fadeUp 0.4s ease ${i*0.06}s both" onclick="selectedBlog=blogs.find(x=>x.id===${b.id});renderBlog()">
+      <div class="blog-card" style="cursor:pointer;animation:fadeUp 0.4s ease ${i*0.06}s both" onclick="selectedBlog=blogs.find(x=>x.id===${b.id});window.location.hash='post-'+${b.id};renderBlog()">
         ${b.coverImage ? '<img src="' + b.coverImage + '" alt="" class="blog-cover">' : ''}
         <div class="blog-card-body">
           <div style="display:flex;gap:8px;margin-bottom:8px">
@@ -104,7 +104,28 @@ function renderBlog() {
   el.innerHTML = html;
 }
 
+// Deep link: check URL hash for #post-ID
+function checkBlogHash() {
+  var hash = window.location.hash;
+  if (hash && hash.indexOf('#post-') === 0) {
+    var postId = parseInt(hash.replace('#post-', ''));
+    if (postId) {
+      var found = blogs.find(function(b) { return b.id === postId; });
+      if (found) {
+        selectedBlog = found;
+      }
+    }
+  }
+}
+
+checkBlogHash();
 renderBlog();
+
+// Also listen for hash changes (back/forward)
+window.addEventListener('hashchange', function() {
+  checkBlogHash();
+  renderBlog();
+});
 </script>
 <script>initPage();</script>
 </body>
