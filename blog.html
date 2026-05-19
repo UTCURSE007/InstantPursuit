@@ -12,7 +12,7 @@
 <body>
 <script src="bg.js"></script>
 
-<main style="padding-top:60px">
+<main style="padding-top:64px">
 <section class="ip-section" style="max-width:860px">
   <div id="blog-root"></div>
 </section>
@@ -22,6 +22,35 @@
 const blogs = loadData('instantpursuit-blogs', DEFAULT_BLOG_DATA);
 let selectedBlog = null;
 let filterCat = 'All';
+
+function blogLinkMeta(url) {
+  try {
+    var u = new URL(url);
+    var host = u.hostname.replace('www.','');
+    var isYT = host.indexOf('youtube.com') >= 0 || host.indexOf('youtu.be') >= 0;
+    return { icon: isYT ? '▶' : '🔗', css: isYT ? 'further-link-yt' : 'further-link-web', domain: host };
+  } catch(e) {
+    return { icon: '🔗', css: 'further-link-web', domain: '' };
+  }
+}
+
+function renderFurtherReads(reads) {
+  if (!reads || !reads.length) return '';
+  var html = '<div class="further-links" style="margin-top:2rem"><h4>📚 Continue Reading</h4>';
+  for (var i = 0; i < reads.length; i++) {
+    var r = reads[i];
+    var m = blogLinkMeta(r.url);
+    html += '<a href="' + r.url + '" target="_blank" rel="noopener" class="further-link">';
+    html += '<div class="further-link-icon ' + m.css + '">' + m.icon + '</div>';
+    html += '<div style="flex:1;min-width:0">';
+    html += '<div class="further-link-title">' + (r.title || r.url) + '</div>';
+    html += '<div class="further-link-domain">' + m.domain + '</div>';
+    html += '</div>';
+    html += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+  }
+  html += '</div>';
+  return html;
+}
 
 function renderBlog() {
   const el = document.getElementById('blog-root');
@@ -56,6 +85,7 @@ function renderBlog() {
         <div style="margin-top:2rem;display:flex;gap:8px;flex-wrap:wrap">
           ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">${t}</span>`).join('')}
         </div>
+        ${renderFurtherReads(b.furtherReads)}
         ${shareBar(b.title, blogUrl)}
       </article>
     `;

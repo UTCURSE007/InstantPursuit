@@ -12,7 +12,7 @@
 <body>
 <script src="bg.js"></script>
 
-<main style="padding-top:60px">
+<main style="padding-top:64px">
 <section class="ip-section" style="max-width:960px">
   <div id="explorer"></div>
 </section>
@@ -103,8 +103,8 @@ function render() {
     }
 
     if (info.tip) {
-      h += '<div style="background:var(--accent-soft);border:1px solid var(--accent-med);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:0.9rem">';
-      h += '<strong style="color:var(--accent)">💡 Pro Tip:</strong> <span style="color:var(--text2)">' + info.tip + '</span></div>';
+      h += '<div style="background:var(--cyan-soft);border:1px solid rgba(129,236,236,0.3);border-left:3px solid var(--cyan);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:0.9rem">';
+      h += '<strong style="color:var(--cyan);font-family:var(--font-mono);font-size:.72rem;letter-spacing:1px;text-transform:uppercase">💡 Pro Tip</strong><br><span style="color:var(--text2)">' + info.tip + '</span></div>';
     }
 
     // Benefits & Drawbacks
@@ -115,7 +115,7 @@ function render() {
       h += '</div>';
     }
     if (info.drawbacks && info.drawbacks.length) {
-      h += '<div><h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:8px">⚠️ Drawbacks</h4>';
+      h += '<div><h4 style="font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--orange);margin-bottom:8px">⚠️ Drawbacks</h4>';
       for (var di = 0; di < info.drawbacks.length; di++) h += '<div style="font-size:0.88rem;color:var(--text2);padding:3px 0">› ' + info.drawbacks[di] + '</div>';
       h += '</div>';
     }
@@ -135,7 +135,7 @@ function render() {
         h += '</ul></div>';
       }
       if (info.avgCTC) {
-        h += '<div class="career-meta-card"><h4>💰 Average CTC</h4><div style="font-size:1.1rem;font-weight:700;color:var(--accent);margin-top:4px">' + info.avgCTC + '</div></div>';
+        h += '<div class="career-meta-card"><h4>💰 Average CTC</h4><div style="font-size:1.15rem;font-weight:700;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-top:4px;font-family:var(--font-display)">' + info.avgCTC + '</div></div>';
       }
       h += '</div>';
     }
