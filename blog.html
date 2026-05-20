@@ -283,21 +283,97 @@
   .featured-body{padding:1.5rem}
   .post-card-cover{height:160px}
 }
+
+/* ── Inline images inside articles ── */
+.blog-inline-img{
+  margin:1.6rem 0;
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.blog-inline-img img{
+  display:block;width:100%;height:auto;
+  border-radius:var(--radius);
+}
+.blog-inline-img figcaption{
+  font-family:var(--font-mono);font-size:.72rem;
+  color:var(--text3);letter-spacing:.3px;
+  text-align:center;margin-top:8px;
+  padding:0 8px;font-style:normal;
+}
+.blog-inline-img-center{margin:1.8rem auto;max-width:100%}
+.blog-inline-img-full{
+  /* Break out beyond the 680px article-body column */
+  margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);
+  max-width:100vw;border-radius:0;
+}
+.blog-inline-img-full img{border-radius:0}
+.blog-inline-img-left{
+  float:left;margin:.4rem 1.6rem 1.2rem 0;
+  max-width:340px;width:48%;
+}
+.blog-inline-img-right{
+  float:right;margin:.4rem 0 1.2rem 1.6rem;
+  max-width:340px;width:48%;
+}
+.article-body::after{content:"";display:block;clear:both}
+@media(max-width:640px){
+  .blog-inline-img-left, .blog-inline-img-right{
+    float:none;width:auto;max-width:100%;margin:1.6rem 0;
+  }
+}
 </style>
 
 <script>
+function renderBlogContent(content, images) {
+  if (!content) return '';
+  return content.split('\n\n').map(p => {
+    var trimmed = p.trim();
+    var m = trimmed.match(/^\[image:(\d+)\]$/);
+    if (m && images && Array.isArray(images)) {
+      var idx = parseInt(m[1], 10) - 1;
+      var img = images[idx];
+      if (img && img.data) {
+        var pos = img.position || 'center';
+        var cap = img.caption ? '<figcaption>' + img.caption + '</figcaption>' : '';
+        return '<figure class="blog-inline-img blog-inline-img-' + pos + '"><img src="' + img.data + '" alt="' + (img.caption || '').replace(/"/g, '&quot;') + '" loading="lazy">' + cap + '</figure>';
+      }
+    }
+    return '<p>' + p + '</p>';
+  }).join('');
+}
+
 const blogs = loadData('instantpursuit-blogs', DEFAULT_BLOG_DATA);
 let selectedBlog = null;
 let filterCat = 'All';
+
+function ytVideoId(url) {
+  try {
+    var u = new URL(url);
+    if (u.hostname.indexOf('youtu.be') >= 0) return u.pathname.slice(1).split('/')[0];
+    if (u.hostname.indexOf('youtube.com') >= 0 || u.hostname.indexOf('youtube-nocookie.com') >= 0) {
+      if (u.pathname === '/watch') return u.searchParams.get('v');
+      var parts = u.pathname.split('/').filter(Boolean);
+      if (parts[0] === 'embed' || parts[0] === 'shorts' || parts[0] === 'v') return parts[1];
+    }
+    return null;
+  } catch (e) { return null; }
+}
 
 function blogLinkMeta(url) {
   try {
     var u = new URL(url);
     var host = u.hostname.replace('www.','');
-    var isYT = host.indexOf('youtube.com') >= 0 || host.indexOf('youtu.be') >= 0;
-    return { icon: isYT ? '▶' : '🔗', css: isYT ? 'further-link-yt' : 'further-link-web', domain: host };
+    var isYT = host.indexOf('youtube.com') >= 0 || host.indexOf('youtu.be') >= 0 || host.indexOf('youtube-nocookie.com') >= 0;
+    var vid = isYT ? ytVideoId(url) : null;
+    return {
+      icon: isYT ? '▶' : '🔗',
+      css: isYT ? 'further-link-yt' : 'further-link-web',
+      domain: host,
+      isYT: isYT,
+      thumb: vid ? ('https://img.youtube.com/vi/' + vid + '/mqdefault.jpg') : null
+    };
   } catch(e) {
-    return { icon: '🔗', css: 'further-link-web', domain: '' };
+    return { icon: '🔗', css: 'further-link-web', domain: '', isYT: false, thumb: null };
   }
 }
 
@@ -307,13 +383,22 @@ function renderFurtherReads(reads) {
   for (var i = 0; i < reads.length; i++) {
     var r = reads[i];
     var m = blogLinkMeta(r.url);
-    html += '<a href="' + r.url + '" target="_blank" rel="noopener" class="further-link">';
-    html += '<div class="further-link-icon ' + m.css + '">' + m.icon + '</div>';
-    html += '<div style="flex:1;min-width:0">';
-    html += '<div class="further-link-title">' + (r.title || r.url) + '</div>';
-    html += '<div class="further-link-domain">' + m.domain + '</div>';
-    html += '</div>';
-    html += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+    if (m.thumb) {
+      html += '<a href="' + r.url + '" target="_blank" rel="noopener" class="further-link further-link-thumb">';
+      html += '<div class="further-link-yt-thumb"><img src="' + m.thumb + '" alt="" loading="lazy"><span class="yt-play">▶</span></div>';
+      html += '<div style="flex:1;min-width:0">';
+      html += '<div class="further-link-title">' + (r.title || r.url) + '</div>';
+      html += '<div class="further-link-domain">' + m.domain + '</div></div>';
+      html += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+    } else {
+      html += '<a href="' + r.url + '" target="_blank" rel="noopener" class="further-link">';
+      html += '<div class="further-link-icon ' + m.css + '">' + m.icon + '</div>';
+      html += '<div style="flex:1;min-width:0">';
+      html += '<div class="further-link-title">' + (r.title || r.url) + '</div>';
+      html += '<div class="further-link-domain">' + m.domain + '</div>';
+      html += '</div>';
+      html += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+    }
   }
   html += '</div>';
   return html;
@@ -350,7 +435,7 @@ function renderBlog() {
         </div>
         ${b.coverImage ? `<div class="article-cover"><img src="${b.coverImage}" alt="${b.title}"></div>` : ''}
         <div class="article-body">
-          ${b.content.split('\n\n').map(p => '<p>' + p + '</p>').join('')}
+          ${renderBlogContent(b.content, b.images)}
         </div>
         <div class="article-tags-wrap">
           ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">#${t}</span>`).join('')}

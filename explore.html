@@ -210,14 +210,35 @@ function navBack() {
   render();
 }
 
+function ytVideoId(url) {
+  try {
+    var u = new URL(url);
+    if (u.hostname.indexOf('youtu.be') >= 0) return u.pathname.slice(1).split('/')[0];
+    if (u.hostname.indexOf('youtube.com') >= 0 || u.hostname.indexOf('youtube-nocookie.com') >= 0) {
+      if (u.pathname === '/watch') return u.searchParams.get('v');
+      var parts = u.pathname.split('/').filter(Boolean);
+      if (parts[0] === 'embed' || parts[0] === 'shorts' || parts[0] === 'v') return parts[1];
+    }
+    return null;
+  } catch (e) { return null; }
+}
+
 function linkMeta(url) {
   try {
     var u = new URL(url);
     var host = u.hostname.replace('www.','');
-    var isYT = host.indexOf('youtube.com') >= 0 || host.indexOf('youtu.be') >= 0;
-    return { icon: isYT ? '▶' : '🔗', css: isYT ? 'further-link-yt' : 'further-link-web', domain: host };
+    var isYT = host.indexOf('youtube.com') >= 0 || host.indexOf('youtu.be') >= 0 || host.indexOf('youtube-nocookie.com') >= 0;
+    var vid = isYT ? ytVideoId(url) : null;
+    return {
+      icon: isYT ? '▶' : '🔗',
+      css: isYT ? 'further-link-yt' : 'further-link-web',
+      domain: host,
+      isYT: isYT,
+      videoId: vid,
+      thumb: vid ? ('https://img.youtube.com/vi/' + vid + '/mqdefault.jpg') : null
+    };
   } catch(e) {
-    return { icon: '🔗', css: 'further-link-web', domain: '' };
+    return { icon: '🔗', css: 'further-link-web', domain: '', isYT: false, videoId: null, thumb: null };
   }
 }
 
@@ -317,11 +338,21 @@ function render() {
       for (var fi = 0; fi < info.furtherLinks.length; fi++) {
         var fl = info.furtherLinks[fi];
         var fm = linkMeta(fl.url);
-        h += '<a href="' + fl.url + '" target="_blank" rel="noopener" class="further-link">';
-        h += '<div class="further-link-icon ' + fm.css + '">' + fm.icon + '</div>';
-        h += '<div style="flex:1;min-width:0"><div class="further-link-title">' + (fl.title || fl.url) + '</div>';
-        h += '<div class="further-link-domain">' + fm.domain + '</div></div>';
-        h += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+        if (fm.thumb) {
+          // YouTube with thumbnail — wider card
+          h += '<a href="' + fl.url + '" target="_blank" rel="noopener" class="further-link further-link-thumb">';
+          h += '<div class="further-link-yt-thumb"><img src="' + fm.thumb + '" alt="" loading="lazy"><span class="yt-play">▶</span></div>';
+          h += '<div style="flex:1;min-width:0">';
+          h += '<div class="further-link-title">' + (fl.title || fl.url) + '</div>';
+          h += '<div class="further-link-domain">' + fm.domain + '</div></div>';
+          h += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+        } else {
+          h += '<a href="' + fl.url + '" target="_blank" rel="noopener" class="further-link">';
+          h += '<div class="further-link-icon ' + fm.css + '">' + fm.icon + '</div>';
+          h += '<div style="flex:1;min-width:0"><div class="further-link-title">' + (fl.title || fl.url) + '</div>';
+          h += '<div class="further-link-domain">' + fm.domain + '</div></div>';
+          h += '<span style="color:var(--text3);font-size:.75rem">↗</span></a>';
+        }
       }
       h += '</div>';
     }

@@ -200,19 +200,25 @@
 .pc-col-con .pc-item{background:var(--orange-soft);border-left:2px solid var(--orange)}
 
 /* ── Card 5: Tips quote ── */
+.b-tips{
+  /* Let the quote breathe — make it the focal point */
+  justify-content:center;
+}
 .tip-quote{
   position:relative;
   font-family:var(--font-display);
-  font-style:italic;font-weight:600;font-size:1rem;
-  line-height:1.45;color:var(--text);
-  padding:14px 0 0 28px;
-  margin-top:auto;
+  font-style:italic;font-weight:600;
+  font-size:clamp(1.05rem,1.55vw,1.35rem);
+  line-height:1.4;color:var(--text);
+  padding:18px 0 0 32px;
+  margin:auto 0;
+  text-wrap:pretty;
 }
 .tip-quote::before{
   content:"\201C";
-  position:absolute;left:-2px;top:-4px;
+  position:absolute;left:-4px;top:-8px;
   font-family:var(--font-display);
-  font-size:3.4rem;line-height:1;
+  font-size:4rem;line-height:1;
   color:var(--accent);
   background:var(--grad-brand);
   -webkit-background-clip:text;background-clip:text;
@@ -314,7 +320,53 @@ if (typeof DEFAULT_BLOG_DATA !== 'undefined') {
   });
 }
 
-// ── Bento card markup ──
+// ── Quote of the Day — rotates daily, deterministic ──
+var DAILY_QUOTES = [
+  {q:"Your time is limited, don't waste it living someone else's life.", a:"Steve Jobs"},
+  {q:"Try not to become a person of success, but rather try to become a person of value.", a:"Albert Einstein"},
+  {q:"Dream is not what you see in sleep, dream is the thing which does not let you sleep.", a:"Dr. APJ Abdul Kalam"},
+  {q:"When something is important enough, you do it even if the odds are not in your favor.", a:"Elon Musk"},
+  {q:"Genius is one percent inspiration and ninety-nine percent perspiration.", a:"Thomas Edison"},
+  {q:"The future depends on what you do today.", a:"Mahatma Gandhi"},
+  {q:"I don't believe in taking right decisions. I take decisions and then make them right.", a:"Ratan Tata"},
+  {q:"Success is a lousy teacher. It seduces smart people into thinking they can't lose.", a:"Bill Gates"},
+  {q:"Someone is sitting in the shade today because someone planted a tree a long time ago.", a:"Warren Buffett"},
+  {q:"Intelligence is the ability to adapt to change.", a:"Stephen Hawking"},
+  {q:"I would rather have questions that can't be answered than answers that can't be questioned.", a:"Richard Feynman"},
+  {q:"Chase your dreams, but always remember the road that led you to your destination.", a:"Sachin Tendulkar"},
+  {q:"It does not matter how slowly you go as long as you do not stop.", a:"Confucius"},
+  {q:"Whether you think you can, or you think you can't — you're right.", a:"Henry Ford"},
+  {q:"The two most important days in your life are the day you are born and the day you find out why.", a:"Mark Twain"},
+  {q:"We are what we repeatedly do. Excellence, then, is not an act, but a habit.", a:"Aristotle"},
+  {q:"Arise, awake, and stop not till the goal is reached.", a:"Swami Vivekananda"},
+  {q:"Performance leads to recognition. Recognition brings respect. Respect enhances power.", a:"N. R. Narayana Murthy"},
+  {q:"Success is a journey, not a destination. The doing is often more important than the outcome.", a:"Azim Premji"},
+  {q:"Nothing in life is to be feared, it is only to be understood.", a:"Marie Curie"},
+  {q:"The present is theirs; the future, for which I really worked, is mine.", a:"Nikola Tesla"},
+  {q:"The path from dreams to success does exist. May you have the vision to find it.", a:"Kalpana Chawla"},
+  {q:"If you don't have integrity, you might be successful for some time, but in the long run you will be a failure.", a:"Sudha Murthy"},
+  {q:"It's important to follow your dreams and passions, and don't put yourself in a box.", a:"Sundar Pichai"},
+  {q:"All our dreams can come true, if we have the courage to pursue them.", a:"Walt Disney"},
+  {q:"If you want to walk fast, walk alone. If you want to walk far, walk together.", a:"Ratan Tata"},
+  {q:"Be less curious about people and more curious about ideas.", a:"Marie Curie"},
+  {q:"Leadership is the capacity to translate vision into reality.", a:"Warren Bennis"},
+  {q:"You miss 100 percent of the shots you don't take.", a:"Wayne Gretzky"},
+  {q:"Hard work beats talent when talent doesn't work hard.", a:"Tim Notke"},
+  {q:"The only way to do great work is to love what you do.", a:"Steve Jobs"},
+  {q:"Don't watch the clock; do what it does. Keep going.", a:"Sam Levenson"},
+  {q:"Knowledge is power.", a:"Sir Francis Bacon"},
+  {q:"An investment in knowledge pays the best interest.", a:"Benjamin Franklin"},
+  {q:"Strive not to be a success, but rather to be of value.", a:"Albert Einstein"}
+];
+// Deterministic daily index — same quote for everyone on the same calendar day
+function getDailyQuote(){
+  var now = new Date();
+  // Days since epoch in local time (not UTC) so rollover matches the user's day
+  var localMs = now.getTime() - (now.getTimezoneOffset() * 60000);
+  var dayIdx = Math.floor(localMs / 86400000);
+  return DAILY_QUOTES[((dayIdx % DAILY_QUOTES.length) + DAILY_QUOTES.length) % DAILY_QUOTES.length];
+}
+var todaysQuote = getDailyQuote();
 var bentoCards = [
   {
     cls: 'b-stories',
@@ -375,12 +427,12 @@ var bentoCards = [
   },
   {
     cls: 'b-tips',
-    eyebrow: 'PRO TIP',
-    title: 'Expert Tips',
+    eyebrow: 'QUOTE OF THE DAY',
+    title: '',
     desc: '',
     body: `
-      <div class="tip-quote">Build projects on GitHub — they speak louder than your CGPA.
-        <div class="tip-attr">— Senior SDE, Bangalore</div>
+      <div class="tip-quote">${todaysQuote.q}
+        <div class="tip-attr">— ${todaysQuote.a}</div>
       </div>`
   },
   {
@@ -405,9 +457,10 @@ bentoCards.forEach(function(c, i){
   d.className = 'bento-card ' + c.cls;
   d.style.animationDelay = (i * 0.06) + 's';
   var descHtml = c.desc ? '<div class="bento-desc">' + c.desc + '</div>' : '';
+  var titleHtml = c.title ? '<div class="bento-title">' + c.title + '</div>' : '';
   d.innerHTML =
     '<div class="bento-eyebrow"><span class="dot"></span>' + c.eyebrow + '</div>' +
-    '<div class="bento-title">' + c.title + '</div>' +
+    titleHtml +
     descHtml +
     c.body;
   bento.appendChild(d);

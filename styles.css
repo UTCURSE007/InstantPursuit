@@ -484,6 +484,31 @@ a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .further-link-title{font-size:.88rem;font-weight:500;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .further-link-domain{font-size:.7rem;color:var(--text3);font-family:var(--font-mono);margin-top:2px}
 
+/* YouTube thumbnail variant — wider, image on left */
+.further-link.further-link-thumb{padding:8px 14px 8px 8px;gap:14px}
+.further-link-yt-thumb{
+  position:relative;flex-shrink:0;
+  width:112px;height:63px; /* 16:9 */
+  border-radius:8px;overflow:hidden;
+  background:#000;
+  box-shadow:0 2px 8px rgba(0,0,0,0.35);
+}
+.further-link-yt-thumb img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .25s ease, filter .2s ease;
+}
+.further-link:hover .further-link-yt-thumb img{transform:scale(1.06);filter:brightness(1.05)}
+.further-link-yt-thumb .yt-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(225,68,68,0.92);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;
+  box-shadow:0 2px 8px rgba(0,0,0,0.5);
+  transition:background .2s, transform .2s;
+}
+.further-link:hover .further-link-yt-thumb .yt-play{background:#ff0000;transform:translate(-50%,-50%) scale(1.08)}
+
 /* Tree connector layout */
 .tree-children-wrap{position:relative;margin-left:29px;padding-left:38px;margin-top:14px}
 .tree-vline{
