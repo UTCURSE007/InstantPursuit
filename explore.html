@@ -252,7 +252,7 @@ function render() {
 
   // ── Breadcrumb ──
   h += '<div class="career-breadcrumb">';
-  h += '<button onclick="navTo(0)">🏠 Home</button>';
+  h += '<button onclick="navTo(0)">🏠 Start</button>';
   for (var i = 0; i < path.length; i++) {
     var bn = getNode(path.slice(0, i + 1));
     var bl = bn ? (bn.label || path[i]) : path[i];

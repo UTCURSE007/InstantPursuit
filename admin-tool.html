@@ -206,6 +206,10 @@
         <div><label>Interviewee / Featured Person Name <span class="adm-hint">(optional)</span></label><input id="b-li-name" placeholder="e.g. Pavan Dola"></div>
         <div><label>LinkedIn Profile URL <span class="adm-hint">(optional — shown as chip)</span></label><input id="b-linkedin" placeholder="https://linkedin.com/in/..."></div>
       </div>
+      <label style="display:flex;align-items:center;gap:10px;margin-top:14px;cursor:pointer;text-transform:none;letter-spacing:0;font-family:var(--font-body);font-size:.9rem;color:var(--text)">
+        <input type="checkbox" id="b-featured" style="width:auto;cursor:pointer">
+        <span>⭐ Feature this post on the blog homepage <span class="adm-hint">(only one post can be featured — newest featured wins)</span></span>
+      </label>
       <label>Content <span class="adm-hint">(double newlines = paragraphs · <code style="font-family:var(--font-mono);color:var(--accent2)">## </code>= big subheading · <code style="font-family:var(--font-mono);color:var(--accent2)">### </code>= small subheading · <code style="font-family:var(--font-mono);color:var(--accent2)">[image:N]</code> = inline image)</span></label>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px">
         <button type="button" class="adm-content-tool" onclick="insertSubheading(2)" title="Insert H2 subheading">📌 H2</button>
@@ -1062,6 +1066,7 @@ function showAddBlogForm() {
   ['b-title','b-author','b-avatar','b-category','b-readtime','b-excerpt','b-tags','b-cover','b-content','b-reads','b-linkedin','b-li-name'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
   });
+  document.getElementById('b-featured').checked = false;
   blogImages = [];
   refreshBlogImages();
   refreshCoverPreview();
@@ -1085,6 +1090,7 @@ function editBlog(idx) {
   document.getElementById('b-reads').value = (b.furtherReads || []).map(r => (r.title || '') + ' | ' + r.url).join('\n');
   document.getElementById('b-linkedin').value = b.linkedin || '';
   document.getElementById('b-li-name').value = b.linkedinName || '';
+  document.getElementById('b-featured').checked = !!b.featured;
   blogImages = b.images ? JSON.parse(JSON.stringify(b.images)) : [];
   refreshBlogImages();
   refreshCoverPreview();
@@ -1116,7 +1122,12 @@ function saveBlog() {
     images: blogImages.length ? blogImages.slice() : undefined,
     linkedin: document.getElementById('b-linkedin').value.trim() || undefined,
     linkedinName: document.getElementById('b-li-name').value.trim() || undefined,
+    featured: document.getElementById('b-featured').checked || undefined,
   };
+  // Enforce "only one featured" — clear flag on all OTHER posts when this one is featured
+  if (post.featured) {
+    blogData.forEach(b => { if (b.id !== post.id) delete b.featured; });
+  }
   if (!post.furtherReads || post.furtherReads.length === 0) delete post.furtherReads;
 
   const editIdx = document.getElementById('b-edit-id').value;
@@ -1322,12 +1333,8 @@ function loadFile(input) {
   reader.onload = e => {
     let txt = e.target.result;
     // If user uploaded a .js file, EVALUATE it and pick the right export.
-    // data.js has comments + multiple const declarations (ENG_BRANCHES, DEFAULT_CAREER_DATA, DEFAULT_BLOG_DATA, SITE, NAV_LINKS, helpers).
-    // We run it in a sandboxed Function scope and capture window-like assignments.
     if (file.name.endsWith('.js')) {
       try {
-        // Build a sandbox that captures `const X = ...` and `function fn()` declarations
-        // by wrapping in IIFE that returns named globals.
         const sandbox = '"use strict";\n' +
           'var window={},document={documentElement:{setAttribute:function(){}},addEventListener:function(){},body:{prepend:function(){},appendChild:function(){}},createElement:function(){return{}},querySelector:function(){},querySelectorAll:function(){return[]},readyState:""};\n' +
           'var localStorage={getItem:function(){return null},setItem:function(){}};\n' +
@@ -1337,36 +1344,45 @@ function loadFile(input) {
           '         blogs:  (typeof DEFAULT_BLOG_DATA !== "undefined") ? DEFAULT_BLOG_DATA : null };';
         const out = (new Function(sandbox))();
         const type = document.getElementById('import-type').value;
-        if (type === 'career' && out.career) {
-          document.getElementById('json-area').value = JSON.stringify(out.career, null, 2);
-        } else if (type === 'blog' && out.blogs) {
-          document.getElementById('json-area').value = JSON.stringify(out.blogs, null, 2);
-        } else if (type === 'all') {
-          document.getElementById('json-area').value = JSON.stringify({career: out.career, blogs: out.blogs}, null, 2);
+        let extracted = null;
+        if (type === 'career' && out.career) extracted = out.career;
+        else if (type === 'blog' && out.blogs) extracted = out.blogs;
+        else if (type === 'all') extracted = { career: out.career, blogs: out.blogs };
+        else extracted = out.career || out.blogs;
+
+        document.getElementById('json-area').value = JSON.stringify(extracted, null, 2);
+
+        // Auto-prompt to apply — preview the change FIRST so user knows what's coming
+        const summary = type === 'career'
+          ? (Object.keys(out.career || {}).length + ' top-level stages')
+          : type === 'blog'
+            ? ((out.blogs || []).length + ' blog posts')
+            : ((Object.keys(out.career || {}).length + ' stages, ' + (out.blogs || []).length + ' posts'));
+        if (confirm('Loaded ' + file.name + '\nContains: ' + summary + '\n\nReplace existing data now?')) {
+          importData();
         } else {
-          // Fallback — load whichever exists
-          document.getElementById('json-area').value = JSON.stringify(out.career || out.blogs, null, 2);
+          showMsg('Loaded — review below and click "Import & Replace" when ready', 'success');
         }
-        showMsg('Loaded ' + file.name + ' — review below and click Import', 'success');
+        // Clear the file input so picking the SAME file again re-triggers onchange
+        input.value = '';
         return;
       } catch (err) {
-        // Fall through to plain text load on eval failure
         console.warn('JS eval failed, falling back to raw load:', err.message);
       }
     }
     document.getElementById('json-area').value = txt.trim();
+    input.value = '';
   };
   reader.readAsText(file);
 }
 
-function importData() {
+function importData(skipConfirm) {
   const raw = document.getElementById('json-area').value.trim();
   if (!raw) return showMsg('Paste JSON data first', 'error');
   let data;
   try {
     data = JSON.parse(raw);
   } catch (e1) {
-    // Allow JS-object literal too (admin can paste raw {...} from data.js)
     try {
       data = (new Function('return (' + raw + ')'))();
     } catch (e2) {
@@ -1376,23 +1392,28 @@ function importData() {
   try {
     const type = document.getElementById('import-type').value;
     if (type === 'career') {
-      if (!confirm('Replace ALL career data?')) return;
+      if (!skipConfirm && !confirm('Replace ALL career data?')) return;
       careerData = data;
       saveData('instantpursuit-career', careerData);
-      showMsg('Career data imported', 'success');
+      showMsg('Career data imported (' + Object.keys(careerData).length + ' top-level stages)', 'success');
     } else if (type === 'blog') {
-      if (!confirm('Replace ALL blog data?')) return;
+      if (!skipConfirm && !confirm('Replace ALL blog data?')) return;
       blogData = Array.isArray(data) ? data : [];
       saveData('instantpursuit-blogs', blogData);
-      showMsg('Blog data imported', 'success');
+      showMsg('Blog data imported (' + blogData.length + ' posts)', 'success');
     } else {
       if (!data.career && !data.blogs) return showMsg('Snapshot missing career/blogs keys', 'error');
-      if (!confirm('Replace BOTH career and blog data from snapshot?')) return;
+      if (!skipConfirm && !confirm('Replace BOTH career and blog data from snapshot?')) return;
       if (data.career) { careerData = data.career; saveData('instantpursuit-career', careerData); }
       if (data.blogs) { blogData = data.blogs; saveData('instantpursuit-blogs', blogData); }
-      showMsg('Full snapshot imported', 'success');
+      showMsg('Full snapshot imported (' + Object.keys(careerData).length + ' stages, ' + blogData.length + ' posts)', 'success');
     }
+    // Refresh ALL views — not just the dashboard. Tree path may now be invalid
+    // (the imported data may not have the same nested structure) so reset to root.
+    treePath = [];
     renderDashboard();
+    renderTree();
+    renderBlogList();
   } catch (e) {
     showMsg('Import failed: ' + e.message, 'error');
   }

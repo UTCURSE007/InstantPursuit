@@ -550,8 +550,8 @@ function renderBlog() {
     return;
   }
 
-  // Featured = first post
-  const feat = filtered[0];
+  // Featured = post explicitly marked featured:true, else the first post
+  const feat = filtered.find(b => b.featured) || filtered[0];
   const featAvClass = avatarClass(feat.id - 1);
   const featDateStr = new Date(feat.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'});
   html += `
@@ -579,7 +579,7 @@ function renderBlog() {
   if (filtered.length > 1) {
     html += `<div class="section-divider"><span>More Stories</span></div>`;
     html += `<div class="posts-grid">`;
-    filtered.slice(1).forEach((b, i) => {
+    filtered.filter(b => b.id !== feat.id).forEach((b, i) => {
       const av = avatarClass(b.id - 1);
       const dt = new Date(b.date).toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'});
       html += `

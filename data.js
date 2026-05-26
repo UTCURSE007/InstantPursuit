@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-05-26T19:56:46.841Z
+   data.js — exported from admin on 2026-05-26T20:07:34.262Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -17435,6 +17435,9 @@ const DEFAULT_CAREER_DATA = {
   }
 };
 
+// ═══════════════════════════════════════════
+// BLOG DATA
+// ═══════════════════════════════════════════
 const DEFAULT_BLOG_DATA = [
   {
     "id": 1779825119175,
@@ -17483,7 +17486,8 @@ const DEFAULT_BLOG_DATA = [
         "title": "Other GATE opportunities",
         "url": "https://gate2026.iitg.ac.in/opportunities.html"
       }
-    ]
+    ],
+    "featured": true
   },
   {
     "id": 1779400000000,
