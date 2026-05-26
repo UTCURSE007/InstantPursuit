@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-05-26T16:05:59.197Z
+   data.js — exported from admin on 2026-05-26T16:25:37.713Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -731,7 +731,14 @@ const DEFAULT_CAREER_DATA = {
     "icon": "📚",
     "description": "Foundation years and stream specialization — pick your path through school.",
     "info": {
-      "detail": "Be patient!!"
+      "detail": "It all starts here! Strong basics in this years make the foundation upon which you are supposed to build the future. Be picky in the career path. Before starting to plan your career at this stage, it is necessary to be fluid, to be flexible and be mindful about your strengths, weaknesses and what excites you. Explore each node, see where it takes you and then comprehend on a notebook. \n\nIt is important to have good teachers and guides (maybe your parents as well) to guide you well in these years. If you do not have great guides around you, you got Instant Pursuit! And apart from it, make books, newspapers, magazines your good friends and the guides in your journey.\n\nRemember that every minute you spend in improving yourself in these years are having enormous impact on what you become in later years. So work hard, work smart and choose wisely what you gonna be.",
+      "tip": "Know your capabilities, don't underestimate, don't overestimate.",
+      "furtherLinks": [
+        {
+          "title": "Psychology of Career Decisions",
+          "url": "https://youtu.be/4e6KSaCxcHs?si=enAqQioHrIGi-fpy"
+        }
+      ]
     },
     "children": {
       "science": {
