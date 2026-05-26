@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-05-26T20:21:52.756Z
+   data.js — exported from admin on 2026-05-26T20:24:48.965Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -17514,7 +17514,8 @@ const DEFAULT_BLOG_DATA = [
       }
     ],
     "linkedin": "https://www.linkedin.com/in/murli-singh-a6b1b8176/",
-    "linkedinName": "Murli Singh"
+    "linkedinName": "Murli Singh",
+    "featured": true
   },
   {
     "id": 1779300651991,
