@@ -754,7 +754,8 @@ const DEFAULT_CAREER_DATA = {
             "Requires strong math fundamentals",
             "Can be intensive and competitive"
           ],
-          "tip": "Best if you love experiments and problem-solving."
+          "tip": "Best if you love experiments and problem-solving.",
+          "detail": "The science stream is the foundation for India's most sought-after careers — engineering, medicine, and research. After Class 10, choosing Science opens PCM and PCB combinations, each leading to dramatically different career paths. Approximately 45% of Indian students choose this stream."
         },
         "children": {
           "pcm": {
@@ -769,7 +770,8 @@ const DEFAULT_CAREER_DATA = {
                 "Very competitive entrance exams (JEE)",
                 "Abstract concepts can be challenging"
               ],
-              "tip": "If you love puzzles, logic, and building things — PCM is your playground."
+              "tip": "If you love puzzles, logic, and building things — PCM is your playground.",
+              "detail": "PCM (Physics, Chemistry, Mathematics) is the gateway to engineering, architecture, merchant navy, defence, and pure sciences. Major entrance exams include JEE Main & Advanced, BITSAT, state-level CETs, and CUET."
             },
             "children": {
               "engineering": {
@@ -931,7 +933,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -966,7 +978,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1000,7 +1022,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1034,7 +1066,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -1074,7 +1116,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -1105,7 +1157,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1136,7 +1198,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1170,7 +1242,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -1208,7 +1290,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -1242,7 +1334,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1274,7 +1376,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -1309,7 +1421,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -1344,7 +1466,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -1379,7 +1511,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -1410,7 +1552,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1440,7 +1592,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -1475,7 +1637,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -1508,7 +1676,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -1632,7 +1810,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1667,7 +1855,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1701,7 +1899,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1735,7 +1943,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -1775,7 +1993,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -1806,7 +2034,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1837,7 +2075,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1871,7 +2119,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -1909,7 +2167,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -1943,7 +2211,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -1975,7 +2253,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -2010,7 +2298,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -2045,7 +2343,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -2080,7 +2388,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -2111,7 +2429,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2141,7 +2469,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -2176,7 +2514,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -2209,7 +2553,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -2340,7 +2694,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2375,7 +2739,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2409,7 +2783,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2443,7 +2827,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -2483,7 +2877,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -2514,7 +2918,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2545,7 +2959,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2579,7 +3003,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -2617,7 +3051,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -2651,7 +3095,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2683,7 +3137,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -2718,7 +3182,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -2753,7 +3227,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -2788,7 +3272,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -2819,7 +3313,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -2849,7 +3353,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -2884,7 +3398,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -2917,7 +3437,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -3029,7 +3559,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3064,7 +3604,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3098,7 +3648,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3132,7 +3692,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -3172,7 +3742,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -3203,7 +3783,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3234,7 +3824,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3268,7 +3868,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -3306,7 +3916,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -3340,7 +3960,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3372,7 +4002,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -3407,7 +4047,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -3442,7 +4092,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -3477,7 +4137,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -3508,7 +4178,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3538,7 +4218,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -3573,7 +4263,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -3606,7 +4302,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -3717,7 +4423,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3752,7 +4468,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3786,7 +4512,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3820,7 +4556,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -3860,7 +4606,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -3891,7 +4647,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3922,7 +4688,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -3956,7 +4732,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -3994,7 +4780,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -4028,7 +4824,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4060,7 +4866,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -4095,7 +4911,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -4130,7 +4956,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -4165,7 +5001,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -4196,7 +5042,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4226,7 +5082,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -4261,7 +5127,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -4294,7 +5166,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -4404,7 +5286,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4439,7 +5331,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4473,7 +5375,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4507,7 +5419,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -4547,7 +5469,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -4578,7 +5510,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4609,7 +5551,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4643,7 +5595,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -4681,7 +5643,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -4715,7 +5687,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4747,7 +5729,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -4782,7 +5774,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -4817,7 +5819,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -4852,7 +5864,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -4883,7 +5905,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -4913,7 +5945,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -4948,7 +5990,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -4981,7 +6029,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -5096,7 +6154,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5131,7 +6199,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5165,7 +6243,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5199,7 +6287,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -5239,7 +6337,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -5270,7 +6378,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5301,7 +6419,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5335,7 +6463,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -5373,7 +6511,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -5407,7 +6555,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5439,7 +6597,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -5474,7 +6642,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -5509,7 +6687,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -5544,7 +6732,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -5575,7 +6773,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5605,7 +6813,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -5640,7 +6858,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -5673,7 +6897,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -5783,7 +7017,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5818,7 +7062,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5852,7 +7106,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5886,7 +7150,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -5926,7 +7200,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -5957,7 +7241,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -5988,7 +7282,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6022,7 +7326,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -6060,7 +7374,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -6094,7 +7418,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6126,7 +7460,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -6161,7 +7505,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -6196,7 +7550,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -6231,7 +7595,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -6262,7 +7636,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6292,7 +7676,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -6327,7 +7721,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -6360,7 +7760,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -6478,7 +7888,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6513,7 +7933,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6547,7 +7977,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6581,7 +8021,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -6621,7 +8071,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -6652,7 +8112,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6683,7 +8153,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6717,7 +8197,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -6755,7 +8245,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -6789,7 +8289,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6821,7 +8331,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -6856,7 +8376,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -6891,7 +8421,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -6926,7 +8466,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -6957,7 +8507,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -6987,7 +8547,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -7022,7 +8592,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -7055,7 +8631,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -7173,7 +8759,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7208,7 +8804,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7242,7 +8848,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7276,7 +8892,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -7316,7 +8942,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -7347,7 +8983,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7378,7 +9024,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7412,7 +9068,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -7450,7 +9116,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -7484,7 +9160,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7516,7 +9202,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -7551,7 +9247,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -7586,7 +9292,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -7621,7 +9337,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -7652,7 +9378,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7682,7 +9418,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -7717,7 +9463,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -7750,7 +9502,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -7866,7 +9628,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7901,7 +9673,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7935,7 +9717,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -7969,7 +9761,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8009,7 +9811,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -8040,7 +9852,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8071,7 +9893,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8105,7 +9937,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8143,7 +9985,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -8177,7 +10029,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8209,7 +10071,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8244,7 +10116,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -8279,7 +10161,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -8314,7 +10206,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -8345,7 +10247,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8375,7 +10287,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8410,7 +10332,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -8443,7 +10371,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -8557,7 +10495,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8592,7 +10540,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8626,7 +10584,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8660,7 +10628,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8700,7 +10678,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -8731,7 +10719,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8762,7 +10760,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8796,7 +10804,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8834,7 +10852,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -8868,7 +10896,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -8900,7 +10938,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -8935,7 +10983,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -8970,7 +11028,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -9005,7 +11073,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -9036,7 +11114,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9066,7 +11154,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -9101,7 +11199,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -9134,7 +11238,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -9247,7 +11361,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9282,7 +11406,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9316,7 +11450,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9350,7 +11494,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -9390,7 +11544,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -9421,7 +11585,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9452,7 +11626,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9486,7 +11670,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -9524,7 +11718,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -9558,7 +11762,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9590,7 +11804,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -9625,7 +11849,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -9660,7 +11894,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -9695,7 +11939,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -9726,7 +11980,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9756,7 +12020,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -9791,7 +12065,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -9824,7 +12104,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -9938,7 +12228,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -9973,7 +12273,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10007,7 +12317,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10041,7 +12361,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -10081,7 +12411,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -10112,7 +12452,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10143,7 +12493,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10177,7 +12537,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -10215,7 +12585,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -10249,7 +12629,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10281,7 +12671,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -10316,7 +12716,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -10351,7 +12761,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -10386,7 +12806,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -10417,7 +12847,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10447,7 +12887,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -10482,7 +12932,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -10515,7 +12971,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -10628,7 +13094,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10663,7 +13139,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10697,7 +13183,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10731,7 +13227,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -10771,7 +13277,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -10802,7 +13318,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10833,7 +13359,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10867,7 +13403,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -10905,7 +13451,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -10939,7 +13495,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -10971,7 +13537,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -11006,7 +13582,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -11041,7 +13627,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -11076,7 +13672,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -11107,7 +13713,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11137,7 +13753,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -11172,7 +13798,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -11205,7 +13837,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -11320,7 +13962,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Razorpay",
                                 "PhonePe"
                               ],
-                              "avgCTC": "₹12-50 LPA"
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11355,7 +14007,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Mu Sigma",
                                 "Walmart Labs"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11389,7 +14051,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Cisco",
                                 "TCS"
                               ],
-                              "avgCTC": "₹8-25 LPA"
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11423,7 +14095,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Red Hat",
                                 "Razorpay"
                               ],
-                              "avgCTC": "₹10-35 LPA"
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -11463,7 +14145,17 @@ const DEFAULT_CAREER_DATA = {
                             "DRDO",
                             "Cummins"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
                         },
                         "children": {
                           "automotive": {
@@ -11494,7 +14186,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Hyundai India",
                                 "Bosch"
                               ],
-                              "avgCTC": "₹5-15 LPA"
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11525,7 +14227,17 @@ const DEFAULT_CAREER_DATA = {
                                 "ABB",
                                 "Amazon Robotics"
                               ],
-                              "avgCTC": "₹6-20 LPA"
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11559,7 +14271,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Agnikul",
                                 "Boeing India"
                               ],
-                              "avgCTC": "₹6-18 LPA"
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -11597,7 +14319,17 @@ const DEFAULT_CAREER_DATA = {
                             "Broadcom",
                             "Nvidia"
                           ],
-                          "avgCTC": "₹6-20 LPA"
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
                         },
                         "children": {
                           "vlsi": {
@@ -11631,7 +14363,17 @@ const DEFAULT_CAREER_DATA = {
                                 "AMD",
                                 "Nvidia"
                               ],
-                              "avgCTC": "₹10-30 LPA"
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11663,7 +14405,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Tata Elxsi",
                                 "KPIT"
                               ],
-                              "avgCTC": "₹5-18 LPA"
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -11698,7 +14450,17 @@ const DEFAULT_CAREER_DATA = {
                             "CPWD",
                             "Shapoorji Pallonji"
                           ],
-                          "avgCTC": "₹4-12 LPA"
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -11733,7 +14495,17 @@ const DEFAULT_CAREER_DATA = {
                             "Siemens",
                             "Schneider Electric"
                           ],
-                          "avgCTC": "₹5-14 LPA"
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -11768,7 +14540,17 @@ const DEFAULT_CAREER_DATA = {
                             "Adobe Research",
                             "Flipkart"
                           ],
-                          "avgCTC": "₹12-50 LPA (top tier)"
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
                         },
                         "children": {
                           "nlp": {
@@ -11799,7 +14581,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Sarvam AI",
                                 "Adobe"
                               ],
-                              "avgCTC": "₹15-60 LPA"
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
                             },
                             "children": {}
                           },
@@ -11829,7 +14621,17 @@ const DEFAULT_CAREER_DATA = {
                                 "Qualcomm",
                                 "Samsung"
                               ],
-                              "avgCTC": "₹12-40 LPA"
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
                             },
                             "children": {}
                           }
@@ -11864,7 +14666,13 @@ const DEFAULT_CAREER_DATA = {
                             "Shell",
                             "BASF"
                           ],
-                          "avgCTC": "₹5-15 LPA"
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
                         },
                         "children": {}
                       },
@@ -11897,7 +14705,17 @@ const DEFAULT_CAREER_DATA = {
                             "Cipla",
                             "Bharat Biotech"
                           ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
                         },
                         "children": {}
                       }
@@ -11931,7 +14749,13 @@ const DEFAULT_CAREER_DATA = {
                     "DE Shaw",
                     "Actuarial firms"
                   ],
-                  "avgCTC": "₹5-20 LPA (with specialization)"
+                  "avgCTC": "₹5-20 LPA (with specialization)",
+                  "furtherLinks": [
+                    {
+                      "title": "B.Sc. Mathematics Career Options",
+                      "url": "https://www.youtube.com/watch?v=bFnSPN_CGJE"
+                    }
+                  ]
                 },
                 "children": {}
               },
@@ -11965,7 +14789,17 @@ const DEFAULT_CAREER_DATA = {
                     "Studio Lotus",
                     "DLF"
                   ],
-                  "avgCTC": "₹4-12 LPA"
+                  "avgCTC": "₹4-12 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Architecture Career Guide",
+                      "url": "https://www.youtube.com/watch?v=_U8gntVfOHs"
+                    },
+                    {
+                      "title": "NATA Exam Prep",
+                      "url": "https://www.youtube.com/watch?v=KMp7sXYxBvI"
+                    }
+                  ]
                 },
                 "children": {}
               },
@@ -11998,7 +14832,13 @@ const DEFAULT_CAREER_DATA = {
                     "Synergy Group",
                     "Anglo Eastern"
                   ],
-                  "avgCTC": "₹8-25 LPA (tax-free at sea)"
+                  "avgCTC": "₹8-25 LPA (tax-free at sea)",
+                  "furtherLinks": [
+                    {
+                      "title": "Merchant Navy Career Guide",
+                      "url": "https://www.youtube.com/watch?v=EFwRfKmQrEU"
+                    }
+                  ]
                 },
                 "children": {}
               },
@@ -12029,7 +14869,17 @@ const DEFAULT_CAREER_DATA = {
                     "Indian Navy",
                     "Indian Air Force"
                   ],
-                  "avgCTC": "₹8-15 LPA + perks (housing, healthcare)"
+                  "avgCTC": "₹8-15 LPA + perks (housing, healthcare)",
+                  "furtherLinks": [
+                    {
+                      "title": "NDA Exam Full Strategy",
+                      "url": "https://www.youtube.com/watch?v=4h09BgE-ums"
+                    },
+                    {
+                      "title": "SSB Interview Guide",
+                      "url": "https://www.youtube.com/watch?v=_nZ6Lp2wq_Y"
+                    }
+                  ]
                 },
                 "children": {}
               }
@@ -12049,7 +14899,8 @@ const DEFAULT_CAREER_DATA = {
                 "Very long education path",
                 "High pressure"
               ],
-              "tip": "Start NEET prep in Class 11 if targeting MBBS."
+              "tip": "Start NEET prep in Class 11 if targeting MBBS.",
+              "detail": "PCB (Physics, Chemistry, Biology) leads primarily to medical and life science careers. NEET is the single entrance exam for MBBS, BDS, AYUSH, and nursing. Beyond medicine, PCB opens paths to pharmacy, veterinary science, and biotechnology."
             },
             "children": {
               "mbbs": {
@@ -12706,7 +15557,13 @@ const DEFAULT_CAREER_DATA = {
                         "Medanta",
                         "Private practice"
                       ],
-                      "avgCTC": "₹20-60 LPA (₹1-2 Cr private practice for top specializations)"
+                      "avgCTC": "₹20-60 LPA (₹1-2 Cr private practice for top specializations)",
+                      "furtherLinks": [
+                        {
+                          "title": "NEET PG Preparation",
+                          "url": "https://www.youtube.com/watch?v=S_xY-lNZqhU"
+                        }
+                      ]
                     },
                     "children": {}
                   }
@@ -12739,7 +15596,13 @@ const DEFAULT_CAREER_DATA = {
                     "Apollo Dental",
                     "Own clinic"
                   ],
-                  "avgCTC": "₹3-8 LPA (employed); ₹8-25 LPA (own clinic)"
+                  "avgCTC": "₹3-8 LPA (employed); ₹8-25 LPA (own clinic)",
+                  "furtherLinks": [
+                    {
+                      "title": "BDS Career — Honest Review",
+                      "url": "https://www.youtube.com/watch?v=_z0uWrXW8Gc"
+                    }
+                  ]
                 },
                 "children": {}
               },
@@ -12773,7 +15636,13 @@ const DEFAULT_CAREER_DATA = {
                     "Biocon",
                     "Divis Labs"
                   ],
-                  "avgCTC": "₹3-8 LPA (₹8-18 with M.Pharm)"
+                  "avgCTC": "₹3-8 LPA (₹8-18 with M.Pharm)",
+                  "furtherLinks": [
+                    {
+                      "title": "B.Pharm Career Options",
+                      "url": "https://www.youtube.com/watch?v=f8jN-4aE4tU"
+                    }
+                  ]
                 },
                 "children": {}
               },
@@ -12806,7 +15675,17 @@ const DEFAULT_CAREER_DATA = {
                     "UK NHS (abroad)",
                     "US hospitals (abroad)"
                   ],
-                  "avgCTC": "₹3-6 LPA (India); ₹25-60 LPA (US/UK)"
+                  "avgCTC": "₹3-6 LPA (India); ₹25-60 LPA (US/UK)",
+                  "furtherLinks": [
+                    {
+                      "title": "Nursing Career India & Abroad",
+                      "url": "https://www.youtube.com/watch?v=HJfJP7U53QA"
+                    },
+                    {
+                      "title": "NCLEX-RN Path to USA",
+                      "url": "https://www.youtube.com/watch?v=bJnXNkXPVZQ"
+                    }
+                  ]
                 },
                 "children": {}
               },
@@ -12837,7 +15716,13 @@ const DEFAULT_CAREER_DATA = {
                     "Mars Petcare",
                     "Own clinic"
                   ],
-                  "avgCTC": "₹4-10 LPA (govt); ₹8-25 LPA (own clinic)"
+                  "avgCTC": "₹4-10 LPA (govt); ₹8-25 LPA (own clinic)",
+                  "furtherLinks": [
+                    {
+                      "title": "Veterinary Career India",
+                      "url": "https://www.youtube.com/watch?v=a2FQz3bD0u0"
+                    }
+                  ]
                 },
                 "children": {}
               }
@@ -12855,7 +15740,8 @@ const DEFAULT_CAREER_DATA = {
                 "Extremely heavy workload",
                 "Hard to excel in all four"
               ],
-              "tip": "Only if genuinely undecided AND can handle the workload."
+              "tip": "Only if genuinely undecided AND can handle the workload.",
+              "detail": "PCMB means all four subjects — Physics, Chemistry, Mathematics, AND Biology. Maximum flexibility for both JEE and NEET, but enormous workload. Only choose this if genuinely undecided AND confident you can handle the extra subject."
             },
             "children": {}
           }
@@ -12874,7 +15760,8 @@ const DEFAULT_CAREER_DATA = {
             "'Less prestigious' perception",
             "Needs self-driven learning"
           ],
-          "tip": "Commerce + tech skills = unstoppable."
+          "tip": "Commerce + tech skills = unstoppable.",
+          "detail": "Commerce builds strong business, accounting, and financial literacy. Students study Accountancy, Business Studies, Economics, with optional Maths or Informatics Practices. Leads to CA, CS, B.Com, BBA, MBA, and banking careers."
         },
         "children": {
           "ca": {
@@ -12944,7 +15831,17 @@ const DEFAULT_CAREER_DATA = {
                 "Infosys",
                 "Listed companies (mandatory for listed cos)"
               ],
-              "avgCTC": "₹5-15 LPA"
+              "avgCTC": "₹5-15 LPA",
+              "furtherLinks": [
+                {
+                  "title": "Company Secretary Career",
+                  "url": "https://www.youtube.com/watch?v=ycZmKGBP_2s"
+                },
+                {
+                  "title": "ICSI Official",
+                  "url": "https://www.icsi.edu"
+                }
+              ]
             },
             "children": {}
           },
@@ -12977,7 +15874,13 @@ const DEFAULT_CAREER_DATA = {
                 "HDFC Bank",
                 "Amazon (ops)"
               ],
-              "avgCTC": "₹3-8 LPA (B.Com); ₹15-40 LPA (post top MBA)"
+              "avgCTC": "₹3-8 LPA (B.Com); ₹15-40 LPA (post top MBA)",
+              "furtherLinks": [
+                {
+                  "title": "B.Com Career Options",
+                  "url": "https://www.youtube.com/watch?v=XmRJ_qWZqzw"
+                }
+              ]
             },
             "children": {}
           },
@@ -13011,7 +15914,17 @@ const DEFAULT_CAREER_DATA = {
                 "BCG",
                 "Goldman Sachs"
               ],
-              "avgCTC": "₹5-15 LPA (varies by institution)"
+              "avgCTC": "₹5-15 LPA (varies by institution)",
+              "furtherLinks": [
+                {
+                  "title": "Economics Career — DSE, ISI, JNU",
+                  "url": "https://www.youtube.com/watch?v=F3_yCt2epVA"
+                },
+                {
+                  "title": "CORE Econ Free Textbook",
+                  "url": "https://www.core-econ.org"
+                }
+              ]
             },
             "children": {}
           },
@@ -13043,7 +15956,13 @@ const DEFAULT_CAREER_DATA = {
                 "Razorpay",
                 "Zerodha"
               ],
-              "avgCTC": "₹4-8 LPA (govt); ₹15-40 LPA (investment banking)"
+              "avgCTC": "₹4-8 LPA (govt); ₹15-40 LPA (investment banking)",
+              "furtherLinks": [
+                {
+                  "title": "Banking Career Guide India",
+                  "url": "https://www.youtube.com/watch?v=x3Qb3u-O03g"
+                }
+              ]
             },
             "children": {}
           }
@@ -13062,7 +15981,8 @@ const DEFAULT_CAREER_DATA = {
             "Often undervalued",
             "Lower average starting salaries"
           ],
-          "tip": "Arts is not a backup — it's a launchpad."
+          "tip": "Arts is not a backup — it's a launchpad.",
+          "detail": "Arts and Humanities is India's most underrated stream — the direct pathway to law (CLAT), civil services (UPSC), design (NID/NIFT), media, psychology, and policy research. Develops critical thinking, communication, and creativity."
         },
         "children": {
           "entrance_exams": {
@@ -13100,7 +16020,13 @@ const DEFAULT_CAREER_DATA = {
                     "NLU Delhi",
                     "NUJS Kolkata"
                   ],
-                  "avgCTC": "₹12-28 LPA from top NLUs"
+                  "avgCTC": "₹12-28 LPA from top NLUs",
+                  "furtherLinks": [
+                    {
+                      "title": "CLAT Complete Preparation",
+                      "url": "https://www.youtube.com/watch?v=5-SXHZ7sXKs"
+                    }
+                  ]
                 },
                 "children": {}
               }
@@ -13134,7 +16060,17 @@ const DEFAULT_CAREER_DATA = {
                 "Khaitan & Co",
                 "Shardul Amarchand"
               ],
-              "avgCTC": "₹12-28 LPA (top NLUs)"
+              "avgCTC": "₹12-28 LPA (top NLUs)",
+              "furtherLinks": [
+                {
+                  "title": "Law Career — NLU Guide",
+                  "url": "https://www.youtube.com/watch?v=Mw6EWr1fK-E"
+                },
+                {
+                  "title": "CLAT Preparation Strategy",
+                  "url": "https://www.youtube.com/watch?v=5-SXHZ7sXKs"
+                }
+              ]
             },
             "children": {}
           },
@@ -13168,7 +16104,17 @@ const DEFAULT_CAREER_DATA = {
                 "Adobe",
                 "Design studios"
               ],
-              "avgCTC": "₹6-20 LPA"
+              "avgCTC": "₹6-20 LPA",
+              "furtherLinks": [
+                {
+                  "title": "Design Career — NID, NIFT, IDC",
+                  "url": "https://www.youtube.com/watch?v=iG-bLJSf_sw"
+                },
+                {
+                  "title": "Figma Tutorial",
+                  "url": "https://www.youtube.com/watch?v=FTFaQWZBqQ8"
+                }
+              ]
             },
             "children": {}
           },
@@ -13200,7 +16146,13 @@ const DEFAULT_CAREER_DATA = {
                 "BBC India",
                 "YouTube/digital platforms"
               ],
-              "avgCTC": "₹3-10 LPA (traditional); ₹5-25 LPA (digital)"
+              "avgCTC": "₹3-10 LPA (traditional); ₹5-25 LPA (digital)",
+              "furtherLinks": [
+                {
+                  "title": "Journalism Career — IIMC, ACJ",
+                  "url": "https://www.youtube.com/watch?v=X0U7k-c9kG4"
+                }
+              ]
             },
             "children": {}
           },
@@ -13235,7 +16187,13 @@ const DEFAULT_CAREER_DATA = {
                 "Amaha",
                 "NGOs"
               ],
-              "avgCTC": "₹3-8 LPA (MA); ₹8-20 LPA (M.Phil Clinical)"
+              "avgCTC": "₹3-8 LPA (MA); ₹8-20 LPA (M.Phil Clinical)",
+              "furtherLinks": [
+                {
+                  "title": "Psychology Career India",
+                  "url": "https://www.youtube.com/watch?v=cZp3Rnqp1Bo"
+                }
+              ]
             },
             "children": {}
           },
@@ -13252,7 +16210,13 @@ const DEFAULT_CAREER_DATA = {
                 "Limited private sector",
                 "Academic-oriented"
               ],
-              "tip": "IR specialization opens doors to UN and embassies."
+              "tip": "IR specialization opens doors to UN and embassies.",
+              "furtherLinks": [
+                {
+                  "title": "Political Science Career — UPSC, IR",
+                  "url": "https://www.youtube.com/watch?v=7ygd2gRMBdE"
+                }
+              ]
             },
             "children": {}
           },
@@ -13283,7 +16247,17 @@ const DEFAULT_CAREER_DATA = {
                 "Unacademy",
                 "PhysicsWallah"
               ],
-              "avgCTC": "₹3-8 LPA (school); ₹8-25 LPA (coaching/EdTech)"
+              "avgCTC": "₹3-8 LPA (school); ₹8-25 LPA (coaching/EdTech)",
+              "furtherLinks": [
+                {
+                  "title": "Teaching Career — KVS, EdTech",
+                  "url": "https://www.youtube.com/watch?v=JyJK5z7VuPw"
+                },
+                {
+                  "title": "CTET Prep Guide",
+                  "url": "https://www.youtube.com/watch?v=8gO6bAj7x-g"
+                }
+              ]
             },
             "children": {}
           }
@@ -13302,7 +16276,8 @@ const DEFAULT_CAREER_DATA = {
             "Social stigma exists",
             "Lower ceiling without further education"
           ],
-          "tip": "Germany, Australia, Canada have huge demand for skilled Indian workers."
+          "tip": "Germany, Australia, Canada have huge demand for skilled Indian workers.",
+          "detail": "Vocational education offers practical, job-ready training in 1-3 years. ITI, polytechnic diplomas, and hotel management are key pathways. International demand from Germany, Australia, and Canada for skilled Indian workers is rising."
         },
         "children": {
           "iti": {
@@ -13331,7 +16306,17 @@ const DEFAULT_CAREER_DATA = {
                 "Tata Motors",
                 "Maruti"
               ],
-              "avgCTC": "₹2-5 LPA (ITI); ₹3-7 LPA (diploma)"
+              "avgCTC": "₹2-5 LPA (ITI); ₹3-7 LPA (diploma)",
+              "furtherLinks": [
+                {
+                  "title": "ITI Career Guide",
+                  "url": "https://www.youtube.com/watch?v=4ZI_lk0dXv0"
+                },
+                {
+                  "title": "Germany Ausbildung",
+                  "url": "https://www.youtube.com/watch?v=z3YDZ_TMo_o"
+                }
+              ]
             },
             "children": {}
           },
@@ -13362,7 +16347,13 @@ const DEFAULT_CAREER_DATA = {
                 "Hyatt",
                 "ITC Hotels"
               ],
-              "avgCTC": "₹3-8 LPA (India); ₹8-20 LPA (international)"
+              "avgCTC": "₹3-8 LPA (India); ₹8-20 LPA (international)",
+              "furtherLinks": [
+                {
+                  "title": "Hotel Management Career",
+                  "url": "https://www.youtube.com/watch?v=e2vKqJbH5oE"
+                }
+              ]
             },
             "children": {}
           },
@@ -13393,7 +16384,17 @@ const DEFAULT_CAREER_DATA = {
                 "Dr. Lal PathLabs",
                 "SRL Diagnostics"
               ],
-              "avgCTC": "₹2-6 LPA (technician); ₹4-12 LPA (physio)"
+              "avgCTC": "₹2-6 LPA (technician); ₹4-12 LPA (physio)",
+              "furtherLinks": [
+                {
+                  "title": "Paramedical Courses Guide",
+                  "url": "https://www.youtube.com/watch?v=jbYgKyp9a0U"
+                },
+                {
+                  "title": "Physiotherapy Career",
+                  "url": "https://www.youtube.com/watch?v=fRY6kO4zNII"
+                }
+              ]
             },
             "children": {}
           }
@@ -13412,7 +16413,8 @@ const DEFAULT_CAREER_DATA = {
             "Social pressure",
             "Fewer safety nets"
           ],
-          "tip": "Unconventional path with a plan beats conventional path without one."
+          "tip": "Unconventional path with a plan beats conventional path without one.",
+          "detail": "Alternative paths include studying abroad, structured gap years, digital freelancing, or CUET-based central university admission. These require more self-direction but can lead to exceptional outcomes."
         },
         "children": {
           "cuet": {
@@ -13428,7 +16430,17 @@ const DEFAULT_CAREER_DATA = {
                 "Logistical issues"
               ],
               "tip": "Pick domain subjects carefully — CUET rewards specialization.",
-              "detail": "CUET replaced board-marks-based cutoffs at DU, JNU, BHU, and 40+ central universities since 2022. Tests domain subjects, General Test, and Language."
+              "detail": "CUET replaced board-marks-based cutoffs at DU, JNU, BHU, and 40+ central universities since 2022. Tests domain subjects, General Test, and Language.",
+              "furtherLinks": [
+                {
+                  "title": "CUET Preparation Guide",
+                  "url": "https://www.youtube.com/watch?v=IeQTd3x_VoI"
+                },
+                {
+                  "title": "NTA CUET Official",
+                  "url": "https://cuet.nta.nic.in"
+                }
+              ]
             },
             "children": {}
           },
@@ -13454,7 +16466,13 @@ const DEFAULT_CAREER_DATA = {
                 "UofT, McGill (Canada)",
                 "TU Munich (Germany — free)"
               ],
-              "avgCTC": "Varies — $60-150K in US"
+              "avgCTC": "Varies — $60-150K in US",
+              "furtherLinks": [
+                {
+                  "title": "Study Abroad After 12th",
+                  "url": "https://www.youtube.com/watch?v=H7n9jL2Mj4E"
+                }
+              ]
             },
             "children": {}
           },
@@ -13470,7 +16488,14 @@ const DEFAULT_CAREER_DATA = {
                 "Social stigma in India",
                 "Can lose momentum"
               ],
-              "tip": "Structured gap year with goals = gold. Unplanned = risky."
+              "tip": "Structured gap year with goals = gold. Unplanned = risky.",
+              "detail": "A structured gap year with specific goals — exam prep, skill-building, interning, volunteering — can be transformative. The stigma is fading as success stories emerge. An unplanned gap year risks lost momentum.",
+              "furtherLinks": [
+                {
+                  "title": "Gap Year Guide India",
+                  "url": "https://www.youtube.com/watch?v=2nDCAkE_XlA"
+                }
+              ]
             },
             "children": {}
           },
@@ -13498,7 +16523,13 @@ const DEFAULT_CAREER_DATA = {
                 "Toptal",
                 "Direct clients via LinkedIn"
               ],
-              "avgCTC": "₹3-25 LPA (depends on skill and niche)"
+              "avgCTC": "₹3-25 LPA (depends on skill and niche)",
+              "furtherLinks": [
+                {
+                  "title": "Freelancing Career India",
+                  "url": "https://www.youtube.com/watch?v=FTJ_9FZRlYI"
+                }
+              ]
             },
             "children": {}
           }
@@ -13524,7 +16555,8 @@ const DEFAULT_CAREER_DATA = {
             "Opportunity cost",
             "Expensive abroad"
           ],
-          "tip": "Only pursue if it adds clear value — not as a default."
+          "tip": "Only pursue if it adds clear value — not as a default.",
+          "detail": "Higher education should be a deliberate career accelerator, not a default. M.Tech for specialization, MBA for career switching, MS abroad for immigration — ROI varies wildly by institution tier."
         },
         "children": {
           "mtech": {
@@ -13557,7 +16589,17 @@ const DEFAULT_CAREER_DATA = {
                 "Samsung Research",
                 "Nvidia"
               ],
-              "avgCTC": "₹12-30 LPA (M.Tech); $100-180K (MS US)"
+              "avgCTC": "₹12-30 LPA (M.Tech); $100-180K (MS US)",
+              "furtherLinks": [
+                {
+                  "title": "M.Tech vs MS — Which is Better?",
+                  "url": "https://www.youtube.com/watch?v=7O3FmH1R0xM"
+                },
+                {
+                  "title": "GATE Complete Strategy",
+                  "url": "https://www.youtube.com/watch?v=P_boBdXvx5c"
+                }
+              ]
             },
             "children": {}
           },
@@ -13594,7 +16636,17 @@ const DEFAULT_CAREER_DATA = {
                 "HUL",
                 "P&G"
               ],
-              "avgCTC": "₹25-35 LPA (IIM ABC median)"
+              "avgCTC": "₹25-35 LPA (IIM ABC median)",
+              "furtherLinks": [
+                {
+                  "title": "MBA from IIM — Complete Guide",
+                  "url": "https://www.youtube.com/watch?v=iE-oGjVueKU"
+                },
+                {
+                  "title": "CAT Strategy — IIM Topper",
+                  "url": "https://www.youtube.com/watch?v=1YhR8w0kJGQ"
+                }
+              ]
             },
             "children": {}
           },
@@ -13623,7 +16675,17 @@ const DEFAULT_CAREER_DATA = {
                 "SAP, Siemens (Germany)",
                 "Shopify, RBC (Canada)"
               ],
-              "avgCTC": "$80-180K (US); €50-80K (Germany)"
+              "avgCTC": "$80-180K (US); €50-80K (Germany)",
+              "furtherLinks": [
+                {
+                  "title": "MS in USA Guide for Indians",
+                  "url": "https://www.youtube.com/watch?v=n5WLs2ld0kI"
+                },
+                {
+                  "title": "Germany MS — Tuition Free",
+                  "url": "https://www.youtube.com/watch?v=mSPPkMBDP_A"
+                }
+              ]
             },
             "children": {}
           }
@@ -13642,7 +16704,8 @@ const DEFAULT_CAREER_DATA = {
             "Entry-level modest",
             "First job may not be dream job"
           ],
-          "tip": "First job is for learning, not earning. Optimize for growth."
+          "tip": "First job is for learning, not earning. Optimize for growth.",
+          "detail": "Campus placements are India's most structured entry point into the workforce. Preparation should start 6-8 months before: DSA practice, aptitude prep, resume building, and mock interviews."
         },
         "children": {
           "tech": {
@@ -13676,7 +16739,17 @@ const DEFAULT_CAREER_DATA = {
                 "Infosys",
                 "Wipro"
               ],
-              "avgCTC": "₹3.5-7 LPA (mass); ₹12-25 LPA (dream); ₹30-80 LPA (super-dream)"
+              "avgCTC": "₹3.5-7 LPA (mass); ₹12-25 LPA (dream); ₹30-80 LPA (super-dream)",
+              "furtherLinks": [
+                {
+                  "title": "Crack Tech Placements — Guide",
+                  "url": "https://www.youtube.com/watch?v=WNtzURFOjR4"
+                },
+                {
+                  "title": "Leetcode Guide",
+                  "url": "https://www.youtube.com/watch?v=B31LgI4Y4DQ"
+                }
+              ]
             },
             "children": {}
           },
@@ -13710,7 +16783,17 @@ const DEFAULT_CAREER_DATA = {
                 "Accenture Strategy",
                 "Deloitte Consulting"
               ],
-              "avgCTC": "₹15-30 LPA (entry); ₹40-80 LPA (Partner)"
+              "avgCTC": "₹15-30 LPA (entry); ₹40-80 LPA (Partner)",
+              "furtherLinks": [
+                {
+                  "title": "Consulting Career Guide",
+                  "url": "https://www.youtube.com/watch?v=JZG-aHCXafk"
+                },
+                {
+                  "title": "Case Interview Prep",
+                  "url": "https://www.youtube.com/watch?v=oP3W_Z5fHQU"
+                }
+              ]
             },
             "children": {}
           },
@@ -13740,7 +16823,17 @@ const DEFAULT_CAREER_DATA = {
                 "IBPS/SBI",
                 "Railways"
               ],
-              "avgCTC": "₹6-12 LPA (Group B); ₹10-18 LPA (IAS starting)"
+              "avgCTC": "₹6-12 LPA (Group B); ₹10-18 LPA (IAS starting)",
+              "furtherLinks": [
+                {
+                  "title": "UPSC IAS Strategy",
+                  "url": "https://www.youtube.com/watch?v=r2o4VxfWTMQ"
+                },
+                {
+                  "title": "SSC CGL Prep",
+                  "url": "https://www.youtube.com/watch?v=3pwZEzzfL6k"
+                }
+              ]
             },
             "children": {}
           }
@@ -13759,7 +16852,8 @@ const DEFAULT_CAREER_DATA = {
             "Some expensive",
             "Certificate ≠ competence"
           ],
-          "tip": "Only invest in certs hiring managers actually ask for."
+          "tip": "Only invest in certs hiring managers actually ask for.",
+          "detail": "Industry certifications complement your degree with focused skills. Best certs are ones hiring managers actually ask for — AWS, CFA, PMP. Time them strategically alongside your degree."
         },
         "children": {
           "cloud": {
@@ -13787,7 +16881,17 @@ const DEFAULT_CAREER_DATA = {
                 "TCS",
                 "startups"
               ],
-              "avgCTC": "₹2-8 LPA bump with relevant experience"
+              "avgCTC": "₹2-8 LPA bump with relevant experience",
+              "furtherLinks": [
+                {
+                  "title": "AWS Cloud Practitioner Course",
+                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                },
+                {
+                  "title": "AWS Roadmap",
+                  "url": "https://roadmap.sh/aws"
+                }
+              ]
             },
             "children": {}
           },
@@ -13815,12 +16919,21 @@ const DEFAULT_CAREER_DATA = {
                 "Kotak AMC",
                 "Edelweiss"
               ],
-              "avgCTC": "₹8-15 LPA (L1); ₹15-40 LPA (charterholder)"
+              "avgCTC": "₹8-15 LPA (L1); ₹15-40 LPA (charterholder)",
+              "furtherLinks": [
+                {
+                  "title": "CFA vs CA",
+                  "url": "https://www.youtube.com/watch?v=JLY7x0d9HYk"
+                }
+              ]
             },
             "children": {}
           }
         }
       }
+    },
+    "info": {
+      "detail": "The graduation phase is where career paths crystallize. Choices made during this period — internships, skill-building, exam preparation — have outsized impact on your career trajectory for the next decade."
     }
   },
   "post-grad": {
@@ -13859,7 +16972,13 @@ const DEFAULT_CAREER_DATA = {
             "IBM",
             "TCS Research"
           ],
-          "avgCTC": "₹31-35K/month (fellowship); ₹12-25 LPA (Asst Professor); ₹25-60 LPA (industry R&D)"
+          "avgCTC": "₹31-35K/month (fellowship); ₹12-25 LPA (Asst Professor); ₹25-60 LPA (industry R&D)",
+          "furtherLinks": [
+            {
+              "title": "PhD in India Guide",
+              "url": "https://www.youtube.com/watch?v=k9XD0h8nFEM"
+            }
+          ]
         },
         "children": {}
       },
@@ -13876,7 +16995,8 @@ const DEFAULT_CAREER_DATA = {
             "Time + money",
             "Not all programs equal"
           ],
-          "tip": "ROI varies wildly — tier-1 and tier-3 programs are completely different."
+          "tip": "ROI varies wildly — tier-1 and tier-3 programs are completely different.",
+          "detail": "Professional master's programs serve career advancement. Executive MBAs, MCA, specialized M.Sc. — the key differentiator is whether the program's brand and network will actually move your career forward."
         },
         "children": {
           "exec_mba": {
@@ -13905,7 +17025,13 @@ const DEFAULT_CAREER_DATA = {
               "topRecruiters": [
                 "Career acceleration within current company or switch"
               ],
-              "avgCTC": "₹5-15 LPA salary bump typical"
+              "avgCTC": "₹5-15 LPA salary bump typical",
+              "furtherLinks": [
+                {
+                  "title": "Executive MBA — ISB, IIM",
+                  "url": "https://www.youtube.com/watch?v=H7_N0VxHS3o"
+                }
+              ]
             },
             "children": {}
           },
@@ -13937,7 +17063,17 @@ const DEFAULT_CAREER_DATA = {
                 "Amazon",
                 "Microsoft (through good DSA skills)"
               ],
-              "avgCTC": "₹6-15 LPA (with strong coding skills)"
+              "avgCTC": "₹6-15 LPA (with strong coding skills)",
+              "furtherLinks": [
+                {
+                  "title": "MCA Career Switch",
+                  "url": "https://www.youtube.com/watch?v=vT_k-lgNHJk"
+                },
+                {
+                  "title": "NIMCET Prep",
+                  "url": "https://www.youtube.com/watch?v=qA_b6Z6Y5r4"
+                }
+              ]
             },
             "children": {}
           }
@@ -13956,7 +17092,8 @@ const DEFAULT_CAREER_DATA = {
             "Steep learning curve",
             "Imposter syndrome"
           ],
-          "tip": "Transition gradually — freelance in the new field first."
+          "tip": "Transition gradually — freelance in the new field first.",
+          "detail": "Career transitions are common and respected. Non-tech to tech (via bootcamps) and product management are popular switches. Build demonstrable skills before making the leap."
         },
         "children": {
           "tech_switch": {
@@ -13974,7 +17111,17 @@ const DEFAULT_CAREER_DATA = {
                 "Ageism in some companies"
               ],
               "tip": "Full-stack web dev is the fastest transition path.",
-              "detail": "The most common career transition in India. Coding bootcamps, online courses, and self-study enable transitions. Full-stack development, data analytics, and product management are popular landing spots."
+              "detail": "The most common career transition in India. Coding bootcamps, online courses, and self-study enable transitions. Full-stack development, data analytics, and product management are popular landing spots.",
+              "furtherLinks": [
+                {
+                  "title": "Non-CS to Software Engineer",
+                  "url": "https://www.youtube.com/watch?v=06PN2jRPATw"
+                },
+                {
+                  "title": "Full Stack Roadmap",
+                  "url": "https://roadmap.sh/full-stack"
+                }
+              ]
             },
             "children": {}
           },
@@ -13993,12 +17140,21 @@ const DEFAULT_CAREER_DATA = {
                 "Lots of responsibility, little authority"
               ],
               "tip": "Build a side project and write product teardown blogs.",
-              "detail": "PMs own the 'what' and 'why' of product development. Breaking in requires demonstrating product thinking through side projects, case studies, and writing."
+              "detail": "PMs own the 'what' and 'why' of product development. Breaking in requires demonstrating product thinking through side projects, case studies, and writing.",
+              "furtherLinks": [
+                {
+                  "title": "Product Management Career India",
+                  "url": "https://www.youtube.com/watch?v=R0ffUWpX-4g"
+                }
+              ]
             },
             "children": {}
           }
         }
       }
+    },
+    "info": {
+      "detail": "Post-graduation is about specialization and career transitions. PhD for research, professional degrees for advancement, career switches for reinvention — this phase demands clarity about goals."
     }
   },
   "working": {
@@ -14020,7 +17176,8 @@ const DEFAULT_CAREER_DATA = {
             "Work-life harder",
             "Skills that got you here won't get you there"
           ],
-          "tip": "Visibility matters as much as ability."
+          "tip": "Visibility matters as much as ability.",
+          "detail": "Growth beyond 5 years requires different skills. Technical excellence plateaus — visibility, communication, mentoring, and strategic thinking become primary drivers."
         },
         "children": {
           "leadership": {
@@ -14038,7 +17195,13 @@ const DEFAULT_CAREER_DATA = {
                 "Meeting-heavy days"
               ],
               "tip": "Read 'The Manager's Path' by Camille Fournier.",
-              "detail": "Transitioning from individual contributor to manager is one of the biggest career shifts. It requires developing entirely new skills — delegation, coaching, hiring, conflict resolution, and strategic thinking."
+              "detail": "Transitioning from individual contributor to manager is one of the biggest career shifts. It requires developing entirely new skills — delegation, coaching, hiring, conflict resolution, and strategic thinking.",
+              "furtherLinks": [
+                {
+                  "title": "Engineering to Management",
+                  "url": "https://www.youtube.com/watch?v=iE6V2_SB-D0"
+                }
+              ]
             },
             "children": {}
           },
@@ -14057,7 +17220,13 @@ const DEFAULT_CAREER_DATA = {
                 "Need to stay cutting-edge"
               ],
               "tip": "System design + tech writing + mentoring = Staff Engineer recipe.",
-              "detail": "The Individual Contributor track allows engineers to grow without becoming managers. Staff Engineers and Principal Engineers solve organization-wide technical problems and set technical direction."
+              "detail": "The Individual Contributor track allows engineers to grow without becoming managers. Staff Engineers and Principal Engineers solve organization-wide technical problems and set technical direction.",
+              "furtherLinks": [
+                {
+                  "title": "Staff Engineer — What It Takes",
+                  "url": "https://www.youtube.com/watch?v=LHpq0T4b7_4"
+                }
+              ]
             },
             "children": {}
           },
@@ -14076,7 +17245,17 @@ const DEFAULT_CAREER_DATA = {
                 "Away from family"
               ],
               "tip": "US (H1B), Canada (Express Entry), Germany (Job Seeker Visa), UAE — research your pathway.",
-              "detail": "Common pathways: US H-1B visa (lottery-based), Canada Express Entry (points-based, most accessible), Germany Job Seeker Visa, and UAE employment visas."
+              "detail": "Common pathways: US H-1B visa (lottery-based), Canada Express Entry (points-based, most accessible), Germany Job Seeker Visa, and UAE employment visas.",
+              "furtherLinks": [
+                {
+                  "title": "H1B Visa Guide for Indians",
+                  "url": "https://www.youtube.com/watch?v=Dy7yNt-72dc"
+                },
+                {
+                  "title": "Canada Express Entry",
+                  "url": "https://www.youtube.com/watch?v=5Qb6dNi_RwA"
+                }
+              ]
             },
             "children": {}
           }
@@ -14096,7 +17275,8 @@ const DEFAULT_CAREER_DATA = {
             "Burnout risk",
             "Employer restrictions"
           ],
-          "tip": "Start with something using your existing skills."
+          "tip": "Start with something using your existing skills.",
+          "detail": "Multiple income streams provide financial security. Content creation, consulting, and investing are the three main categories. Start with something using your existing professional skills."
         },
         "children": {
           "content": {
@@ -14113,7 +17293,13 @@ const DEFAULT_CAREER_DATA = {
                 "Results take 6-12 months"
               ],
               "tip": "Technical content on YouTube has massive demand in India.",
-              "detail": "Technical YouTube channels, online courses (Udemy, Skillshare), newsletter writing, and LinkedIn content creation are popular side income sources for professionals."
+              "detail": "Technical YouTube channels, online courses (Udemy, Skillshare), newsletter writing, and LinkedIn content creation are popular side income sources for professionals.",
+              "furtherLinks": [
+                {
+                  "title": "Start a Tech YouTube Channel",
+                  "url": "https://www.youtube.com/watch?v=ZPTSqKR7lnY"
+                }
+              ]
             },
             "children": {}
           },
@@ -14131,7 +17317,13 @@ const DEFAULT_CAREER_DATA = {
                 "Client management"
               ],
               "tip": "Start on Toptal or Upwork — build reputation first.",
-              "detail": "Senior professionals can leverage domain expertise for consulting engagements. Platforms like Toptal, Clarity.fm, and direct referrals are common channels."
+              "detail": "Senior professionals can leverage domain expertise for consulting engagements. Platforms like Toptal, Clarity.fm, and direct referrals are common channels.",
+              "furtherLinks": [
+                {
+                  "title": "Freelance Consulting Side Income",
+                  "url": "https://www.youtube.com/watch?v=7-asmfnkjRo"
+                }
+              ]
             },
             "children": {}
           },
@@ -14150,7 +17342,17 @@ const DEFAULT_CAREER_DATA = {
                 "Emotional discipline"
               ],
               "tip": "Start with index funds (Nifty 50), learn 2 years, then explore stocks.",
-              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point."
+              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point.",
+              "furtherLinks": [
+                {
+                  "title": "Index Fund Investing India",
+                  "url": "https://www.youtube.com/watch?v=RR7e1Y-HBxQ"
+                },
+                {
+                  "title": "Zerodha Varsity",
+                  "url": "https://zerodha.com/varsity/"
+                }
+              ]
             },
             "children": {}
           }
@@ -14169,7 +17371,8 @@ const DEFAULT_CAREER_DATA = {
             "Time commitment",
             "Decision fatigue on what to learn"
           ],
-          "tip": "Learn in public — share your journey on LinkedIn."
+          "tip": "Learn in public — share your journey on LinkedIn.",
+          "detail": "The two highest-ROI upskilling areas: AI literacy and communication skills. The challenge isn't finding resources — it's choosing the right thing and doing it consistently."
         },
         "children": {
           "ai_skills": {
@@ -14186,7 +17389,17 @@ const DEFAULT_CAREER_DATA = {
                 "Tools change monthly"
               ],
               "tip": "Don't just use ChatGPT — learn to build with AI APIs.",
-              "detail": "AI literacy is becoming essential across roles. Understanding how to use AI tools, build AI-powered workflows, and prompt engineer effectively creates significant career advantage."
+              "detail": "AI literacy is becoming essential across roles. Understanding how to use AI tools, build AI-powered workflows, and prompt engineer effectively creates significant career advantage.",
+              "furtherLinks": [
+                {
+                  "title": "AI Tools Every Professional Should Know",
+                  "url": "https://www.youtube.com/watch?v=Q8xVv8Qgbb8"
+                },
+                {
+                  "title": "Prompt Engineering Guide",
+                  "url": "https://www.promptingguide.ai"
+                }
+              ]
             },
             "children": {}
           },
@@ -14203,19 +17416,25 @@ const DEFAULT_CAREER_DATA = {
                 "Takes years of practice"
               ],
               "tip": "Join Toastmasters — best ROI time investment for your career.",
-              "detail": "Public speaking, negotiation, writing, and executive presence become the primary differentiators at senior career levels where technical skills are assumed."
+              "detail": "Public speaking, negotiation, writing, and executive presence become the primary differentiators at senior career levels where technical skills are assumed.",
+              "furtherLinks": [
+                {
+                  "title": "Public Speaking — Toastmasters",
+                  "url": "https://www.youtube.com/watch?v=xSp78RwcAS4"
+                }
+              ]
             },
             "children": {}
           }
         }
       }
+    },
+    "info": {
+      "detail": "For working professionals, career growth requires deliberate strategy: moving up (management), going deeper (IC track), going global, or building side income. Continuous upskilling keeps you relevant."
     }
   }
 };
 
-// ═══════════════════════════════════════════
-// BLOG DATA
-// ═══════════════════════════════════════════
 const DEFAULT_BLOG_DATA = [
   {
     "id": 1779400000000,
