@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-05-26T20:24:48.965Z
+   data.js — exported from admin on 2026-05-26T20:26:37.830Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -17520,7 +17520,7 @@ const DEFAULT_BLOG_DATA = [
   {
     "id": 1779300651991,
     "title": "From the Banks of Tungabhadra to the Control Room of a 210 MW Power Plant",
-    "author": "Chief Editor",
+    "author": "Editor-in-Chief",
     "authorAvatar": "CE",
     "category": "Career Paths",
     "readTime": "5 min",
