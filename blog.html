@@ -15,6 +15,7 @@
 </head>
 <body>
 <script src="bg.js"></script>
+<script src="side-graphics.js"></script>
 
 <main style="padding-top:64px">
 <section class="ip-section" style="max-width:1100px">
@@ -251,6 +252,34 @@
 }
 .article-meta strong{color:var(--text);font-family:var(--font-body);font-weight:600;font-size:.92rem}
 
+/* Interviewee LinkedIn chip below the byline */
+.article-interviewee{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-top:18px;
+}
+.article-interviewee .ai-eyebrow{
+  font-family:var(--font-mono);font-size:.66rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--text3);
+}
+.article-interviewee .ai-link{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 14px;border-radius:20px;
+  background:var(--accent-soft);
+  border:1px solid var(--accent-med);
+  font-family:var(--font-body);font-size:.86rem;font-weight:600;
+  color:var(--accent2);text-decoration:none!important;
+  transition:all .2s;
+}
+.article-interviewee .ai-link svg{color:#0A66C2}
+[data-theme="dark"] .article-interviewee .ai-link svg{color:#5097ea}
+.article-interviewee .ai-link:hover{
+  background:#0A66C2;color:#fff;border-color:#0A66C2;
+  transform:translateY(-1px);
+}
+.article-interviewee .ai-link:hover svg{color:#fff}
+.article-interviewee .ai-arrow{font-size:.78rem;opacity:.7}
+
 .article-cover{
   max-width:900px;margin:0 auto 2.5rem;
   border-radius:var(--radius-lg);overflow:hidden;
@@ -263,6 +292,10 @@
   max-width:680px;margin:0 auto;
   font-family:var(--font-body);
   font-size:1.08rem;line-height:1.85;color:var(--text2);
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
 }
 .article-body p{margin-bottom:1.3rem}
 .article-body p:first-child::first-letter{
@@ -354,8 +387,15 @@
 function renderBlogContent(content, images) {
   if (!content) return '';
   function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  return content.split('\n\n').map(p => {
+  // Normalize: collapse whitespace-only "blank" lines to true `\n\n` so
+  // ## headings + their bodies split cleanly even if the source has stray spaces.
+  var normalized = content
+    .replace(/\r\n/g, '\n')
+    .replace(/[ \t]+\n/g, '\n')      // trailing whitespace on a line → strip
+    .replace(/\n[ \t]+\n/g, '\n\n'); // whitespace-only line → real blank line
+  return normalized.split('\n\n').map(p => {
     var trimmed = p.trim();
+    if (!trimmed) return '';
     // ── Subheadings (markdown-style) ──
     if (/^###\s+/.test(trimmed)) return '<h3 class="article-h3">' + escHtml(trimmed.replace(/^###\s+/, '')) + '</h3>';
     if (/^##\s+/.test(trimmed))  return '<h2 class="article-h2">' + escHtml(trimmed.replace(/^##\s+/, ''))  + '</h2>';
@@ -464,6 +504,15 @@ function renderBlog() {
               <div>${dateStr} · ${b.readTime}</div>
             </div>
           </div>
+          ${b.linkedin ? `
+          <div class="article-interviewee">
+            <span class="ai-eyebrow">Featuring</span>
+            <a href="${b.linkedin}" target="_blank" rel="noopener" class="ai-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/></svg>
+              <span>${b.linkedinName || 'View on LinkedIn'}</span>
+              <span class="ai-arrow">↗</span>
+            </a>
+          </div>` : ''}
         </div>
         ${b.coverImage ? `<div class="article-cover"><img src="${b.coverImage}" alt="${b.title}"></div>` : ''}
         <div class="article-body">

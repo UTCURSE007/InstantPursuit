@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="-D2dfX1Quwp9jeTpaHRpMstrUnxhKxWKIHuVEygXP9o" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Instant Pursuit — Free, gamified career exploration for Indian students. Navigate paths from Class 6 to working professional.">
 <title>Instant Pursuit — Career Explorer</title>
@@ -16,6 +15,7 @@
 </head>
 <body>
 <script src="bg.js"></script>
+<script src="side-graphics.js"></script>
 
 <main style="padding-top:64px">
   <!-- Hero -->
@@ -253,11 +253,16 @@
   transform:translateX(4px);
 }
 .story-item-avatar{
-  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  width:54px;height:54px;border-radius:10px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-body);font-weight:700;font-size:.82rem;
+  font-family:var(--font-body);font-weight:700;font-size:.92rem;
   color:#fff;
   box-shadow:0 2px 8px rgba(0,0,0,0.25);
+  overflow:hidden;position:relative;
+}
+.story-item-avatar img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;
 }
 .story-item-content{flex:1;min-width:0}
 .story-item-title{
@@ -310,8 +315,11 @@ var storyHtml = '';
 if (typeof DEFAULT_BLOG_DATA !== 'undefined') {
   var stories = DEFAULT_BLOG_DATA.slice(0, 3);
   stories.forEach(function(s, i){
+    var thumb = s.coverImage
+      ? '<div class="story-item-avatar"><img src="' + s.coverImage + '" alt="" loading="lazy"></div>'
+      : '<div class="story-item-avatar ' + storyPalette[i % storyPalette.length] + '">' + (s.authorAvatar || '·') + '</div>';
     storyHtml += '<a href="blog.html#post-' + s.id + '" class="story-item">' +
-      '<div class="story-item-avatar ' + storyPalette[i % storyPalette.length] + '">' + s.authorAvatar + '</div>' +
+      thumb +
       '<div class="story-item-content">' +
         '<div class="story-item-title">' + s.title + '</div>' +
         '<div class="story-item-meta"><span class="cat">' + s.category + '</span><span>·</span><span>' + s.author + '</span><span>·</span><span>' + s.readTime + '</span></div>' +

@@ -1,12 +1,33 @@
 /* ═══════════════════════════════════════════
+   data.js — exported from admin on 2026-05-26T15:49:26.399Z
+   Drop this file into your repo root to deploy changes.
+   ═══════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════
    INSTANT PURSUIT — Shared Data & Utilities
    ═══════════════════════════════════════════ */
-const SITE = { name: 'Instant Pursuit', tagline: 'Navigate your career with confidence.', url: 'https://instantpursuit.in', icon: '🔥' };
+const SITE = {"name":"Instant Pursuit","tagline":"Navigate your career with confidence.","url":"https://instantpursuit.in","icon":"🔥"};
 const NAV_LINKS = [
-  { href: 'index.html', label: 'Home', icon: '🏠' },
-  { href: 'explore.html', label: 'Explore', icon: '🗺️' },
-  { href: 'blog.html', label: 'Blog', icon: '✍️' },
-  { href: 'about.html', label: 'About', icon: '📖' },
+  {
+    "href": "index.html",
+    "label": "Home",
+    "icon": "🏠"
+  },
+  {
+    "href": "explore.html",
+    "label": "Explore",
+    "icon": "🗺️"
+  },
+  {
+    "href": "blog.html",
+    "label": "Blog",
+    "icon": "✍️"
+  },
+  {
+    "href": "about.html",
+    "label": "About",
+    "icon": "📖"
+  }
 ];
 function getTheme(){return localStorage.getItem('ip-theme')||'dark'}
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ip-theme',t);const b=document.querySelector('.theme-toggle');if(b)b.textContent=t==='dark'?'☀️':'🌙'}
@@ -35,104 +56,14154 @@ function injectFooter(){
   </div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Free for every student.</div>`;
   document.body.appendChild(f);
 }
-function initPage(){
-  initTheme();
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter()})}
-  else{injectNav();injectFooter()}
-}
+function initPage(){initTheme();if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter()})}else{injectNav();injectFooter()}}
 
 // ═══════════════════════════════════════════
-// CAREER DATA — Full tree with details
+// CAREER DATA
 // ═══════════════════════════════════════════
-const ENG_BRANCHES = {"cs":{label:"Computer Science",icon:"💻",info:{benefits:["Highest demand in job market","Startup-friendly skills","Remote work options"],drawbacks:["Rapidly evolving — constant learning","Highly competitive","Screen-heavy lifestyle"],tip:"Learn to code early — even basic Python opens huge doors.",detail:"Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",topColleges:["IIT Bombay","IIT Delhi","IIT Madras","IIIT Hyderabad","BITS Pilani","IIT Kanpur"],topRecruiters:["Google","Microsoft","Amazon","Meta","Apple","Goldman Sachs","Uber","Flipkart","Atlassian"],avgCTC:"₹8-40 LPA (top colleges)",furtherLinks:[{title:"How to Start Coding — CS50 Lecture 0",url:"https://www.youtube.com/watch?v=IDDmrzzB14M"},{title:"Complete Roadmap to CS Careers",url:"https://roadmap.sh/computer-science"}]},children:{
-"sde":{label:"Software Development",icon:"🖥️",info:{benefits:["Core tech role everywhere","Product-building skills","Remote-friendly"],drawbacks:["Leetcode grind","Long startup hours","Burnout common"],tip:"Build projects on GitHub — they speak louder than CGPA.",detail:"Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",topColleges:["IIT Bombay","IIT Delhi","IIIT Hyderabad","BITS Pilani"],topRecruiters:["Google","Microsoft","Amazon","Flipkart","Atlassian","Uber","Razorpay","PhonePe"],avgCTC:"₹12-50 LPA"},children:{}},
-"datascience":{label:"Data Science / Analytics",icon:"📊",info:{benefits:["Data-driven decisions","Every industry needs it","Stats + coding mix"],drawbacks:["Needs strong statistics","Tool landscape changes fast"],tip:"Master SQL and Python — bread and butter of data roles.",detail:"Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",topColleges:["ISI Kolkata","IIT Madras","IIT Bombay","IIIT Hyderabad","CMI Chennai"],topRecruiters:["Google","Amazon","McKinsey","Tiger Analytics","Fractal","Mu Sigma","Walmart Labs"],avgCTC:"₹10-30 LPA"},children:{}},
-"cybersecurity":{label:"Cybersecurity",icon:"🔐",info:{benefits:["Massive talent shortage","Critical for every org","Ethical hacking is exciting"],drawbacks:["Constant threat updates","Certifications expensive","On-call pressure"],tip:"Start with CompTIA Security+ and CTF competitions.",detail:"Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",topColleges:["IIT Kanpur","IIT Madras","IIIT Delhi","NIT Surathkal"],topRecruiters:["Deloitte","PwC","CrowdStrike","Palo Alto Networks","Cisco","TCS"],avgCTC:"₹8-25 LPA"},children:{}},
-"devops":{label:"DevOps / Cloud",icon:"☁️",info:{benefits:["Bridges dev and ops","Cloud skills future-proof","Automation focus"],drawbacks:["Steep learning curve","On-call duties","Less creative than frontend"],tip:"Get AWS Certified — most recognized cloud certification.",detail:"DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",topColleges:["IIT Bombay","BITS Pilani","NIT Trichy","IIIT Hyderabad"],topRecruiters:["Amazon AWS","Microsoft Azure","Google Cloud","Hashicorp","Red Hat","Razorpay"],avgCTC:"₹10-35 LPA"},children:{}}}},"mech":{label:"Mechanical Engineering",icon:"🔧",info:{benefits:["Core engineering fundamentals","Auto, aero, manufacturing sectors","Design & innovation"],drawbacks:["Fewer IT jobs","May need masters for research","Limited remote work"],tip:"Combine with coding (CAD, robotics) for best opportunities.",detail:"Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",topColleges:["IIT Bombay","IIT Delhi","IIT Madras","IIT Kanpur","NIT Trichy","BITS Pilani"],topRecruiters:["Tata Motors","Mahindra","Maruti Suzuki","Bosch","L&T","ISRO","DRDO","Cummins"],avgCTC:"₹5-15 LPA"},children:{
-"automotive":{label:"Automotive Engineering",icon:"🚗",info:{benefits:["EV revolution creating roles","Work with top OEMs"],drawbacks:["Location-dependent","Slow initial growth"],tip:"EV and autonomous vehicle skills are the golden ticket.",detail:"The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",topColleges:["IIT Madras","IIT Delhi","BITS Pilani","COEP Pune"],topRecruiters:["Tata Motors","Mahindra","Ola Electric","Ather Energy","Hyundai India","Bosch"],avgCTC:"₹5-15 LPA"},children:{}},
-"robotics":{label:"Robotics & Automation",icon:"🦾",info:{benefits:["Cutting-edge field","Industry 4.0 demand","Interdisciplinary"],drawbacks:["Requires coding + hardware","Expensive self-learning"],tip:"ROS (Robot Operating System) is the skill to invest in.",detail:"Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",topColleges:["IIT Bombay","IIT Madras","IIIT Hyderabad"],topRecruiters:["Addverb Technologies","GreyOrange","Bosch","ABB","Amazon Robotics"],avgCTC:"₹6-20 LPA"},children:{}},
-"aerospace":{label:"Aerospace / Defence",icon:"✈️",info:{benefits:["Prestigious sector","ISRO, DRDO, HAL","High intellectual satisfaction"],drawbacks:["Limited private sector","Security clearance","Slow hiring"],tip:"GATE exam is your gateway to ISRO.",detail:"India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",topColleges:["IIT Bombay","IIT Madras","IIT Kanpur","IIST Trivandrum"],topRecruiters:["ISRO","DRDO","HAL","Skyroot Aerospace","Agnikul","Boeing India"],avgCTC:"₹6-18 LPA"},children:{}}}},"ece":{label:"Electronics & Communication",icon:"📡",info:{benefits:["VLSI, telecom, IoT industries","Hardware & software mix","Semiconductor boom"],drawbacks:["Overlap with CS","Lab-intensive","Hardware roles less flexible"],tip:"Focus on embedded systems or VLSI for niche advantage.",detail:"ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",topColleges:["IIT Bombay","IIT Madras","NIT Trichy","BITS Pilani","IIIT Hyderabad"],topRecruiters:["Qualcomm","Intel","Texas Instruments","Samsung","MediaTek","Broadcom","Nvidia"],avgCTC:"₹6-20 LPA"},children:{
-"vlsi":{label:"VLSI / Chip Design",icon:"🔌",info:{benefits:["India semiconductor push","Deep technical work"],drawbacks:["Very niche","Long learning curve","Limited to Bangalore/Hyderabad"],tip:"Learn Verilog/VHDL and EDA tools.",detail:"VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",topColleges:["IIT Bombay","IIT Madras","IISc Bangalore","IIIT Hyderabad"],topRecruiters:["Intel","Qualcomm","Texas Instruments","Synopsys","Cadence","Samsung","AMD","Nvidia"],avgCTC:"₹10-30 LPA"},children:{}},
-"iot":{label:"IoT & Embedded Systems",icon:"📶",info:{benefits:["Smart devices everywhere","Startup opportunities"],drawbacks:["Hardware debugging painful","Fragmented ecosystem"],tip:"Build a home automation project — best portfolio piece.",detail:"IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",topColleges:["IIT Bombay","BITS Pilani","NIT Trichy","VIT"],topRecruiters:["Bosch","Honeywell","Siemens","Samsung","Tata Elxsi","KPIT"],avgCTC:"₹5-18 LPA"},children:{}}}},"civil":{label:"Civil Engineering",icon:"🏗️",info:{benefits:["Infrastructure always in demand","Govt job options","Tangible impact"],drawbacks:["Field work in tough conditions","Slower growth vs IT"],tip:"GATE score is crucial for PSU recruitment.",detail:"Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",topColleges:["IIT Bombay","IIT Delhi","IIT Madras","IIT Roorkee","NIT Trichy"],topRecruiters:["L&T Construction","Tata Projects","NHAI","CPWD","Shapoorji Pallonji"],avgCTC:"₹4-12 LPA"},children:{}},"electrical":{label:"Electrical Engineering",icon:"⚡",info:{benefits:["Power sector backbone","Govt PSU jobs","Renewable energy growth"],drawbacks:["Field postings common","Less glamorous perception"],tip:"Renewable energy and EVs are making this hot again.",detail:"Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",topColleges:["IIT Bombay","IIT Delhi","IIT Madras","IIT Kanpur","NIT Trichy"],topRecruiters:["NTPC","PGCIL","BHEL","Tata Power","Adani Green","Siemens","Schneider Electric"],avgCTC:"₹5-14 LPA"},children:{}},"aiml":{label:"AI & Machine Learning",icon:"🤖",info:{benefits:["Cutting edge","Extremely high demand","Research + industry paths"],drawbacks:["Requires strong math","Rapidly changing","Curriculum evolving"],tip:"Build projects on Kaggle and GitHub — portfolio > marks.",detail:"AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",topColleges:["IIT Bombay","IIT Hyderabad","IIT Madras","IIIT Hyderabad","BITS Pilani"],topRecruiters:["Google DeepMind","Microsoft Research","Amazon AI","Nvidia","Adobe Research","Flipkart"],avgCTC:"₹12-50 LPA (top tier)"},children:{
-"nlp":{label:"NLP / LLMs",icon:"🗣️",info:{benefits:["Hottest AI subfield","Research + product roles"],drawbacks:["Compute-intensive","Moves extremely fast"],tip:"Fine-tune an open-source LLM — best portfolio piece in 2026.",detail:"NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",topColleges:["IIT Bombay","IIIT Hyderabad","IIT Madras","IISc"],topRecruiters:["Google","Microsoft","Meta","Anthropic","Sarvam AI","Adobe"],avgCTC:"₹15-60 LPA"},children:{}},
-"cv":{label:"Computer Vision",icon:"👁️",info:{benefits:["Self-driving cars, medical imaging","Tangible visual output"],drawbacks:["Large dataset needs","GPU-intensive"],tip:"Start with OpenCV, then PyTorch.",detail:"Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",topColleges:["IIT Bombay","IISc Bangalore","IIIT Hyderabad"],topRecruiters:["Google","Nvidia","Tesla","Qualcomm","Samsung"],avgCTC:"₹12-40 LPA"},children:{}}}},"chemical":{label:"Chemical Engineering",icon:"🧪",info:{benefits:["Petrochemical, pharma, FMCG","PSU opportunities"],drawbacks:["Limited private roles","Factory locations"],tip:"Combine with data skills for process analytics.",detail:"Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",topColleges:["IIT Bombay","IIT Madras","IIT Delhi","NIT Trichy","BITS Pilani"],topRecruiters:["IOCL","BPCL","Reliance","HUL","Shell","BASF"],avgCTC:"₹5-15 LPA"},children:{}},"biotech":{label:"Biotech Engineering",icon:"🧬",info:{benefits:["Post-COVID pharma boom","Research-oriented","Genomics"],drawbacks:["Masters almost mandatory","Slow start","Limited core companies"],tip:"Bioinformatics (biology + coding) is where the real jobs are.",detail:"Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",topColleges:["IIT Madras","IIT Delhi","IIT Guwahati","VIT Vellore"],topRecruiters:["Biocon","Serum Institute","Dr. Reddy's","Cipla","Bharat Biotech"],avgCTC:"₹4-10 LPA (₹12-25 with MS/PhD)"},children:{}}};
+const ENG_BRANCHES = {
+  "cs": {
+    "label": "Computer Science",
+    "icon": "💻",
+    "info": {
+      "benefits": [
+        "Highest demand in job market",
+        "Startup-friendly skills",
+        "Remote work options"
+      ],
+      "drawbacks": [
+        "Rapidly evolving — constant learning",
+        "Highly competitive",
+        "Screen-heavy lifestyle"
+      ],
+      "tip": "Learn to code early — even basic Python opens huge doors.",
+      "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Delhi",
+        "IIT Madras",
+        "IIIT Hyderabad",
+        "BITS Pilani",
+        "IIT Kanpur"
+      ],
+      "topRecruiters": [
+        "Google",
+        "Microsoft",
+        "Amazon",
+        "Meta",
+        "Apple",
+        "Goldman Sachs",
+        "Uber",
+        "Flipkart",
+        "Atlassian"
+      ],
+      "avgCTC": "₹8-40 LPA (top colleges)",
+      "furtherLinks": [
+        {
+          "title": "How to Start Coding — CS50 Lecture 0",
+          "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+        },
+        {
+          "title": "Complete Roadmap to CS Careers",
+          "url": "https://roadmap.sh/computer-science"
+        }
+      ]
+    },
+    "children": {
+      "sde": {
+        "label": "Software Development",
+        "icon": "🖥️",
+        "info": {
+          "benefits": [
+            "Core tech role everywhere",
+            "Product-building skills",
+            "Remote-friendly"
+          ],
+          "drawbacks": [
+            "Leetcode grind",
+            "Long startup hours",
+            "Burnout common"
+          ],
+          "tip": "Build projects on GitHub — they speak louder than CGPA.",
+          "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+          "topColleges": [
+            "IIT Bombay",
+            "IIT Delhi",
+            "IIIT Hyderabad",
+            "BITS Pilani"
+          ],
+          "topRecruiters": [
+            "Google",
+            "Microsoft",
+            "Amazon",
+            "Flipkart",
+            "Atlassian",
+            "Uber",
+            "Razorpay",
+            "PhonePe"
+          ],
+          "avgCTC": "₹12-50 LPA"
+        },
+        "children": {}
+      },
+      "datascience": {
+        "label": "Data Science / Analytics",
+        "icon": "📊",
+        "info": {
+          "benefits": [
+            "Data-driven decisions",
+            "Every industry needs it",
+            "Stats + coding mix"
+          ],
+          "drawbacks": [
+            "Needs strong statistics",
+            "Tool landscape changes fast"
+          ],
+          "tip": "Master SQL and Python — bread and butter of data roles.",
+          "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+          "topColleges": [
+            "ISI Kolkata",
+            "IIT Madras",
+            "IIT Bombay",
+            "IIIT Hyderabad",
+            "CMI Chennai"
+          ],
+          "topRecruiters": [
+            "Google",
+            "Amazon",
+            "McKinsey",
+            "Tiger Analytics",
+            "Fractal",
+            "Mu Sigma",
+            "Walmart Labs"
+          ],
+          "avgCTC": "₹10-30 LPA"
+        },
+        "children": {}
+      },
+      "cybersecurity": {
+        "label": "Cybersecurity",
+        "icon": "🔐",
+        "info": {
+          "benefits": [
+            "Massive talent shortage",
+            "Critical for every org",
+            "Ethical hacking is exciting"
+          ],
+          "drawbacks": [
+            "Constant threat updates",
+            "Certifications expensive",
+            "On-call pressure"
+          ],
+          "tip": "Start with CompTIA Security+ and CTF competitions.",
+          "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+          "topColleges": [
+            "IIT Kanpur",
+            "IIT Madras",
+            "IIIT Delhi",
+            "NIT Surathkal"
+          ],
+          "topRecruiters": [
+            "Deloitte",
+            "PwC",
+            "CrowdStrike",
+            "Palo Alto Networks",
+            "Cisco",
+            "TCS"
+          ],
+          "avgCTC": "₹8-25 LPA"
+        },
+        "children": {}
+      },
+      "devops": {
+        "label": "DevOps / Cloud",
+        "icon": "☁️",
+        "info": {
+          "benefits": [
+            "Bridges dev and ops",
+            "Cloud skills future-proof",
+            "Automation focus"
+          ],
+          "drawbacks": [
+            "Steep learning curve",
+            "On-call duties",
+            "Less creative than frontend"
+          ],
+          "tip": "Get AWS Certified — most recognized cloud certification.",
+          "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+          "topColleges": [
+            "IIT Bombay",
+            "BITS Pilani",
+            "NIT Trichy",
+            "IIIT Hyderabad"
+          ],
+          "topRecruiters": [
+            "Amazon AWS",
+            "Microsoft Azure",
+            "Google Cloud",
+            "Hashicorp",
+            "Red Hat",
+            "Razorpay"
+          ],
+          "avgCTC": "₹10-35 LPA"
+        },
+        "children": {}
+      }
+    }
+  },
+  "mech": {
+    "label": "Mechanical Engineering",
+    "icon": "🔧",
+    "info": {
+      "benefits": [
+        "Core engineering fundamentals",
+        "Auto, aero, manufacturing sectors",
+        "Design & innovation"
+      ],
+      "drawbacks": [
+        "Fewer IT jobs",
+        "May need masters for research",
+        "Limited remote work"
+      ],
+      "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+      "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Delhi",
+        "IIT Madras",
+        "IIT Kanpur",
+        "NIT Trichy",
+        "BITS Pilani"
+      ],
+      "topRecruiters": [
+        "Tata Motors",
+        "Mahindra",
+        "Maruti Suzuki",
+        "Bosch",
+        "L&T",
+        "ISRO",
+        "DRDO",
+        "Cummins"
+      ],
+      "avgCTC": "₹5-15 LPA"
+    },
+    "children": {
+      "automotive": {
+        "label": "Automotive Engineering",
+        "icon": "🚗",
+        "info": {
+          "benefits": [
+            "EV revolution creating roles",
+            "Work with top OEMs"
+          ],
+          "drawbacks": [
+            "Location-dependent",
+            "Slow initial growth"
+          ],
+          "tip": "EV and autonomous vehicle skills are the golden ticket.",
+          "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+          "topColleges": [
+            "IIT Madras",
+            "IIT Delhi",
+            "BITS Pilani",
+            "COEP Pune"
+          ],
+          "topRecruiters": [
+            "Tata Motors",
+            "Mahindra",
+            "Ola Electric",
+            "Ather Energy",
+            "Hyundai India",
+            "Bosch"
+          ],
+          "avgCTC": "₹5-15 LPA"
+        },
+        "children": {}
+      },
+      "robotics": {
+        "label": "Robotics & Automation",
+        "icon": "🦾",
+        "info": {
+          "benefits": [
+            "Cutting-edge field",
+            "Industry 4.0 demand",
+            "Interdisciplinary"
+          ],
+          "drawbacks": [
+            "Requires coding + hardware",
+            "Expensive self-learning"
+          ],
+          "tip": "ROS (Robot Operating System) is the skill to invest in.",
+          "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+          "topColleges": [
+            "IIT Bombay",
+            "IIT Madras",
+            "IIIT Hyderabad"
+          ],
+          "topRecruiters": [
+            "Addverb Technologies",
+            "GreyOrange",
+            "Bosch",
+            "ABB",
+            "Amazon Robotics"
+          ],
+          "avgCTC": "₹6-20 LPA"
+        },
+        "children": {}
+      },
+      "aerospace": {
+        "label": "Aerospace / Defence",
+        "icon": "✈️",
+        "info": {
+          "benefits": [
+            "Prestigious sector",
+            "ISRO, DRDO, HAL",
+            "High intellectual satisfaction"
+          ],
+          "drawbacks": [
+            "Limited private sector",
+            "Security clearance",
+            "Slow hiring"
+          ],
+          "tip": "GATE exam is your gateway to ISRO.",
+          "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+          "topColleges": [
+            "IIT Bombay",
+            "IIT Madras",
+            "IIT Kanpur",
+            "IIST Trivandrum"
+          ],
+          "topRecruiters": [
+            "ISRO",
+            "DRDO",
+            "HAL",
+            "Skyroot Aerospace",
+            "Agnikul",
+            "Boeing India"
+          ],
+          "avgCTC": "₹6-18 LPA"
+        },
+        "children": {}
+      }
+    }
+  },
+  "ece": {
+    "label": "Electronics & Communication",
+    "icon": "📡",
+    "info": {
+      "benefits": [
+        "VLSI, telecom, IoT industries",
+        "Hardware & software mix",
+        "Semiconductor boom"
+      ],
+      "drawbacks": [
+        "Overlap with CS",
+        "Lab-intensive",
+        "Hardware roles less flexible"
+      ],
+      "tip": "Focus on embedded systems or VLSI for niche advantage.",
+      "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Madras",
+        "NIT Trichy",
+        "BITS Pilani",
+        "IIIT Hyderabad"
+      ],
+      "topRecruiters": [
+        "Qualcomm",
+        "Intel",
+        "Texas Instruments",
+        "Samsung",
+        "MediaTek",
+        "Broadcom",
+        "Nvidia"
+      ],
+      "avgCTC": "₹6-20 LPA"
+    },
+    "children": {
+      "vlsi": {
+        "label": "VLSI / Chip Design",
+        "icon": "🔌",
+        "info": {
+          "benefits": [
+            "India semiconductor push",
+            "Deep technical work"
+          ],
+          "drawbacks": [
+            "Very niche",
+            "Long learning curve",
+            "Limited to Bangalore/Hyderabad"
+          ],
+          "tip": "Learn Verilog/VHDL and EDA tools.",
+          "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+          "topColleges": [
+            "IIT Bombay",
+            "IIT Madras",
+            "IISc Bangalore",
+            "IIIT Hyderabad"
+          ],
+          "topRecruiters": [
+            "Intel",
+            "Qualcomm",
+            "Texas Instruments",
+            "Synopsys",
+            "Cadence",
+            "Samsung",
+            "AMD",
+            "Nvidia"
+          ],
+          "avgCTC": "₹10-30 LPA"
+        },
+        "children": {}
+      },
+      "iot": {
+        "label": "IoT & Embedded Systems",
+        "icon": "📶",
+        "info": {
+          "benefits": [
+            "Smart devices everywhere",
+            "Startup opportunities"
+          ],
+          "drawbacks": [
+            "Hardware debugging painful",
+            "Fragmented ecosystem"
+          ],
+          "tip": "Build a home automation project — best portfolio piece.",
+          "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+          "topColleges": [
+            "IIT Bombay",
+            "BITS Pilani",
+            "NIT Trichy",
+            "VIT"
+          ],
+          "topRecruiters": [
+            "Bosch",
+            "Honeywell",
+            "Siemens",
+            "Samsung",
+            "Tata Elxsi",
+            "KPIT"
+          ],
+          "avgCTC": "₹5-18 LPA"
+        },
+        "children": {}
+      }
+    }
+  },
+  "civil": {
+    "label": "Civil Engineering",
+    "icon": "🏗️",
+    "info": {
+      "benefits": [
+        "Infrastructure always in demand",
+        "Govt job options",
+        "Tangible impact"
+      ],
+      "drawbacks": [
+        "Field work in tough conditions",
+        "Slower growth vs IT"
+      ],
+      "tip": "GATE score is crucial for PSU recruitment.",
+      "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Delhi",
+        "IIT Madras",
+        "IIT Roorkee",
+        "NIT Trichy"
+      ],
+      "topRecruiters": [
+        "L&T Construction",
+        "Tata Projects",
+        "NHAI",
+        "CPWD",
+        "Shapoorji Pallonji"
+      ],
+      "avgCTC": "₹4-12 LPA"
+    },
+    "children": {}
+  },
+  "electrical": {
+    "label": "Electrical Engineering",
+    "icon": "⚡",
+    "info": {
+      "benefits": [
+        "Power sector backbone",
+        "Govt PSU jobs",
+        "Renewable energy growth"
+      ],
+      "drawbacks": [
+        "Field postings common",
+        "Less glamorous perception"
+      ],
+      "tip": "Renewable energy and EVs are making this hot again.",
+      "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Delhi",
+        "IIT Madras",
+        "IIT Kanpur",
+        "NIT Trichy"
+      ],
+      "topRecruiters": [
+        "NTPC",
+        "PGCIL",
+        "BHEL",
+        "Tata Power",
+        "Adani Green",
+        "Siemens",
+        "Schneider Electric"
+      ],
+      "avgCTC": "₹5-14 LPA"
+    },
+    "children": {}
+  },
+  "aiml": {
+    "label": "AI & Machine Learning",
+    "icon": "🤖",
+    "info": {
+      "benefits": [
+        "Cutting edge",
+        "Extremely high demand",
+        "Research + industry paths"
+      ],
+      "drawbacks": [
+        "Requires strong math",
+        "Rapidly changing",
+        "Curriculum evolving"
+      ],
+      "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+      "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Hyderabad",
+        "IIT Madras",
+        "IIIT Hyderabad",
+        "BITS Pilani"
+      ],
+      "topRecruiters": [
+        "Google DeepMind",
+        "Microsoft Research",
+        "Amazon AI",
+        "Nvidia",
+        "Adobe Research",
+        "Flipkart"
+      ],
+      "avgCTC": "₹12-50 LPA (top tier)"
+    },
+    "children": {
+      "nlp": {
+        "label": "NLP / LLMs",
+        "icon": "🗣️",
+        "info": {
+          "benefits": [
+            "Hottest AI subfield",
+            "Research + product roles"
+          ],
+          "drawbacks": [
+            "Compute-intensive",
+            "Moves extremely fast"
+          ],
+          "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+          "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+          "topColleges": [
+            "IIT Bombay",
+            "IIIT Hyderabad",
+            "IIT Madras",
+            "IISc"
+          ],
+          "topRecruiters": [
+            "Google",
+            "Microsoft",
+            "Meta",
+            "Anthropic",
+            "Sarvam AI",
+            "Adobe"
+          ],
+          "avgCTC": "₹15-60 LPA"
+        },
+        "children": {}
+      },
+      "cv": {
+        "label": "Computer Vision",
+        "icon": "👁️",
+        "info": {
+          "benefits": [
+            "Self-driving cars, medical imaging",
+            "Tangible visual output"
+          ],
+          "drawbacks": [
+            "Large dataset needs",
+            "GPU-intensive"
+          ],
+          "tip": "Start with OpenCV, then PyTorch.",
+          "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+          "topColleges": [
+            "IIT Bombay",
+            "IISc Bangalore",
+            "IIIT Hyderabad"
+          ],
+          "topRecruiters": [
+            "Google",
+            "Nvidia",
+            "Tesla",
+            "Qualcomm",
+            "Samsung"
+          ],
+          "avgCTC": "₹12-40 LPA"
+        },
+        "children": {}
+      }
+    }
+  },
+  "chemical": {
+    "label": "Chemical Engineering",
+    "icon": "🧪",
+    "info": {
+      "benefits": [
+        "Petrochemical, pharma, FMCG",
+        "PSU opportunities"
+      ],
+      "drawbacks": [
+        "Limited private roles",
+        "Factory locations"
+      ],
+      "tip": "Combine with data skills for process analytics.",
+      "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+      "topColleges": [
+        "IIT Bombay",
+        "IIT Madras",
+        "IIT Delhi",
+        "NIT Trichy",
+        "BITS Pilani"
+      ],
+      "topRecruiters": [
+        "IOCL",
+        "BPCL",
+        "Reliance",
+        "HUL",
+        "Shell",
+        "BASF"
+      ],
+      "avgCTC": "₹5-15 LPA"
+    },
+    "children": {}
+  },
+  "biotech": {
+    "label": "Biotech Engineering",
+    "icon": "🧬",
+    "info": {
+      "benefits": [
+        "Post-COVID pharma boom",
+        "Research-oriented",
+        "Genomics"
+      ],
+      "drawbacks": [
+        "Masters almost mandatory",
+        "Slow start",
+        "Limited core companies"
+      ],
+      "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+      "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+      "topColleges": [
+        "IIT Madras",
+        "IIT Delhi",
+        "IIT Guwahati",
+        "VIT Vellore"
+      ],
+      "topRecruiters": [
+        "Biocon",
+        "Serum Institute",
+        "Dr. Reddy's",
+        "Cipla",
+        "Bharat Biotech"
+      ],
+      "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+    },
+    "children": {}
+  }
+};
 
 const DEFAULT_CAREER_DATA = {
-"6-10":{label:"Classes 6–12",description:"Foundation years and stream specialization — pick your path through school.",icon:"📚",children:{
-"science":{label:"Science Stream",icon:"🔬",info:{benefits:["Strong analytical thinking","Wide career options in tech, medicine, research","High demand globally"],drawbacks:["Requires strong math fundamentals","Can be intensive and competitive"],tip:"Best if you love experiments and problem-solving."},children:{
-"pcm":{label:"PCM (Physics, Chemistry, Maths)",icon:"🧮",info:{benefits:["Opens doors to engineering, tech, data science","Highest earning potential streams"],drawbacks:["Very competitive entrance exams (JEE)","Abstract concepts can be challenging"],tip:"If you love puzzles, logic, and building things — PCM is your playground."},children:{
-"engineering":{label:"Engineering (B.Tech / B.E.)",icon:"⚙️",info:{benefits:["Enormous job market","High starting salaries","Diverse specializations","Global opportunities"],drawbacks:["4-year commitment","Intense entrance exams","Quality varies across colleges"],tip:"Focus on a branch that excites you, not just placement stats.",detail:"Engineering remains India's most popular undergraduate pathway, with over 3,000 colleges offering B.Tech/B.E. degrees. The key differentiator is college tier — IITs, NITs, and BITS produce vastly different outcomes than lower-tier private colleges. Branch selection at JEE counselling is consequential, though lateral skill-building (coding, internships) can bridge the gap.",topColleges:["IIT Bombay","IIT Delhi","IIT Madras","BITS Pilani","NIT Trichy","IIIT Hyderabad"],topRecruiters:["Google","Microsoft","Amazon","Goldman Sachs","Qualcomm","TCS","Infosys","L&T"],avgCTC:"₹4-25 LPA (varies by college tier)"},children:{"jee_main":{label:"JEE Main",icon:"🎯",info:{benefits:["Gateway to NITs/IIITs + JEE Adv qualifier","2 attempts per year","CBSE-aligned syllabus"],drawbacks:["~12L candidates fight for ~40K NIT/IIIT seats","High mental pressure"],tip:"NCERT first, then HC Verma + Cengage. Skip a coaching switch in Class 12.",detail:"JEE Main is the national-level engineering entrance — qualifies you for NITs, IIITs, GFTIs (~40K seats) and is the gate to JEE Advanced. Conducted by NTA, 2 sessions per year (Jan + Apr), best score counts. Tests Physics, Chemistry, Maths at NCERT++ level.",topColleges:["NIT Trichy","NIT Surathkal","NIT Warangal","IIIT Hyderabad","IIIT Delhi","DTU","NSUT"],avgCTC:"₹8-25 LPA (top NITs CSE); ₹4-12 LPA (lower NITs core branches)",furtherLinks:[{"title":"How to Crack JEE Main — Strategy by Alakh Pandey","url":"https://www.youtube.com/watch?v=ANuG6F-K1FU"},{"title":"NTA JEE Main — Official Information Bulletin","url":"https://jeemain.nta.nic.in"},{"title":"JEE Main Syllabus & Pattern (Vedantu)","url":"https://www.vedantu.com/iit-jee/jee-main"}]},children:ENG_BRANCHES},"jee_advanced":{label:"JEE Advanced",icon:"🏆",info:{benefits:["Sole gateway to 23 IITs","Most rigorous engineering entrance globally","Lifetime alumni network"],drawbacks:["Only top ~2.5L JEE Main scorers qualify","Subjective + multi-correct + numerical formats","2 attempts max in life"],tip:"Practice past 20 years of papers — patterns repeat more than you'd think.",detail:"JEE Advanced is conducted by IITs (rotation) for admission to 23 IITs + ISM Dhanbad. Only top ~2.5L JEE Main rank-holders qualify to appear. Demands deep conceptual understanding, lateral thinking, and stamina across two 3-hour papers. ~17K IIT seats annually.",topColleges:["IIT Bombay","IIT Delhi","IIT Madras","IIT Kanpur","IIT Kharagpur","IIT Roorkee","IIT Guwahati"],avgCTC:"₹15-50 LPA (top IITs CSE); ₹8-25 LPA (older IITs core branches)",furtherLinks:[{"title":"JEE Advanced 2024 Strategy — KOTA Master","url":"https://www.youtube.com/watch?v=u0bMUgZ2ulQ"},{"title":"Official JEE Advanced Portal (IIT)","url":"https://jeeadv.ac.in"}]},children:ENG_BRANCHES},"bitsat":{label:"BITSAT",icon:"💎",info:{benefits:["BITS Pilani is in IIT-grade","Industry-relevant curriculum","Practice school internships","Strong global alumni"],drawbacks:["No reservation (purely merit)","Higher fees than IITs (₹5L+/year)","Speed-test format favors fast solvers"],tip:"BITS Pilani > BITS Hyderabad > BITS Goa. Practice school internships are the secret sauce.",detail:"BITS Admission Test — single exam for BITS Pilani, Goa, Hyderabad, and Dubai campuses. Online, multiple-attempt within a window. BITS is famously merit-only (no reservations). Practice School internships (2 stints in industry) make BITS grads exceptionally employable.",topColleges:["BITS Pilani","BITS Hyderabad","BITS Goa","BITS Dubai"],topRecruiters:["Microsoft","Google","Goldman Sachs","JP Morgan","Amazon","Atlassian","Uber"],avgCTC:"₹15-45 LPA (BITS Pilani CSE); ₹10-30 LPA (other campuses CSE)",furtherLinks:[{"title":"BITSAT vs JEE — Honest Comparison","url":"https://www.youtube.com/watch?v=A_n50pYprB8"},{"title":"BITS Pilani — Admissions","url":"https://www.bits-pilani.ac.in/admissions"}]},children:ENG_BRANCHES},"comedk":{label:"COMEDK UGET",icon:"🎓",info:{benefits:["Strong Karnataka private engineering","Lower cutoffs than JEE","Computer-based, single test"],drawbacks:["Limited to Karnataka colleges","Private fees (₹2-5L/year)"],tip:"RVCE, BMSCE, PES — these match older NITs in placements. Apply with JEE Main as backup.",detail:"COMEDK UGET (Karnataka) is conducted by the Consortium of Medical, Engineering and Dental Colleges. Single online exam for 150+ private engineering colleges in Karnataka. Top Karnataka private colleges produce excellent CS placements rivaling mid-tier NITs.",topColleges:["RV College of Engineering (Bangalore)","BMS College of Engineering","PES University","MS Ramaiah Institute","Dayananda Sagar","Sir MVIT"],avgCTC:"₹6-20 LPA (RVCE/BMSCE CSE); ₹4-10 LPA (other private colleges)"},children:ENG_BRANCHES},"wbjee":{label:"WBJEE",icon:"🌉",info:{benefits:["Jadavpur University engineering = elite tier","Affordable govt colleges","High ROI"],drawbacks:["Mostly limited to West Bengal","Less national brand recall outside top colleges"],tip:"Jadavpur CSE rivals top NITs in placements — easier rank to crack than JEE Adv.",detail:"West Bengal Joint Entrance Examination for engineering admission to govt + private colleges in WB. Jadavpur University is the crown jewel — its placement record genuinely rivals NITs and older IITs in CSE. IIEST Shibpur (now central) also accepts via JEE Main.",topColleges:["Jadavpur University","IIEST Shibpur","NIT Durgapur","Heritage Institute","Techno India Salt Lake"],avgCTC:"₹8-30 LPA (Jadavpur CSE); ₹4-10 LPA (other colleges)"},children:ENG_BRANCHES},"viteee":{label:"VITEEE",icon:"⚡",info:{benefits:["Slot-based seat selection (transparent)","Multiple campuses","Decent placements at VIT Vellore"],drawbacks:["Private deemed-uni fees (₹2-4L/year)","Quality varies sharply across campuses"],tip:"VIT Vellore CSE only. Other campuses + branches — reconsider.",detail:"VIT Engineering Entrance Examination for VIT Vellore, Chennai, AP, and Bhopal. Slot-based counselling lets you pick your branch + campus transparently after the result. VIT Vellore has one of the most active placement cells in private engineering — 10,000+ offers annually.",topColleges:["VIT Vellore","VIT Chennai","VIT-AP Amaravati","VIT Bhopal"],avgCTC:"₹7-22 LPA (VIT Vellore CSE); ₹4-10 LPA (other branches/campuses)"},children:ENG_BRANCHES},"kiitee":{label:"KIITEE",icon:"🛰️",info:{benefits:["Online from home","Multiple attempts","Improving placements"],drawbacks:["Private deemed-uni fees","Brand below NITs/IITs"],tip:"Reasonable backup if JEE Main rank is borderline.",detail:"KIIT Entrance Examination for KIIT University Bhubaneswar. Conducted online — students attempt from home. KIIT has steadily improved placements over the last decade, with strong CS recruitment.",topColleges:["KIIT University Bhubaneswar"],topRecruiters:["Cognizant","Infosys","Microsoft (selective)","Amazon (selective)","Wipro","TCS"],avgCTC:"₹5-15 LPA (CSE); ₹3-7 LPA (core branches)"},children:ENG_BRANCHES},"srmjee":{label:"SRMJEE",icon:"🎓",info:{benefits:["SRM has 5 campuses with strong tech recruitment","Multiple test slots","Less competitive than JEE"],drawbacks:["Private deemed-uni fees (₹2-4L/year)","Quality varies sharply by campus"],tip:"SRM Kattankulathur (Chennai) campus is the flagship — others noticeably weaker.",detail:"SRM Joint Engineering Entrance Examination for SRM Institute of Science and Technology — campuses in Kattankulathur (Chennai), Vadapalani, Ramapuram, Tiruchirapalli, NCR Ghaziabad, and Sonepat. Computer-based, 3 slots per year. SRM Kattankulathur has strong CS placements with Microsoft, Amazon, and Goldman Sachs recruiting on-campus.",topColleges:["SRM Kattankulathur (Chennai)","SRM Vadapalani","SRM NCR Ghaziabad","SRM AP Amaravati"],avgCTC:"₹6-22 LPA (SRM Kattankulathur CSE); ₹3-8 LPA (other campuses)"},children:ENG_BRANCHES},"met":{label:"MET (Manipal)",icon:"🌊",info:{benefits:["Manipal Institute of Technology has strong brand","International collaborations","Multiple campuses"],drawbacks:["Private fees (₹4-5L/year)","Coastal location (Manipal main campus)"],tip:"Manipal Main (Karnataka) is the flagship — Jaipur and Bengaluru are newer.",detail:"Manipal Entrance Test for Manipal Institute of Technology — Manipal (Karnataka), Jaipur, and Bengaluru campuses. MIT Manipal is one of India's oldest private engineering schools (est. 1957) with a reputation for global exposure and good placements.",topColleges:["MIT Manipal","MIT Bengaluru","Manipal University Jaipur"],topRecruiters:["Microsoft","Amazon","Walmart Labs","Cisco","Oracle","TCS","Infosys"],avgCTC:"₹7-25 LPA (MIT Manipal CSE); ₹4-12 LPA (other branches)"},children:ENG_BRANCHES},"aeee":{label:"AEEE (Amrita)",icon:"🪷",info:{benefits:["Amrita Vishwa Vidyapeetham (NIRF top 10 private)","Tier-1 placements at Coimbatore campus","Strong tech recruitment"],drawbacks:["Private deemed-uni fees","Coimbatore is somewhat remote"],tip:"Coimbatore campus (flagship) — placements rival many NITs.",detail:"Amrita Engineering Entrance Examination for Amrita Vishwa Vidyapeetham — Coimbatore (main), Bengaluru, Chennai, Amritapuri (Kerala). Amrita has consistently ranked among the top private engineering colleges in India. Strong CS recruitment with FAANG companies.",topColleges:["Amrita Coimbatore","Amrita Bengaluru","Amrita Chennai","Amrita Amritapuri (Kerala)"],topRecruiters:["Microsoft","Amazon","Adobe","Goldman Sachs","Walmart Labs","Cisco"],avgCTC:"₹8-25 LPA (Amrita Coimbatore CSE); ₹4-12 LPA (other branches)"},children:ENG_BRANCHES},"mhcet":{label:"MHT-CET (Maharashtra)",icon:"🟠",info:{state:"Maharashtra",council:"CET Cell Maharashtra",benefits:["State quota for Maharashtra-domicile (~85%)","Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)","Less competition than national exams"],drawbacks:["Mostly limited to Maharashtra colleges","Maharashtra-domicile certificate required","Lower national brand recall than NITs/IITs"],tip:"COEP and VJTI are the gold-standard from MHT-CET. Apply alongside JEE Main.",detail:"Maharashtra Common Entrance Test for engineering, pharmacy, and agriculture in Maharashtra. The state has some of India's best non-NIT engineering colleges — COEP Pune and VJTI Mumbai consistently rank in the top 25 nationally.",topColleges:["COEP Pune","VJTI Mumbai","PICT Pune","Walchand College Sangli","SPIT Mumbai","VIT Pune","MIT Pune"],avgCTC:"₹8-25 LPA (COEP/VJTI CSE); ₹4-12 LPA (other colleges)"},children:ENG_BRANCHES},"ts_eamcet":{label:"TS EAMCET (Telangana)",icon:"🌾",info:{state:"Telangana",council:"JNTU Hyderabad",benefits:["State quota for Telangana-domicile (~85%)","Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)","Less competition than national exams"],drawbacks:["Mostly limited to Telangana colleges","Telangana-domicile certificate required","Lower national brand recall than NITs/IITs"],tip:"JNTU Hyderabad CSE is the most competitive — has tier-1 placements.",detail:"Telangana State Engineering, Agriculture and Medical Common Entrance Test for engineering admissions in Telangana. JNTU Hyderabad and OUCE are top govt institutes. Hyderabad has a strong tech ecosystem that benefits local engineering grads.",topColleges:["JNTU Hyderabad","Osmania University College of Engineering","CBIT Hyderabad","Vasavi College","MGIT Gandipet"],avgCTC:"₹6-22 LPA (JNTU/OUCE CSE); ₹3-10 LPA (other colleges)"},children:ENG_BRANCHES},"ap_eapcet":{label:"AP EAPCET (Andhra Pradesh)",icon:"🥭",info:{state:"Andhra Pradesh",council:"APSCHE Mangalagiri",benefits:["State quota for Andhra Pradesh-domicile (~85%)","Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)","Less competition than national exams"],drawbacks:["Mostly limited to Andhra Pradesh colleges","Andhra Pradesh-domicile certificate required","Lower national brand recall than NITs/IITs"],tip:"AU Visakhapatnam and JNTU Kakinada have the strongest placements among AP govt colleges.",detail:"Andhra Pradesh Engineering, Agriculture and Pharmacy Common Entrance Test. APSCHE Mangalagiri conducts counselling for AP-domicile students. Andhra University Vizag is the heritage flagship.",topColleges:["Andhra University College of Engineering Vizag","JNTU Kakinada","SVU College of Engineering Tirupati","VR Siddhartha Engineering"],avgCTC:"₹5-18 LPA (AU/JNTUK CSE); ₹3-9 LPA (other colleges)"},children:ENG_BRANCHES},"keam_eng":{label:"KEAM (Kerala)",icon:"🥥",info:{state:"Kerala",council:"CEE Kerala",benefits:["State quota for Kerala-domicile (~85%)","Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)","Less competition than national exams"],drawbacks:["Mostly limited to Kerala colleges","Kerala-domicile certificate required","Lower national brand recall than NITs/IITs"],tip:"CET Trivandrum CSE is the standout — placements rival mid-tier NITs.",detail:"Kerala Engineering Architecture Medical examination handles both medical and engineering counselling for Kerala-domicile students. College of Engineering Trivandrum (CET) is over 80 years old and has produced ISRO talent.",topColleges:["CET Trivandrum","GEC Thrissur","GEC Barton Hill","RIT Kottayam","MA College Kothamangalam"],avgCTC:"₹5-18 LPA (CET/GEC CSE); ₹3-9 LPA (other colleges)"},children:ENG_BRANCHES},"jkcet":{label:"J&K CET (BOPEE)",icon:"🏔️",info:{state:"Jammu & Kashmir",council:"JKBOPEE",benefits:["State quota for Jammu & Kashmir-domicile (~85%)","Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)","Less competition than national exams"],drawbacks:["Mostly limited to Jammu & Kashmir colleges","Jammu & Kashmir-domicile certificate required","Lower national brand recall than NITs/IITs"],tip:"NIT Srinagar via JEE Main is the top pick; J&K CET serves state-domicile reservations.",detail:"Board of Professional Entrance Examinations Jammu & Kashmir conducts state-level counselling for engineering. J&K-domicile students get reserved seats at NIT Srinagar (the only IIT/NIT in the UT) plus state colleges.",topColleges:["NIT Srinagar (via JEE Main + J&K quota)","SSM College of Engineering","MIET Jammu","Yogananda College of Engineering"],avgCTC:"₹4-15 LPA (NIT Srinagar CSE); ₹3-7 LPA (state colleges)"},children:ENG_BRANCHES},"upsee":{label:"UPSEE / AKTU (UP)",icon:"🛕",info:{state:"Uttar Pradesh",council:"AKTU Lucknow",benefits:["State quota for Uttar Pradesh-domicile (~85%)","Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)","Less competition than national exams"],drawbacks:["Mostly limited to Uttar Pradesh colleges","Uttar Pradesh-domicile certificate required","Lower national brand recall than NITs/IITs"],tip:"IET Lucknow and HBTU Kanpur produce the best placements among AKTU-affiliated state colleges.",detail:"Dr. APJ Abdul Kalam Technical University (AKTU) Lucknow affiliates 700+ engineering colleges in UP. UPSEE is the historical state entrance — now mostly NEET-replaced for medical and JEE-Main-aligned for engineering. State quota seats at IET Lucknow + HBTU Kanpur are gold.",topColleges:["IIIT Allahabad (via JEE)","IET Lucknow","HBTU Kanpur","MMMUT Gorakhpur","BIET Jhansi","REC Kannauj"],avgCTC:"₹5-15 LPA (IET Lucknow/HBTU CSE); ₹3-8 LPA (other colleges)"},children:ENG_BRANCHES}}},
-"bsc_math":{label:"B.Sc. Mathematics",icon:"📐",info:{benefits:["Pure analytical foundation","Leads to data science, actuarial science"],drawbacks:["Fewer direct industry jobs","Masters often needed"],tip:"Pair with coding for a powerful combination.",detail:"B.Sc. Mathematics provides one of the strongest analytical foundations. Graduates excel in quantitative finance, data science, actuarial science, and research. ISI Kolkata and CMI Chennai are globally respected.",topColleges:["ISI Kolkata","CMI Chennai","St. Stephen's Delhi","IISc Bangalore"],topRecruiters:["Goldman Sachs (quant)","WorldQuant","DE Shaw","Actuarial firms"],avgCTC:"₹5-20 LPA (with specialization)"},children:{}},
-"architecture":{label:"Architecture (B.Arch)",icon:"🏛️",info:{benefits:["Creative + technical blend","5-year degree","Growing smart city demand"],drawbacks:["Long course (5 years)","Portfolio-heavy","Income grows slowly"],tip:"Keep a sketch diary — observation is an architect's superpower.",detail:"Architecture is a 5-year professional degree covering building design, sustainability, and urban planning. Admission through JEE Main Paper 2 or NATA. Smart Cities Mission and green building certifications are creating new demand.",topColleges:["IIT Kharagpur","IIT Roorkee","SPA Delhi","CEPT Ahmedabad","JJ College Mumbai"],topRecruiters:["Hafeez Contractor","CP Kukreja","Morphogenesis","Studio Lotus","DLF"],avgCTC:"₹4-12 LPA"},children:{}},
-"merchant_navy":{label:"Merchant Navy",icon:"🚢",info:{benefits:["Tax-free salary","Travel the world","Quick career growth"],drawbacks:["Months away from family","Physically demanding","Strict medical requirements"],tip:"IMU entrance — apply in Class 12.",detail:"Merchant Navy offers one of the highest-paying careers after Class 12. Officers earn ₹6-20 LPA (tax-free), with captains earning ₹30-60 LPA. The trade-off is 6-9 months at sea away from family.",topColleges:["IMU Chennai","IMU Mumbai","TMI Pune","Anglo Eastern Academy"],topRecruiters:["Maersk","MSC","CMA CGM","Synergy Group","Anglo Eastern"],avgCTC:"₹8-25 LPA (tax-free at sea)"},children:{}},
-"nda":{label:"NDA / Defence",icon:"🎖️",info:{benefits:["Serve the nation","Free world-class education","Pension + lifetime benefits"],drawbacks:["Rigorous training","Postings across India","Risk involved"],tip:"Start physical fitness prep in Class 11.",detail:"NDA in Pune is among the world's first tri-service academies. Entry through UPSC NDA exam + SSB interview. Cadets receive a 3-year degree alongside military training, completely free.",topColleges:["NDA Khadakwasla","IMA Dehradun","Naval Academy Ezhimala","AFA Hyderabad"],topRecruiters:["Indian Army","Indian Navy","Indian Air Force"],avgCTC:"₹8-15 LPA + perks (housing, healthcare)"},children:{}}}},
-"pcb":{label:"PCB (Physics, Chemistry, Biology)",icon:"🧬",info:{benefits:["Pathway to medicine, biotech, pharma","Helping humanity directly","Research opportunities"],drawbacks:["NEET extremely competitive","Very long education path","High pressure"],tip:"Start NEET prep in Class 11 if targeting MBBS."},children:{
-"mbbs":{label:"MBBS (Medicine)",icon:"🩺",info:{benefits:["Most respected profession","Direct impact on lives","Job security","High earning after specialization"],drawbacks:["5.5 years + specialization","NEET extremely competitive","Emotional toll"],tip:"Shadow a doctor before committing.",detail:"MBBS is a 5.5-year degree (4.5 academics + 1 internship) with ~20 lakh NEET aspirants competing for ~1 lakh seats. Government college costs ₹50K-5 lakh total vs private at ₹50 lakh-1 crore. Most doctors pursue MD/MS through NEET PG.",topColleges:["AIIMS Delhi","CMC Vellore","JIPMER","AFMC Pune","Maulana Azad","Grant Medical Mumbai"],topRecruiters:["AIIMS","Apollo Hospitals","Fortis","Max Healthcare","Medanta"],avgCTC:"₹8-15 LPA (MBBS); ₹20-60 LPA+ (post-specialization)",furtherLinks:[{title:"Day in the Life of an MBBS Student",url:"https://www.youtube.com/watch?v=_g4dqYDCSLY"},{title:"NEET Preparation Strategy by Dr. Aman Tilak",url:"https://www.youtube.com/watch?v=xPVpq3SKXhM"}]},children:{"entrance_exams":{label:"Entrance Exams",icon:"📝",description:"Routes into MBBS — NEET is universal, but defence and other quotas exist.",info:{benefits:["NEET unified the medical admissions","Equal opportunity nationally"],drawbacks:["~20L aspirants for ~1L MBBS seats","Single attempt per year"],tip:"Top 1500 NEET ranks can apply for AFMC — apply separately for the SSB interview."},children:{
-"neet_ug":{label:"NEET UG",icon:"🩺",info:{benefits:["Single exam for all MBBS, BDS, AYUSH, nursing seats","NCERT-aligned syllabus","Equal opportunity across India"],drawbacks:["~20 lakh aspirants for ~1L MBBS seats","Annual exam — one shot per year","Negative marking"],tip:"NCERT 11+12 cover ~90% of the paper — master it before reaching for reference books.",detail:"NEET UG is the sole gateway to MBBS, BDS, BAMS, BHMS, BUMS, and B.Sc Nursing in India. Conducted by NTA, 200 MCQs in 3hr 20min testing Physics, Chemistry, and Biology. Govt medical seats cost ₹50K-5L total; private and deemed colleges cost ₹50L-1Cr. Top 100 ranks land AIIMS Delhi.",topColleges:["AIIMS Delhi","CMC Vellore","JIPMER","AFMC Pune","Maulana Azad Delhi","Grant Medical Mumbai","KGMU Lucknow"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree; ₹20-60 LPA+ post-specialization",furtherLinks:[{"title":"NEET UG Preparation Strategy — Dr Aman Tilak","url":"https://www.youtube.com/watch?v=xPVpq3SKXhM"},{"title":"NTA NEET — Official Portal","url":"https://neet.nta.nic.in"}]},children:{}},
-"afms":{label:"AFMC / Armed Forces Medical",icon:"🎖️",info:{benefits:["Free education at AFMC Pune","Guaranteed commission as officer","Tax-free perks + housing","Disciplined career path"],drawbacks:["7-year service bond post-degree","Postings determined by armed forces","Limited to top NEET ranks + SSB clearance"],tip:"Apply alongside NEET UG counselling — separate AFMC registration window opens early.",detail:"AFMC Pune admits ~150 candidates annually — top NEET UG rank holders (typically AIR <1500) who clear the Services Selection Board (SSB) interview and medical. Graduates serve as commissioned officers in Indian Army Medical Corps, Navy, or Air Force. Education, lodging, books — all free. Officer-level salary from year 1 of internship.",topColleges:["AFMC Pune (only)"],topRecruiters:["Indian Army Medical Corps","Indian Navy Medical Branch","Indian Air Force Medical Corps"],avgCTC:"₹8-15 LPA (Lieutenant entry); rises to ₹25-60 LPA at senior ranks + lifetime perks",furtherLinks:[{"title":"Life at AFMC Pune — Cadet Experience","url":"https://www.youtube.com/watch?v=oU3vlPiVCNk"},{"title":"AFMC Pune — Admission","url":"https://www.afmc.nic.in"}]},children:{}},
-"jipmer_aiims":{label:"AIIMS & JIPMER (via NEET)",icon:"🏥",info:{benefits:["Elite govt institutes","Top-tier faculty","Heavily subsidized","Best PG outcomes"],drawbacks:["Need top 100-500 NEET ranks","High academic intensity"],tip:"AIIMS Delhi, JIPMER, CMC Vellore — these three are the medical equivalents of IIT Bombay.",detail:"AIIMS (19 institutes nationwide) and JIPMER Puducherry no longer hold separate entrance exams — admission is now via NEET UG since 2020. AIIMS Delhi requires AIR ~50 for general category; AIIMS New (Bhopal, Patna, etc.) require AIR ~500-1500. Tuition is essentially free (₹1500/year).",topColleges:["AIIMS Delhi","AIIMS Bhopal","AIIMS Patna","AIIMS Jodhpur","JIPMER Puducherry"],avgCTC:"Leads to top-tier MBBS — ₹10-20 LPA post-degree; ₹40+ LPA post-specialization"},children:{}}
-,"mh_state":{label:"Maharashtra State Quota",icon:"🟠",info:{state:"Maharashtra",council:"CET Cell Maharashtra",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Maharashtra domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Maharashtra-domicile certificate is essential — start the paperwork early.",detail:"~85% seats reserved for Maharashtra-domicile students. CET Cell Mumbai handles counselling separately from MCC (national 15%). Mumbai colleges are the most competitive.",topColleges:["Grant Medical College Mumbai","LTMMC Sion","BJ Medical Pune","Govt Medical Nagpur","Topiwala National Medical (Nair)"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"ka_state":{label:"Karnataka State Quota (KEA)",icon:"🌴",info:{state:"Karnataka",council:"Karnataka Examinations Authority",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Karnataka domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Karnataka-domicile certificate is essential — start the paperwork early.",detail:"KEA Bengaluru handles 85% state quota counselling. Karnataka has the largest number of govt + private + deemed medical colleges in India — and the Manipal/MS Ramaiah private brands.",topColleges:["Bangalore Medical College","Mysore Medical College","Kasturba Medical (Manipal)","JJM Davangere","M.S. Ramaiah"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"tn_state":{label:"Tamil Nadu State Quota",icon:"🌶️",info:{state:"Tamil Nadu",council:"TN Selection Committee",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Tamil Nadu domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Tamil Nadu-domicile certificate is essential — start the paperwork early.",detail:"TN has one of the strongest govt medical college systems in India with 25+ govt institutes. 69% reservation (highest in India) for OBC/MBC/SC/ST. Domicile + 12th-mark-based merit.",topColleges:["Madras Medical College","Stanley Medical Chennai","Chengalpattu Medical","PSG Coimbatore","Christian Medical College Vellore"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"kl_state":{label:"Kerala State Quota (KEAM)",icon:"🥥",info:{state:"Kerala",council:"Commissioner of Entrance Examinations",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Kerala domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Kerala-domicile certificate is essential — start the paperwork early.",detail:"KEAM (Kerala Engineering Architecture Medical) — used to be the state exam, now Kerala medical counselling is purely NEET-based but separate from MCC. Strong govt college network.",topColleges:["Trivandrum Medical College","Kottayam Medical College","TD Medical College Alappuzha","Calicut Medical College"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"up_state":{label:"UP State Quota (UPMET)",icon:"🛕",info:{state:"Uttar Pradesh",council:"DGME UP",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Uttar Pradesh domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Uttar Pradesh-domicile certificate is essential — start the paperwork early.",detail:"UP has the largest number of state-quota MBBS seats in India (~6000+). DGME UP runs counselling. KGMU Lucknow is the premier institute. UP includes both state-funded and private deemed seats.",topColleges:["KGMU Lucknow","BHU Varanasi","Sarojini Naidu Medical Agra","GSVM Medical Kanpur","LLRM Meerut"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"mp_state":{label:"MP State Quota",icon:"🦜",info:{state:"Madhya Pradesh",council:"DME MP",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Madhya Pradesh domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Madhya Pradesh-domicile certificate is essential — start the paperwork early.",detail:"Madhya Pradesh DME runs 85% quota for MP-domicile students. Gandhi Medical Bhopal and MGM Indore are the flagship govt institutes.",topColleges:["Gandhi Medical College Bhopal","MGM Indore","NSCB Medical Jabalpur","SS Medical Rewa"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"rj_state":{label:"Rajasthan State Quota",icon:"🐪",info:{state:"Rajasthan",council:"RUHS Jaipur",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Rajasthan domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Rajasthan-domicile certificate is essential — start the paperwork early.",detail:"Rajasthan University of Health Sciences (RUHS) runs counselling for state quota. SMS Jaipur is the most competitive — among the top govt medical colleges in India for outcomes.",topColleges:["SMS Medical Jaipur","RNT Medical Udaipur","Sardar Patel Medical Bikaner","JLN Medical Ajmer"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"wb_state":{label:"West Bengal State Quota",icon:"🌅",info:{state:"West Bengal",council:"WBMCC",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold West Bengal domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"West Bengal-domicile certificate is essential — start the paperwork early.",detail:"WBMCC Kolkata runs state quota. Medical College Kolkata is one of the oldest (est. 1835) and most prestigious in Asia. Strong govt college network at low fees.",topColleges:["Medical College Kolkata","RG Kar Medical","NRS Medical College","Bankura Sammilani","IPGMER (PG-focused)"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"ts_state":{label:"Telangana State Quota",icon:"🌾",info:{state:"Telangana",council:"KNRUHS",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Telangana domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Telangana-domicile certificate is essential — start the paperwork early.",detail:"Kaloji Narayana Rao University of Health Sciences (KNRUHS) runs counselling. Osmania Medical Hyderabad is the flagship — strong faculty and patient load.",topColleges:["Osmania Medical Hyderabad","Gandhi Medical Secunderabad","Kakatiya Medical Warangal","MNJ Institute"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"ap_state":{label:"Andhra Pradesh State Quota",icon:"🥭",info:{state:"Andhra Pradesh",council:"NTRUHS",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Andhra Pradesh domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Andhra Pradesh-domicile certificate is essential — start the paperwork early.",detail:"Dr. NTR University of Health Sciences (NTRUHS) Vijayawada runs counselling. AP has 11 govt medical colleges with strong south Indian medical reputation.",topColleges:["Andhra Medical College Vizag","Guntur Medical College","Kurnool Medical College","Siddhartha Medical Vijayawada"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"gj_state":{label:"Gujarat State Quota",icon:"🛕",info:{state:"Gujarat",council:"Gujarat ACPC",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Gujarat domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Gujarat-domicile certificate is essential — start the paperwork early.",detail:"Admission Committee for Professional Courses (ACPC) runs Gujarat counselling. BJ Medical Ahmedabad is the top govt institute. Gujarat has aggressive private college growth too.",topColleges:["BJ Medical Ahmedabad","MP Shah Medical Jamnagar","Smt NHL Municipal Ahmedabad","Govt Medical Surat"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"or_state":{label:"Odisha State Quota",icon:"🌊",info:{state:"Odisha",council:"DMET Odisha",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Odisha domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Odisha-domicile certificate is essential — start the paperwork early.",detail:"DMET Odisha handles state quota counselling. SCB Cuttack is the premier govt institute — one of the oldest in eastern India.",topColleges:["SCB Medical Cuttack","MKCG Medical Berhampur","VSS Medical Burla","PRM Medical Baripada"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"pb_state":{label:"Punjab State Quota (BFUHS)",icon:"🌾",info:{state:"Punjab",council:"Baba Farid University",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Punjab domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Punjab-domicile certificate is essential — start the paperwork early.",detail:"Baba Farid University of Health Sciences (BFUHS) Faridkot runs state quota counselling. CMC Ludhiana is a top-tier minority/private institute with strong outcomes.",topColleges:["Govt Medical College Patiala","Govt Medical College Amritsar","Faridkot Medical College","Christian Medical College Ludhiana"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"bh_state":{label:"Bihar State Quota (BCECE)",icon:"🪷",info:{state:"Bihar",council:"BCECE Board",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Bihar domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Bihar-domicile certificate is essential — start the paperwork early.",detail:"Bihar Combined Entrance Competitive Examination Board (BCECEB) runs counselling. Patna Medical College is one of the oldest in India (est. 1925). Govt seats are heavily competitive.",topColleges:["Patna Medical College","NMCH Patna","DMCH Darbhanga","SKMCH Muzaffarpur","IGIMS Patna"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"jk_state":{label:"J&K State Quota (BOPEE)",icon:"🏔️",info:{state:"Jammu & Kashmir",council:"JKBOPEE",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Jammu & Kashmir domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Jammu & Kashmir-domicile certificate is essential — start the paperwork early.",detail:"Board of Professional Entrance Examinations (BOPEE) J&K handles counselling for state-domicile MBBS seats. GMC Srinagar and SKIMS Soura are the premier institutes. J&K has aggressively expanded medical colleges since 2019, with new GMCs across the UT.",topColleges:["GMC Srinagar","GMC Jammu","SKIMS Soura","GMC Kathua","GMC Anantnag","GMC Baramulla","GMC Rajouri","GMC Doda","GMC Handwara","GMC Udhampur"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}},"ladakh_state":{label:"Ladakh UT Quota",icon:"🏔️",info:{state:"Ladakh",council:"Ladakh Resident Quota",benefits:["85% state quota — easier than All-India 15%","Lower fees at govt colleges (₹50K-5L total)","Domicile reservation favors locals"],drawbacks:["Must hold Ladakh domicile","Counselling rounds separate from MCC","Private deemed colleges still cost ₹50L-1Cr"],tip:"Ladakh-domicile certificate is essential — start the paperwork early.",detail:"Ladakh became a separate Union Territory in 2019 with no dedicated medical college yet (under construction). Ladakh-domicile students get earmarked seats at GMC Srinagar and via the 15% Central Pool through MCC counselling. SC/ST/PWD reservations apply.",topColleges:["Seats reserved at GMC Srinagar / GMC Jammu (via J&K BOPEE)","Central Pool seats (15%) via MCC for Ladakh-domicile"],avgCTC:"Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"},children:{}}}},
-"md_ms":{label:"MD / MS (Specialization)",icon:"🏥",info:{benefits:["Expert status","Private practice potential"],drawbacks:["3 more years","NEET PG competitive","Sleep deprivation"],tip:"Follow interest, not just money — burnout is real.",detail:"MD/MS are 3-year postgraduate degrees. Highest-earning specializations include Dermatology, Radiology, Orthopaedics, and Cardiology. Super-specialization (DM/MCh) commands ₹50 LPA to ₹2 Cr+ in private practice.",topColleges:["AIIMS Delhi","CMC Vellore","JIPMER","PGI Chandigarh","NIMHANS"],topRecruiters:["Apollo","Fortis","Medanta","Private practice"],avgCTC:"₹20-60 LPA (₹1-2 Cr private practice for top specializations)"},children:{}}}},
-"bds":{label:"BDS (Dentistry)",icon:"🦷",info:{benefits:["Shorter than MBBS","Own clinic potential","Growing cosmetic market"],drawbacks:["Lower earning initially","Oversaturated in cities"],tip:"Cosmetic and implant dentistry are where the money is.",detail:"BDS is a 4-year course + 1-year internship. Dentists who specialize in cosmetic dentistry, implantology, or orthodontics can earn very well. Own clinic setup costs ₹10-30 lakh.",topColleges:["Maulana Azad Delhi","Manipal","SDM Dharwad","SRM Dental"],topRecruiters:["Clove Dental","Sabka Dentist","Apollo Dental","Own clinic"],avgCTC:"₹3-8 LPA (employed); ₹8-25 LPA (own clinic)"},children:{}},
-"pharmacy":{label:"B.Pharm (Pharmacy)",icon:"💊",info:{benefits:["Growing pharma industry","Drug development","Healthcare stability"],drawbacks:["Regulatory heavy","Moderate starting salary"],tip:"Clinical research and pharmacovigilance are booming.",detail:"India is the 'pharmacy of the world' — 60% of global vaccines and 20% of generic medicines. B.Pharm graduates work in drug formulation, quality control, regulatory affairs, and clinical research.",topColleges:["NIPER","ICT Mumbai","BIT Mesra","Manipal","Jamia Hamdard"],topRecruiters:["Sun Pharma","Dr. Reddy's","Cipla","Lupin","Biocon","Divis Labs"],avgCTC:"₹3-8 LPA (₹8-18 with M.Pharm)"},children:{}},
-"nursing":{label:"B.Sc. Nursing",icon:"🏥",info:{benefits:["Global demand","Job security","Much higher pay abroad"],drawbacks:["Physically demanding","Undervalued in India","Shift work"],tip:"International license (NCLEX/NMC) can 5x your salary.",detail:"India produces 50,000+ nursing graduates annually. International opportunities in US (NCLEX-RN), UK (NMC), and UAE offer significantly higher salaries. In India, specializations in ICU and oncology nursing command premiums.",topColleges:["AIIMS Delhi","CMC Vellore","JIPMER","Apollo School of Nursing"],topRecruiters:["AIIMS","Apollo","Fortis","UK NHS (abroad)","US hospitals (abroad)"],avgCTC:"₹3-6 LPA (India); ₹25-60 LPA (US/UK)"},children:{}},
-"veterinary":{label:"Veterinary Science",icon:"🐾",info:{benefits:["Serve animals","Govt roles","Dairy & poultry industry"],drawbacks:["Rural postings","Lower pay than human medicine"],tip:"Urban pet care is booming — very profitable.",detail:"BVSc is a 5-year degree covering animal anatomy, surgery, and livestock management. India's ₹9 lakh crore livestock sector depends on veterinarians. Urban pet care is a high-growth segment.",topColleges:["IVRI Bareilly","Bombay Veterinary College","GADVASU Ludhiana"],topRecruiters:["Govt Animal Husbandry","Amul","NDDB","Mars Petcare","Own clinic"],avgCTC:"₹4-10 LPA (govt); ₹8-25 LPA (own clinic)"},children:{}}}},
-"pcmb":{label:"PCMB (All four subjects)",icon:"🎯",info:{benefits:["Maximum flexibility — JEE + NEET eligible","Can decide later"],drawbacks:["Extremely heavy workload","Hard to excel in all four"],tip:"Only if genuinely undecided AND can handle the workload."},children:{}}}},
-"commerce":{label:"Commerce Stream",icon:"📊",info:{benefits:["Strong business acumen","CA, MBA, finance pathways","Stable careers"],drawbacks:["'Less prestigious' perception","Needs self-driven learning"],tip:"Commerce + tech skills = unstoppable."},children:{
-"ca":{label:"Chartered Accountancy (CA)",icon:"🧾",info:{benefits:["Highly respected","Excellent earning potential","Independent practice","Global recognition"],drawbacks:["Very low pass rates (~5-10%)","4-5 years, 3 levels","Articleship demanding"],tip:"Start CA Foundation right after 12th.",detail:"CA is India's premier accounting qualification (ICAI). The 3-level journey takes 4-5 years. CAs work in auditing, taxation, and corporate finance. Big 4 firms pay ₹8-25 LPA, while experienced practitioners earn ₹30-80 LPA+.",topColleges:["ICAI (self-study + coaching)"],topRecruiters:["Deloitte","PwC","EY","KPMG","Grant Thornton","Reliance","Tata Group"],avgCTC:"₹8-25 LPA (employed); ₹15-80 LPA (practice)",furtherLinks:[{title:"CA Journey Explained in 15 Minutes",url:"https://www.youtube.com/watch?v=Z_VXQX9qJio"},{title:"ICAI Official Website",url:"https://www.icai.org"}]},children:{}},
-"cs_prof":{label:"Company Secretary (CS)",icon:"📋",info:{benefits:["Corporate governance expert","Independent practice","Board-level interactions"],drawbacks:["Less known than CA","Low pass rates"],tip:"CS + CA combo = corporate governance powerhouse.",detail:"Company Secretaries ensure corporate legal and regulatory compliance. ICSI conducts the 3-level exam. Stricter governance norms post-Companies Act 2013 have increased demand.",topColleges:["ICSI (self-study + coaching)"],topRecruiters:["Reliance","Tata Group","Infosys","Listed companies (mandatory for listed cos)"],avgCTC:"₹5-15 LPA"},children:{}},
-"bcom":{label:"B.Com / BBA",icon:"💼",info:{benefits:["Broad business education","MBA preparation","Entrepreneurship ready"],drawbacks:["Generic without specialization","Lower starting salaries"],tip:"Internships and certifications matter more than marks.",detail:"B.Com and BBA are stepping stones to MBA, CA, CS, and professional certifications. Use the 3 years for internships, certifications (Tally, financial modelling), and exam preparation.",topColleges:["SRCC Delhi","St. Xavier's Mumbai","Christ University","Loyola Chennai","Hindu College Delhi"],topRecruiters:["Deloitte","EY","KPMG","HDFC Bank","Amazon (ops)"],avgCTC:"₹3-8 LPA (B.Com); ₹15-40 LPA (post top MBA)"},children:{}},
-"economics":{label:"B.A. Economics",icon:"📈",info:{benefits:["Analytical + social science","Policy, consulting, finance","UPSC friendly"],drawbacks:["Abstract at higher levels","Needs quantitative skills"],tip:"Economics + data analytics is a powerful combo.",detail:"Economics programs from DSE, JNU, ISI, and Ashoka produce graduates who excel in policy, consulting, and finance. Modern economics is increasingly computational. Highly valued for UPSC Civil Services.",topColleges:["DSE Delhi","JNU","ISI Kolkata","Ashoka University","IGIDR Mumbai"],topRecruiters:["RBI","NITI Aayog","World Bank","McKinsey","BCG","Goldman Sachs"],avgCTC:"₹5-15 LPA (varies by institution)"},children:{}},
-"banking":{label:"Banking & Finance",icon:"🏧",info:{benefits:["Stable career","Govt bank jobs","Private banks pay well"],drawbacks:["Competitive exams","Sales pressure in private banks"],tip:"CFA or FRM certification makes you stand out.",detail:"Govt banks (SBI, PNB) recruit through IBPS with job security and pensions. Private banks (HDFC, ICICI) offer higher salaries. Investment banking (Goldman, JP Morgan) is the elite tier at ₹15-40 LPA.",topColleges:["Any graduation for bank exams","IIMs for investment banking"],topRecruiters:["SBI","HDFC Bank","ICICI","Goldman Sachs","JP Morgan","Razorpay","Zerodha"],avgCTC:"₹4-8 LPA (govt); ₹15-40 LPA (investment banking)"},children:{}}}},
-"arts":{label:"Arts / Humanities",icon:"🎨",info:{benefits:["Creative expression","Diverse paths — law, media, design, civil services","Critical thinking"],drawbacks:["Often undervalued","Lower average starting salaries"],tip:"Arts is not a backup — it's a launchpad."},children:{"entrance_exams":{label:"Law Entrance — CLAT",icon:"⚖️",info:{benefits:["Structured path to top institutes","Coaching ecosystem developed"],drawbacks:["Immense pressure","Mental health impact"],tip:"Students who sleep well and exercise perform better."},children:{"clat":{label:"CLAT",icon:"⚖️",info:{benefits:["Gateway to NLUs","Less competition than JEE/NEET"],drawbacks:["Aptitude-based","Current affairs heavy"],tip:"Read newspapers daily — CLAT rewards breadth over depth.",detail:"CLAT tests English, Current Affairs, Legal Reasoning, Logical Reasoning, and Quantitative Techniques through passage-based questions for admission to 22 NLUs.",topColleges:["NLSIU Bangalore","NALSAR","NLU Delhi","NUJS Kolkata"],avgCTC:"₹12-28 LPA from top NLUs"},children:{}}}},
-"law":{label:"Law (BA LLB / LLB)",icon:"⚖️",info:{benefits:["Prestigious profession","Corporate law pays very well","Social impact"],drawbacks:["5-year integrated course","CLAT competitive"],tip:"Moot courts and internships from year 1 are crucial.",detail:"Law has transformed from litigation-dominated to spanning corporate law, IP, tech law, and policy. Top NLU graduates receive ₹15-30 LPA offers from Tier 1 firms. CLAT is the entrance exam for NLUs.",topColleges:["NLSIU Bangalore","NALSAR Hyderabad","NLU Delhi","NUJS Kolkata"],topRecruiters:["AZB & Partners","Cyril Amarchand","Trilegal","Khaitan & Co","Shardul Amarchand"],avgCTC:"₹12-28 LPA (top NLUs)"},children:{}},
-"design":{label:"Design (B.Des)",icon:"🎭",info:{benefits:["High UX/UI demand","Creative fulfillment","Tech + art intersection","Freelance-friendly"],drawbacks:["Portfolio-dependent","Subjective evaluation"],tip:"Start building a portfolio — NID and NIFT love raw creativity.",detail:"Design spans UX/UI, product design, fashion, and animation. Tech industry's appetite for designers is insatiable. Admission through NID DAT, NIFT entrance, UCEED.",topColleges:["NID Ahmedabad","NIFT Delhi","IDC IIT Bombay","Srishti Bangalore"],topRecruiters:["Google","Microsoft","Flipkart","Swiggy","Adobe","Design studios"],avgCTC:"₹6-20 LPA"},children:{}},
-"journalism":{label:"Journalism & Mass Comm",icon:"📰",info:{benefits:["Dynamic career","Digital media boom","Storytelling skills"],drawbacks:["Irregular hours","Modest starting pay"],tip:"Start a blog or YouTube channel — your portfolio IS your resume.",detail:"Digital revolution has created new opportunities — content creation, social media, data journalism, podcasts. Traditional newsrooms shrink but digital-first publications hire.",topColleges:["IIMC Delhi","ACJ Chennai","Xavier's Mumbai","Jamia Millia"],topRecruiters:["India Today","The Hindu","Economic Times","BBC India","YouTube/digital platforms"],avgCTC:"₹3-10 LPA (traditional); ₹5-25 LPA (digital)"},children:{}},
-"psychology":{label:"B.A. Psychology",icon:"🧠",info:{benefits:["Mental health awareness growing","Counselling in demand","HR and OB roles"],drawbacks:["Masters mandatory for practice","Low starting pay","Long clinical path"],tip:"Clinical psychology needs RCI license (M.Phil mandatory).",detail:"Psychology is experiencing a renaissance. Clinical psychologists, organizational psychologists, UX researchers, and counsellors are in demand. Online therapy platforms are expanding access.",topColleges:["Christ University","Lady Shri Ram","TISS Mumbai","NIMHANS","Ambedkar University"],topRecruiters:["Hospitals","Schools","Corporate HR","Practo","Amaha","NGOs"],avgCTC:"₹3-8 LPA (MA); ₹8-20 LPA (M.Phil Clinical)"},children:{}},
-"polsci":{label:"Political Science",icon:"🌐",info:{benefits:["UPSC alignment","Think tanks","Diplomatic service"],drawbacks:["Limited private sector","Academic-oriented"],tip:"IR specialization opens doors to UN and embassies."},children:{}},
-"teaching":{label:"Teaching / Education",icon:"👩‍🏫",info:{benefits:["Noble profession","Job security","Work-life balance"],drawbacks:["Lower private salaries","TET/CTET required"],tip:"EdTech has opened ₹10-25 LPA opportunities for good teachers.",detail:"Teaching spans govt schools (TET/CTET), private schools, college teaching (NET/SET), coaching, and EdTech. The coaching industry and YouTube content creation have created teacher-entrepreneurs earning ₹10-50 LPA.",topColleges:["B.Ed programs","NET/SET qualification"],topRecruiters:["KVS","NVS","Allen","FIITJEE","Unacademy","PhysicsWallah"],avgCTC:"₹3-8 LPA (school); ₹8-25 LPA (coaching/EdTech)"},children:{}}}},
-"vocational":{label:"Vocational / Skill-Based",icon:"🛠️",info:{benefits:["Practical job-ready skills","Earn while learning","Growing respect for trades"],drawbacks:["Social stigma exists","Lower ceiling without further education"],tip:"Germany, Australia, Canada have huge demand for skilled Indian workers."},children:{
-"iti":{label:"ITI / Diploma",icon:"🔩",info:{benefits:["Job-ready in 1-2 years","Govt + private roles"],drawbacks:["Perception issues","Lower starting salary"],tip:"Explore Germany's Ausbildung programs.",detail:"ITIs and polytechnics offer the fastest route to employment for hands-on learners. Lateral entry to B.Tech (2nd year) is possible for diploma holders.",topColleges:["Government ITIs","Government Polytechnics"],topRecruiters:["Indian Railways","ONGC","SAIL","BHEL","Tata Motors","Maruti"],avgCTC:"₹2-5 LPA (ITI); ₹3-7 LPA (diploma)"},children:{}},
-"hospitality":{label:"Hotel Management",icon:"🏨",info:{benefits:["Global opportunities","Cruise ships, luxury hotels"],drawbacks:["Long standing hours","Weekend work"],tip:"International hotel chains have management trainee programs.",detail:"Hotel Management covers food production, F&B service, front office, and hospitality management. International placements in Dubai, Singapore, and Europe offer higher packages.",topColleges:["IHM Mumbai","IHM Delhi","IHM Bangalore","Welcomgroup Manipal"],topRecruiters:["Taj Hotels","Oberoi","Marriott","Hyatt","ITC Hotels"],avgCTC:"₹3-8 LPA (India); ₹8-20 LPA (international)"},children:{}},
-"paramedical":{label:"Paramedical Courses",icon:"🩻",info:{benefits:["Short duration","Hospital jobs available","Growing healthcare"],drawbacks:["Capped growth","Repetitive work"],tip:"Physiotherapy and radiology have best growth.",detail:"Paramedical courses train lab technicians, radiographers, physiotherapists, and EMTs. Physiotherapy (BPT) is a 4.5-year degree with excellent prospects in sports and neuro-rehab.",topColleges:["CMC Vellore","Manipal","AIIMS allied health"],topRecruiters:["Apollo","Fortis","Max","Dr. Lal PathLabs","SRL Diagnostics"],avgCTC:"₹2-6 LPA (technician); ₹4-12 LPA (physio)"},children:{}}}}
-,"alternative":{label:"Alternative Paths",description:"Beyond traditional streams — global options, gap years, skill-based routes.",icon:"🔀",info:{benefits:["Not everyone needs a traditional degree","Skill economy growing"],drawbacks:["Social pressure","Fewer safety nets"],tip:"Unconventional path with a plan beats conventional path without one."},children:{"cuet":{label:"CUET",icon:"🏫",info:{benefits:["Single exam for 40+ central universities","Levels playing field"],drawbacks:["Pattern still evolving","Logistical issues"],tip:"Pick domain subjects carefully — CUET rewards specialization.",detail:"CUET replaced board-marks-based cutoffs at DU, JNU, BHU, and 40+ central universities since 2022. Tests domain subjects, General Test, and Language."},children:{}},"abroad_ug":{label:"Study Abroad (UG)",icon:"✈️",info:{benefits:["World-class education","Global exposure","Immigration pathways"],drawbacks:["₹20-60 lakh+ cost","Cultural adjustment","Visa uncertainties"],tip:"SAT + extracurriculars + essays > 12th marks for US.",detail:"US, UK, Canada, Australia, Germany are top destinations. US uses holistic admissions (SAT, essays, extracurriculars). Germany offers tuition-free programs. Post-study work visas provide career entry.",topColleges:["MIT, Stanford, Harvard (US)","Oxford, Cambridge (UK)","UofT, McGill (Canada)","TU Munich (Germany — free)"],avgCTC:"Varies — $60-150K in US"},children:{}},"gap_year":{label:"Gap Year",icon:"🧭",info:{benefits:["Discover interests","Mental health reset"],drawbacks:["Social stigma in India","Can lose momentum"],tip:"Structured gap year with goals = gold. Unplanned = risky."},children:{}},"freelancing":{label:"Freelancing / Digital Skills",icon:"💻",info:{benefits:["Start earning at 18","Global clients","Portfolio > degree"],drawbacks:["No stable income initially","Self-marketing needed"],tip:"Pick ONE skill, get really good, build 5 portfolio pieces.",detail:"High-demand freelance skills: web development, graphic design, video editing, copywriting. Indian freelancers benefit from currency advantage — $30-50/hr = ₹15-25 LPA+.",topColleges:["Online learning (Coursera, Udemy, YouTube)"],topRecruiters:["Upwork","Fiverr","Toptal","Direct clients via LinkedIn"],avgCTC:"₹3-25 LPA (depends on skill and niche)"},children:{}}}}}},
-
-"graduation":{label:"Graduation",description:"Degree in progress — plan your next move!",icon:"🎓",children:{
-"higher_ed":{label:"Higher Education",icon:"📚",info:{benefits:["Deeper expertise","Better career positioning"],drawbacks:["2-5 more years","Opportunity cost","Expensive abroad"],tip:"Only pursue if it adds clear value — not as a default."},children:{
-"mtech":{label:"M.Tech / MS",icon:"⚙️",info:{benefits:["Specialization depth","GATE scholarship for M.Tech","MS abroad = immigration"],drawbacks:["2-3 years more","ROI unclear for some branches"],tip:"India: GATE → IIT M.Tech (free + stipend). Abroad: GRE → US/Germany MS.",detail:"M.Tech from IITs via GATE is fully funded with ₹12,400/month stipend — India's best-value higher education. MS abroad costs ₹25-60 lakh but provides global exposure. Germany's tuition-free programs are underexplored.",topColleges:["IIT Bombay","IIT Madras","IISc","Stanford, CMU (US)","TU Munich (Germany)"],topRecruiters:["Google","Microsoft","Intel","Qualcomm","Samsung Research","Nvidia"],avgCTC:"₹12-30 LPA (M.Tech); $100-180K (MS US)"},children:{}},
-"mba":{label:"MBA",icon:"📊",info:{benefits:["Career accelerator","₹15-40 LPA from IIMs","Network worth crores"],drawbacks:["CAT competitive","₹15-25L fees","2 years opportunity cost"],tip:"2-4 years work experience before MBA gives best ROI.",detail:"MBA with CAT as primary entrance for IIMs. IIM ABC produce median packages of ₹25-35 LPA. Valuable as career switch tool — engineers to consulting/finance. Specializations: finance, marketing, operations, analytics.",topColleges:["IIM Ahmedabad","IIM Bangalore","IIM Calcutta","ISB Hyderabad","XLRI","FMS Delhi"],topRecruiters:["McKinsey","BCG","Bain","Goldman Sachs","Amazon","HUL","P&G"],avgCTC:"₹25-35 LPA (IIM ABC median)"},children:{}},
-"abroad_ms":{label:"Study Abroad (Masters)",icon:"🌍",info:{benefits:["Global education","Immigration pathway","Better research infra"],drawbacks:["₹25-60 lakh investment","Visa uncertainty"],tip:"Germany offers tuition-free MS — explore DAAD scholarships.",detail:"US remains top for STEM MS with 3-year OPT. Germany offers tuition-free public universities. Canada's PR pathway makes it attractive. ROI depends on university, program, and job market.",topColleges:["MIT, Stanford, CMU (US)","TU Munich, RWTH Aachen (Germany)","UofT, Waterloo (Canada)"],topRecruiters:["Google, Amazon, Microsoft (US)","SAP, Siemens (Germany)","Shopify, RBC (Canada)"],avgCTC:"$80-180K (US); €50-80K (Germany)"},children:{}}}},
-"placements":{label:"Placements / Jobs",icon:"💼",info:{benefits:["Start earning immediately","Practical experience","Financial independence"],drawbacks:["Entry-level modest","First job may not be dream job"],tip:"First job is for learning, not earning. Optimize for growth."},children:{
-"tech":{label:"Tech / IT Roles",icon:"💻",info:{benefits:["Largest campus recruiter","₹4-20 LPA","Remote options"],drawbacks:["Service companies monotonous","Bench periods","Support roles initially"],tip:"DSA + system design + projects = placement trifecta.",detail:"IT sector is India's largest campus recruiter — mass (TCS, Infosys at ₹3.5-7 LPA) to dream (Amazon, Microsoft at ₹15-40 LPA) to super-dream (Google, Goldman at ₹30-80 LPA).",topColleges:["IITs","NITs","BITS","IIIT Hyderabad"],topRecruiters:["Google","Microsoft","Amazon","Goldman Sachs","TCS","Infosys","Wipro"],avgCTC:"₹3.5-7 LPA (mass); ₹12-25 LPA (dream); ₹30-80 LPA (super-dream)"},children:{}},
-"consulting":{label:"Consulting",icon:"📋",info:{benefits:["MBB prestige","Steep learning curve","Diverse problems"],drawbacks:["80+ hour weeks","Up-or-out culture","Burnout"],tip:"Case interview prep is everything — practice 50+ cases.",detail:"MBB (McKinsey, BCG, Bain) offers rapid learning, diverse exposure, and strong exit opportunities. Entry through top IIMs or IITs. Interview = case studies + behavioral.",topColleges:["IIM ABC","ISB","IIT Bombay","XLRI"],topRecruiters:["McKinsey","BCG","Bain","Kearney","Accenture Strategy","Deloitte Consulting"],avgCTC:"₹15-30 LPA (entry); ₹40-80 LPA (Partner)"},children:{}},
-"govt":{label:"Government Exams",icon:"🏛️",info:{benefits:["Job security","Pension + benefits","Respect"],drawbacks:["1-5 year preparation","Low selection rates","Age limit"],tip:"Have a Plan B — average UPSC aspirant takes 3-4 attempts.",detail:"UPSC (IAS/IPS) is most prestigious but ~0.1% selection rate. SSC, Banking, Railways offer more accessible alternatives. Key: manage uncertainty with a backup plan.",topColleges:["Any graduation qualifies","Coaching: Vajiram & Ravi, Vision IAS, Drishti IAS"],topRecruiters:["UPSC (IAS, IPS, IFS)","SSC (CGL, CHSL)","IBPS/SBI","Railways"],avgCTC:"₹6-12 LPA (Group B); ₹10-18 LPA (IAS starting)"},children:{}}}},
-"certifications":{label:"Certifications",icon:"📜",info:{benefits:["Focused skill acquisition","Industry-recognized","Done alongside degree"],drawbacks:["Some expensive","Certificate ≠ competence"],tip:"Only invest in certs hiring managers actually ask for."},children:{
-"cloud":{label:"AWS / Azure / GCP",icon:"☁️",info:{benefits:["Cloud skills in massive demand","₹2-8 LPA salary bump"],drawbacks:["Exam fees ₹10-25K","Hands-on > cert alone"],tip:"AWS Solutions Architect Associate — start there.",detail:"Cloud certifications validate skills on AWS (~32% market share), Azure (~22%), GCP (~11%). Most popular: AWS Solutions Architect Associate.",topColleges:["Self-study: A Cloud Guru, Stephane Maarek (Udemy)"],topRecruiters:["Amazon","Microsoft","Google","Accenture","TCS","startups"],avgCTC:"₹2-8 LPA bump with relevant experience"},children:{}},
-"finance_cert":{label:"CFA / FRM",icon:"📈",info:{benefits:["CFA: gold standard in finance","₹10-30 LPA with experience"],drawbacks:["3 levels over 2-4 years","40-50% pass rates"],tip:"Start CFA Level 1 in final year.",detail:"CFA covers ethics, portfolio management, equity, fixed income, and derivatives across 3 levels. FRM focuses on risk management (2 parts). Both globally recognized.",topColleges:["Self-study: CFA Institute materials, Kaplan Schweser"],topRecruiters:["Goldman Sachs","JP Morgan","HDFC AMC","Kotak AMC","Edelweiss"],avgCTC:"₹8-15 LPA (L1); ₹15-40 LPA (charterholder)"},children:{}}}}
-}},
-"post-grad":{label:"Post-Graduation",description:"Specialize and accelerate!",icon:"📜",children:{
-"phd":{label:"PhD / Research",icon:"🔬",info:{benefits:["Domain expert","Academic career","₹30-40K/month fellowship"],drawbacks:["4-6 years","Low stipend","Isolation","Tough job market"],tip:"Choose your advisor carefully — matters more than the university.",detail:"PhD is a 4-6 year research commitment producing new knowledge. CSIR/UGC provides ₹31-35K/month fellowships. The academic job market is competitive but industry R&D labs (Google, Microsoft) are alternatives.",topColleges:["IISc Bangalore","IIT Bombay","IIT Madras","TIFR","NCBS"],topRecruiters:["IITs/IISc (faculty)","Google Research","Microsoft Research","IBM","TCS Research"],avgCTC:"₹31-35K/month (fellowship); ₹12-25 LPA (Asst Professor); ₹25-60 LPA (industry R&D)"},children:{}},
-"prof_masters":{label:"Professional Masters",icon:"📖",info:{benefits:["Specialized expertise","Career acceleration","Higher salary band"],drawbacks:["Time + money","Not all programs equal"],tip:"ROI varies wildly — tier-1 and tier-3 programs are completely different."},children:{
-"exec_mba":{label:"Executive MBA",icon:"👔",info:{benefits:["For working professionals","Weekend/online formats","Immediate salary jump"],drawbacks:["Exhausting with job","Less immersive","Quality varies"],tip:"ISB, IIM executive programs have best brand value.",detail:"Executive MBA programs cater to working professionals with 5-15 years of experience, offering weekend or modular formats without leaving the job.",topColleges:["ISB Hyderabad","IIM Bangalore (EPGP)","IIM Calcutta (PGPEX)","XLRI","Great Lakes"],topRecruiters:["Career acceleration within current company or switch"],avgCTC:"₹5-15 LPA salary bump typical"},children:{}},
-"mca":{label:"MCA / Career Switch to Tech",icon:"💻",info:{benefits:["Non-CS to tech switch","NIMCET for top NITs"],drawbacks:["2-3 years","'Not real CS' stigma"],tip:"Build a strong GitHub profile during MCA.",detail:"MCA allows non-CS graduates to transition into tech. NIMCET entrance for top NITs. The key is self-learning beyond curriculum — DSA, projects, and open-source.",topColleges:["NIT Trichy","NIT Warangal","NIT Allahabad","JNU","BHU"],topRecruiters:["TCS","Infosys","Wipro","Amazon","Microsoft (through good DSA skills)"],avgCTC:"₹6-15 LPA (with strong coding skills)"},children:{}}}}
-,
-"transition":{label:"Career Transition",icon:"🔄",info:{benefits:["Fresh start in a field you love","Transferable skills valuable"],drawbacks:["Starting salary may drop","Steep learning curve","Imposter syndrome"],tip:"Transition gradually — freelance in the new field first."},children:{
-"tech_switch":{label:"Non-Tech → Tech",icon:"💻",info:{benefits:["Tech pays more","Coding bootcamps (3-6 months)","Remote options"],drawbacks:["Steep learning curve","May start junior","Ageism in some companies"],tip:"Full-stack web dev is the fastest transition path.",detail:"The most common career transition in India. Coding bootcamps, online courses, and self-study enable transitions. Full-stack development, data analytics, and product management are popular landing spots."},children:{}},
-"product_mgmt":{label:"Product Management",icon:"📦",info:{benefits:["No specific degree needed","₹15-40 LPA","Strategic + creative + technical"],drawbacks:["Ambiguous role","Hard to break in","Lots of responsibility, little authority"],tip:"Build a side project and write product teardown blogs.",detail:"PMs own the 'what' and 'why' of product development. Breaking in requires demonstrating product thinking through side projects, case studies, and writing."},children:{}}}}
-}},
-"working":{label:"Working Professionals",description:"Level up from where you are!",icon:"💼",children:{
-"growth":{label:"Career Growth",icon:"📈",info:{benefits:["Move up the ladder","Higher compensation","More impact"],drawbacks:["Politics increase","Work-life harder","Skills that got you here won't get you there"],tip:"Visibility matters as much as ability."},children:{
-"leadership":{label:"Management / Leadership",icon:"👥",info:{benefits:["People management skills","₹20-60 LPA at senior levels","Executive path"],drawbacks:["Less hands-on","People problems are hard","Meeting-heavy days"],tip:"Read 'The Manager's Path' by Camille Fournier.",detail:"Transitioning from individual contributor to manager is one of the biggest career shifts. It requires developing entirely new skills — delegation, coaching, hiring, conflict resolution, and strategic thinking."},children:{}},
-"ic_track":{label:"IC Track (Staff/Principal)",icon:"🧑‍💻",info:{benefits:["Stay technical","₹30-80 LPA at Staff/Principal level","Deep expertise valued"],drawbacks:["Fewer positions at top","Can plateau","Need to stay cutting-edge"],tip:"System design + tech writing + mentoring = Staff Engineer recipe.",detail:"The Individual Contributor track allows engineers to grow without becoming managers. Staff Engineers and Principal Engineers solve organization-wide technical problems and set technical direction."},children:{}},
-"intl":{label:"International Career",icon:"🌍",info:{benefits:["2-5x salary","Global experience","Better work-life in some countries"],drawbacks:["Visa challenges","Cultural adjustment","Away from family"],tip:"US (H1B), Canada (Express Entry), Germany (Job Seeker Visa), UAE — research your pathway.",detail:"Common pathways: US H-1B visa (lottery-based), Canada Express Entry (points-based, most accessible), Germany Job Seeker Visa, and UAE employment visas."},children:{}}}},
-"side_income":{label:"Side Income",icon:"💰",info:{benefits:["Financial security","Explore interests","Multiple income streams"],drawbacks:["Time management","Burnout risk","Employer restrictions"],tip:"Start with something using your existing skills."},children:{
-"content":{label:"Content Creation / Teaching",icon:"📹",info:{benefits:["YouTube, Udemy courses","Passive income potential","Personal brand"],drawbacks:["Consistency required","Results take 6-12 months"],tip:"Technical content on YouTube has massive demand in India.",detail:"Technical YouTube channels, online courses (Udemy, Skillshare), newsletter writing, and LinkedIn content creation are popular side income sources for professionals."},children:{}},
-"consulting_side":{label:"Consulting / Freelancing",icon:"📋",info:{benefits:["Premium rates for expertise","₹2-10 lakh/month possible","Flexibility"],drawbacks:["Inconsistent income","Client management"],tip:"Start on Toptal or Upwork — build reputation first.",detail:"Senior professionals can leverage domain expertise for consulting engagements. Platforms like Toptal, Clarity.fm, and direct referrals are common channels."},children:{}},
-"investing":{label:"Investing & Wealth",icon:"📊",info:{benefits:["Money working for you","Compound interest","Financial independence"],drawbacks:["Risk of loss","Needs financial literacy","Emotional discipline"],tip:"Start with index funds (Nifty 50), learn 2 years, then explore stocks.",detail:"Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point."},children:{}}}},
-"upskilling":{label:"Upskilling",icon:"🔄",info:{benefits:["Stay relevant","Salary bump","Career pivots possible"],drawbacks:["Time commitment","Decision fatigue on what to learn"],tip:"Learn in public — share your journey on LinkedIn."},children:{
-"ai_skills":{label:"AI / GenAI Skills",icon:"🤖",info:{benefits:["Every role needs AI literacy","Prompt engineering is real","₹5-15 LPA bump"],drawbacks:["Hype vs reality","Tools change monthly"],tip:"Don't just use ChatGPT — learn to build with AI APIs.",detail:"AI literacy is becoming essential across roles. Understanding how to use AI tools, build AI-powered workflows, and prompt engineer effectively creates significant career advantage."},children:{}},
-"soft_skills":{label:"Communication & Soft Skills",icon:"🗣️",info:{benefits:["Differentiator at senior levels","Leadership readiness"],drawbacks:["Hard to measure","Takes years of practice"],tip:"Join Toastmasters — best ROI time investment for your career.",detail:"Public speaking, negotiation, writing, and executive presence become the primary differentiators at senior career levels where technical skills are assumed."},children:{}}}}
-}}
+  "6-10": {
+    "label": "Classes 6–12",
+    "icon": "📚",
+    "description": "Foundation years and stream specialization — pick your path through school.",
+    "info": {
+      "detail": "Be patient!!"
+    },
+    "children": {
+      "science": {
+        "label": "Science Stream",
+        "icon": "🔬",
+        "info": {
+          "benefits": [
+            "Strong analytical thinking",
+            "Wide career options in tech, medicine, research",
+            "High demand globally"
+          ],
+          "drawbacks": [
+            "Requires strong math fundamentals",
+            "Can be intensive and competitive"
+          ],
+          "tip": "Best if you love experiments and problem-solving."
+        },
+        "children": {
+          "pcm": {
+            "label": "PCM (Physics, Chemistry, Maths)",
+            "icon": "🧮",
+            "info": {
+              "benefits": [
+                "Opens doors to engineering, tech, data science",
+                "Highest earning potential streams"
+              ],
+              "drawbacks": [
+                "Very competitive entrance exams (JEE)",
+                "Abstract concepts can be challenging"
+              ],
+              "tip": "If you love puzzles, logic, and building things — PCM is your playground."
+            },
+            "children": {
+              "engineering": {
+                "label": "Engineering (B.Tech / B.E.)",
+                "icon": "⚙️",
+                "info": {
+                  "benefits": [
+                    "Enormous job market",
+                    "High starting salaries",
+                    "Diverse specializations",
+                    "Global opportunities"
+                  ],
+                  "drawbacks": [
+                    "4-year commitment",
+                    "Intense entrance exams",
+                    "Quality varies across colleges"
+                  ],
+                  "tip": "Focus on a branch that excites you, not just placement stats.",
+                  "detail": "Engineering remains India's most popular undergraduate pathway, with over 3,000 colleges offering B.Tech/B.E. degrees. The key differentiator is college tier — IITs, NITs, and BITS produce vastly different outcomes than lower-tier private colleges. Branch selection at JEE counselling is consequential, though lateral skill-building (coding, internships) can bridge the gap.",
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Delhi",
+                    "IIT Madras",
+                    "BITS Pilani",
+                    "NIT Trichy",
+                    "IIIT Hyderabad"
+                  ],
+                  "topRecruiters": [
+                    "Google",
+                    "Microsoft",
+                    "Amazon",
+                    "Goldman Sachs",
+                    "Qualcomm",
+                    "TCS",
+                    "Infosys",
+                    "L&T"
+                  ],
+                  "avgCTC": "₹4-25 LPA (varies by college tier)"
+                },
+                "children": {
+                  "jee_main": {
+                    "label": "JEE Main",
+                    "icon": "🎯",
+                    "info": {
+                      "benefits": [
+                        "Gateway to NITs/IIITs + JEE Adv qualifier",
+                        "2 attempts per year",
+                        "CBSE-aligned syllabus"
+                      ],
+                      "drawbacks": [
+                        "~12L candidates fight for ~40K NIT/IIIT seats",
+                        "High mental pressure"
+                      ],
+                      "tip": "NCERT first, then HC Verma + Cengage. Skip a coaching switch in Class 12.",
+                      "detail": "JEE Main is the national-level engineering entrance — qualifies you for NITs, IIITs, GFTIs (~40K seats) and is the gate to JEE Advanced. Conducted by NTA, 2 sessions per year (Jan + Apr), best score counts. Tests Physics, Chemistry, Maths at NCERT++ level.",
+                      "topColleges": [
+                        "NIT Trichy",
+                        "NIT Surathkal",
+                        "NIT Warangal",
+                        "IIIT Hyderabad",
+                        "IIIT Delhi",
+                        "DTU",
+                        "NSUT"
+                      ],
+                      "avgCTC": "₹8-25 LPA (top NITs CSE); ₹4-12 LPA (lower NITs core branches)",
+                      "furtherLinks": [
+                        {
+                          "title": "How to Crack JEE Main — Strategy by Alakh Pandey",
+                          "url": "https://www.youtube.com/watch?v=ANuG6F-K1FU"
+                        },
+                        {
+                          "title": "NTA JEE Main — Official Information Bulletin",
+                          "url": "https://jeemain.nta.nic.in"
+                        },
+                        {
+                          "title": "JEE Main Syllabus & Pattern (Vedantu)",
+                          "url": "https://www.vedantu.com/iit-jee/jee-main"
+                        }
+                      ]
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "jee_advanced": {
+                    "label": "JEE Advanced",
+                    "icon": "🏆",
+                    "info": {
+                      "benefits": [
+                        "Sole gateway to 23 IITs",
+                        "Most rigorous engineering entrance globally",
+                        "Lifetime alumni network"
+                      ],
+                      "drawbacks": [
+                        "Only top ~2.5L JEE Main scorers qualify",
+                        "Subjective + multi-correct + numerical formats",
+                        "2 attempts max in life"
+                      ],
+                      "tip": "Practice past 20 years of papers — patterns repeat more than you'd think.",
+                      "detail": "JEE Advanced is conducted by IITs (rotation) for admission to 23 IITs + ISM Dhanbad. Only top ~2.5L JEE Main rank-holders qualify to appear. Demands deep conceptual understanding, lateral thinking, and stamina across two 3-hour papers. ~17K IIT seats annually.",
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IIT Delhi",
+                        "IIT Madras",
+                        "IIT Kanpur",
+                        "IIT Kharagpur",
+                        "IIT Roorkee",
+                        "IIT Guwahati"
+                      ],
+                      "avgCTC": "₹15-50 LPA (top IITs CSE); ₹8-25 LPA (older IITs core branches)",
+                      "furtherLinks": [
+                        {
+                          "title": "JEE Advanced 2024 Strategy — KOTA Master",
+                          "url": "https://www.youtube.com/watch?v=u0bMUgZ2ulQ"
+                        },
+                        {
+                          "title": "Official JEE Advanced Portal (IIT)",
+                          "url": "https://jeeadv.ac.in"
+                        }
+                      ]
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "bitsat": {
+                    "label": "BITSAT",
+                    "icon": "💎",
+                    "info": {
+                      "benefits": [
+                        "BITS Pilani is in IIT-grade",
+                        "Industry-relevant curriculum",
+                        "Practice school internships",
+                        "Strong global alumni"
+                      ],
+                      "drawbacks": [
+                        "No reservation (purely merit)",
+                        "Higher fees than IITs (₹5L+/year)",
+                        "Speed-test format favors fast solvers"
+                      ],
+                      "tip": "BITS Pilani > BITS Hyderabad > BITS Goa. Practice school internships are the secret sauce.",
+                      "detail": "BITS Admission Test — single exam for BITS Pilani, Goa, Hyderabad, and Dubai campuses. Online, multiple-attempt within a window. BITS is famously merit-only (no reservations). Practice School internships (2 stints in industry) make BITS grads exceptionally employable.",
+                      "topColleges": [
+                        "BITS Pilani",
+                        "BITS Hyderabad",
+                        "BITS Goa",
+                        "BITS Dubai"
+                      ],
+                      "topRecruiters": [
+                        "Microsoft",
+                        "Google",
+                        "Goldman Sachs",
+                        "JP Morgan",
+                        "Amazon",
+                        "Atlassian",
+                        "Uber"
+                      ],
+                      "avgCTC": "₹15-45 LPA (BITS Pilani CSE); ₹10-30 LPA (other campuses CSE)",
+                      "furtherLinks": [
+                        {
+                          "title": "BITSAT vs JEE — Honest Comparison",
+                          "url": "https://www.youtube.com/watch?v=A_n50pYprB8"
+                        },
+                        {
+                          "title": "BITS Pilani — Admissions",
+                          "url": "https://www.bits-pilani.ac.in/admissions"
+                        }
+                      ]
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "comedk": {
+                    "label": "COMEDK UGET",
+                    "icon": "🎓",
+                    "info": {
+                      "benefits": [
+                        "Strong Karnataka private engineering",
+                        "Lower cutoffs than JEE",
+                        "Computer-based, single test"
+                      ],
+                      "drawbacks": [
+                        "Limited to Karnataka colleges",
+                        "Private fees (₹2-5L/year)"
+                      ],
+                      "tip": "RVCE, BMSCE, PES — these match older NITs in placements. Apply with JEE Main as backup.",
+                      "detail": "COMEDK UGET (Karnataka) is conducted by the Consortium of Medical, Engineering and Dental Colleges. Single online exam for 150+ private engineering colleges in Karnataka. Top Karnataka private colleges produce excellent CS placements rivaling mid-tier NITs.",
+                      "topColleges": [
+                        "RV College of Engineering (Bangalore)",
+                        "BMS College of Engineering",
+                        "PES University",
+                        "MS Ramaiah Institute",
+                        "Dayananda Sagar",
+                        "Sir MVIT"
+                      ],
+                      "avgCTC": "₹6-20 LPA (RVCE/BMSCE CSE); ₹4-10 LPA (other private colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "wbjee": {
+                    "label": "WBJEE",
+                    "icon": "🌉",
+                    "info": {
+                      "benefits": [
+                        "Jadavpur University engineering = elite tier",
+                        "Affordable govt colleges",
+                        "High ROI"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to West Bengal",
+                        "Less national brand recall outside top colleges"
+                      ],
+                      "tip": "Jadavpur CSE rivals top NITs in placements — easier rank to crack than JEE Adv.",
+                      "detail": "West Bengal Joint Entrance Examination for engineering admission to govt + private colleges in WB. Jadavpur University is the crown jewel — its placement record genuinely rivals NITs and older IITs in CSE. IIEST Shibpur (now central) also accepts via JEE Main.",
+                      "topColleges": [
+                        "Jadavpur University",
+                        "IIEST Shibpur",
+                        "NIT Durgapur",
+                        "Heritage Institute",
+                        "Techno India Salt Lake"
+                      ],
+                      "avgCTC": "₹8-30 LPA (Jadavpur CSE); ₹4-10 LPA (other colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "viteee": {
+                    "label": "VITEEE",
+                    "icon": "⚡",
+                    "info": {
+                      "benefits": [
+                        "Slot-based seat selection (transparent)",
+                        "Multiple campuses",
+                        "Decent placements at VIT Vellore"
+                      ],
+                      "drawbacks": [
+                        "Private deemed-uni fees (₹2-4L/year)",
+                        "Quality varies sharply across campuses"
+                      ],
+                      "tip": "VIT Vellore CSE only. Other campuses + branches — reconsider.",
+                      "detail": "VIT Engineering Entrance Examination for VIT Vellore, Chennai, AP, and Bhopal. Slot-based counselling lets you pick your branch + campus transparently after the result. VIT Vellore has one of the most active placement cells in private engineering — 10,000+ offers annually.",
+                      "topColleges": [
+                        "VIT Vellore",
+                        "VIT Chennai",
+                        "VIT-AP Amaravati",
+                        "VIT Bhopal"
+                      ],
+                      "avgCTC": "₹7-22 LPA (VIT Vellore CSE); ₹4-10 LPA (other branches/campuses)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "kiitee": {
+                    "label": "KIITEE",
+                    "icon": "🛰️",
+                    "info": {
+                      "benefits": [
+                        "Online from home",
+                        "Multiple attempts",
+                        "Improving placements"
+                      ],
+                      "drawbacks": [
+                        "Private deemed-uni fees",
+                        "Brand below NITs/IITs"
+                      ],
+                      "tip": "Reasonable backup if JEE Main rank is borderline.",
+                      "detail": "KIIT Entrance Examination for KIIT University Bhubaneswar. Conducted online — students attempt from home. KIIT has steadily improved placements over the last decade, with strong CS recruitment.",
+                      "topColleges": [
+                        "KIIT University Bhubaneswar"
+                      ],
+                      "topRecruiters": [
+                        "Cognizant",
+                        "Infosys",
+                        "Microsoft (selective)",
+                        "Amazon (selective)",
+                        "Wipro",
+                        "TCS"
+                      ],
+                      "avgCTC": "₹5-15 LPA (CSE); ₹3-7 LPA (core branches)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "srmjee": {
+                    "label": "SRMJEE",
+                    "icon": "🎓",
+                    "info": {
+                      "benefits": [
+                        "SRM has 5 campuses with strong tech recruitment",
+                        "Multiple test slots",
+                        "Less competitive than JEE"
+                      ],
+                      "drawbacks": [
+                        "Private deemed-uni fees (₹2-4L/year)",
+                        "Quality varies sharply by campus"
+                      ],
+                      "tip": "SRM Kattankulathur (Chennai) campus is the flagship — others noticeably weaker.",
+                      "detail": "SRM Joint Engineering Entrance Examination for SRM Institute of Science and Technology — campuses in Kattankulathur (Chennai), Vadapalani, Ramapuram, Tiruchirapalli, NCR Ghaziabad, and Sonepat. Computer-based, 3 slots per year. SRM Kattankulathur has strong CS placements with Microsoft, Amazon, and Goldman Sachs recruiting on-campus.",
+                      "topColleges": [
+                        "SRM Kattankulathur (Chennai)",
+                        "SRM Vadapalani",
+                        "SRM NCR Ghaziabad",
+                        "SRM AP Amaravati"
+                      ],
+                      "avgCTC": "₹6-22 LPA (SRM Kattankulathur CSE); ₹3-8 LPA (other campuses)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "met": {
+                    "label": "MET (Manipal)",
+                    "icon": "🌊",
+                    "info": {
+                      "benefits": [
+                        "Manipal Institute of Technology has strong brand",
+                        "International collaborations",
+                        "Multiple campuses"
+                      ],
+                      "drawbacks": [
+                        "Private fees (₹4-5L/year)",
+                        "Coastal location (Manipal main campus)"
+                      ],
+                      "tip": "Manipal Main (Karnataka) is the flagship — Jaipur and Bengaluru are newer.",
+                      "detail": "Manipal Entrance Test for Manipal Institute of Technology — Manipal (Karnataka), Jaipur, and Bengaluru campuses. MIT Manipal is one of India's oldest private engineering schools (est. 1957) with a reputation for global exposure and good placements.",
+                      "topColleges": [
+                        "MIT Manipal",
+                        "MIT Bengaluru",
+                        "Manipal University Jaipur"
+                      ],
+                      "topRecruiters": [
+                        "Microsoft",
+                        "Amazon",
+                        "Walmart Labs",
+                        "Cisco",
+                        "Oracle",
+                        "TCS",
+                        "Infosys"
+                      ],
+                      "avgCTC": "₹7-25 LPA (MIT Manipal CSE); ₹4-12 LPA (other branches)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "aeee": {
+                    "label": "AEEE (Amrita)",
+                    "icon": "🪷",
+                    "info": {
+                      "benefits": [
+                        "Amrita Vishwa Vidyapeetham (NIRF top 10 private)",
+                        "Tier-1 placements at Coimbatore campus",
+                        "Strong tech recruitment"
+                      ],
+                      "drawbacks": [
+                        "Private deemed-uni fees",
+                        "Coimbatore is somewhat remote"
+                      ],
+                      "tip": "Coimbatore campus (flagship) — placements rival many NITs.",
+                      "detail": "Amrita Engineering Entrance Examination for Amrita Vishwa Vidyapeetham — Coimbatore (main), Bengaluru, Chennai, Amritapuri (Kerala). Amrita has consistently ranked among the top private engineering colleges in India. Strong CS recruitment with FAANG companies.",
+                      "topColleges": [
+                        "Amrita Coimbatore",
+                        "Amrita Bengaluru",
+                        "Amrita Chennai",
+                        "Amrita Amritapuri (Kerala)"
+                      ],
+                      "topRecruiters": [
+                        "Microsoft",
+                        "Amazon",
+                        "Adobe",
+                        "Goldman Sachs",
+                        "Walmart Labs",
+                        "Cisco"
+                      ],
+                      "avgCTC": "₹8-25 LPA (Amrita Coimbatore CSE); ₹4-12 LPA (other branches)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "mhcet": {
+                    "label": "MHT-CET (Maharashtra)",
+                    "icon": "🟠",
+                    "info": {
+                      "state": "Maharashtra",
+                      "council": "CET Cell Maharashtra",
+                      "benefits": [
+                        "State quota for Maharashtra-domicile (~85%)",
+                        "Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)",
+                        "Less competition than national exams"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to Maharashtra colleges",
+                        "Maharashtra-domicile certificate required",
+                        "Lower national brand recall than NITs/IITs"
+                      ],
+                      "tip": "COEP and VJTI are the gold-standard from MHT-CET. Apply alongside JEE Main.",
+                      "detail": "Maharashtra Common Entrance Test for engineering, pharmacy, and agriculture in Maharashtra. The state has some of India's best non-NIT engineering colleges — COEP Pune and VJTI Mumbai consistently rank in the top 25 nationally.",
+                      "topColleges": [
+                        "COEP Pune",
+                        "VJTI Mumbai",
+                        "PICT Pune",
+                        "Walchand College Sangli",
+                        "SPIT Mumbai",
+                        "VIT Pune",
+                        "MIT Pune"
+                      ],
+                      "avgCTC": "₹8-25 LPA (COEP/VJTI CSE); ₹4-12 LPA (other colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "ts_eamcet": {
+                    "label": "TS EAMCET (Telangana)",
+                    "icon": "🌾",
+                    "info": {
+                      "state": "Telangana",
+                      "council": "JNTU Hyderabad",
+                      "benefits": [
+                        "State quota for Telangana-domicile (~85%)",
+                        "Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)",
+                        "Less competition than national exams"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to Telangana colleges",
+                        "Telangana-domicile certificate required",
+                        "Lower national brand recall than NITs/IITs"
+                      ],
+                      "tip": "JNTU Hyderabad CSE is the most competitive — has tier-1 placements.",
+                      "detail": "Telangana State Engineering, Agriculture and Medical Common Entrance Test for engineering admissions in Telangana. JNTU Hyderabad and OUCE are top govt institutes. Hyderabad has a strong tech ecosystem that benefits local engineering grads.",
+                      "topColleges": [
+                        "JNTU Hyderabad",
+                        "Osmania University College of Engineering",
+                        "CBIT Hyderabad",
+                        "Vasavi College",
+                        "MGIT Gandipet"
+                      ],
+                      "avgCTC": "₹6-22 LPA (JNTU/OUCE CSE); ₹3-10 LPA (other colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "ap_eapcet": {
+                    "label": "AP EAPCET (Andhra Pradesh)",
+                    "icon": "🥭",
+                    "info": {
+                      "state": "Andhra Pradesh",
+                      "council": "APSCHE Mangalagiri",
+                      "benefits": [
+                        "State quota for Andhra Pradesh-domicile (~85%)",
+                        "Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)",
+                        "Less competition than national exams"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to Andhra Pradesh colleges",
+                        "Andhra Pradesh-domicile certificate required",
+                        "Lower national brand recall than NITs/IITs"
+                      ],
+                      "tip": "AU Visakhapatnam and JNTU Kakinada have the strongest placements among AP govt colleges.",
+                      "detail": "Andhra Pradesh Engineering, Agriculture and Pharmacy Common Entrance Test. APSCHE Mangalagiri conducts counselling for AP-domicile students. Andhra University Vizag is the heritage flagship.",
+                      "topColleges": [
+                        "Andhra University College of Engineering Vizag",
+                        "JNTU Kakinada",
+                        "SVU College of Engineering Tirupati",
+                        "VR Siddhartha Engineering"
+                      ],
+                      "avgCTC": "₹5-18 LPA (AU/JNTUK CSE); ₹3-9 LPA (other colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "keam_eng": {
+                    "label": "KEAM (Kerala)",
+                    "icon": "🥥",
+                    "info": {
+                      "state": "Kerala",
+                      "council": "CEE Kerala",
+                      "benefits": [
+                        "State quota for Kerala-domicile (~85%)",
+                        "Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)",
+                        "Less competition than national exams"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to Kerala colleges",
+                        "Kerala-domicile certificate required",
+                        "Lower national brand recall than NITs/IITs"
+                      ],
+                      "tip": "CET Trivandrum CSE is the standout — placements rival mid-tier NITs.",
+                      "detail": "Kerala Engineering Architecture Medical examination handles both medical and engineering counselling for Kerala-domicile students. College of Engineering Trivandrum (CET) is over 80 years old and has produced ISRO talent.",
+                      "topColleges": [
+                        "CET Trivandrum",
+                        "GEC Thrissur",
+                        "GEC Barton Hill",
+                        "RIT Kottayam",
+                        "MA College Kothamangalam"
+                      ],
+                      "avgCTC": "₹5-18 LPA (CET/GEC CSE); ₹3-9 LPA (other colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "jkcet": {
+                    "label": "J&K CET (BOPEE)",
+                    "icon": "🏔️",
+                    "info": {
+                      "state": "Jammu & Kashmir",
+                      "council": "JKBOPEE",
+                      "benefits": [
+                        "State quota for Jammu & Kashmir-domicile (~85%)",
+                        "Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)",
+                        "Less competition than national exams"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to Jammu & Kashmir colleges",
+                        "Jammu & Kashmir-domicile certificate required",
+                        "Lower national brand recall than NITs/IITs"
+                      ],
+                      "tip": "NIT Srinagar via JEE Main is the top pick; J&K CET serves state-domicile reservations.",
+                      "detail": "Board of Professional Entrance Examinations Jammu & Kashmir conducts state-level counselling for engineering. J&K-domicile students get reserved seats at NIT Srinagar (the only IIT/NIT in the UT) plus state colleges.",
+                      "topColleges": [
+                        "NIT Srinagar (via JEE Main + J&K quota)",
+                        "SSM College of Engineering",
+                        "MIET Jammu",
+                        "Yogananda College of Engineering"
+                      ],
+                      "avgCTC": "₹4-15 LPA (NIT Srinagar CSE); ₹3-7 LPA (state colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "upsee": {
+                    "label": "UPSEE / AKTU (UP)",
+                    "icon": "🛕",
+                    "info": {
+                      "state": "Uttar Pradesh",
+                      "council": "AKTU Lucknow",
+                      "benefits": [
+                        "State quota for Uttar Pradesh-domicile (~85%)",
+                        "Govt colleges cost ₹50K-3L/year (vs private ₹2-5L)",
+                        "Less competition than national exams"
+                      ],
+                      "drawbacks": [
+                        "Mostly limited to Uttar Pradesh colleges",
+                        "Uttar Pradesh-domicile certificate required",
+                        "Lower national brand recall than NITs/IITs"
+                      ],
+                      "tip": "IET Lucknow and HBTU Kanpur produce the best placements among AKTU-affiliated state colleges.",
+                      "detail": "Dr. APJ Abdul Kalam Technical University (AKTU) Lucknow affiliates 700+ engineering colleges in UP. UPSEE is the historical state entrance — now mostly NEET-replaced for medical and JEE-Main-aligned for engineering. State quota seats at IET Lucknow + HBTU Kanpur are gold.",
+                      "topColleges": [
+                        "IIIT Allahabad (via JEE)",
+                        "IET Lucknow",
+                        "HBTU Kanpur",
+                        "MMMUT Gorakhpur",
+                        "BIET Jhansi",
+                        "REC Kannauj"
+                      ],
+                      "avgCTC": "₹5-15 LPA (IET Lucknow/HBTU CSE); ₹3-8 LPA (other colleges)"
+                    },
+                    "children": {
+                      "cs": {
+                        "label": "Computer Science",
+                        "icon": "💻",
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA"
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA"
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "mech": {
+                        "label": "Mechanical Engineering",
+                        "icon": "🔧",
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA"
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA"
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA"
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA"
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA"
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA"
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)"
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA"
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA"
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA"
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)"
+                        },
+                        "children": {}
+                      }
+                    }
+                  }
+                }
+              },
+              "bsc_math": {
+                "label": "B.Sc. Mathematics",
+                "icon": "📐",
+                "info": {
+                  "benefits": [
+                    "Pure analytical foundation",
+                    "Leads to data science, actuarial science"
+                  ],
+                  "drawbacks": [
+                    "Fewer direct industry jobs",
+                    "Masters often needed"
+                  ],
+                  "tip": "Pair with coding for a powerful combination.",
+                  "detail": "B.Sc. Mathematics provides one of the strongest analytical foundations. Graduates excel in quantitative finance, data science, actuarial science, and research. ISI Kolkata and CMI Chennai are globally respected.",
+                  "topColleges": [
+                    "ISI Kolkata",
+                    "CMI Chennai",
+                    "St. Stephen's Delhi",
+                    "IISc Bangalore"
+                  ],
+                  "topRecruiters": [
+                    "Goldman Sachs (quant)",
+                    "WorldQuant",
+                    "DE Shaw",
+                    "Actuarial firms"
+                  ],
+                  "avgCTC": "₹5-20 LPA (with specialization)"
+                },
+                "children": {}
+              },
+              "architecture": {
+                "label": "Architecture (B.Arch)",
+                "icon": "🏛️",
+                "info": {
+                  "benefits": [
+                    "Creative + technical blend",
+                    "5-year degree",
+                    "Growing smart city demand"
+                  ],
+                  "drawbacks": [
+                    "Long course (5 years)",
+                    "Portfolio-heavy",
+                    "Income grows slowly"
+                  ],
+                  "tip": "Keep a sketch diary — observation is an architect's superpower.",
+                  "detail": "Architecture is a 5-year professional degree covering building design, sustainability, and urban planning. Admission through JEE Main Paper 2 or NATA. Smart Cities Mission and green building certifications are creating new demand.",
+                  "topColleges": [
+                    "IIT Kharagpur",
+                    "IIT Roorkee",
+                    "SPA Delhi",
+                    "CEPT Ahmedabad",
+                    "JJ College Mumbai"
+                  ],
+                  "topRecruiters": [
+                    "Hafeez Contractor",
+                    "CP Kukreja",
+                    "Morphogenesis",
+                    "Studio Lotus",
+                    "DLF"
+                  ],
+                  "avgCTC": "₹4-12 LPA"
+                },
+                "children": {}
+              },
+              "merchant_navy": {
+                "label": "Merchant Navy",
+                "icon": "🚢",
+                "info": {
+                  "benefits": [
+                    "Tax-free salary",
+                    "Travel the world",
+                    "Quick career growth"
+                  ],
+                  "drawbacks": [
+                    "Months away from family",
+                    "Physically demanding",
+                    "Strict medical requirements"
+                  ],
+                  "tip": "IMU entrance — apply in Class 12.",
+                  "detail": "Merchant Navy offers one of the highest-paying careers after Class 12. Officers earn ₹6-20 LPA (tax-free), with captains earning ₹30-60 LPA. The trade-off is 6-9 months at sea away from family.",
+                  "topColleges": [
+                    "IMU Chennai",
+                    "IMU Mumbai",
+                    "TMI Pune",
+                    "Anglo Eastern Academy"
+                  ],
+                  "topRecruiters": [
+                    "Maersk",
+                    "MSC",
+                    "CMA CGM",
+                    "Synergy Group",
+                    "Anglo Eastern"
+                  ],
+                  "avgCTC": "₹8-25 LPA (tax-free at sea)"
+                },
+                "children": {}
+              },
+              "nda": {
+                "label": "NDA / Defence",
+                "icon": "🎖️",
+                "info": {
+                  "benefits": [
+                    "Serve the nation",
+                    "Free world-class education",
+                    "Pension + lifetime benefits"
+                  ],
+                  "drawbacks": [
+                    "Rigorous training",
+                    "Postings across India",
+                    "Risk involved"
+                  ],
+                  "tip": "Start physical fitness prep in Class 11.",
+                  "detail": "NDA in Pune is among the world's first tri-service academies. Entry through UPSC NDA exam + SSB interview. Cadets receive a 3-year degree alongside military training, completely free.",
+                  "topColleges": [
+                    "NDA Khadakwasla",
+                    "IMA Dehradun",
+                    "Naval Academy Ezhimala",
+                    "AFA Hyderabad"
+                  ],
+                  "topRecruiters": [
+                    "Indian Army",
+                    "Indian Navy",
+                    "Indian Air Force"
+                  ],
+                  "avgCTC": "₹8-15 LPA + perks (housing, healthcare)"
+                },
+                "children": {}
+              }
+            }
+          },
+          "pcb": {
+            "label": "PCB (Physics, Chemistry, Biology)",
+            "icon": "🧬",
+            "info": {
+              "benefits": [
+                "Pathway to medicine, biotech, pharma",
+                "Helping humanity directly",
+                "Research opportunities"
+              ],
+              "drawbacks": [
+                "NEET extremely competitive",
+                "Very long education path",
+                "High pressure"
+              ],
+              "tip": "Start NEET prep in Class 11 if targeting MBBS."
+            },
+            "children": {
+              "mbbs": {
+                "label": "MBBS (Medicine)",
+                "icon": "🩺",
+                "info": {
+                  "benefits": [
+                    "Most respected profession",
+                    "Direct impact on lives",
+                    "Job security",
+                    "High earning after specialization"
+                  ],
+                  "drawbacks": [
+                    "5.5 years + specialization",
+                    "NEET extremely competitive",
+                    "Emotional toll"
+                  ],
+                  "tip": "Shadow a doctor before committing.",
+                  "detail": "MBBS is a 5.5-year degree (4.5 academics + 1 internship) with ~20 lakh NEET aspirants competing for ~1 lakh seats. Government college costs ₹50K-5 lakh total vs private at ₹50 lakh-1 crore. Most doctors pursue MD/MS through NEET PG.",
+                  "topColleges": [
+                    "AIIMS Delhi",
+                    "CMC Vellore",
+                    "JIPMER",
+                    "AFMC Pune",
+                    "Maulana Azad",
+                    "Grant Medical Mumbai"
+                  ],
+                  "topRecruiters": [
+                    "AIIMS",
+                    "Apollo Hospitals",
+                    "Fortis",
+                    "Max Healthcare",
+                    "Medanta"
+                  ],
+                  "avgCTC": "₹8-15 LPA (MBBS); ₹20-60 LPA+ (post-specialization)",
+                  "furtherLinks": [
+                    {
+                      "title": "Day in the Life of an MBBS Student",
+                      "url": "https://www.youtube.com/watch?v=_g4dqYDCSLY"
+                    },
+                    {
+                      "title": "NEET Preparation Strategy by Dr. Aman Tilak",
+                      "url": "https://www.youtube.com/watch?v=xPVpq3SKXhM"
+                    }
+                  ]
+                },
+                "children": {
+                  "entrance_exams": {
+                    "label": "Entrance Exams",
+                    "icon": "📝",
+                    "description": "Routes into MBBS — NEET is universal, but defence and other quotas exist.",
+                    "info": {
+                      "benefits": [
+                        "NEET unified the medical admissions",
+                        "Equal opportunity nationally"
+                      ],
+                      "drawbacks": [
+                        "~20L aspirants for ~1L MBBS seats",
+                        "Single attempt per year"
+                      ],
+                      "tip": "Top 1500 NEET ranks can apply for AFMC — apply separately for the SSB interview."
+                    },
+                    "children": {
+                      "neet_ug": {
+                        "label": "NEET UG",
+                        "icon": "🩺",
+                        "info": {
+                          "benefits": [
+                            "Single exam for all MBBS, BDS, AYUSH, nursing seats",
+                            "NCERT-aligned syllabus",
+                            "Equal opportunity across India"
+                          ],
+                          "drawbacks": [
+                            "~20 lakh aspirants for ~1L MBBS seats",
+                            "Annual exam — one shot per year",
+                            "Negative marking"
+                          ],
+                          "tip": "NCERT 11+12 cover ~90% of the paper — master it before reaching for reference books.",
+                          "detail": "NEET UG is the sole gateway to MBBS, BDS, BAMS, BHMS, BUMS, and B.Sc Nursing in India. Conducted by NTA, 200 MCQs in 3hr 20min testing Physics, Chemistry, and Biology. Govt medical seats cost ₹50K-5L total; private and deemed colleges cost ₹50L-1Cr. Top 100 ranks land AIIMS Delhi.",
+                          "topColleges": [
+                            "AIIMS Delhi",
+                            "CMC Vellore",
+                            "JIPMER",
+                            "AFMC Pune",
+                            "Maulana Azad Delhi",
+                            "Grant Medical Mumbai",
+                            "KGMU Lucknow"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree; ₹20-60 LPA+ post-specialization",
+                          "furtherLinks": [
+                            {
+                              "title": "NEET UG Preparation Strategy — Dr Aman Tilak",
+                              "url": "https://www.youtube.com/watch?v=xPVpq3SKXhM"
+                            },
+                            {
+                              "title": "NTA NEET — Official Portal",
+                              "url": "https://neet.nta.nic.in"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "afms": {
+                        "label": "AFMC / Armed Forces Medical",
+                        "icon": "🎖️",
+                        "info": {
+                          "benefits": [
+                            "Free education at AFMC Pune",
+                            "Guaranteed commission as officer",
+                            "Tax-free perks + housing",
+                            "Disciplined career path"
+                          ],
+                          "drawbacks": [
+                            "7-year service bond post-degree",
+                            "Postings determined by armed forces",
+                            "Limited to top NEET ranks + SSB clearance"
+                          ],
+                          "tip": "Apply alongside NEET UG counselling — separate AFMC registration window opens early.",
+                          "detail": "AFMC Pune admits ~150 candidates annually — top NEET UG rank holders (typically AIR <1500) who clear the Services Selection Board (SSB) interview and medical. Graduates serve as commissioned officers in Indian Army Medical Corps, Navy, or Air Force. Education, lodging, books — all free. Officer-level salary from year 1 of internship.",
+                          "topColleges": [
+                            "AFMC Pune (only)"
+                          ],
+                          "topRecruiters": [
+                            "Indian Army Medical Corps",
+                            "Indian Navy Medical Branch",
+                            "Indian Air Force Medical Corps"
+                          ],
+                          "avgCTC": "₹8-15 LPA (Lieutenant entry); rises to ₹25-60 LPA at senior ranks + lifetime perks",
+                          "furtherLinks": [
+                            {
+                              "title": "Life at AFMC Pune — Cadet Experience",
+                              "url": "https://www.youtube.com/watch?v=oU3vlPiVCNk"
+                            },
+                            {
+                              "title": "AFMC Pune — Admission",
+                              "url": "https://www.afmc.nic.in"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "jipmer_aiims": {
+                        "label": "AIIMS & JIPMER (via NEET)",
+                        "icon": "🏥",
+                        "info": {
+                          "benefits": [
+                            "Elite govt institutes",
+                            "Top-tier faculty",
+                            "Heavily subsidized",
+                            "Best PG outcomes"
+                          ],
+                          "drawbacks": [
+                            "Need top 100-500 NEET ranks",
+                            "High academic intensity"
+                          ],
+                          "tip": "AIIMS Delhi, JIPMER, CMC Vellore — these three are the medical equivalents of IIT Bombay.",
+                          "detail": "AIIMS (19 institutes nationwide) and JIPMER Puducherry no longer hold separate entrance exams — admission is now via NEET UG since 2020. AIIMS Delhi requires AIR ~50 for general category; AIIMS New (Bhopal, Patna, etc.) require AIR ~500-1500. Tuition is essentially free (₹1500/year).",
+                          "topColleges": [
+                            "AIIMS Delhi",
+                            "AIIMS Bhopal",
+                            "AIIMS Patna",
+                            "AIIMS Jodhpur",
+                            "JIPMER Puducherry"
+                          ],
+                          "avgCTC": "Leads to top-tier MBBS — ₹10-20 LPA post-degree; ₹40+ LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "mh_state": {
+                        "label": "Maharashtra State Quota",
+                        "icon": "🟠",
+                        "info": {
+                          "state": "Maharashtra",
+                          "council": "CET Cell Maharashtra",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Maharashtra domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Maharashtra-domicile certificate is essential — start the paperwork early.",
+                          "detail": "~85% seats reserved for Maharashtra-domicile students. CET Cell Mumbai handles counselling separately from MCC (national 15%). Mumbai colleges are the most competitive.",
+                          "topColleges": [
+                            "Grant Medical College Mumbai",
+                            "LTMMC Sion",
+                            "BJ Medical Pune",
+                            "Govt Medical Nagpur",
+                            "Topiwala National Medical (Nair)"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "ka_state": {
+                        "label": "Karnataka State Quota (KEA)",
+                        "icon": "🌴",
+                        "info": {
+                          "state": "Karnataka",
+                          "council": "Karnataka Examinations Authority",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Karnataka domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Karnataka-domicile certificate is essential — start the paperwork early.",
+                          "detail": "KEA Bengaluru handles 85% state quota counselling. Karnataka has the largest number of govt + private + deemed medical colleges in India — and the Manipal/MS Ramaiah private brands.",
+                          "topColleges": [
+                            "Bangalore Medical College",
+                            "Mysore Medical College",
+                            "Kasturba Medical (Manipal)",
+                            "JJM Davangere",
+                            "M.S. Ramaiah"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "tn_state": {
+                        "label": "Tamil Nadu State Quota",
+                        "icon": "🌶️",
+                        "info": {
+                          "state": "Tamil Nadu",
+                          "council": "TN Selection Committee",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Tamil Nadu domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Tamil Nadu-domicile certificate is essential — start the paperwork early.",
+                          "detail": "TN has one of the strongest govt medical college systems in India with 25+ govt institutes. 69% reservation (highest in India) for OBC/MBC/SC/ST. Domicile + 12th-mark-based merit.",
+                          "topColleges": [
+                            "Madras Medical College",
+                            "Stanley Medical Chennai",
+                            "Chengalpattu Medical",
+                            "PSG Coimbatore",
+                            "Christian Medical College Vellore"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "kl_state": {
+                        "label": "Kerala State Quota (KEAM)",
+                        "icon": "🥥",
+                        "info": {
+                          "state": "Kerala",
+                          "council": "Commissioner of Entrance Examinations",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Kerala domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Kerala-domicile certificate is essential — start the paperwork early.",
+                          "detail": "KEAM (Kerala Engineering Architecture Medical) — used to be the state exam, now Kerala medical counselling is purely NEET-based but separate from MCC. Strong govt college network.",
+                          "topColleges": [
+                            "Trivandrum Medical College",
+                            "Kottayam Medical College",
+                            "TD Medical College Alappuzha",
+                            "Calicut Medical College"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "up_state": {
+                        "label": "UP State Quota (UPMET)",
+                        "icon": "🛕",
+                        "info": {
+                          "state": "Uttar Pradesh",
+                          "council": "DGME UP",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Uttar Pradesh domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Uttar Pradesh-domicile certificate is essential — start the paperwork early.",
+                          "detail": "UP has the largest number of state-quota MBBS seats in India (~6000+). DGME UP runs counselling. KGMU Lucknow is the premier institute. UP includes both state-funded and private deemed seats.",
+                          "topColleges": [
+                            "KGMU Lucknow",
+                            "BHU Varanasi",
+                            "Sarojini Naidu Medical Agra",
+                            "GSVM Medical Kanpur",
+                            "LLRM Meerut"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "mp_state": {
+                        "label": "MP State Quota",
+                        "icon": "🦜",
+                        "info": {
+                          "state": "Madhya Pradesh",
+                          "council": "DME MP",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Madhya Pradesh domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Madhya Pradesh-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Madhya Pradesh DME runs 85% quota for MP-domicile students. Gandhi Medical Bhopal and MGM Indore are the flagship govt institutes.",
+                          "topColleges": [
+                            "Gandhi Medical College Bhopal",
+                            "MGM Indore",
+                            "NSCB Medical Jabalpur",
+                            "SS Medical Rewa"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "rj_state": {
+                        "label": "Rajasthan State Quota",
+                        "icon": "🐪",
+                        "info": {
+                          "state": "Rajasthan",
+                          "council": "RUHS Jaipur",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Rajasthan domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Rajasthan-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Rajasthan University of Health Sciences (RUHS) runs counselling for state quota. SMS Jaipur is the most competitive — among the top govt medical colleges in India for outcomes.",
+                          "topColleges": [
+                            "SMS Medical Jaipur",
+                            "RNT Medical Udaipur",
+                            "Sardar Patel Medical Bikaner",
+                            "JLN Medical Ajmer"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "wb_state": {
+                        "label": "West Bengal State Quota",
+                        "icon": "🌅",
+                        "info": {
+                          "state": "West Bengal",
+                          "council": "WBMCC",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold West Bengal domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "West Bengal-domicile certificate is essential — start the paperwork early.",
+                          "detail": "WBMCC Kolkata runs state quota. Medical College Kolkata is one of the oldest (est. 1835) and most prestigious in Asia. Strong govt college network at low fees.",
+                          "topColleges": [
+                            "Medical College Kolkata",
+                            "RG Kar Medical",
+                            "NRS Medical College",
+                            "Bankura Sammilani",
+                            "IPGMER (PG-focused)"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "ts_state": {
+                        "label": "Telangana State Quota",
+                        "icon": "🌾",
+                        "info": {
+                          "state": "Telangana",
+                          "council": "KNRUHS",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Telangana domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Telangana-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Kaloji Narayana Rao University of Health Sciences (KNRUHS) runs counselling. Osmania Medical Hyderabad is the flagship — strong faculty and patient load.",
+                          "topColleges": [
+                            "Osmania Medical Hyderabad",
+                            "Gandhi Medical Secunderabad",
+                            "Kakatiya Medical Warangal",
+                            "MNJ Institute"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "ap_state": {
+                        "label": "Andhra Pradesh State Quota",
+                        "icon": "🥭",
+                        "info": {
+                          "state": "Andhra Pradesh",
+                          "council": "NTRUHS",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Andhra Pradesh domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Andhra Pradesh-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Dr. NTR University of Health Sciences (NTRUHS) Vijayawada runs counselling. AP has 11 govt medical colleges with strong south Indian medical reputation.",
+                          "topColleges": [
+                            "Andhra Medical College Vizag",
+                            "Guntur Medical College",
+                            "Kurnool Medical College",
+                            "Siddhartha Medical Vijayawada"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "gj_state": {
+                        "label": "Gujarat State Quota",
+                        "icon": "🛕",
+                        "info": {
+                          "state": "Gujarat",
+                          "council": "Gujarat ACPC",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Gujarat domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Gujarat-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Admission Committee for Professional Courses (ACPC) runs Gujarat counselling. BJ Medical Ahmedabad is the top govt institute. Gujarat has aggressive private college growth too.",
+                          "topColleges": [
+                            "BJ Medical Ahmedabad",
+                            "MP Shah Medical Jamnagar",
+                            "Smt NHL Municipal Ahmedabad",
+                            "Govt Medical Surat"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "or_state": {
+                        "label": "Odisha State Quota",
+                        "icon": "🌊",
+                        "info": {
+                          "state": "Odisha",
+                          "council": "DMET Odisha",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Odisha domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Odisha-domicile certificate is essential — start the paperwork early.",
+                          "detail": "DMET Odisha handles state quota counselling. SCB Cuttack is the premier govt institute — one of the oldest in eastern India.",
+                          "topColleges": [
+                            "SCB Medical Cuttack",
+                            "MKCG Medical Berhampur",
+                            "VSS Medical Burla",
+                            "PRM Medical Baripada"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "pb_state": {
+                        "label": "Punjab State Quota (BFUHS)",
+                        "icon": "🌾",
+                        "info": {
+                          "state": "Punjab",
+                          "council": "Baba Farid University",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Punjab domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Punjab-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Baba Farid University of Health Sciences (BFUHS) Faridkot runs state quota counselling. CMC Ludhiana is a top-tier minority/private institute with strong outcomes.",
+                          "topColleges": [
+                            "Govt Medical College Patiala",
+                            "Govt Medical College Amritsar",
+                            "Faridkot Medical College",
+                            "Christian Medical College Ludhiana"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "bh_state": {
+                        "label": "Bihar State Quota (BCECE)",
+                        "icon": "🪷",
+                        "info": {
+                          "state": "Bihar",
+                          "council": "BCECE Board",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Bihar domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Bihar-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Bihar Combined Entrance Competitive Examination Board (BCECEB) runs counselling. Patna Medical College is one of the oldest in India (est. 1925). Govt seats are heavily competitive.",
+                          "topColleges": [
+                            "Patna Medical College",
+                            "NMCH Patna",
+                            "DMCH Darbhanga",
+                            "SKMCH Muzaffarpur",
+                            "IGIMS Patna"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "jk_state": {
+                        "label": "J&K State Quota (BOPEE)",
+                        "icon": "🏔️",
+                        "info": {
+                          "state": "Jammu & Kashmir",
+                          "council": "JKBOPEE",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Jammu & Kashmir domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Jammu & Kashmir-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Board of Professional Entrance Examinations (BOPEE) J&K handles counselling for state-domicile MBBS seats. GMC Srinagar and SKIMS Soura are the premier institutes. J&K has aggressively expanded medical colleges since 2019, with new GMCs across the UT.",
+                          "topColleges": [
+                            "GMC Srinagar",
+                            "GMC Jammu",
+                            "SKIMS Soura",
+                            "GMC Kathua",
+                            "GMC Anantnag",
+                            "GMC Baramulla",
+                            "GMC Rajouri",
+                            "GMC Doda",
+                            "GMC Handwara",
+                            "GMC Udhampur"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      },
+                      "ladakh_state": {
+                        "label": "Ladakh UT Quota",
+                        "icon": "🏔️",
+                        "info": {
+                          "state": "Ladakh",
+                          "council": "Ladakh Resident Quota",
+                          "benefits": [
+                            "85% state quota — easier than All-India 15%",
+                            "Lower fees at govt colleges (₹50K-5L total)",
+                            "Domicile reservation favors locals"
+                          ],
+                          "drawbacks": [
+                            "Must hold Ladakh domicile",
+                            "Counselling rounds separate from MCC",
+                            "Private deemed colleges still cost ₹50L-1Cr"
+                          ],
+                          "tip": "Ladakh-domicile certificate is essential — start the paperwork early.",
+                          "detail": "Ladakh became a separate Union Territory in 2019 with no dedicated medical college yet (under construction). Ladakh-domicile students get earmarked seats at GMC Srinagar and via the 15% Central Pool through MCC counselling. SC/ST/PWD reservations apply.",
+                          "topColleges": [
+                            "Seats reserved at GMC Srinagar / GMC Jammu (via J&K BOPEE)",
+                            "Central Pool seats (15%) via MCC for Ladakh-domicile"
+                          ],
+                          "avgCTC": "Leads to MBBS — ₹8-15 LPA post-degree (govt seats); ₹20-60 LPA post-specialization"
+                        },
+                        "children": {}
+                      }
+                    }
+                  },
+                  "md_ms": {
+                    "label": "MD / MS (Specialization)",
+                    "icon": "🏥",
+                    "info": {
+                      "benefits": [
+                        "Expert status",
+                        "Private practice potential"
+                      ],
+                      "drawbacks": [
+                        "3 more years",
+                        "NEET PG competitive",
+                        "Sleep deprivation"
+                      ],
+                      "tip": "Follow interest, not just money — burnout is real.",
+                      "detail": "MD/MS are 3-year postgraduate degrees. Highest-earning specializations include Dermatology, Radiology, Orthopaedics, and Cardiology. Super-specialization (DM/MCh) commands ₹50 LPA to ₹2 Cr+ in private practice.",
+                      "topColleges": [
+                        "AIIMS Delhi",
+                        "CMC Vellore",
+                        "JIPMER",
+                        "PGI Chandigarh",
+                        "NIMHANS"
+                      ],
+                      "topRecruiters": [
+                        "Apollo",
+                        "Fortis",
+                        "Medanta",
+                        "Private practice"
+                      ],
+                      "avgCTC": "₹20-60 LPA (₹1-2 Cr private practice for top specializations)"
+                    },
+                    "children": {}
+                  }
+                }
+              },
+              "bds": {
+                "label": "BDS (Dentistry)",
+                "icon": "🦷",
+                "info": {
+                  "benefits": [
+                    "Shorter than MBBS",
+                    "Own clinic potential",
+                    "Growing cosmetic market"
+                  ],
+                  "drawbacks": [
+                    "Lower earning initially",
+                    "Oversaturated in cities"
+                  ],
+                  "tip": "Cosmetic and implant dentistry are where the money is.",
+                  "detail": "BDS is a 4-year course + 1-year internship. Dentists who specialize in cosmetic dentistry, implantology, or orthodontics can earn very well. Own clinic setup costs ₹10-30 lakh.",
+                  "topColleges": [
+                    "Maulana Azad Delhi",
+                    "Manipal",
+                    "SDM Dharwad",
+                    "SRM Dental"
+                  ],
+                  "topRecruiters": [
+                    "Clove Dental",
+                    "Sabka Dentist",
+                    "Apollo Dental",
+                    "Own clinic"
+                  ],
+                  "avgCTC": "₹3-8 LPA (employed); ₹8-25 LPA (own clinic)"
+                },
+                "children": {}
+              },
+              "pharmacy": {
+                "label": "B.Pharm (Pharmacy)",
+                "icon": "💊",
+                "info": {
+                  "benefits": [
+                    "Growing pharma industry",
+                    "Drug development",
+                    "Healthcare stability"
+                  ],
+                  "drawbacks": [
+                    "Regulatory heavy",
+                    "Moderate starting salary"
+                  ],
+                  "tip": "Clinical research and pharmacovigilance are booming.",
+                  "detail": "India is the 'pharmacy of the world' — 60% of global vaccines and 20% of generic medicines. B.Pharm graduates work in drug formulation, quality control, regulatory affairs, and clinical research.",
+                  "topColleges": [
+                    "NIPER",
+                    "ICT Mumbai",
+                    "BIT Mesra",
+                    "Manipal",
+                    "Jamia Hamdard"
+                  ],
+                  "topRecruiters": [
+                    "Sun Pharma",
+                    "Dr. Reddy's",
+                    "Cipla",
+                    "Lupin",
+                    "Biocon",
+                    "Divis Labs"
+                  ],
+                  "avgCTC": "₹3-8 LPA (₹8-18 with M.Pharm)"
+                },
+                "children": {}
+              },
+              "nursing": {
+                "label": "B.Sc. Nursing",
+                "icon": "🏥",
+                "info": {
+                  "benefits": [
+                    "Global demand",
+                    "Job security",
+                    "Much higher pay abroad"
+                  ],
+                  "drawbacks": [
+                    "Physically demanding",
+                    "Undervalued in India",
+                    "Shift work"
+                  ],
+                  "tip": "International license (NCLEX/NMC) can 5x your salary.",
+                  "detail": "India produces 50,000+ nursing graduates annually. International opportunities in US (NCLEX-RN), UK (NMC), and UAE offer significantly higher salaries. In India, specializations in ICU and oncology nursing command premiums.",
+                  "topColleges": [
+                    "AIIMS Delhi",
+                    "CMC Vellore",
+                    "JIPMER",
+                    "Apollo School of Nursing"
+                  ],
+                  "topRecruiters": [
+                    "AIIMS",
+                    "Apollo",
+                    "Fortis",
+                    "UK NHS (abroad)",
+                    "US hospitals (abroad)"
+                  ],
+                  "avgCTC": "₹3-6 LPA (India); ₹25-60 LPA (US/UK)"
+                },
+                "children": {}
+              },
+              "veterinary": {
+                "label": "Veterinary Science",
+                "icon": "🐾",
+                "info": {
+                  "benefits": [
+                    "Serve animals",
+                    "Govt roles",
+                    "Dairy & poultry industry"
+                  ],
+                  "drawbacks": [
+                    "Rural postings",
+                    "Lower pay than human medicine"
+                  ],
+                  "tip": "Urban pet care is booming — very profitable.",
+                  "detail": "BVSc is a 5-year degree covering animal anatomy, surgery, and livestock management. India's ₹9 lakh crore livestock sector depends on veterinarians. Urban pet care is a high-growth segment.",
+                  "topColleges": [
+                    "IVRI Bareilly",
+                    "Bombay Veterinary College",
+                    "GADVASU Ludhiana"
+                  ],
+                  "topRecruiters": [
+                    "Govt Animal Husbandry",
+                    "Amul",
+                    "NDDB",
+                    "Mars Petcare",
+                    "Own clinic"
+                  ],
+                  "avgCTC": "₹4-10 LPA (govt); ₹8-25 LPA (own clinic)"
+                },
+                "children": {}
+              }
+            }
+          },
+          "pcmb": {
+            "label": "PCMB (All four subjects)",
+            "icon": "🎯",
+            "info": {
+              "benefits": [
+                "Maximum flexibility — JEE + NEET eligible",
+                "Can decide later"
+              ],
+              "drawbacks": [
+                "Extremely heavy workload",
+                "Hard to excel in all four"
+              ],
+              "tip": "Only if genuinely undecided AND can handle the workload."
+            },
+            "children": {}
+          }
+        }
+      },
+      "commerce": {
+        "label": "Commerce Stream",
+        "icon": "📊",
+        "info": {
+          "benefits": [
+            "Strong business acumen",
+            "CA, MBA, finance pathways",
+            "Stable careers"
+          ],
+          "drawbacks": [
+            "'Less prestigious' perception",
+            "Needs self-driven learning"
+          ],
+          "tip": "Commerce + tech skills = unstoppable."
+        },
+        "children": {
+          "ca": {
+            "label": "Chartered Accountancy (CA)",
+            "icon": "🧾",
+            "info": {
+              "benefits": [
+                "Highly respected",
+                "Excellent earning potential",
+                "Independent practice",
+                "Global recognition"
+              ],
+              "drawbacks": [
+                "Very low pass rates (~5-10%)",
+                "4-5 years, 3 levels",
+                "Articleship demanding"
+              ],
+              "tip": "Start CA Foundation right after 12th.",
+              "detail": "CA is India's premier accounting qualification (ICAI). The 3-level journey takes 4-5 years. CAs work in auditing, taxation, and corporate finance. Big 4 firms pay ₹8-25 LPA, while experienced practitioners earn ₹30-80 LPA+.",
+              "topColleges": [
+                "ICAI (self-study + coaching)"
+              ],
+              "topRecruiters": [
+                "Deloitte",
+                "PwC",
+                "EY",
+                "KPMG",
+                "Grant Thornton",
+                "Reliance",
+                "Tata Group"
+              ],
+              "avgCTC": "₹8-25 LPA (employed); ₹15-80 LPA (practice)",
+              "furtherLinks": [
+                {
+                  "title": "CA Journey Explained in 15 Minutes",
+                  "url": "https://www.youtube.com/watch?v=Z_VXQX9qJio"
+                },
+                {
+                  "title": "ICAI Official Website",
+                  "url": "https://www.icai.org"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "cs_prof": {
+            "label": "Company Secretary (CS)",
+            "icon": "📋",
+            "info": {
+              "benefits": [
+                "Corporate governance expert",
+                "Independent practice",
+                "Board-level interactions"
+              ],
+              "drawbacks": [
+                "Less known than CA",
+                "Low pass rates"
+              ],
+              "tip": "CS + CA combo = corporate governance powerhouse.",
+              "detail": "Company Secretaries ensure corporate legal and regulatory compliance. ICSI conducts the 3-level exam. Stricter governance norms post-Companies Act 2013 have increased demand.",
+              "topColleges": [
+                "ICSI (self-study + coaching)"
+              ],
+              "topRecruiters": [
+                "Reliance",
+                "Tata Group",
+                "Infosys",
+                "Listed companies (mandatory for listed cos)"
+              ],
+              "avgCTC": "₹5-15 LPA"
+            },
+            "children": {}
+          },
+          "bcom": {
+            "label": "B.Com / BBA",
+            "icon": "💼",
+            "info": {
+              "benefits": [
+                "Broad business education",
+                "MBA preparation",
+                "Entrepreneurship ready"
+              ],
+              "drawbacks": [
+                "Generic without specialization",
+                "Lower starting salaries"
+              ],
+              "tip": "Internships and certifications matter more than marks.",
+              "detail": "B.Com and BBA are stepping stones to MBA, CA, CS, and professional certifications. Use the 3 years for internships, certifications (Tally, financial modelling), and exam preparation.",
+              "topColleges": [
+                "SRCC Delhi",
+                "St. Xavier's Mumbai",
+                "Christ University",
+                "Loyola Chennai",
+                "Hindu College Delhi"
+              ],
+              "topRecruiters": [
+                "Deloitte",
+                "EY",
+                "KPMG",
+                "HDFC Bank",
+                "Amazon (ops)"
+              ],
+              "avgCTC": "₹3-8 LPA (B.Com); ₹15-40 LPA (post top MBA)"
+            },
+            "children": {}
+          },
+          "economics": {
+            "label": "B.A. Economics",
+            "icon": "📈",
+            "info": {
+              "benefits": [
+                "Analytical + social science",
+                "Policy, consulting, finance",
+                "UPSC friendly"
+              ],
+              "drawbacks": [
+                "Abstract at higher levels",
+                "Needs quantitative skills"
+              ],
+              "tip": "Economics + data analytics is a powerful combo.",
+              "detail": "Economics programs from DSE, JNU, ISI, and Ashoka produce graduates who excel in policy, consulting, and finance. Modern economics is increasingly computational. Highly valued for UPSC Civil Services.",
+              "topColleges": [
+                "DSE Delhi",
+                "JNU",
+                "ISI Kolkata",
+                "Ashoka University",
+                "IGIDR Mumbai"
+              ],
+              "topRecruiters": [
+                "RBI",
+                "NITI Aayog",
+                "World Bank",
+                "McKinsey",
+                "BCG",
+                "Goldman Sachs"
+              ],
+              "avgCTC": "₹5-15 LPA (varies by institution)"
+            },
+            "children": {}
+          },
+          "banking": {
+            "label": "Banking & Finance",
+            "icon": "🏧",
+            "info": {
+              "benefits": [
+                "Stable career",
+                "Govt bank jobs",
+                "Private banks pay well"
+              ],
+              "drawbacks": [
+                "Competitive exams",
+                "Sales pressure in private banks"
+              ],
+              "tip": "CFA or FRM certification makes you stand out.",
+              "detail": "Govt banks (SBI, PNB) recruit through IBPS with job security and pensions. Private banks (HDFC, ICICI) offer higher salaries. Investment banking (Goldman, JP Morgan) is the elite tier at ₹15-40 LPA.",
+              "topColleges": [
+                "Any graduation for bank exams",
+                "IIMs for investment banking"
+              ],
+              "topRecruiters": [
+                "SBI",
+                "HDFC Bank",
+                "ICICI",
+                "Goldman Sachs",
+                "JP Morgan",
+                "Razorpay",
+                "Zerodha"
+              ],
+              "avgCTC": "₹4-8 LPA (govt); ₹15-40 LPA (investment banking)"
+            },
+            "children": {}
+          }
+        }
+      },
+      "arts": {
+        "label": "Arts / Humanities",
+        "icon": "🎨",
+        "info": {
+          "benefits": [
+            "Creative expression",
+            "Diverse paths — law, media, design, civil services",
+            "Critical thinking"
+          ],
+          "drawbacks": [
+            "Often undervalued",
+            "Lower average starting salaries"
+          ],
+          "tip": "Arts is not a backup — it's a launchpad."
+        },
+        "children": {
+          "entrance_exams": {
+            "label": "Law Entrance — CLAT",
+            "icon": "⚖️",
+            "info": {
+              "benefits": [
+                "Structured path to top institutes",
+                "Coaching ecosystem developed"
+              ],
+              "drawbacks": [
+                "Immense pressure",
+                "Mental health impact"
+              ],
+              "tip": "Students who sleep well and exercise perform better."
+            },
+            "children": {
+              "clat": {
+                "label": "CLAT",
+                "icon": "⚖️",
+                "info": {
+                  "benefits": [
+                    "Gateway to NLUs",
+                    "Less competition than JEE/NEET"
+                  ],
+                  "drawbacks": [
+                    "Aptitude-based",
+                    "Current affairs heavy"
+                  ],
+                  "tip": "Read newspapers daily — CLAT rewards breadth over depth.",
+                  "detail": "CLAT tests English, Current Affairs, Legal Reasoning, Logical Reasoning, and Quantitative Techniques through passage-based questions for admission to 22 NLUs.",
+                  "topColleges": [
+                    "NLSIU Bangalore",
+                    "NALSAR",
+                    "NLU Delhi",
+                    "NUJS Kolkata"
+                  ],
+                  "avgCTC": "₹12-28 LPA from top NLUs"
+                },
+                "children": {}
+              }
+            }
+          },
+          "law": {
+            "label": "Law (BA LLB / LLB)",
+            "icon": "⚖️",
+            "info": {
+              "benefits": [
+                "Prestigious profession",
+                "Corporate law pays very well",
+                "Social impact"
+              ],
+              "drawbacks": [
+                "5-year integrated course",
+                "CLAT competitive"
+              ],
+              "tip": "Moot courts and internships from year 1 are crucial.",
+              "detail": "Law has transformed from litigation-dominated to spanning corporate law, IP, tech law, and policy. Top NLU graduates receive ₹15-30 LPA offers from Tier 1 firms. CLAT is the entrance exam for NLUs.",
+              "topColleges": [
+                "NLSIU Bangalore",
+                "NALSAR Hyderabad",
+                "NLU Delhi",
+                "NUJS Kolkata"
+              ],
+              "topRecruiters": [
+                "AZB & Partners",
+                "Cyril Amarchand",
+                "Trilegal",
+                "Khaitan & Co",
+                "Shardul Amarchand"
+              ],
+              "avgCTC": "₹12-28 LPA (top NLUs)"
+            },
+            "children": {}
+          },
+          "design": {
+            "label": "Design (B.Des)",
+            "icon": "🎭",
+            "info": {
+              "benefits": [
+                "High UX/UI demand",
+                "Creative fulfillment",
+                "Tech + art intersection",
+                "Freelance-friendly"
+              ],
+              "drawbacks": [
+                "Portfolio-dependent",
+                "Subjective evaluation"
+              ],
+              "tip": "Start building a portfolio — NID and NIFT love raw creativity.",
+              "detail": "Design spans UX/UI, product design, fashion, and animation. Tech industry's appetite for designers is insatiable. Admission through NID DAT, NIFT entrance, UCEED.",
+              "topColleges": [
+                "NID Ahmedabad",
+                "NIFT Delhi",
+                "IDC IIT Bombay",
+                "Srishti Bangalore"
+              ],
+              "topRecruiters": [
+                "Google",
+                "Microsoft",
+                "Flipkart",
+                "Swiggy",
+                "Adobe",
+                "Design studios"
+              ],
+              "avgCTC": "₹6-20 LPA"
+            },
+            "children": {}
+          },
+          "journalism": {
+            "label": "Journalism & Mass Comm",
+            "icon": "📰",
+            "info": {
+              "benefits": [
+                "Dynamic career",
+                "Digital media boom",
+                "Storytelling skills"
+              ],
+              "drawbacks": [
+                "Irregular hours",
+                "Modest starting pay"
+              ],
+              "tip": "Start a blog or YouTube channel — your portfolio IS your resume.",
+              "detail": "Digital revolution has created new opportunities — content creation, social media, data journalism, podcasts. Traditional newsrooms shrink but digital-first publications hire.",
+              "topColleges": [
+                "IIMC Delhi",
+                "ACJ Chennai",
+                "Xavier's Mumbai",
+                "Jamia Millia"
+              ],
+              "topRecruiters": [
+                "India Today",
+                "The Hindu",
+                "Economic Times",
+                "BBC India",
+                "YouTube/digital platforms"
+              ],
+              "avgCTC": "₹3-10 LPA (traditional); ₹5-25 LPA (digital)"
+            },
+            "children": {}
+          },
+          "psychology": {
+            "label": "B.A. Psychology",
+            "icon": "🧠",
+            "info": {
+              "benefits": [
+                "Mental health awareness growing",
+                "Counselling in demand",
+                "HR and OB roles"
+              ],
+              "drawbacks": [
+                "Masters mandatory for practice",
+                "Low starting pay",
+                "Long clinical path"
+              ],
+              "tip": "Clinical psychology needs RCI license (M.Phil mandatory).",
+              "detail": "Psychology is experiencing a renaissance. Clinical psychologists, organizational psychologists, UX researchers, and counsellors are in demand. Online therapy platforms are expanding access.",
+              "topColleges": [
+                "Christ University",
+                "Lady Shri Ram",
+                "TISS Mumbai",
+                "NIMHANS",
+                "Ambedkar University"
+              ],
+              "topRecruiters": [
+                "Hospitals",
+                "Schools",
+                "Corporate HR",
+                "Practo",
+                "Amaha",
+                "NGOs"
+              ],
+              "avgCTC": "₹3-8 LPA (MA); ₹8-20 LPA (M.Phil Clinical)"
+            },
+            "children": {}
+          },
+          "polsci": {
+            "label": "Political Science",
+            "icon": "🌐",
+            "info": {
+              "benefits": [
+                "UPSC alignment",
+                "Think tanks",
+                "Diplomatic service"
+              ],
+              "drawbacks": [
+                "Limited private sector",
+                "Academic-oriented"
+              ],
+              "tip": "IR specialization opens doors to UN and embassies."
+            },
+            "children": {}
+          },
+          "teaching": {
+            "label": "Teaching / Education",
+            "icon": "👩‍🏫",
+            "info": {
+              "benefits": [
+                "Noble profession",
+                "Job security",
+                "Work-life balance"
+              ],
+              "drawbacks": [
+                "Lower private salaries",
+                "TET/CTET required"
+              ],
+              "tip": "EdTech has opened ₹10-25 LPA opportunities for good teachers.",
+              "detail": "Teaching spans govt schools (TET/CTET), private schools, college teaching (NET/SET), coaching, and EdTech. The coaching industry and YouTube content creation have created teacher-entrepreneurs earning ₹10-50 LPA.",
+              "topColleges": [
+                "B.Ed programs",
+                "NET/SET qualification"
+              ],
+              "topRecruiters": [
+                "KVS",
+                "NVS",
+                "Allen",
+                "FIITJEE",
+                "Unacademy",
+                "PhysicsWallah"
+              ],
+              "avgCTC": "₹3-8 LPA (school); ₹8-25 LPA (coaching/EdTech)"
+            },
+            "children": {}
+          }
+        }
+      },
+      "vocational": {
+        "label": "Vocational / Skill-Based",
+        "icon": "🛠️",
+        "info": {
+          "benefits": [
+            "Practical job-ready skills",
+            "Earn while learning",
+            "Growing respect for trades"
+          ],
+          "drawbacks": [
+            "Social stigma exists",
+            "Lower ceiling without further education"
+          ],
+          "tip": "Germany, Australia, Canada have huge demand for skilled Indian workers."
+        },
+        "children": {
+          "iti": {
+            "label": "ITI / Diploma",
+            "icon": "🔩",
+            "info": {
+              "benefits": [
+                "Job-ready in 1-2 years",
+                "Govt + private roles"
+              ],
+              "drawbacks": [
+                "Perception issues",
+                "Lower starting salary"
+              ],
+              "tip": "Explore Germany's Ausbildung programs.",
+              "detail": "ITIs and polytechnics offer the fastest route to employment for hands-on learners. Lateral entry to B.Tech (2nd year) is possible for diploma holders.",
+              "topColleges": [
+                "Government ITIs",
+                "Government Polytechnics"
+              ],
+              "topRecruiters": [
+                "Indian Railways",
+                "ONGC",
+                "SAIL",
+                "BHEL",
+                "Tata Motors",
+                "Maruti"
+              ],
+              "avgCTC": "₹2-5 LPA (ITI); ₹3-7 LPA (diploma)"
+            },
+            "children": {}
+          },
+          "hospitality": {
+            "label": "Hotel Management",
+            "icon": "🏨",
+            "info": {
+              "benefits": [
+                "Global opportunities",
+                "Cruise ships, luxury hotels"
+              ],
+              "drawbacks": [
+                "Long standing hours",
+                "Weekend work"
+              ],
+              "tip": "International hotel chains have management trainee programs.",
+              "detail": "Hotel Management covers food production, F&B service, front office, and hospitality management. International placements in Dubai, Singapore, and Europe offer higher packages.",
+              "topColleges": [
+                "IHM Mumbai",
+                "IHM Delhi",
+                "IHM Bangalore",
+                "Welcomgroup Manipal"
+              ],
+              "topRecruiters": [
+                "Taj Hotels",
+                "Oberoi",
+                "Marriott",
+                "Hyatt",
+                "ITC Hotels"
+              ],
+              "avgCTC": "₹3-8 LPA (India); ₹8-20 LPA (international)"
+            },
+            "children": {}
+          },
+          "paramedical": {
+            "label": "Paramedical Courses",
+            "icon": "🩻",
+            "info": {
+              "benefits": [
+                "Short duration",
+                "Hospital jobs available",
+                "Growing healthcare"
+              ],
+              "drawbacks": [
+                "Capped growth",
+                "Repetitive work"
+              ],
+              "tip": "Physiotherapy and radiology have best growth.",
+              "detail": "Paramedical courses train lab technicians, radiographers, physiotherapists, and EMTs. Physiotherapy (BPT) is a 4.5-year degree with excellent prospects in sports and neuro-rehab.",
+              "topColleges": [
+                "CMC Vellore",
+                "Manipal",
+                "AIIMS allied health"
+              ],
+              "topRecruiters": [
+                "Apollo",
+                "Fortis",
+                "Max",
+                "Dr. Lal PathLabs",
+                "SRL Diagnostics"
+              ],
+              "avgCTC": "₹2-6 LPA (technician); ₹4-12 LPA (physio)"
+            },
+            "children": {}
+          }
+        }
+      },
+      "alternative": {
+        "label": "Alternative Paths",
+        "description": "Beyond traditional streams — global options, gap years, skill-based routes.",
+        "icon": "🔀",
+        "info": {
+          "benefits": [
+            "Not everyone needs a traditional degree",
+            "Skill economy growing"
+          ],
+          "drawbacks": [
+            "Social pressure",
+            "Fewer safety nets"
+          ],
+          "tip": "Unconventional path with a plan beats conventional path without one."
+        },
+        "children": {
+          "cuet": {
+            "label": "CUET",
+            "icon": "🏫",
+            "info": {
+              "benefits": [
+                "Single exam for 40+ central universities",
+                "Levels playing field"
+              ],
+              "drawbacks": [
+                "Pattern still evolving",
+                "Logistical issues"
+              ],
+              "tip": "Pick domain subjects carefully — CUET rewards specialization.",
+              "detail": "CUET replaced board-marks-based cutoffs at DU, JNU, BHU, and 40+ central universities since 2022. Tests domain subjects, General Test, and Language."
+            },
+            "children": {}
+          },
+          "abroad_ug": {
+            "label": "Study Abroad (UG)",
+            "icon": "✈️",
+            "info": {
+              "benefits": [
+                "World-class education",
+                "Global exposure",
+                "Immigration pathways"
+              ],
+              "drawbacks": [
+                "₹20-60 lakh+ cost",
+                "Cultural adjustment",
+                "Visa uncertainties"
+              ],
+              "tip": "SAT + extracurriculars + essays > 12th marks for US.",
+              "detail": "US, UK, Canada, Australia, Germany are top destinations. US uses holistic admissions (SAT, essays, extracurriculars). Germany offers tuition-free programs. Post-study work visas provide career entry.",
+              "topColleges": [
+                "MIT, Stanford, Harvard (US)",
+                "Oxford, Cambridge (UK)",
+                "UofT, McGill (Canada)",
+                "TU Munich (Germany — free)"
+              ],
+              "avgCTC": "Varies — $60-150K in US"
+            },
+            "children": {}
+          },
+          "gap_year": {
+            "label": "Gap Year",
+            "icon": "🧭",
+            "info": {
+              "benefits": [
+                "Discover interests",
+                "Mental health reset"
+              ],
+              "drawbacks": [
+                "Social stigma in India",
+                "Can lose momentum"
+              ],
+              "tip": "Structured gap year with goals = gold. Unplanned = risky."
+            },
+            "children": {}
+          },
+          "freelancing": {
+            "label": "Freelancing / Digital Skills",
+            "icon": "💻",
+            "info": {
+              "benefits": [
+                "Start earning at 18",
+                "Global clients",
+                "Portfolio > degree"
+              ],
+              "drawbacks": [
+                "No stable income initially",
+                "Self-marketing needed"
+              ],
+              "tip": "Pick ONE skill, get really good, build 5 portfolio pieces.",
+              "detail": "High-demand freelance skills: web development, graphic design, video editing, copywriting. Indian freelancers benefit from currency advantage — $30-50/hr = ₹15-25 LPA+.",
+              "topColleges": [
+                "Online learning (Coursera, Udemy, YouTube)"
+              ],
+              "topRecruiters": [
+                "Upwork",
+                "Fiverr",
+                "Toptal",
+                "Direct clients via LinkedIn"
+              ],
+              "avgCTC": "₹3-25 LPA (depends on skill and niche)"
+            },
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "graduation": {
+    "label": "Graduation",
+    "description": "Degree in progress — plan your next move!",
+    "icon": "🎓",
+    "children": {
+      "higher_ed": {
+        "label": "Higher Education",
+        "icon": "📚",
+        "info": {
+          "benefits": [
+            "Deeper expertise",
+            "Better career positioning"
+          ],
+          "drawbacks": [
+            "2-5 more years",
+            "Opportunity cost",
+            "Expensive abroad"
+          ],
+          "tip": "Only pursue if it adds clear value — not as a default."
+        },
+        "children": {
+          "mtech": {
+            "label": "M.Tech / MS",
+            "icon": "⚙️",
+            "info": {
+              "benefits": [
+                "Specialization depth",
+                "GATE scholarship for M.Tech",
+                "MS abroad = immigration"
+              ],
+              "drawbacks": [
+                "2-3 years more",
+                "ROI unclear for some branches"
+              ],
+              "tip": "India: GATE → IIT M.Tech (free + stipend). Abroad: GRE → US/Germany MS.",
+              "detail": "M.Tech from IITs via GATE is fully funded with ₹12,400/month stipend — India's best-value higher education. MS abroad costs ₹25-60 lakh but provides global exposure. Germany's tuition-free programs are underexplored.",
+              "topColleges": [
+                "IIT Bombay",
+                "IIT Madras",
+                "IISc",
+                "Stanford, CMU (US)",
+                "TU Munich (Germany)"
+              ],
+              "topRecruiters": [
+                "Google",
+                "Microsoft",
+                "Intel",
+                "Qualcomm",
+                "Samsung Research",
+                "Nvidia"
+              ],
+              "avgCTC": "₹12-30 LPA (M.Tech); $100-180K (MS US)"
+            },
+            "children": {}
+          },
+          "mba": {
+            "label": "MBA",
+            "icon": "📊",
+            "info": {
+              "benefits": [
+                "Career accelerator",
+                "₹15-40 LPA from IIMs",
+                "Network worth crores"
+              ],
+              "drawbacks": [
+                "CAT competitive",
+                "₹15-25L fees",
+                "2 years opportunity cost"
+              ],
+              "tip": "2-4 years work experience before MBA gives best ROI.",
+              "detail": "MBA with CAT as primary entrance for IIMs. IIM ABC produce median packages of ₹25-35 LPA. Valuable as career switch tool — engineers to consulting/finance. Specializations: finance, marketing, operations, analytics.",
+              "topColleges": [
+                "IIM Ahmedabad",
+                "IIM Bangalore",
+                "IIM Calcutta",
+                "ISB Hyderabad",
+                "XLRI",
+                "FMS Delhi"
+              ],
+              "topRecruiters": [
+                "McKinsey",
+                "BCG",
+                "Bain",
+                "Goldman Sachs",
+                "Amazon",
+                "HUL",
+                "P&G"
+              ],
+              "avgCTC": "₹25-35 LPA (IIM ABC median)"
+            },
+            "children": {}
+          },
+          "abroad_ms": {
+            "label": "Study Abroad (Masters)",
+            "icon": "🌍",
+            "info": {
+              "benefits": [
+                "Global education",
+                "Immigration pathway",
+                "Better research infra"
+              ],
+              "drawbacks": [
+                "₹25-60 lakh investment",
+                "Visa uncertainty"
+              ],
+              "tip": "Germany offers tuition-free MS — explore DAAD scholarships.",
+              "detail": "US remains top for STEM MS with 3-year OPT. Germany offers tuition-free public universities. Canada's PR pathway makes it attractive. ROI depends on university, program, and job market.",
+              "topColleges": [
+                "MIT, Stanford, CMU (US)",
+                "TU Munich, RWTH Aachen (Germany)",
+                "UofT, Waterloo (Canada)"
+              ],
+              "topRecruiters": [
+                "Google, Amazon, Microsoft (US)",
+                "SAP, Siemens (Germany)",
+                "Shopify, RBC (Canada)"
+              ],
+              "avgCTC": "$80-180K (US); €50-80K (Germany)"
+            },
+            "children": {}
+          }
+        }
+      },
+      "placements": {
+        "label": "Placements / Jobs",
+        "icon": "💼",
+        "info": {
+          "benefits": [
+            "Start earning immediately",
+            "Practical experience",
+            "Financial independence"
+          ],
+          "drawbacks": [
+            "Entry-level modest",
+            "First job may not be dream job"
+          ],
+          "tip": "First job is for learning, not earning. Optimize for growth."
+        },
+        "children": {
+          "tech": {
+            "label": "Tech / IT Roles",
+            "icon": "💻",
+            "info": {
+              "benefits": [
+                "Largest campus recruiter",
+                "₹4-20 LPA",
+                "Remote options"
+              ],
+              "drawbacks": [
+                "Service companies monotonous",
+                "Bench periods",
+                "Support roles initially"
+              ],
+              "tip": "DSA + system design + projects = placement trifecta.",
+              "detail": "IT sector is India's largest campus recruiter — mass (TCS, Infosys at ₹3.5-7 LPA) to dream (Amazon, Microsoft at ₹15-40 LPA) to super-dream (Google, Goldman at ₹30-80 LPA).",
+              "topColleges": [
+                "IITs",
+                "NITs",
+                "BITS",
+                "IIIT Hyderabad"
+              ],
+              "topRecruiters": [
+                "Google",
+                "Microsoft",
+                "Amazon",
+                "Goldman Sachs",
+                "TCS",
+                "Infosys",
+                "Wipro"
+              ],
+              "avgCTC": "₹3.5-7 LPA (mass); ₹12-25 LPA (dream); ₹30-80 LPA (super-dream)"
+            },
+            "children": {}
+          },
+          "consulting": {
+            "label": "Consulting",
+            "icon": "📋",
+            "info": {
+              "benefits": [
+                "MBB prestige",
+                "Steep learning curve",
+                "Diverse problems"
+              ],
+              "drawbacks": [
+                "80+ hour weeks",
+                "Up-or-out culture",
+                "Burnout"
+              ],
+              "tip": "Case interview prep is everything — practice 50+ cases.",
+              "detail": "MBB (McKinsey, BCG, Bain) offers rapid learning, diverse exposure, and strong exit opportunities. Entry through top IIMs or IITs. Interview = case studies + behavioral.",
+              "topColleges": [
+                "IIM ABC",
+                "ISB",
+                "IIT Bombay",
+                "XLRI"
+              ],
+              "topRecruiters": [
+                "McKinsey",
+                "BCG",
+                "Bain",
+                "Kearney",
+                "Accenture Strategy",
+                "Deloitte Consulting"
+              ],
+              "avgCTC": "₹15-30 LPA (entry); ₹40-80 LPA (Partner)"
+            },
+            "children": {}
+          },
+          "govt": {
+            "label": "Government Exams",
+            "icon": "🏛️",
+            "info": {
+              "benefits": [
+                "Job security",
+                "Pension + benefits",
+                "Respect"
+              ],
+              "drawbacks": [
+                "1-5 year preparation",
+                "Low selection rates",
+                "Age limit"
+              ],
+              "tip": "Have a Plan B — average UPSC aspirant takes 3-4 attempts.",
+              "detail": "UPSC (IAS/IPS) is most prestigious but ~0.1% selection rate. SSC, Banking, Railways offer more accessible alternatives. Key: manage uncertainty with a backup plan.",
+              "topColleges": [
+                "Any graduation qualifies",
+                "Coaching: Vajiram & Ravi, Vision IAS, Drishti IAS"
+              ],
+              "topRecruiters": [
+                "UPSC (IAS, IPS, IFS)",
+                "SSC (CGL, CHSL)",
+                "IBPS/SBI",
+                "Railways"
+              ],
+              "avgCTC": "₹6-12 LPA (Group B); ₹10-18 LPA (IAS starting)"
+            },
+            "children": {}
+          }
+        }
+      },
+      "certifications": {
+        "label": "Certifications",
+        "icon": "📜",
+        "info": {
+          "benefits": [
+            "Focused skill acquisition",
+            "Industry-recognized",
+            "Done alongside degree"
+          ],
+          "drawbacks": [
+            "Some expensive",
+            "Certificate ≠ competence"
+          ],
+          "tip": "Only invest in certs hiring managers actually ask for."
+        },
+        "children": {
+          "cloud": {
+            "label": "AWS / Azure / GCP",
+            "icon": "☁️",
+            "info": {
+              "benefits": [
+                "Cloud skills in massive demand",
+                "₹2-8 LPA salary bump"
+              ],
+              "drawbacks": [
+                "Exam fees ₹10-25K",
+                "Hands-on > cert alone"
+              ],
+              "tip": "AWS Solutions Architect Associate — start there.",
+              "detail": "Cloud certifications validate skills on AWS (~32% market share), Azure (~22%), GCP (~11%). Most popular: AWS Solutions Architect Associate.",
+              "topColleges": [
+                "Self-study: A Cloud Guru, Stephane Maarek (Udemy)"
+              ],
+              "topRecruiters": [
+                "Amazon",
+                "Microsoft",
+                "Google",
+                "Accenture",
+                "TCS",
+                "startups"
+              ],
+              "avgCTC": "₹2-8 LPA bump with relevant experience"
+            },
+            "children": {}
+          },
+          "finance_cert": {
+            "label": "CFA / FRM",
+            "icon": "📈",
+            "info": {
+              "benefits": [
+                "CFA: gold standard in finance",
+                "₹10-30 LPA with experience"
+              ],
+              "drawbacks": [
+                "3 levels over 2-4 years",
+                "40-50% pass rates"
+              ],
+              "tip": "Start CFA Level 1 in final year.",
+              "detail": "CFA covers ethics, portfolio management, equity, fixed income, and derivatives across 3 levels. FRM focuses on risk management (2 parts). Both globally recognized.",
+              "topColleges": [
+                "Self-study: CFA Institute materials, Kaplan Schweser"
+              ],
+              "topRecruiters": [
+                "Goldman Sachs",
+                "JP Morgan",
+                "HDFC AMC",
+                "Kotak AMC",
+                "Edelweiss"
+              ],
+              "avgCTC": "₹8-15 LPA (L1); ₹15-40 LPA (charterholder)"
+            },
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "post-grad": {
+    "label": "Post-Graduation",
+    "description": "Specialize and accelerate!",
+    "icon": "📜",
+    "children": {
+      "phd": {
+        "label": "PhD / Research",
+        "icon": "🔬",
+        "info": {
+          "benefits": [
+            "Domain expert",
+            "Academic career",
+            "₹30-40K/month fellowship"
+          ],
+          "drawbacks": [
+            "4-6 years",
+            "Low stipend",
+            "Isolation",
+            "Tough job market"
+          ],
+          "tip": "Choose your advisor carefully — matters more than the university.",
+          "detail": "PhD is a 4-6 year research commitment producing new knowledge. CSIR/UGC provides ₹31-35K/month fellowships. The academic job market is competitive but industry R&D labs (Google, Microsoft) are alternatives.",
+          "topColleges": [
+            "IISc Bangalore",
+            "IIT Bombay",
+            "IIT Madras",
+            "TIFR",
+            "NCBS"
+          ],
+          "topRecruiters": [
+            "IITs/IISc (faculty)",
+            "Google Research",
+            "Microsoft Research",
+            "IBM",
+            "TCS Research"
+          ],
+          "avgCTC": "₹31-35K/month (fellowship); ₹12-25 LPA (Asst Professor); ₹25-60 LPA (industry R&D)"
+        },
+        "children": {}
+      },
+      "prof_masters": {
+        "label": "Professional Masters",
+        "icon": "📖",
+        "info": {
+          "benefits": [
+            "Specialized expertise",
+            "Career acceleration",
+            "Higher salary band"
+          ],
+          "drawbacks": [
+            "Time + money",
+            "Not all programs equal"
+          ],
+          "tip": "ROI varies wildly — tier-1 and tier-3 programs are completely different."
+        },
+        "children": {
+          "exec_mba": {
+            "label": "Executive MBA",
+            "icon": "👔",
+            "info": {
+              "benefits": [
+                "For working professionals",
+                "Weekend/online formats",
+                "Immediate salary jump"
+              ],
+              "drawbacks": [
+                "Exhausting with job",
+                "Less immersive",
+                "Quality varies"
+              ],
+              "tip": "ISB, IIM executive programs have best brand value.",
+              "detail": "Executive MBA programs cater to working professionals with 5-15 years of experience, offering weekend or modular formats without leaving the job.",
+              "topColleges": [
+                "ISB Hyderabad",
+                "IIM Bangalore (EPGP)",
+                "IIM Calcutta (PGPEX)",
+                "XLRI",
+                "Great Lakes"
+              ],
+              "topRecruiters": [
+                "Career acceleration within current company or switch"
+              ],
+              "avgCTC": "₹5-15 LPA salary bump typical"
+            },
+            "children": {}
+          },
+          "mca": {
+            "label": "MCA / Career Switch to Tech",
+            "icon": "💻",
+            "info": {
+              "benefits": [
+                "Non-CS to tech switch",
+                "NIMCET for top NITs"
+              ],
+              "drawbacks": [
+                "2-3 years",
+                "'Not real CS' stigma"
+              ],
+              "tip": "Build a strong GitHub profile during MCA.",
+              "detail": "MCA allows non-CS graduates to transition into tech. NIMCET entrance for top NITs. The key is self-learning beyond curriculum — DSA, projects, and open-source.",
+              "topColleges": [
+                "NIT Trichy",
+                "NIT Warangal",
+                "NIT Allahabad",
+                "JNU",
+                "BHU"
+              ],
+              "topRecruiters": [
+                "TCS",
+                "Infosys",
+                "Wipro",
+                "Amazon",
+                "Microsoft (through good DSA skills)"
+              ],
+              "avgCTC": "₹6-15 LPA (with strong coding skills)"
+            },
+            "children": {}
+          }
+        }
+      },
+      "transition": {
+        "label": "Career Transition",
+        "icon": "🔄",
+        "info": {
+          "benefits": [
+            "Fresh start in a field you love",
+            "Transferable skills valuable"
+          ],
+          "drawbacks": [
+            "Starting salary may drop",
+            "Steep learning curve",
+            "Imposter syndrome"
+          ],
+          "tip": "Transition gradually — freelance in the new field first."
+        },
+        "children": {
+          "tech_switch": {
+            "label": "Non-Tech → Tech",
+            "icon": "💻",
+            "info": {
+              "benefits": [
+                "Tech pays more",
+                "Coding bootcamps (3-6 months)",
+                "Remote options"
+              ],
+              "drawbacks": [
+                "Steep learning curve",
+                "May start junior",
+                "Ageism in some companies"
+              ],
+              "tip": "Full-stack web dev is the fastest transition path.",
+              "detail": "The most common career transition in India. Coding bootcamps, online courses, and self-study enable transitions. Full-stack development, data analytics, and product management are popular landing spots."
+            },
+            "children": {}
+          },
+          "product_mgmt": {
+            "label": "Product Management",
+            "icon": "📦",
+            "info": {
+              "benefits": [
+                "No specific degree needed",
+                "₹15-40 LPA",
+                "Strategic + creative + technical"
+              ],
+              "drawbacks": [
+                "Ambiguous role",
+                "Hard to break in",
+                "Lots of responsibility, little authority"
+              ],
+              "tip": "Build a side project and write product teardown blogs.",
+              "detail": "PMs own the 'what' and 'why' of product development. Breaking in requires demonstrating product thinking through side projects, case studies, and writing."
+            },
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "working": {
+    "label": "Working Professionals",
+    "description": "Level up from where you are!",
+    "icon": "💼",
+    "children": {
+      "growth": {
+        "label": "Career Growth",
+        "icon": "📈",
+        "info": {
+          "benefits": [
+            "Move up the ladder",
+            "Higher compensation",
+            "More impact"
+          ],
+          "drawbacks": [
+            "Politics increase",
+            "Work-life harder",
+            "Skills that got you here won't get you there"
+          ],
+          "tip": "Visibility matters as much as ability."
+        },
+        "children": {
+          "leadership": {
+            "label": "Management / Leadership",
+            "icon": "👥",
+            "info": {
+              "benefits": [
+                "People management skills",
+                "₹20-60 LPA at senior levels",
+                "Executive path"
+              ],
+              "drawbacks": [
+                "Less hands-on",
+                "People problems are hard",
+                "Meeting-heavy days"
+              ],
+              "tip": "Read 'The Manager's Path' by Camille Fournier.",
+              "detail": "Transitioning from individual contributor to manager is one of the biggest career shifts. It requires developing entirely new skills — delegation, coaching, hiring, conflict resolution, and strategic thinking."
+            },
+            "children": {}
+          },
+          "ic_track": {
+            "label": "IC Track (Staff/Principal)",
+            "icon": "🧑‍💻",
+            "info": {
+              "benefits": [
+                "Stay technical",
+                "₹30-80 LPA at Staff/Principal level",
+                "Deep expertise valued"
+              ],
+              "drawbacks": [
+                "Fewer positions at top",
+                "Can plateau",
+                "Need to stay cutting-edge"
+              ],
+              "tip": "System design + tech writing + mentoring = Staff Engineer recipe.",
+              "detail": "The Individual Contributor track allows engineers to grow without becoming managers. Staff Engineers and Principal Engineers solve organization-wide technical problems and set technical direction."
+            },
+            "children": {}
+          },
+          "intl": {
+            "label": "International Career",
+            "icon": "🌍",
+            "info": {
+              "benefits": [
+                "2-5x salary",
+                "Global experience",
+                "Better work-life in some countries"
+              ],
+              "drawbacks": [
+                "Visa challenges",
+                "Cultural adjustment",
+                "Away from family"
+              ],
+              "tip": "US (H1B), Canada (Express Entry), Germany (Job Seeker Visa), UAE — research your pathway.",
+              "detail": "Common pathways: US H-1B visa (lottery-based), Canada Express Entry (points-based, most accessible), Germany Job Seeker Visa, and UAE employment visas."
+            },
+            "children": {}
+          }
+        }
+      },
+      "side_income": {
+        "label": "Side Income",
+        "icon": "💰",
+        "info": {
+          "benefits": [
+            "Financial security",
+            "Explore interests",
+            "Multiple income streams"
+          ],
+          "drawbacks": [
+            "Time management",
+            "Burnout risk",
+            "Employer restrictions"
+          ],
+          "tip": "Start with something using your existing skills."
+        },
+        "children": {
+          "content": {
+            "label": "Content Creation / Teaching",
+            "icon": "📹",
+            "info": {
+              "benefits": [
+                "YouTube, Udemy courses",
+                "Passive income potential",
+                "Personal brand"
+              ],
+              "drawbacks": [
+                "Consistency required",
+                "Results take 6-12 months"
+              ],
+              "tip": "Technical content on YouTube has massive demand in India.",
+              "detail": "Technical YouTube channels, online courses (Udemy, Skillshare), newsletter writing, and LinkedIn content creation are popular side income sources for professionals."
+            },
+            "children": {}
+          },
+          "consulting_side": {
+            "label": "Consulting / Freelancing",
+            "icon": "📋",
+            "info": {
+              "benefits": [
+                "Premium rates for expertise",
+                "₹2-10 lakh/month possible",
+                "Flexibility"
+              ],
+              "drawbacks": [
+                "Inconsistent income",
+                "Client management"
+              ],
+              "tip": "Start on Toptal or Upwork — build reputation first.",
+              "detail": "Senior professionals can leverage domain expertise for consulting engagements. Platforms like Toptal, Clarity.fm, and direct referrals are common channels."
+            },
+            "children": {}
+          },
+          "investing": {
+            "label": "Investing & Wealth",
+            "icon": "📊",
+            "info": {
+              "benefits": [
+                "Money working for you",
+                "Compound interest",
+                "Financial independence"
+              ],
+              "drawbacks": [
+                "Risk of loss",
+                "Needs financial literacy",
+                "Emotional discipline"
+              ],
+              "tip": "Start with index funds (Nifty 50), learn 2 years, then explore stocks.",
+              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point."
+            },
+            "children": {}
+          }
+        }
+      },
+      "upskilling": {
+        "label": "Upskilling",
+        "icon": "🔄",
+        "info": {
+          "benefits": [
+            "Stay relevant",
+            "Salary bump",
+            "Career pivots possible"
+          ],
+          "drawbacks": [
+            "Time commitment",
+            "Decision fatigue on what to learn"
+          ],
+          "tip": "Learn in public — share your journey on LinkedIn."
+        },
+        "children": {
+          "ai_skills": {
+            "label": "AI / GenAI Skills",
+            "icon": "🤖",
+            "info": {
+              "benefits": [
+                "Every role needs AI literacy",
+                "Prompt engineering is real",
+                "₹5-15 LPA bump"
+              ],
+              "drawbacks": [
+                "Hype vs reality",
+                "Tools change monthly"
+              ],
+              "tip": "Don't just use ChatGPT — learn to build with AI APIs.",
+              "detail": "AI literacy is becoming essential across roles. Understanding how to use AI tools, build AI-powered workflows, and prompt engineer effectively creates significant career advantage."
+            },
+            "children": {}
+          },
+          "soft_skills": {
+            "label": "Communication & Soft Skills",
+            "icon": "🗣️",
+            "info": {
+              "benefits": [
+                "Differentiator at senior levels",
+                "Leadership readiness"
+              ],
+              "drawbacks": [
+                "Hard to measure",
+                "Takes years of practice"
+              ],
+              "tip": "Join Toastmasters — best ROI time investment for your career.",
+              "detail": "Public speaking, negotiation, writing, and executive presence become the primary differentiators at senior career levels where technical skills are assumed."
+            },
+            "children": {}
+          }
+        }
+      }
+    }
+  }
 };
 
 // ═══════════════════════════════════════════
@@ -140,14 +14211,35 @@ const DEFAULT_CAREER_DATA = {
 // ═══════════════════════════════════════════
 const DEFAULT_BLOG_DATA = [
   {
+    "id": 1779400000000,
+    "title": "A Founder's Story : Broken Cycle, Unshaken Dreams and an Honest Will to Serve Education",
+    "author": "Chief Editor",
+    "authorAvatar": "CE",
+    "category": "Career Paths",
+    "readTime": "9 min",
+    "excerpt": "The life story of Murli Singh — IIT graduate who pedalled 36 km a day for his dreams, and built East India's fastest-growing coaching institute.",
+    "tags": [
+      "Founder Story",
+      "IIT",
+      "JEE",
+      "NEET",
+      "Bihar",
+      "Coaching"
+    ],
+    "coverImage": "assets/murli-cover.jpg",
+    "content": "Murli Singh's life story reads less like a biography and more like a philosophy. Born into a low-income farming family in a remote village called Kothiyapur in Muzaffarpur, Bihar, he once pedalled 36 kilometres a day for his dreams — and went on to build East India's fastest-growing coaching institute. This is his journey.\n\n## A Classroom Made of Gunny Sacks\n\nMurli's earliest memories of school are rooted not in textbooks or chalkboards, but in gunny sacks. He and his classmates would carry them to school each morning, lay them on the ground, and sit. Their mothers would paint the rough fabric with bright colours, and the children would argue, with all the seriousness that childhood allows, over whose 'bench' looked the best.\n\nIt is a detail that tells you everything about where Murli came from. He grew up without knowing what he was missing. The scarcity that defined his family's life didn't register as deprivation — not then. Every resource they had felt like the entire world.\n\nSeeking better schooling for Murli, the family moved to a nearby town, where his father opened a small kirana shop. The house, modest as it was, overflowed with books. Murli's father had an insatiable appetite for reading and would bring home volumes far above his son's grade level — graduation-level textbooks that occasionally sparked small domestic quarrels. But they also seeded something important: an environment where learning was the air you breathed. Murli learned mathematics at his father's knee, and his grandmother scraped together enough to keep him dressed for school.\n\n## The Turning Point — Navodaya\n\nIn class five, Murli began preparing for the Jawahar Navodaya Vidyalaya entrance exam under the guidance of a teacher he still remembers with gratitude — Manoj Sir. The exam is ferociously competitive. As Murli puts it: \"The Navodaya entrance is as difficult as JEE if you look at the selection ratio.\"\n\nHe burned the midnight oil, and he got through. For a boy from his background, Navodaya was nothing short of a miracle. Food, housing, clothing, a playground, world-class infrastructure, dedicated teachers — everything was provided. While other students grumbled about the hostel meals, Murli quietly enjoyed them. They were better than what he had at home.\n\nHe threw himself into academics, consistently finishing in the top ten of a class that was already the cream of the district. Staying in the top three, he recalls, was nearly impossible — the competition was that fierce. It was at Navodaya that he first heard about the Indian Institutes of Technology from the school's alumni. From that moment, IIT became the singular dream of his life.\n\n## Delhi, Dengue, and Darkness\n\nAfter completing his tenth standard, Murli moved to Delhi for coaching. Everything seemed to be on track — until his body gave out. He contracted dengue. His platelet count plummeted to 14,000. He was bleeding from the mouth. His family rushed to Delhi. But Murli fought, as he always had, and returned to his study table.\n\nHe finished coaching by October of his second year and went home for board preparation. This was when reality landed its heaviest blow. Murli had been away from home for over seven years. He fashioned a makeshift study table. His grip on physics and chemistry held firm, but mathematics was slipping away. For two months, he studied with desperate intensity, finishing H.C. Verma's books in roughly two weeks.\n\nBut isolation is a slow poison. Alone, away from friends, with the pressure of approaching exams, Murli sank into clinical depression. These were, by his own account, the blackest days of his life. Motivation evaporated. He sat for his board exams with trembling hands and walked out with a 67% score — painting, which fetched him 95 marks, being the unlikely lifeline. The poor performance followed him into AIEEE and the IIT entrance. In the West Bengal JEE, he secured a rank around 8,000 and was admitted to a third-tier state college.\n\nHe went to see it. One look was enough. Navodaya, his school, had better infrastructure. He turned around and walked away.\n\n## Thirty-Six Kilometres on Two Wheels\n\nMurli returned to Muzaffarpur for a drop year. His father, worried about his mental health, refused to send him back to Delhi. He found a coaching centre 18 kilometres from home and enrolled.\n\nHis first day fell in Saavan — August — when Muzaffarpur fills with Kavariyas, pilgrims travelling to Deogarh. The journey there was manageable. On the way back, the chain on his bicycle broke. In the middle of a pilgrim-clogged road, with no way to fix it, Murli dragged the cycle the entire 18 kilometres home.\n\n\"Sometimes when life has punched you down, it goes ahead and gives you more punches — hard on the face.\"\n\nHe reached home, sat down, drank a glass of water, and declared he was never touching that cycle again. His family got him another one — still the old-fashioned kind common in North India, but functional.\n\nAnd then something unexpected happened. The daily 36-kilometre ride — gruelling, monotonous, punishing — began to heal him. The rhythm of pedalling left no room for spiralling thoughts. The depression, slowly, quietly, began to drift away. In its place, a relentless work ethic took root. He studied through full nights. He poured everything he had into the preparation.\n\nThe results came like a wave. Topper of the Bihar pilot exam. Thirteenth in the Bihar Combined Engineering Entrance. Rank 46 in the Odisha JEE. And — most importantly — he cracked IIT, earning admission to IIT (ISM), Dhanbad.\n\n## One Red Shirt, One Black Pant\n\nMurli arrived at IIT with a single set of clothes: a red shirt and a pair of black trousers. Every photograph from his first year features the same outfit. He was deeply introverted, keeping to himself for most of the initial months.\n\nBut by the end of first year, he made a deliberate choice to change. He stepped out of his comfort zone, began engaging with people, joined activities, and made his presence felt. By the end of second year, he was everywhere. Everyone on campus knew his name. His confidence had skyrocketed.\n\nIt was during this time that he discovered his true calling: teaching. He started travelling to Patna to take classes at coaching centres — paid sessions in the morning at one institute, free classes in the evening at another. At his peak, he was earning ₹8,000 for a single session and was paying his own college fees from the income.\n\nWhen campus placements arrived, Murli suited up on day one — for the media photos. That was also his last day. He never sat for a single interview. He watched friends land packages of twelve to fifteen lakhs and felt entirely at peace. He already knew his market value exceeded what the recruiters were offering.\n\n## Birth of the Ant\n\nMurli joined one of India's most prestigious coaching institutions as a chemistry faculty member and quickly became a star. Students flocked to his classes. When the management asked him to head a new centre in West Bengal, he took revenues to heights even the top brass hadn't anticipated.\n\nBut freedom called louder than success under someone else's roof. When philosophical differences with the management grew too wide to bridge, Murli resigned — but only after completing the syllabus and session for every one of his students.\n\nHe rented a flat in Kolkata and started teaching. There were no benches. Students sat on the floor. He was astonished to find that even students from affluent families came, sat on the ground, and listened. It was around this time that he founded Learning Ant.\n\n\"And since, the ant has never stopped.\"\n\nLearning Ant has scaled across multiple cities and centres, but Murli has been ferociously protective of what matters. He insists on a student-to-teacher ratio of roughly 20:1. He has turned down funding offers and expansion proposals that would take the institute beyond West Bengal — not because he lacks ambition, but because he refuses to build a coaching factory where hundreds of students sit behind a single teacher.\n\nHis priorities are non-negotiable: students and employees first. Quality over scale. Depth over reach.\n\n## The Results Speak\n\nThe numbers tell the story that Murli is too humble to narrate himself. Students from Learning Ant have crossed 700 marks in NEET — a threshold that places them among the country's sharpest medical aspirants. Foundation batch students have scored perfect hundreds in their board examinations, and ICSE students have touched 98% — results that would be remarkable at any institute, let alone one that began with students sitting on a bare floor.\n\nMurli, characteristically, deflects the credit. Every milestone, he insists, belongs to the co-faculties and non-teaching staff who pour themselves into the work with the same quiet intensity that defines his own journey. The institute's name, he points out, was never an accident. An ant alone is unremarkable; an ant colony is unstoppable. Learning Ant runs on the same philosophy — tireless, collective, ego-free — where every member of the team carries a weight far greater than their size would suggest.\n\n## The Mantra\n\nहोइहे सोई जो राम रचि राखा\n\nHoihe soi jo Ram rachi rakha — What is destined by God shall come to pass.\n\nThis is the line Murli lives by, and the one he shares with every batch of students. Put in honest effort, he tells them, and leave the results to a power greater than yourself. Everyone, eventually, receives their share of happiness in proportion to the sincerity of their labour.\n\nAnd having walked through the valley of depression himself, Murli adds a gentler piece of advice: enjoy the journey. The daily commute, the conversations with friends, the small mundane moments — these are not distractions from preparation. They are the colours that make the canvas worth painting. They are the music that makes the march bearable.\n\nFrom a painted gunny sack to a classroom empire built on principle — Murli Singh's story is proof that the longest roads sometimes begin with a broken bicycle chain and the stubbornness to keep walking.",
+    "date": "2026-05-26",
+    "linkedin": "https://www.linkedin.com/in/murli-singh-a6b1b8176/",
+    "linkedinName": "Murli Singh"
+  },
+  {
     "id": 1779300651991,
     "title": "From the Banks of Tungabhadra to the Control Room of a 210 MW Power Plant",
-    "author": "Anonymous",
-    "authorAvatar": "A",
+    "author": "Chief Editor",
+    "authorAvatar": "CE",
     "category": "Career Paths",
     "readTime": "5 min",
     "excerpt": "An Interview with Pavan Dola — IIT Madras Graduate & NTPC Engineer",
-    "coverImage": "pavan.jpg",
     "tags": [
       "Engineering",
       "Power Sector",
@@ -156,8 +14248,11 @@ const DEFAULT_BLOG_DATA = [
       "GATE",
       "Mechanical"
     ],
-    "content": "Pavan Dola grew up in Kurnool, cracked IIT on his second attempt after turning his weakest subject into his strongest, survived five years at IIT Madras, and now runs a 210 MW thermal unit at NTPC. This article traces the arc of that journey — the 4 AM mornings, the coffee-fuelled classrooms, the year he barely made attendance at one of India's best colleges, and what it actually feels like when you step inside a power plant for the first time.\n\n## A Kurnool Childhood and the Tungabhadra Days\n\nPavan spent most of his growing-up years in Kurnool, a small city in Andhra Pradesh that punches well above its weight as an education hub. The Tungabhadra river ran close to home, and the town had a steady, grounded rhythm to it, the kind of place where academics were taken seriously, and the path forward was understood early.\n\"Kurnool is genuinely a good place for education,\" he tells, matter-of-factly. \"In Andhra, there are certain pockets that just have that culture, and Kurnool is one of them.\"\nAfter class 10, the trajectory shifted — as it does for lakhs of students every year — toward JEE coaching. Pavan moved to Hyderabad and enrolled at Chaitanya, one of the many coaching factories that dot the city's landscape. Life compressed into a single building: classes on the top floor, hostel rooms below. The world shrank to textbooks, test papers, and timetables.\nBut ask Pavan about the best part of that life, and he doesn't mention a rank or a mock test score. He smiles. \"Breakfast,\" he says. \"Breakfast used to be really good.\"\n\n## Maths, Medicine, and a Father's Instinct\n\nMaths was always the subject Pavan gravitated toward. Calculus, specifically — he'd finish one textbook and immediately reach for the next. There was a personal joy in it that went beyond marks, a kind of pull that most students who've felt it will recognise instantly.\nBut the choice to pursue engineering wasn't straightforward. Pavan had initially wanted to study biology. He wanted to become a doctor — a dream his grandfather shared and encouraged. It was his father who saw things differently. Engineering, he felt, was the better path.\nLooking back, that quiet push from his father would shape everything that followed.\n\n## The First Attempt, the Failure, and the Rebuild \n\n The first crack at JEE Advanced didn't go well. Pavan didn't qualify. And in the aftermath of that result, there was a period of genuine uncertainty — the kind that doesn't get talked about enough in the success stories that eventually emerge.\n\"First time ke baad pata nahi tha karna kya hai,\" he recalls — after the first time, I didn't know what to do.\nBut instead of drifting, he introspected. The diagnosis was clear: physics was the problem. It had always been his weakest subject. So he made a decision that sounds simple but is brutally hard in practice — he would turn his biggest weakness into his biggest strength.\nHe shifted to Narayana in Hyderabad for the second attempt, and the environment helped. No social media access. No distractions. Just focused, enclosed preparation.\nThe strategy was methodical. In maths, Pavan had always been strong because his fundamentals were solid. He applied the same logic to physics — go back to basics, build from the ground up, and only then attempt the harder problems. For chemistry, which demanded a different kind of brain — memorisation, recall, endless facts — he created four large charts. Two for inorganic chemistry, two for organic (one for carbon reactions, one for benzene). Every reaction was etched onto a mind map. Every exception noted. \nHis daily routine hardened. Wake up at 4 AM. Sleep at 10 PM sharp. No napping in class — he'd drink coffee during the morning lectures to make sure of it. Less time with friends. More hours at the desk. Total concentration in the classroom, not just presence.\nThe second time, physics wasn't just manageable — it became his strongest subject.\n\n## IIT Madras: The Call That Changed Everything\n\nThe result came through while Pavan was still asleep. His father saw it first and woke him up at 6 AM.\nIIT Madras. Mechanical Engineering. Dual Degree with an M.Tech in Thermal Engineering.\nPavan's reaction was measured — he felt he could have done even better. But for the family, it was a watershed moment. Uncles called to congratulate. A shawl ceremony was held where his father was felicitated. There were no newspaper announcements, no public fanfare — just a private, deeply felt pride within the family.\nWhen Pavan's father and two uncles accompanied him to campus for the first time, the contrast hit hard. Three years of a closed, high-pressure coaching environment — and suddenly, one of the most beautiful campuses in India. Deer on the pathways. Trees everywhere. Freedom in every direction. It was a shockwave in Pavan’s social bubble. And yes, the bubble did burst!\nThe Year He Barely Showed Up\nWhat happened next is something Pavan talks about with the kind of honesty that only comes with distance: he did almost nothing in his first year.\n\"I was fatigued,\" he says simply. \"I didn't study anything in my first year. Barely made the attendance. Just enjoyed.\"\nFootball every day. FIFA games. Dota. The pendulum had swung the other way completely. After years of relentless JEE preparation, his mind and body had simply checked out. The second year wasn't much different.\nIt was only in the middle of the third year that Pavan found his way back to the study table. By then, the gap was significant — two years of accumulated coursework that he'd essentially sleepwalked through. Catching up was its own kind of battle.\nThe Final Year Project That Kept Him Three Extra Months\nThe turn came with his final year project, and it's where you can hear real excitement enter Pavan's voice for the first time when he talks about academics at IIT.\nThe project: analysing gasoline direct injection engine spray characteristics at various crank angles. MATLAB programming. Serious, hands-on research in the IC Engines lab.\nHow did he land it? He walked up to Dr. Mayank Mittal, the professor running the lab, and simply told him he wanted to work. No formal channel, no elaborate application — just a student showing up and expressing genuine interest.\nThe work consumed him. But toward the end, he couldn't produce a journal-level paper within the standard timeline. So he made a choice that tells you something about his character — he stayed three extra months at IIT Madras after his batch had left, purely to complete the manuscript. The paper was eventually published.\n\n## Delhi, GATE, and the 4 AM Roommate \n\n After five years at IIT Madras, the next chapter began not with a job offer but with a phone call from friends in Delhi. They were preparing for GATE and told Pavan about the opportunities it could unlock.\nSo he travelled to Delhi and joined them.\nHis father, remarkably, was unfazed. Five years of engineering, no job, and now more studying — but as long as Pavan wasn't idle and was working hard, his father was at peace. The financial support continued without pressure.\nDelhi was a shock after Hyderabad and Chennai. Glamorous, chaotic, impossibly crowded — especially in the preparation hubs around Ghittorni, where the density of GATE aspirants created a constant, almost suffocating sense of competition. It was easy to get distracted, to drift off track.\nWhat kept Pavan anchored was his roommate, Rahul Pradhan. Rahul studied until 4 AM every night, and Pavan, who had to cling on with his partner, found himself solving problems mentally in the predawn hours — not wanting to touch a pen and disturb the rhythm. Previous year questions, solved again and again. Another friend, Dashrath, was his library companion — supportive but occasionally distracted himself.\nPavan enrolled in two test series: Made Easy and ACE Academy. In some subjects like Strength of Materials, he consistently topped. In others like Manufacturing, he struggled, had to recalibrate his approach, and eventually found his footing. \n\n## NTPC: The Training, the Plant, and the Reality\n\n When the GATE result came out, Pavan wasn't optimistic. He didn't think he'd get anything worthwhile and had already started preparing for a second attempt. But NTPC had released a large number of seats that cycle, and by the end of the year, he was in.\nTraining was smooth — the easiest phase of his professional life, he says. Plenty of learning, football on the side, and scheme tracing sessions with colleagues Brajesh and Utkarsh.\nBut the real moment came when he first stepped inside the power plant.\n\"It was very intriguing,\" Pavan says. \"It looked beautiful at first. And then, when you start knowing the ins and outs, the picture changes — and you become responsible.\"\nHe now works as a Unit Controller for a 210 MW thermal power unit. It's a role that carries real weight — the kind where understanding every system isn't academic anymore; it's an operational necessity. \n\n## On the Changing Landscape of PSUs \n\n Pavan is thoughtful when the conversation turns to the broader picture. Workloads across PSUs have increased as the nation builds — the man-to-megawatt ratio is getting steeper. The privilege that was once offered to people in these roles has shifted. The country has progressed, and the same jobs that once carried a certain prestige and challenge have, comparatively, become less demanding in some ways.\nBut he's not cynical about it. NTPC is moving into green energy transition, and Pavan is looking forward to being part of that shift. His view on career choices is clear-eyed: \"If you can offer something to any company that is helping the country prosper, then go. \n\n## The Mantra \n\n Pavan was asked if there's a single line he lives by — something he'd pass along.\nHe doesn't hesitate.\n\n\"Do not just keep dreaming. Go out and do it.\"",
-    "date": "2026-05-20"
+    "content": "Pavan Dola grew up in Kurnool, cracked IIT on his second attempt after turning his weakest subject into his strongest, survived five years at IIT Madras, and now runs a 210 MW thermal unit at NTPC. This article traces the arc of that journey — the 4 AM mornings, the coffee-fuelled classrooms, the year he barely made attendance at one of India's best colleges, and what it actually feels like when you step inside a power plant for the first time.\n\n## A Kurnool Childhood and the Tungabhadra Days\n\nPavan spent most of his growing-up years in Kurnool, a small city in Andhra Pradesh that punches well above its weight as an education hub. The Tungabhadra river ran close to home, and the town had a steady, grounded rhythm to it, the kind of place where academics were taken seriously, and the path forward was understood early.\n\"Kurnool is genuinely a good place for education,\" he tells, matter-of-factly. \"In Andhra, there are certain pockets that just have that culture, and Kurnool is one of them.\"\nAfter class 10, the trajectory shifted — as it does for lakhs of students every year — toward JEE coaching. Pavan moved to Hyderabad and enrolled at Chaitanya, one of the many coaching factories that dot the city's landscape. Life compressed into a single building: classes on the top floor, hostel rooms below. The world shrank to textbooks, test papers, and timetables.\nBut ask Pavan about the best part of that life, and he doesn't mention a rank or a mock test score. He smiles. \"Breakfast,\" he says. \"Breakfast used to be really good.\"\n\n## Maths, Medicine, and a Father's Instinct\n\nMaths was always the subject Pavan gravitated toward. Calculus, specifically — he'd finish one textbook and immediately reach for the next. There was a personal joy in it that went beyond marks, a kind of pull that most students who've felt it will recognise instantly.\nBut the choice to pursue engineering wasn't straightforward. Pavan had initially wanted to study biology. He wanted to become a doctor — a dream his grandfather shared and encouraged. It was his father who saw things differently. Engineering, he felt, was the better path.\nLooking back, that quiet push from his father would shape everything that followed.\n\n## The First Attempt, the Failure, and the Rebuild\n \nThe first crack at JEE Advanced didn't go well. Pavan didn't qualify. And in the aftermath of that result, there was a period of genuine uncertainty — the kind that doesn't get talked about enough in the success stories that eventually emerge.\n\"First time ke baad pata nahi tha karna kya hai,\" he recalls — after the first time, I didn't know what to do.\nBut instead of drifting, he introspected. The diagnosis was clear: physics was the problem. It had always been his weakest subject. So he made a decision that sounds simple but is brutally hard in practice — he would turn his biggest weakness into his biggest strength.\nHe shifted to Narayana in Hyderabad for the second attempt, and the environment helped. No social media access. No distractions. Just focused, enclosed preparation.\nThe strategy was methodical. In maths, Pavan had always been strong because his fundamentals were solid. He applied the same logic to physics — go back to basics, build from the ground up, and only then attempt the harder problems. For chemistry, which demanded a different kind of brain — memorisation, recall, endless facts — he created four large charts. Two for inorganic chemistry, two for organic (one for carbon reactions, one for benzene). Every reaction was etched onto a mind map. Every exception noted. \nHis daily routine hardened. Wake up at 4 AM. Sleep at 10 PM sharp. No napping in class — he'd drink coffee during the morning lectures to make sure of it. Less time with friends. More hours at the desk. Total concentration in the classroom, not just presence.\nThe second time, physics wasn't just manageable — it became his strongest subject.\n\n## IIT Madras: The Call That Changed Everything\n\nThe result came through while Pavan was still asleep. His father saw it first and woke him up at 6 AM.\nIIT Madras. Mechanical Engineering. Dual Degree with an M.Tech in Thermal Engineering.\nPavan's reaction was measured — he felt he could have done even better. But for the family, it was a watershed moment. Uncles called to congratulate. A shawl ceremony was held where his father was felicitated. There were no newspaper announcements, no public fanfare — just a private, deeply felt pride within the family.\nWhen Pavan's father and two uncles accompanied him to campus for the first time, the contrast hit hard. Three years of a closed, high-pressure coaching environment — and suddenly, one of the most beautiful campuses in India. Deer on the pathways. Trees everywhere. Freedom in every direction. It was a shockwave in Pavan’s social bubble. And yes, the bubble did burst!\nThe Year He Barely Showed Up\nWhat happened next is something Pavan talks about with the kind of honesty that only comes with distance: he did almost nothing in his first year.\n\"I was fatigued,\" he says simply. \"I didn't study anything in my first year. Barely made the attendance. Just enjoyed.\"\nFootball every day. FIFA games. Dota. The pendulum had swung the other way completely. After years of relentless JEE preparation, his mind and body had simply checked out. The second year wasn't much different.\nIt was only in the middle of the third year that Pavan found his way back to the study table. By then, the gap was significant — two years of accumulated coursework that he'd essentially sleepwalked through. Catching up was its own kind of battle.\nThe Final Year Project That Kept Him Three Extra Months\nThe turn came with his final year project, and it's where you can hear real excitement enter Pavan's voice for the first time when he talks about academics at IIT.\nThe project: analysing gasoline direct injection engine spray characteristics at various crank angles. MATLAB programming. Serious, hands-on research in the IC Engines lab.\nHow did he land it? He walked up to Dr. Mayank Mittal, the professor running the lab, and simply told him he wanted to work. No formal channel, no elaborate application — just a student showing up and expressing genuine interest.\nThe work consumed him. But toward the end, he couldn't produce a journal-level paper within the standard timeline. So he made a choice that tells you something about his character — he stayed three extra months at IIT Madras after his batch had left, purely to complete the manuscript. The paper was eventually published.\n## Delhi, GATE, and the 4 AM Roommate\nAfter five years at IIT Madras, the next chapter began not with a job offer but with a phone call from friends in Delhi. They were preparing for GATE and told Pavan about the opportunities it could unlock.\nSo he travelled to Delhi and joined them.\nHis father, remarkably, was unfazed. Five years of engineering, no job, and now more studying — but as long as Pavan wasn't idle and was working hard, his father was at peace. The financial support continued without pressure.\nDelhi was a shock after Hyderabad and Chennai. Glamorous, chaotic, impossibly crowded — especially in the preparation hubs around Ghittorni, where the density of GATE aspirants created a constant, almost suffocating sense of competition. It was easy to get distracted, to drift off track.\nWhat kept Pavan anchored was his roommate, Rahul Pradhan. Rahul studied until 4 AM every night, and Pavan, who had to cling on with his partner, found himself solving problems mentally in the predawn hours — not wanting to touch a pen and disturb the rhythm. Previous year questions, solved again and again. Another friend, Dashrath, was his library companion — supportive but occasionally distracted himself.\nPavan enrolled in two test series: Made Easy and ACE Academy. In some subjects like Strength of Materials, he consistently topped. In others like Manufacturing, he struggled, had to recalibrate his approach, and eventually found his footing.\n## NTPC: The Training, the Plant, and the Reality\nWhen the GATE result came out, Pavan wasn't optimistic. He didn't think he'd get anything worthwhile and had already started preparing for a second attempt. But NTPC had released a large number of seats that cycle, and by the end of the year, he was in.\nTraining was smooth — the easiest phase of his professional life, he says. Plenty of learning, football on the side, and scheme tracing sessions with colleagues Brajesh and Utkarsh.\nBut the real moment came when he first stepped inside the power plant.\n\"It was very intriguing,\" Pavan says. \"It looked beautiful at first. And then, when you start knowing the ins and outs, the picture changes — and you become responsible.\"\nHe now works as a Unit Controller for a 210 MW thermal power unit. It's a role that carries real weight — the kind where understanding every system isn't academic anymore; it's an operational necessity.\n## On the Changing Landscape of PSUs\nPavan is thoughtful when the conversation turns to the broader picture. Workloads across PSUs have increased as the nation builds — the man-to-megawatt ratio is getting steeper. The privilege that was once offered to people in these roles has shifted. The country has progressed, and the same jobs that once carried a certain prestige and challenge have, comparatively, become less demanding in some ways.\nBut he's not cynical about it. NTPC is moving into green energy transition, and Pavan is looking forward to being part of that shift. His view on career choices is clear-eyed: \"If you can offer something to any company that is helping the country prosper, then go.\"\n## The Mantra\nPavan was asked if there's a single line he lives by — something he'd pass along.\nHe doesn't hesitate.\n\n\"Do not just keep dreaming. Go out and do it.\"",
+    "date": "2026-05-20",
+    "coverImage": "assets/pavan-cover.jpg",
+    "linkedin": "http://linkedin.com/in/pavan-dola-002b81175/",
+    "linkedinName": "Pavan Dola"
   },
   {
     "id": 3,
