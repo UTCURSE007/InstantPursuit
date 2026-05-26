@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-05-26T20:07:34.262Z
+   data.js — exported from admin on 2026-05-26T20:09:29.657Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -17486,8 +17486,7 @@ const DEFAULT_BLOG_DATA = [
         "title": "Other GATE opportunities",
         "url": "https://gate2026.iitg.ac.in/opportunities.html"
       }
-    ],
-    "featured": true
+    ]
   },
   {
     "id": 1779400000000,
@@ -17515,7 +17514,8 @@ const DEFAULT_BLOG_DATA = [
       }
     ],
     "linkedin": "https://www.linkedin.com/in/murli-singh-a6b1b8176/",
-    "linkedinName": "Murli Singh"
+    "linkedinName": "Murli Singh",
+    "featured": true
   },
   {
     "id": 1779300651991,
