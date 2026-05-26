@@ -3,236 +3,702 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instant Pursuit — Admin Tool</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#111118;--bg2:#1a1a24;--bg3:#222233;--surface:#1e1e2e;--border:#2d2d44;--text:#e0e0f0;--text2:#8888aa;--accent:#6C5CE7;--accent2:#a29bfe;--green:#34d399;--red:#f87171;--orange:#fbbf24;--font:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--radius:8px}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5}
-a{color:var(--accent2)}
-.admin-wrap{max-width:960px;margin:0 auto;padding:24px 20px}
-h1{font-size:1.5rem;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:10px}
-.subtitle{color:var(--text2);font-size:.85rem;margin-bottom:24px}
-.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:8px}
-.tab{padding:8px 18px;border-radius:var(--radius) var(--radius) 0 0;border:none;background:transparent;color:var(--text2);font-family:var(--font);font-size:.88rem;font-weight:500;cursor:pointer}
-.tab.active{background:var(--bg3);color:var(--accent2)}
-.panel{display:none;animation:fadeIn .2s ease}
-.panel.active{display:block}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-/* Forms */
-label{display:block;font-size:.78rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:4px;margin-top:14px}
-input,textarea,select{width:100%;padding:10px 12px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg2);color:var(--text);font-family:var(--font);font-size:.9rem;transition:border-color .2s}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
-textarea{resize:vertical;min-height:80px;font-size:.85rem}
-
-.btn{padding:10px 22px;border-radius:var(--radius);border:none;font-family:var(--font);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#5b4bd6}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent2)}
-.btn-danger{background:var(--red);color:#fff}
-.btn-danger:hover{background:#e05555}
-.btn-green{background:var(--green);color:#111}
-.btn-green:hover{background:#2bc48a}
-.btn-sm{padding:6px 14px;font-size:.8rem}
-
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
-.card-title{font-weight:600;font-size:.95rem;margin-bottom:4px}
-.card-sub{color:var(--text2);font-size:.82rem}
-.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.7rem;font-family:var(--mono);font-weight:600}
-.badge-green{background:rgba(52,211,153,.15);color:var(--green)}
-.badge-orange{background:rgba(251,191,36,.15);color:var(--orange)}
-
-.tree-path{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:12px;font-size:.82rem}
-.tree-path button{background:none;border:none;color:var(--accent2);cursor:pointer;font-family:var(--font);font-size:.82rem;padding:2px 4px;border-radius:4px}
-.tree-path button:hover{background:rgba(108,92,231,.15)}
-.tree-path .sep{color:var(--text2)}
-
-.tree-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;cursor:pointer;transition:all .15s}
-.tree-item:hover{border-color:var(--accent);background:var(--bg3)}
-.tree-item-left{display:flex;align-items:center;gap:10px}
-.tree-item-icon{font-size:1.3rem}
-.tree-item-label{font-weight:500;font-size:.92rem}
-.tree-item-count{color:var(--text2);font-size:.75rem;font-family:var(--mono)}
-
-.msg{padding:10px 14px;border-radius:var(--radius);margin-bottom:16px;font-size:.88rem;display:none}
-.msg.show{display:block}
-.msg-success{background:rgba(52,211,153,.1);border:1px solid var(--green);color:var(--green)}
-.msg-error{background:rgba(248,113,113,.1);border:1px solid var(--red);color:var(--red)}
-
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:640px){.row{grid-template-columns:1fr}}
-
-#json-area{font-family:var(--mono);font-size:.78rem;min-height:200px}
-.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-</style>
+<title>Admin — Instant Pursuit</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260526">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
+<!-- data.js MUST load before our inline script so DEFAULT_* are available on first render -->
+<script src="data.js?v=20260526"></script>
 </head>
 <body>
-<div class="admin-wrap">
-  <h1>⚙️ Instant Pursuit Admin</h1>
-  <p class="subtitle">Manage career data and blog posts. Changes are saved to localStorage.</p>
+<script src="bg.js?v=20260526"></script>
 
-  <div id="msg" class="msg"></div>
+<main style="padding-top:64px;position:relative;z-index:1">
+<section class="ip-section" style="max-width:1100px">
 
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('career')">🗺️ Career Nodes</button>
-    <button class="tab" onclick="switchTab('blog')">✍️ Blog Posts</button>
-    <button class="tab" onclick="switchTab('export')">📦 Import / Export</button>
+  <!-- Admin hero -->
+  <div class="admin-hero">
+    <div class="ip-eyebrow" style="margin-bottom:14px">⚙️ ADMIN CONSOLE</div>
+    <h1>Manage <span class="ip-grad-text">career data &amp; stories</span></h1>
+    <p>All edits persist to your browser's localStorage. Export your data periodically to keep a backup.</p>
   </div>
 
-  <!-- CAREER PANEL -->
-  <div id="panel-career" class="panel active">
-    <div id="tree-breadcrumb" class="tree-path"></div>
-    <div id="tree-list"></div>
-    <div style="margin-top:16px">
-      <button class="btn btn-primary" onclick="showAddNodeForm()">+ Add Node Here</button>
+  <div id="msg" class="adm-msg"></div>
+
+  <!-- Tabs -->
+  <div class="adm-tabs">
+    <button class="adm-tab active" data-tab="dashboard">📊 Dashboard</button>
+    <button class="adm-tab" data-tab="career">🗺️ Career Tree</button>
+    <button class="adm-tab" data-tab="blog">✍️ Blog Posts</button>
+    <button class="adm-tab" data-tab="export">📦 Import / Export</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="panel-dashboard" class="adm-panel active">
+    <div class="adm-dash-grid">
+      <div class="adm-stat-card">
+        <div class="adm-stat-eyebrow">CAREER PATHS</div>
+        <div class="adm-stat-num" id="stat-paths">—</div>
+        <div class="adm-stat-sub">Total leaf nodes</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-eyebrow">STAGES</div>
+        <div class="adm-stat-num" id="stat-stages">—</div>
+        <div class="adm-stat-sub">Top-level groups</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-eyebrow">NODES TOTAL</div>
+        <div class="adm-stat-num" id="stat-nodes">—</div>
+        <div class="adm-stat-sub">Including branches</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-eyebrow">BLOG POSTS</div>
+        <div class="adm-stat-num" id="stat-blogs">—</div>
+        <div class="adm-stat-sub">Published stories</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-eyebrow">MAX DEPTH</div>
+        <div class="adm-stat-num" id="stat-depth">—</div>
+        <div class="adm-stat-sub">Deepest path level</div>
+      </div>
+      <div class="adm-stat-card">
+        <div class="adm-stat-eyebrow">STORAGE USED</div>
+        <div class="adm-stat-num" id="stat-storage">—</div>
+        <div class="adm-stat-sub">localStorage bytes</div>
+      </div>
     </div>
-    <div id="add-node-form" style="display:none;margin-top:16px" class="card">
-      <h3 style="font-size:1rem;margin-bottom:8px">Add / Edit Career Node</h3>
-      <div class="row">
+
+    <div class="adm-section-eyebrow"><span>Quick Actions</span></div>
+    <div class="adm-quick-grid">
+      <button class="adm-quick" onclick="switchTab('career')">
+        <div class="adm-quick-icon">📝</div>
+        <div><div class="adm-quick-h">Edit Career Tree</div><div class="adm-quick-sub">Add or modify career nodes</div></div>
+      </button>
+      <button class="adm-quick" onclick="switchTab('blog');showAddBlogForm()">
+        <div class="adm-quick-icon">✏️</div>
+        <div><div class="adm-quick-h">New Blog Post</div><div class="adm-quick-sub">Write a fresh story</div></div>
+      </button>
+      <button class="adm-quick" onclick="switchTab('export');setTimeout(exportDataJs,200)">
+        <div class="adm-quick-icon">📤</div>
+        <div><div class="adm-quick-h">Export data.js</div><div class="adm-quick-sub">Drop-in file for your GitHub repo</div></div>
+      </button>
+    </div>
+
+    <div class="adm-section-eyebrow"><span>Recent Activity</span></div>
+    <div class="adm-recent-grid">
+      <div class="adm-recent-col">
+        <h4>📚 Latest blog posts</h4>
+        <div id="recent-blogs"></div>
+      </div>
+      <div class="adm-recent-col">
+        <h4>🌟 Top-level stages</h4>
+        <div id="recent-stages"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAREER -->
+  <div id="panel-career" class="adm-panel">
+    <div id="tree-breadcrumb" class="adm-breadcrumb"></div>
+    <div id="current-node-bar" class="adm-current-bar" style="display:none">
+      <div class="adm-current-l">
+        <span class="adm-current-icon" id="current-icon">📁</span>
+        <div>
+          <div class="adm-current-label" id="current-label"></div>
+          <div class="adm-current-meta" id="current-meta"></div>
+        </div>
+      </div>
+      <button class="ip-btn ip-btn-outline" onclick="editCurrentNode()">✏️ Edit This Node</button>
+    </div>
+    <div class="adm-tree-toolbar">
+      <span class="adm-tree-count" id="tree-count"></span>
+      <button class="ip-btn ip-btn-primary" onclick="showAddNodeForm()">+ Add Node</button>
+    </div>
+    <div id="tree-list" class="adm-tree-list"></div>
+
+    <div id="add-node-form" class="adm-form" style="display:none">
+      <h3 id="node-form-title">Add Career Node</h3>
+      <div class="adm-row-2">
         <div><label>Key (unique, no spaces)</label><input id="n-key" placeholder="e.g. data_engineering"></div>
         <div><label>Label (display name)</label><input id="n-label" placeholder="e.g. Data Engineering"></div>
       </div>
-      <div class="row">
-        <div><label>Icon (emoji)</label><input id="n-icon" placeholder="e.g. 📊" maxlength="4"></div>
-        <div><label>Average CTC</label><input id="n-ctc" placeholder="e.g. ₹10-25 LPA"></div>
+      <div class="adm-row-2">
+        <div><label>Icon (emoji)</label><input id="n-icon" placeholder="📊" maxlength="6"></div>
+        <div><label>Average CTC</label><input id="n-ctc" placeholder="₹10–25 LPA"></div>
       </div>
-      <label>Detail (1 paragraph description)</label>
-      <textarea id="n-detail" rows="4" placeholder="A detailed paragraph about this career path..."></textarea>
-      <label>Pro Tip</label>
-      <input id="n-tip" placeholder="One insider tip for students">
-      <label>Benefits (comma-separated)</label>
-      <input id="n-benefits" placeholder="High demand, Good salary, Remote friendly">
-      <label>Drawbacks (comma-separated)</label>
-      <input id="n-drawbacks" placeholder="Competitive, Burnout risk, Needs constant upskilling">
-      <label>Top Colleges (comma-separated)</label>
-      <input id="n-colleges" placeholder="IIT Bombay, IIT Delhi, BITS Pilani">
-      <label>Top Recruiters (comma-separated)</label>
-      <input id="n-recruiters" placeholder="Google, Microsoft, Amazon">
-      <label>Further Viewing Links (one per line: Title | URL)</label>
-      <textarea id="n-links" rows="3" placeholder="JEE Roadmap by Alakh Pandey | https://youtube.com/watch?v=abc123&#10;CS career guide | https://example.com/guide"></textarea>
-      <div class="actions">
-        <button class="btn btn-green" onclick="saveNode()">💾 Save Node</button>
-        <button class="btn btn-outline" onclick="cancelNodeForm()">Cancel</button>
+      <div class="adm-row-2">
+        <div><label>State (for state-level exams)</label><input id="n-state" placeholder="Maharashtra"></div>
+        <div><label>Council / Authority</label><input id="n-council" placeholder="CET Cell Maharashtra"></div>
+      </div>
+      <label>Description (one-line — shown in card)</label>
+      <input id="n-desc" placeholder="Short context shown on the card and breadcrumb">
+      <label>Detail (full paragraph — shown in info panel)</label>
+      <textarea id="n-detail" rows="4" placeholder="A detailed paragraph about this career path…"></textarea>
+      <label>Pro Tip (one insider line)</label>
+      <input id="n-tip" placeholder="One actionable tip">
+      <div class="adm-row-2">
+        <div><label>Benefits (comma-separated)</label><input id="n-benefits" placeholder="High demand, Good pay, Remote OK"></div>
+        <div><label>Drawbacks (comma-separated)</label><input id="n-drawbacks" placeholder="Competitive, Burnout risk"></div>
+      </div>
+      <div class="adm-row-2">
+        <div><label>Top Colleges</label><input id="n-colleges" placeholder="IIT Bombay, IIT Delhi, BITS Pilani"></div>
+        <div><label>Top Recruiters</label><input id="n-recruiters" placeholder="Google, Microsoft, Amazon"></div>
+      </div>
+      <label>Further Viewing Links <span class="adm-hint">(one per line · Title | URL)</span></label>
+      <textarea id="n-links" rows="3" placeholder="JEE Roadmap | https://youtube.com/watch?v=xyz&#10;CS Career Guide | https://example.com/guide"></textarea>
+      <div class="adm-actions">
+        <button class="ip-btn ip-btn-primary" onclick="saveNode()">💾 Save Node</button>
+        <button class="ip-btn ip-btn-outline" onclick="cancelNodeForm()">Cancel</button>
       </div>
     </div>
   </div>
 
-  <!-- BLOG PANEL -->
-  <div id="panel-blog" class="panel">
-    <div id="blog-list"></div>
-    <div style="margin-top:16px">
-      <button class="btn btn-primary" onclick="showAddBlogForm()">+ Add Blog Post</button>
+  <!-- BLOG -->
+  <div id="panel-blog" class="adm-panel">
+    <div id="blog-sync-bar" class="adm-sync-bar" style="display:none">
+      <div>
+        <strong>New posts available in <code style="font-family:var(--font-mono);color:var(--accent2)">data.js</code></strong>
+        <div class="adm-sync-bar-sub" id="blog-sync-detail"></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0">
+        <button class="ip-btn ip-btn-primary" onclick="syncBlogFromDefaults()">⬇️ Pull from site</button>
+        <button class="ip-btn ip-btn-outline" onclick="document.getElementById('blog-sync-bar').style.display='none'">Ignore</button>
+      </div>
     </div>
-    <div id="add-blog-form" style="display:none;margin-top:16px" class="card">
-      <h3 style="font-size:1rem;margin-bottom:8px">Add / Edit Blog Post</h3>
+    <div class="adm-tree-toolbar">
+      <span class="adm-tree-count" id="blog-count"></span>
+      <button class="ip-btn ip-btn-primary" onclick="showAddBlogForm()">+ Add Blog Post</button>
+    </div>
+    <div id="blog-list"></div>
+
+    <div id="add-blog-form" class="adm-form" style="display:none">
+      <h3 id="blog-form-title">Add Blog Post</h3>
       <label>Title</label>
       <input id="b-title" placeholder="Post title">
-      <div class="row">
+      <div class="adm-row-2">
         <div><label>Author</label><input id="b-author" placeholder="Author name"></div>
-        <div><label>Author Initials (avatar)</label><input id="b-avatar" placeholder="e.g. AK" maxlength="3"></div>
+        <div><label>Author Initials (avatar)</label><input id="b-avatar" placeholder="AK" maxlength="3"></div>
       </div>
-      <div class="row">
-        <div><label>Category</label><input id="b-category" placeholder="e.g. Career Paths, Student Stories, Exam Guide"></div>
-        <div><label>Read Time</label><input id="b-readtime" placeholder="e.g. 5 min"></div>
+      <div class="adm-row-2">
+        <div><label>Category</label><input id="b-category" placeholder="Career Paths, Student Stories, Exam Guide…"></div>
+        <div><label>Read Time</label><input id="b-readtime" placeholder="5 min"></div>
       </div>
-      <label>Excerpt (short summary)</label>
+      <label>Excerpt (one-line summary shown on card)</label>
       <input id="b-excerpt" placeholder="One-line summary shown on card">
       <label>Tags (comma-separated)</label>
       <input id="b-tags" placeholder="Engineering, Career Choice, Personal Story">
-      <label>Cover Image URL (optional — paste any image URL)</label>
-      <input id="b-cover" placeholder="https://images.unsplash.com/photo-xxx?w=800">
-      <label>Content (use double newlines for paragraphs)</label>
-      <textarea id="b-content" rows="10" placeholder="Full blog post content..."></textarea>
+      <label>Cover Image <span class="adm-hint">(URL or upload — shown at top of post)</span></label>
+      <div class="adm-img-uploader">
+        <input id="b-cover" placeholder="https://images.unsplash.com/... or upload below" oninput="refreshCoverPreview()">
+        <div class="adm-img-actions">
+          <input type="file" id="b-cover-file" accept="image/*" hidden onchange="uploadCoverImage(this)">
+          <button type="button" class="ip-btn ip-btn-outline" onclick="document.getElementById('b-cover-file').click()">📤 Upload</button>
+          <button type="button" class="ip-btn ip-btn-outline" onclick="document.getElementById('b-cover').value='';refreshCoverPreview()">Clear</button>
+        </div>
+        <div id="b-cover-preview" class="adm-img-preview" style="display:none">
+          <img id="b-cover-preview-img" alt="cover preview">
+        </div>
+      </div>
+      <div class="adm-row-2">
+        <div><label>Interviewee / Featured Person Name <span class="adm-hint">(optional)</span></label><input id="b-li-name" placeholder="e.g. Pavan Dola"></div>
+        <div><label>LinkedIn Profile URL <span class="adm-hint">(optional — shown as chip)</span></label><input id="b-linkedin" placeholder="https://linkedin.com/in/..."></div>
+      </div>
+      <label>Content <span class="adm-hint">(double newlines = paragraphs · <code style="font-family:var(--font-mono);color:var(--accent2)">## </code>= big subheading · <code style="font-family:var(--font-mono);color:var(--accent2)">### </code>= small subheading · <code style="font-family:var(--font-mono);color:var(--accent2)">[image:N]</code> = inline image)</span></label>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px">
+        <button type="button" class="adm-content-tool" onclick="insertSubheading(2)" title="Insert H2 subheading">📌 H2</button>
+        <button type="button" class="adm-content-tool" onclick="insertSubheading(3)" title="Insert H3 subheading">📌 H3</button>
+        <button type="button" class="adm-content-tool" onclick="insertParaBreak()" title="Insert paragraph break at cursor">¶ Para</button>
+      </div>
+      <textarea id="b-content" rows="12" placeholder="Full blog post content…&#10;&#10;## Use a big subheading like this&#10;&#10;Paragraph text under it.&#10;&#10;### Smaller subheading&#10;&#10;More content. Paste [image:1] on its own line to place an uploaded image."></textarea>
+      <label>Mid-Blog Images <span class="adm-hint">(upload, then click 📋 to insert the marker into content at your cursor)</span></label>
+      <div id="b-images-list" class="adm-images-list"></div>
+      <div style="margin-top:8px">
+        <input type="file" id="b-img-file" accept="image/*" hidden onchange="addBlogImage(this)">
+        <button type="button" class="ip-btn ip-btn-outline" onclick="document.getElementById('b-img-file').click()">📤 Add Mid-Blog Image</button>
+      </div>
+      <label>Further Reads <span class="adm-hint">(one per line · Title | URL)</span></label>
+      <textarea id="b-reads" rows="3" placeholder="NEET vs JEE Comparison | https://youtube.com/...&#10;NTA Official | https://jeemain.nta.nic.in"></textarea>
       <input type="hidden" id="b-edit-id" value="">
-      <div class="actions">
-        <button class="btn btn-green" onclick="saveBlog()">💾 Save Post</button>
-        <button class="btn btn-outline" onclick="cancelBlogForm()">Cancel</button>
+      <div class="adm-actions">
+        <button class="ip-btn ip-btn-primary" onclick="saveBlog()">💾 Save Post</button>
+        <button class="ip-btn ip-btn-outline" onclick="cancelBlogForm()">Cancel</button>
       </div>
     </div>
   </div>
 
-  <!-- EXPORT PANEL -->
-  <div id="panel-export" class="panel">
-    <div class="card">
-      <h3 style="font-size:1rem;margin-bottom:12px">📤 Export Data</h3>
-      <p style="color:var(--text2);font-size:.85rem;margin-bottom:12px">Download your career and blog data as JSON files.</p>
-      <div class="actions">
-        <button class="btn btn-primary" onclick="exportCareer()">Export Career Data</button>
-        <button class="btn btn-primary" onclick="exportBlog()">Export Blog Data</button>
-        <button class="btn btn-outline" onclick="exportAll()">Export All</button>
+  <!-- EXPORT -->
+  <div id="panel-export" class="adm-panel">
+    <div class="adm-card">
+      <div class="adm-card-h">📤 Export Data</div>
+      <p class="adm-card-p"><strong style="color:var(--accent2)">data.js</strong> is the format your site actually uses — drop it into your GitHub repo to deploy your changes. JSON exports are for backup only.</p>
+      <div class="adm-actions">
+        <button class="ip-btn ip-btn-primary" onclick="exportDataJs()">⭐ Export data.js (full site file)</button>
+        <button class="ip-btn ip-btn-outline" onclick="exportCareer()">Export career.json</button>
+        <button class="ip-btn ip-btn-outline" onclick="exportBlog()">Export blogs.json</button>
+        <button class="ip-btn ip-btn-outline" onclick="exportAll()">📦 Full snapshot.json</button>
       </div>
     </div>
-    <div class="card" style="margin-top:16px">
-      <h3 style="font-size:1rem;margin-bottom:12px">📥 Import Data</h3>
-      <p style="color:var(--text2);font-size:.85rem;margin-bottom:12px">Paste JSON data below or load a file. This will REPLACE the existing data.</p>
-      <div class="row" style="margin-bottom:12px">
+
+    <div class="adm-card">
+      <div class="adm-card-h">📥 Import Data</div>
+      <p class="adm-card-p">Pick the data type (career / blog / full snapshot) <strong>first</strong>, then load a file (<code style="font-family:var(--font-mono);font-size:.85em;color:var(--accent2)">.json</code> or <code style="font-family:var(--font-mono);font-size:.85em;color:var(--accent2)">.js</code>). The full <code style="font-family:var(--font-mono);font-size:.85em">data.js</code> file is auto-parsed — only the relevant export is extracted. <strong style="color:var(--orange)">Import REPLACES existing data.</strong></p>
+      <div class="adm-row-2">
         <div>
           <label>Data Type</label>
           <select id="import-type">
             <option value="career">Career Data</option>
             <option value="blog">Blog Data</option>
+            <option value="all">Both (from full snapshot)</option>
           </select>
         </div>
         <div>
-          <label>Or load from file</label>
-          <input type="file" id="import-file" accept=".json" onchange="loadFile(this)" style="padding:7px">
+          <label>Load from file</label>
+          <input type="file" id="import-file" accept=".json,.js" onchange="loadFile(this)">
         </div>
       </div>
-      <textarea id="json-area" placeholder="Paste JSON here..."></textarea>
-      <div class="actions">
-        <button class="btn btn-danger" onclick="importData()">⚠️ Import & Replace</button>
+      <label>JSON</label>
+      <textarea id="json-area" rows="10" placeholder="Paste JSON here…" style="font-family:var(--font-mono);font-size:.82rem"></textarea>
+      <div class="adm-actions">
+        <button class="ip-btn ip-btn-primary" onclick="importData()" style="background:linear-gradient(135deg,#e17055,#d14a2a)">⚠️ Import &amp; Replace</button>
       </div>
     </div>
-    <div class="card" style="margin-top:16px">
-      <h3 style="font-size:1rem;margin-bottom:12px">🗑️ Reset Data</h3>
-      <p style="color:var(--text2);font-size:.85rem;margin-bottom:12px">Clear all custom data and revert to defaults.</p>
-      <div class="actions">
-        <button class="btn btn-danger btn-sm" onclick="resetCareer()">Reset Career Data</button>
-        <button class="btn btn-danger btn-sm" onclick="resetBlog()">Reset Blog Data</button>
+
+    <div class="adm-card adm-card-danger">
+      <div class="adm-card-h" style="color:var(--red)">🗑️ Reset Data</div>
+      <p class="adm-card-p">Clear all custom changes and revert to the defaults baked into the site.</p>
+      <div class="adm-actions">
+        <button class="ip-btn ip-btn-outline" onclick="resetCareer()" style="border-color:var(--red);color:var(--red)">Reset Career</button>
+        <button class="ip-btn ip-btn-outline" onclick="resetBlog()" style="border-color:var(--red);color:var(--red)">Reset Blog</button>
+        <button class="ip-btn ip-btn-outline" onclick="resetAll()" style="border-color:var(--red);color:var(--red)">Reset Everything</button>
       </div>
     </div>
   </div>
-</div>
+
+</section>
+</main>
+
+<style>
+/* ── Admin styles (uses design-system tokens) ── */
+.admin-hero{
+  text-align:center;max-width:680px;margin:0 auto 2.5rem;
+  animation:fadeUp .5s ease both;
+}
+.admin-hero h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2rem,4.5vw,2.8rem);
+  letter-spacing:-1px;line-height:1.1;margin-bottom:12px;
+}
+.admin-hero p{color:var(--text2);font-size:.98rem;line-height:1.65;max-width:520px;margin:0 auto}
+
+.adm-msg{
+  padding:12px 16px;border-radius:var(--radius);
+  margin-bottom:1.5rem;font-size:.9rem;
+  display:none;animation:fadeUp .3s ease;
+}
+.adm-msg.show{display:block}
+.adm-msg.success{background:var(--green-soft);border:1px solid var(--green);color:var(--green)}
+.adm-msg.error{background:var(--red-soft);border:1px solid var(--red);color:var(--red)}
+
+/* Tabs */
+.adm-tabs{
+  display:flex;gap:6px;flex-wrap:wrap;
+  margin-bottom:2rem;padding-bottom:0;
+  border-bottom:1px solid var(--border);
+}
+.adm-tab{
+  padding:10px 18px;
+  background:transparent;border:none;
+  font-family:var(--font-body);font-size:.88rem;font-weight:600;
+  color:var(--text2);cursor:pointer;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  transition:all .2s;
+}
+.adm-tab:hover{color:var(--text)}
+.adm-tab.active{
+  color:var(--accent2);
+  border-bottom-color:var(--accent);
+}
+
+.adm-panel{display:none;animation:fadeUp .4s ease}
+.adm-panel.active{display:block}
+
+/* Dashboard */
+.adm-dash-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  margin-bottom:2.5rem;
+}
+.adm-stat-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.4rem 1.6rem;
+  transition:border-color .2s;
+}
+.adm-stat-card:hover{border-color:var(--accent)}
+.adm-stat-eyebrow{
+  font-family:var(--font-mono);font-size:.65rem;font-weight:700;
+  letter-spacing:1.2px;color:var(--text3);
+  margin-bottom:10px;
+}
+.adm-stat-num{
+  font-family:var(--font-display);font-weight:800;
+  font-size:2.2rem;line-height:1;
+  letter-spacing:-1px;
+  color:var(--accent);
+  background:var(--grad-brand);
+  -webkit-background-clip:text;background-clip:text;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .adm-stat-num{ -webkit-text-fill-color:transparent;color:transparent; }
+}
+.adm-stat-sub{color:var(--text3);font-size:.8rem;margin-top:6px;font-family:var(--font-mono);letter-spacing:.5px}
+
+.adm-section-eyebrow{display:flex;align-items:center;gap:14px;margin:0 0 1.4rem}
+.adm-section-eyebrow::after{content:"";flex:1;height:1px;background:var(--border)}
+.adm-section-eyebrow span{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);
+}
+
+.adm-quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.adm-quick{
+  display:flex;align-items:center;gap:14px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.2rem 1.4rem;
+  cursor:pointer;text-align:left;
+  font-family:var(--font-body);color:inherit;
+  transition:all .2s;
+}
+.adm-quick:hover{border-color:var(--accent);background:var(--card-hover);transform:translateY(-2px)}
+.adm-quick-icon{
+  font-size:1.6rem;line-height:1;
+  width:44px;height:44px;border-radius:10px;
+  background:var(--accent-soft);border:1px solid var(--accent-med);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.adm-quick-h{font-weight:700;font-size:.95rem;color:var(--text);font-family:var(--font-display)}
+.adm-quick-sub{font-size:.78rem;color:var(--text3);margin-top:2px;font-family:var(--font-mono);letter-spacing:.3px}
+
+.adm-recent-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.adm-recent-col h4{
+  font-family:var(--font-display);font-weight:700;font-size:1rem;
+  margin-bottom:12px;color:var(--text);
+}
+.adm-recent-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:10px 14px;margin-bottom:8px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.88rem;
+}
+.adm-recent-item .l{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.adm-recent-item .l span:first-child{font-size:1.1rem;flex-shrink:0}
+.adm-recent-item .l span:last-child{color:var(--text);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm-recent-item .r{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);flex-shrink:0;margin-left:8px}
+
+/* Current-node bar (lets you edit the node you've drilled INTO) */
+.adm-current-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:var(--surface);
+  border:1px solid var(--accent-med);
+  background-image:var(--grad-callout);
+  border-radius:var(--radius-lg);
+  padding:14px 18px;
+  margin-bottom:18px;
+  animation:fadeUp .3s ease;
+}
+.adm-current-l{display:flex;align-items:center;gap:14px;min-width:0;flex:1}
+.adm-current-icon{
+  width:44px;height:44px;border-radius:11px;
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.adm-current-label{
+  font-family:var(--font-display);font-weight:700;
+  font-size:1.05rem;color:var(--text);
+  margin-bottom:3px;
+}
+.adm-current-meta{
+  font-family:var(--font-mono);font-size:.7rem;
+  color:var(--text3);letter-spacing:.4px;
+}
+
+/* Tree */
+.adm-breadcrumb{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  margin-bottom:1.5rem;
+}
+.adm-breadcrumb button{
+  background:none;border:none;color:var(--accent2);cursor:pointer;
+  font-family:var(--font-mono);font-size:.78rem;font-weight:700;
+  padding:4px 8px;border-radius:6px;letter-spacing:.5px;
+  transition:background .15s;
+}
+.adm-breadcrumb button:hover{background:var(--accent-soft)}
+.adm-breadcrumb .sep{color:var(--text3)}
+
+.adm-tree-toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:14px;
+}
+.adm-tree-count{font-family:var(--font-mono);font-size:.78rem;color:var(--text3);letter-spacing:.5px}
+
+.adm-tree-list{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.adm-tree-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;transition:all .15s;
+}
+.adm-tree-item:hover{border-color:var(--accent);background:var(--card-hover)}
+.adm-tree-item-l{display:flex;align-items:center;gap:12px;flex:1;min-width:0;cursor:pointer}
+.adm-tree-item-icon{
+  width:36px;height:36px;border-radius:9px;
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.adm-tree-item-label{font-weight:600;font-size:.92rem;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm-tree-item-meta{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);letter-spacing:.5px}
+.adm-tree-item-actions{display:flex;gap:6px;flex-shrink:0}
+.adm-icon-btn{
+  width:32px;height:32px;border-radius:7px;
+  background:transparent;border:1px solid var(--border);
+  color:var(--text2);cursor:pointer;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.adm-icon-btn:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent2)}
+.adm-icon-btn.del:hover{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+
+/* Form */
+.adm-form{
+  background:var(--surface);
+  border:1px solid var(--accent-med);
+  background-image:var(--grad-callout);
+  border-radius:var(--radius-lg);
+  padding:1.8rem 2rem;
+  margin-bottom:2rem;
+  animation:fadeUp .35s ease;
+}
+.adm-form h3{
+  font-family:var(--font-display);font-weight:700;font-size:1.2rem;
+  margin-bottom:1.2rem;color:var(--text);letter-spacing:-.2px;
+}
+.adm-form label{
+  display:block;
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--text3);
+  margin-top:14px;margin-bottom:5px;
+}
+.adm-hint{color:var(--text3);text-transform:none;letter-spacing:.3px;font-weight:400}
+.adm-form input,
+.adm-form textarea,
+.adm-form select{
+  width:100%;padding:10px 12px;
+  border:1px solid var(--border);
+  background:var(--bg2);color:var(--text);
+  border-radius:8px;
+  font-family:var(--font-body);font-size:.9rem;
+  transition:border-color .15s,background .15s;
+}
+.adm-form input:focus,
+.adm-form textarea:focus,
+.adm-form select:focus{
+  outline:none;border-color:var(--accent);
+  background:var(--bg);
+}
+.adm-form textarea{resize:vertical;min-height:80px}
+.adm-form input:disabled{opacity:.6;cursor:not-allowed}
+.adm-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adm-row-2 label{margin-top:14px}
+.adm-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--border)}
+
+/* Card (used in Export tab) */
+.adm-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.6rem 1.8rem;margin-bottom:1.2rem;
+}
+.adm-card-h{
+  font-family:var(--font-display);font-weight:700;
+  font-size:1.15rem;margin-bottom:10px;color:var(--text);
+}
+.adm-card-p{color:var(--text2);font-size:.92rem;line-height:1.6;margin-bottom:1rem}
+.adm-card-danger{border-color:rgba(225,112,85,.3);background-image:linear-gradient(135deg,rgba(225,112,85,.05),transparent)}
+
+/* Blog card list */
+.adm-blog-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px 18px;margin-bottom:8px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;
+}
+.adm-blog-item-l{flex:1;min-width:0}
+.adm-blog-item-title{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text);margin-bottom:4px}
+.adm-blog-item-meta{font-family:var(--font-mono);font-size:.72rem;color:var(--text3);letter-spacing:.4px}
+
+/* Blog cover/inline image uploader */
+.adm-img-uploader{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.adm-img-actions{display:flex;gap:8px;flex-wrap:wrap}
+.adm-img-preview{
+  margin-top:8px;border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  background:#000;max-width:280px;
+}
+.adm-img-preview img{display:block;width:100%;height:auto;max-height:200px;object-fit:cover}
+
+.adm-images-list{display:flex;flex-direction:column;gap:10px}
+.adm-blog-img-row{
+  display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;
+  padding:10px 14px;background:var(--bg2);
+  border:1px solid var(--border);border-radius:var(--radius);
+}
+.adm-blog-img-row > img{
+  width:88px;height:60px;object-fit:cover;
+  border-radius:6px;background:#000;
+}
+.adm-blog-img-fields{display:flex;flex-direction:column;gap:6px;min-width:0}
+.adm-blog-img-marker{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  color:var(--accent2);letter-spacing:.3px;
+}
+.adm-blog-img-fields select,
+.adm-blog-img-fields input{
+  padding:7px 10px;font-size:.82rem;
+  background:var(--surface);border:1px solid var(--border);color:var(--text);
+  border-radius:6px;font-family:var(--font-body);
+}
+.adm-blog-img-actions{display:flex;gap:4px;align-self:start;margin-top:6px}
+
+/* Sync banner — surfaces new posts from data.js vs localStorage */
+.adm-sync-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 18px;margin-bottom:16px;
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(253,121,168,0.08));
+  border:1px solid var(--accent-med);
+  animation:fadeUp .3s ease;
+}
+.adm-sync-bar-sub{
+  font-family:var(--font-mono);font-size:.72rem;
+  color:var(--text2);letter-spacing:.3px;margin-top:4px;
+}
+
+/* Content toolbar buttons */
+.adm-content-tool{
+  padding:6px 12px;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  color:var(--text2);
+  border-radius:7px;
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:.5px;cursor:pointer;
+  transition:all .15s;
+}
+.adm-content-tool:hover{
+  border-color:var(--accent);background:var(--accent-soft);color:var(--accent2);
+}
+
+@media(max-width:780px){
+  .adm-dash-grid,.adm-quick-grid,.adm-recent-grid,.adm-row-2{grid-template-columns:1fr}
+  .adm-blog-img-row{grid-template-columns:60px 1fr auto;gap:10px}
+  .adm-blog-img-row > img{width:60px;height:42px}
+}
+</style>
 
 <script>
-// Load data.js DEFAULT values inline (admin is standalone)
-function loadLS(k, fb) { try { const d = localStorage.getItem(k); return d ? JSON.parse(d) : fb; } catch { return fb; } }
-function saveLS(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+// ── State ──
+let careerData = loadData('instantpursuit-career', null);
+let blogData = loadData('instantpursuit-blogs', null);
 
-let careerData = loadLS('instantpursuit-career', null);
-let blogData = loadLS('instantpursuit-blogs', null);
-
-if (!careerData) {
-  // Try to access DEFAULT_CAREER_DATA from data.js if loaded
-  try { careerData = typeof DEFAULT_CAREER_DATA !== 'undefined' ? JSON.parse(JSON.stringify(DEFAULT_CAREER_DATA)) : {}; } catch { careerData = {}; }
+if (!careerData || Object.keys(careerData).length === 0) {
+  try { careerData = JSON.parse(JSON.stringify(DEFAULT_CAREER_DATA)); } catch { careerData = {}; }
 }
 if (!blogData) {
-  try { blogData = typeof DEFAULT_BLOG_DATA !== 'undefined' ? [...DEFAULT_BLOG_DATA] : []; } catch { blogData = []; }
+  try { blogData = JSON.parse(JSON.stringify(DEFAULT_BLOG_DATA)); } catch { blogData = []; }
 }
 
 let treePath = [];
 let editingNodeKey = null;
 
+// ── Messages ──
 function showMsg(text, type) {
   const m = document.getElementById('msg');
   m.textContent = text;
-  m.className = `msg show msg-${type}`;
-  setTimeout(() => m.className = 'msg', 3000);
+  m.className = 'adm-msg show ' + type;
+  setTimeout(() => m.className = 'adm-msg', 3500);
 }
 
-// Tabs
+// ── Tabs ──
 function switchTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  event.target.classList.add('active');
-  document.getElementById(`panel-${tab}`).classList.add('active');
+  document.querySelectorAll('.adm-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.querySelectorAll('.adm-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tab));
+  if (tab === 'dashboard') renderDashboard();
   if (tab === 'career') renderTree();
   if (tab === 'blog') renderBlogList();
 }
+document.querySelectorAll('.adm-tab').forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
 
-// === CAREER TREE ===
+// ── Dashboard ──
+function countNodes(obj, depth = 0) {
+  let total = 0, maxDepth = depth, leafCount = 0;
+  for (const k of Object.keys(obj)) {
+    const v = obj[k];
+    if (!v || typeof v !== 'object' || !v.label) continue;
+    total++;
+    const children = v.children || {};
+    const childKeys = Object.keys(children);
+    if (childKeys.length === 0) leafCount++;
+    if (childKeys.length > 0) {
+      const sub = countNodes(children, depth + 1);
+      total += sub.total;
+      leafCount += sub.leafCount;
+      maxDepth = Math.max(maxDepth, sub.maxDepth);
+    }
+  }
+  return { total, leafCount, maxDepth };
+}
+
+function renderDashboard() {
+  const { total, leafCount, maxDepth } = countNodes(careerData);
+  document.getElementById('stat-paths').textContent = leafCount;
+  document.getElementById('stat-stages').textContent = Object.keys(careerData).length;
+  document.getElementById('stat-nodes').textContent = total;
+  document.getElementById('stat-blogs').textContent = blogData.length;
+  document.getElementById('stat-depth').textContent = maxDepth + 1;
+
+  // Storage used
+  let bytes = 0;
+  try {
+    bytes += (localStorage.getItem('instantpursuit-career') || '').length;
+    bytes += (localStorage.getItem('instantpursuit-blogs') || '').length;
+  } catch {}
+  const kb = bytes > 1024 ? (bytes / 1024).toFixed(1) + ' KB' : bytes + ' B';
+  document.getElementById('stat-storage').textContent = kb;
+
+  // Recent blogs
+  const recentBlogs = [...blogData].sort((a,b) => (b.date||'').localeCompare(a.date||'')).slice(0, 4);
+  document.getElementById('recent-blogs').innerHTML = recentBlogs.length === 0
+    ? '<div style="color:var(--text3);font-size:.85rem;padding:12px">No posts yet.</div>'
+    : recentBlogs.map(b => `<div class="adm-recent-item"><div class="l"><span>📰</span><span>${esc(b.title)}</span></div><div class="r">${esc(b.category || '')}</div></div>`).join('');
+
+  // Stages
+  document.getElementById('recent-stages').innerHTML = Object.keys(careerData).map(k => {
+    const s = careerData[k];
+    const childCount = s.children ? Object.keys(s.children).length : 0;
+    return `<div class="adm-recent-item"><div class="l"><span>${s.icon||'📁'}</span><span>${esc(s.label||k)}</span></div><div class="r">${childCount} subs</div></div>`;
+  }).join('');
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// ── Career tree ──
 function getNodeAtPath(p) {
   let node = careerData;
   for (const k of p) {
@@ -242,7 +708,6 @@ function getNodeAtPath(p) {
   }
   return node;
 }
-
 function getChildrenAtPath(p) {
   if (p.length === 0) return careerData;
   const node = getNodeAtPath(p);
@@ -251,64 +716,105 @@ function getChildrenAtPath(p) {
 
 function renderTree() {
   // Breadcrumb
-  let bc = '<button onclick="treePath=[];renderTree()">🏠 Root</button>';
-  let trail = [];
+  let bc = `<button onclick="treePath=[];renderTree()">🏠 Root</button>`;
+  const trail = [];
   for (const k of treePath) {
     trail.push(k);
-    const t = JSON.stringify([...trail]);
     const n = getNodeAtPath([...trail]);
-    bc += `<span class="sep">›</span><button onclick="treePath=${t};renderTree()">${n?n.label||k:k}</button>`;
+    // JSON.stringify uses double quotes which break the onclick="..." attr —
+    // escape them as &quot; so the inline handler parses correctly.
+    const pathJson = JSON.stringify([...trail]).replace(/"/g, '&quot;');
+    bc += `<span class="sep">›</span><button onclick="treePath=${pathJson};renderTree()">${esc(n?.label || k)}</button>`;
   }
   document.getElementById('tree-breadcrumb').innerHTML = bc;
 
-  // List children
-  const children = getChildrenAtPath(treePath);
-  const keys = Object.keys(children);
-  let html = '';
-
-  if (keys.length === 0) {
-    html = '<div style="color:var(--text2);padding:20px;text-align:center">No child nodes here. Add one below.</div>';
+  // Current node bar — only when we've drilled into something
+  const currentBar = document.getElementById('current-node-bar');
+  if (treePath.length > 0) {
+    const node = getNodeAtPath(treePath);
+    if (node) {
+      document.getElementById('current-icon').textContent = node.icon || '📁';
+      document.getElementById('current-label').textContent = node.label || treePath[treePath.length - 1];
+      const childCount = node.children ? Object.keys(node.children).length : 0;
+      const bits = [];
+      bits.push(childCount + ' direct child' + (childCount === 1 ? '' : 'ren'));
+      if (node.info?.avgCTC) bits.push(node.info.avgCTC);
+      if (node.info?.state) bits.push('📍 ' + node.info.state);
+      document.getElementById('current-meta').textContent = bits.join(' · ');
+      currentBar.style.display = 'flex';
+    } else {
+      currentBar.style.display = 'none';
+    }
+  } else {
+    currentBar.style.display = 'none';
   }
 
+  const children = getChildrenAtPath(treePath);
+  const keys = Object.keys(children);
+  document.getElementById('tree-count').textContent = keys.length + ' direct child' + (keys.length === 1 ? '' : 'ren');
+
+  let html = '';
+  if (keys.length === 0) {
+    html = `<div style="color:var(--text3);text-align:center;padding:2rem;font-size:.9rem">No child nodes here. Click <strong style="color:var(--accent2)">+ Add Node</strong> above.</div>`;
+  }
   keys.forEach(k => {
     const c = children[k];
     const childCount = c.children ? Object.keys(c.children).length : 0;
-    html += `<div class="tree-item">
-      <div class="tree-item-left" onclick="treePath.push('${k}');renderTree()">
-        <span class="tree-item-icon">${c.icon||'📁'}</span>
-        <span class="tree-item-label">${c.label||k}</span>
-        ${childCount > 0 ? `<span class="tree-item-count">${childCount} children</span>` : ''}
-        ${c.info && c.info.avgCTC ? `<span class="badge badge-green">${c.info.avgCTC}</span>` : ''}
+    const ctc = c.info?.avgCTC ? `<span class="adm-tree-item-meta">${esc(c.info.avgCTC)}</span>` : '';
+    const counter = childCount > 0 ? `<span class="adm-tree-item-meta">${childCount} subs</span>` : '<span class="adm-tree-item-meta">leaf</span>';
+    html += `
+      <div class="adm-tree-item">
+        <div class="adm-tree-item-l" onclick="treePath.push('${esc(k)}');renderTree()">
+          <div class="adm-tree-item-icon">${c.icon || '📁'}</div>
+          <div style="flex:1;min-width:0">
+            <div class="adm-tree-item-label">${esc(c.label || k)}</div>
+            <div style="display:flex;gap:10px;margin-top:3px">${counter} ${ctc}</div>
+          </div>
+        </div>
+        <div class="adm-tree-item-actions">
+          <button class="adm-icon-btn" onclick="editNode('${esc(k)}')" title="Edit">✏️</button>
+          <button class="adm-icon-btn del" onclick="deleteNode('${esc(k)}')" title="Delete">🗑️</button>
+        </div>
       </div>
-      <div style="display:flex;gap:6px">
-        <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();editNode('${k}')">✏️</button>
-        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteNode('${k}')">🗑️</button>
-      </div>
-    </div>`;
+    `;
   });
-
   document.getElementById('tree-list').innerHTML = html;
   document.getElementById('add-node-form').style.display = 'none';
 }
 
 function showAddNodeForm() {
   editingNodeKey = null;
-  ['n-key','n-label','n-icon','n-ctc','n-detail','n-tip','n-benefits','n-drawbacks','n-colleges','n-recruiters','n-links'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('node-form-title').textContent = '➕ Add Career Node';
+  ['n-key','n-label','n-icon','n-ctc','n-state','n-council','n-desc','n-detail','n-tip','n-benefits','n-drawbacks','n-colleges','n-recruiters','n-links'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('n-key').disabled = false;
   document.getElementById('add-node-form').style.display = 'block';
+  document.getElementById('add-node-form').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function editCurrentNode() {
+  if (treePath.length === 0) return;
+  // To edit the current node, we need its parent context (since editNode looks
+  // up the node via treePath + key). Navigate one level up and edit from there.
+  const targetKey = treePath[treePath.length - 1];
+  treePath = treePath.slice(0, -1);
+  renderTree();
+  editNode(targetKey);
 }
 
 function editNode(key) {
   editingNodeKey = key;
-  const children = getChildrenAtPath(treePath);
-  const node = children[key];
+  const node = getChildrenAtPath(treePath)[key];
   if (!node) return;
+  document.getElementById('node-form-title').textContent = '✏️ Edit: ' + (node.label || key);
   document.getElementById('n-key').value = key;
   document.getElementById('n-key').disabled = true;
   document.getElementById('n-label').value = node.label || '';
   document.getElementById('n-icon').value = node.icon || '';
+  document.getElementById('n-desc').value = node.description || '';
   const info = node.info || {};
   document.getElementById('n-ctc').value = info.avgCTC || '';
+  document.getElementById('n-state').value = info.state || '';
+  document.getElementById('n-council').value = info.council || '';
   document.getElementById('n-detail').value = info.detail || '';
   document.getElementById('n-tip').value = info.tip || '';
   document.getElementById('n-benefits').value = (info.benefits || []).join(', ');
@@ -317,6 +823,7 @@ function editNode(key) {
   document.getElementById('n-recruiters').value = (info.topRecruiters || []).join(', ');
   document.getElementById('n-links').value = (info.furtherLinks || []).map(l => (l.title || '') + ' | ' + l.url).join('\n');
   document.getElementById('add-node-form').style.display = 'block';
+  document.getElementById('add-node-form').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function cancelNodeForm() {
@@ -324,46 +831,50 @@ function cancelNodeForm() {
   editingNodeKey = null;
 }
 
+function splitCSV(v) { return v.split(',').map(s => s.trim()).filter(Boolean); }
+function parseLinks(raw) {
+  return raw.trim().split('\n').map(line => {
+    const parts = line.split('|').map(s => s.trim());
+    if (parts.length >= 2 && parts[1]) return { title: parts[0], url: parts[1] };
+    if (parts[0] && parts[0].startsWith('http')) return { title: '', url: parts[0] };
+    return null;
+  }).filter(Boolean);
+}
+
 function saveNode() {
   const key = document.getElementById('n-key').value.trim().replace(/\s+/g, '_').toLowerCase();
-  if (!key) { showMsg('Key is required', 'error'); return; }
+  if (!key) return showMsg('Key is required', 'error');
   const label = document.getElementById('n-label').value.trim();
-  if (!label) { showMsg('Label is required', 'error'); return; }
+  if (!label) return showMsg('Label is required', 'error');
 
-  const splitCSV = v => v.split(',').map(s => s.trim()).filter(Boolean);
+  const info = {};
+  const setIf = (k, v) => { if (v !== undefined && v !== '' && !(Array.isArray(v) && v.length === 0)) info[k] = v; };
+  setIf('state', document.getElementById('n-state').value.trim());
+  setIf('council', document.getElementById('n-council').value.trim());
+  setIf('detail', document.getElementById('n-detail').value.trim());
+  setIf('tip', document.getElementById('n-tip').value.trim());
+  setIf('benefits', splitCSV(document.getElementById('n-benefits').value));
+  setIf('drawbacks', splitCSV(document.getElementById('n-drawbacks').value));
+  setIf('topColleges', splitCSV(document.getElementById('n-colleges').value));
+  setIf('topRecruiters', splitCSV(document.getElementById('n-recruiters').value));
+  setIf('avgCTC', document.getElementById('n-ctc').value.trim());
+  setIf('furtherLinks', parseLinks(document.getElementById('n-links').value));
 
+  const desc = document.getElementById('n-desc').value.trim();
   const nodeData = {
     label,
     icon: document.getElementById('n-icon').value.trim() || '📁',
-    info: {
-      detail: document.getElementById('n-detail').value.trim() || undefined,
-      tip: document.getElementById('n-tip').value.trim() || undefined,
-      benefits: splitCSV(document.getElementById('n-benefits').value),
-      drawbacks: splitCSV(document.getElementById('n-drawbacks').value),
-      topColleges: splitCSV(document.getElementById('n-colleges').value) || undefined,
-      topRecruiters: splitCSV(document.getElementById('n-recruiters').value) || undefined,
-      avgCTC: document.getElementById('n-ctc').value.trim() || undefined,
-      furtherLinks: document.getElementById('n-links').value.trim().split('\n').map(line => {
-        const parts = line.split('|').map(s => s.trim());
-        if (parts.length >= 2 && parts[1]) return { title: parts[0], url: parts[1] };
-        if (parts[0] && parts[0].startsWith('http')) return { title: '', url: parts[0] };
-        return null;
-      }).filter(Boolean) || undefined,
-    },
+    ...(desc ? { description: desc } : {}),
+    ...(Object.keys(info).length ? { info } : {}),
     children: {}
   };
-  // Clean undefined
-  Object.keys(nodeData.info).forEach(k => { if (!nodeData.info[k] || (Array.isArray(nodeData.info[k]) && nodeData.info[k].length === 0)) delete nodeData.info[k]; });
 
-  // If editing, preserve existing children
+  // Preserve children on edit
   if (editingNodeKey) {
-    const parent = getChildrenAtPath(treePath);
-    if (parent[editingNodeKey] && parent[editingNodeKey].children) {
-      nodeData.children = parent[editingNodeKey].children;
-    }
+    const existing = getChildrenAtPath(treePath)[editingNodeKey];
+    if (existing && existing.children) nodeData.children = existing.children;
   }
 
-  // Insert into tree
   if (treePath.length === 0) {
     careerData[key] = nodeData;
   } else {
@@ -371,69 +882,214 @@ function saveNode() {
     if (!parent.children) parent.children = {};
     parent.children[key] = nodeData;
   }
-
-  saveLS('instantpursuit-career', careerData);
-  showMsg(`Node "${label}" saved!`, 'success');
+  saveData('instantpursuit-career', careerData);
+  showMsg(`Saved "${label}"`, 'success');
   cancelNodeForm();
   renderTree();
 }
 
 function deleteNode(key) {
-  const children = getChildrenAtPath(treePath);
-  const label = children[key]?.label || key;
-  if (!confirm(`Delete "${label}" and all its children?`)) return;
-  if (treePath.length === 0) {
-    delete careerData[key];
-  } else {
-    const parent = getNodeAtPath(treePath);
-    delete parent.children[key];
-  }
-  saveLS('instantpursuit-career', careerData);
+  const node = getChildrenAtPath(treePath)[key];
+  const label = node?.label || key;
+  if (!confirm(`Delete "${label}" and all its children? This cannot be undone.`)) return;
+  if (treePath.length === 0) delete careerData[key];
+  else delete getNodeAtPath(treePath).children[key];
+  saveData('instantpursuit-career', careerData);
   showMsg(`Deleted "${label}"`, 'success');
   renderTree();
 }
 
-// === BLOG ===
+// ── Blog images (mid-blog) ──
+let blogImages = []; // {data, position, caption}
+
+function refreshBlogImages() {
+  const list = document.getElementById('b-images-list');
+  if (!list) return;
+  if (blogImages.length === 0) { list.innerHTML = '<div style="color:var(--text3);font-size:.8rem;padding:8px 0">No images yet — click <strong style="color:var(--accent2)">+ Add Mid-Blog Image</strong> below.</div>'; return; }
+  list.innerHTML = blogImages.map((img, i) => `
+    <div class="adm-blog-img-row">
+      <img src="${img.data}" alt="">
+      <div class="adm-blog-img-fields">
+        <div class="adm-blog-img-marker">[image:${i+1}]</div>
+        <select onchange="blogImages[${i}].position=this.value">
+          <option value="center"${img.position==='center'?' selected':''}>📐 Centered (block)</option>
+          <option value="left"${img.position==='left'?' selected':''}>⬅️ Float left (text wraps)</option>
+          <option value="right"${img.position==='right'?' selected':''}>➡️ Float right (text wraps)</option>
+          <option value="full"${img.position==='full'?' selected':''}>📏 Full width (edge to edge)</option>
+        </select>
+        <input placeholder="Caption (optional)" value="${esc(img.caption||'')}" oninput="blogImages[${i}].caption=this.value">
+      </div>
+      <div class="adm-blog-img-actions">
+        <button class="adm-icon-btn" onclick="insertMarker(${i+1})" title="Insert marker into content at cursor">📋</button>
+        <button class="adm-icon-btn del" onclick="removeBlogImage(${i})" title="Remove">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function compressImage(file, maxW, quality, cb) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      let w = img.naturalWidth, h = img.naturalHeight;
+      if (w > maxW) { h = h * maxW / w; w = maxW; }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      cb(c.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = () => cb(e.target.result);
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function addBlogImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  compressImage(file, 1200, 0.82, dataUrl => {
+    blogImages.push({ data: dataUrl, position: 'center', caption: '' });
+    refreshBlogImages();
+    showMsg('Image added — click 📋 to insert its marker into content', 'success');
+  });
+  input.value = '';
+}
+
+function uploadCoverImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  compressImage(file, 1600, 0.85, dataUrl => {
+    document.getElementById('b-cover').value = dataUrl;
+    refreshCoverPreview();
+    showMsg('Cover uploaded', 'success');
+  });
+  input.value = '';
+}
+
+function refreshCoverPreview() {
+  const url = document.getElementById('b-cover').value.trim();
+  const preview = document.getElementById('b-cover-preview');
+  const img = document.getElementById('b-cover-preview-img');
+  if (!preview || !img) return;
+  if (url) { img.src = url; preview.style.display = 'block'; }
+  else preview.style.display = 'none';
+}
+
+function insertMarker(n) {
+  const ta = document.getElementById('b-content');
+  const marker = '[image:' + n + ']';
+  const start = ta.selectionStart || 0;
+  const end = ta.selectionEnd || 0;
+  const before = ta.value.slice(0, start);
+  const after = ta.value.slice(end);
+  const prefix = (before && !before.endsWith('\n\n')) ? '\n\n' : '';
+  const suffix = (after && !after.startsWith('\n\n')) ? '\n\n' : '';
+  ta.value = before + prefix + marker + suffix + after;
+  const cursor = (before + prefix + marker + suffix).length;
+  ta.selectionStart = ta.selectionEnd = cursor;
+  ta.focus();
+  showMsg('Marker ' + marker + ' inserted into content', 'success');
+}
+
+function removeBlogImage(idx) {
+  if (!confirm('Remove image [image:' + (idx+1) + ']?\nNote: existing markers in your content referencing this index will need to be updated manually.')) return;
+  blogImages.splice(idx, 1);
+  refreshBlogImages();
+}
+
+// Insert markdown-style heading at cursor (##  for H2, ### for H3)
+function insertSubheading(level) {
+  const ta = document.getElementById('b-content');
+  const prefix = (level === 3 ? '### ' : '## ');
+  const start = ta.selectionStart || 0;
+  const end = ta.selectionEnd || 0;
+  const selected = ta.value.slice(start, end);
+  const before = ta.value.slice(0, start);
+  const after = ta.value.slice(end);
+  const padBefore = (before && !before.endsWith('\n\n')) ? '\n\n' : '';
+  const padAfter = (after && !after.startsWith('\n\n')) ? '\n\n' : '';
+  const placeholder = selected || (level === 3 ? 'Smaller subheading' : 'Subheading');
+  const inserted = padBefore + prefix + placeholder + padAfter;
+  ta.value = before + inserted + after;
+  // Select the placeholder text so user can type to replace
+  const selStart = (before + padBefore + prefix).length;
+  const selEnd = selStart + placeholder.length;
+  ta.selectionStart = selStart;
+  ta.selectionEnd = selEnd;
+  ta.focus();
+}
+
+function insertParaBreak() {
+  const ta = document.getElementById('b-content');
+  const start = ta.selectionStart || 0;
+  const end = ta.selectionEnd || 0;
+  ta.value = ta.value.slice(0, start) + '\n\n' + ta.value.slice(end);
+  ta.selectionStart = ta.selectionEnd = start + 2;
+  ta.focus();
+}
+
+// ── Blog ──
 function renderBlogList() {
+  // Check for new posts in DEFAULT_BLOG_DATA that aren't in localStorage
+  checkBlogSync();
+  document.getElementById('blog-count').textContent = blogData.length + ' post' + (blogData.length === 1 ? '' : 's');
   let html = '';
   if (blogData.length === 0) {
-    html = '<div style="color:var(--text2);padding:20px;text-align:center">No blog posts. Add one below.</div>';
+    html = `<div style="color:var(--text3);text-align:center;padding:2rem;font-size:.9rem">No posts yet. Click <strong style="color:var(--accent2)">+ Add Blog Post</strong> above.</div>`;
   }
   blogData.forEach((b, i) => {
-    html += `<div class="card" style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div class="card-title">${b.title}</div>
-        <div class="card-sub">${b.author} · ${b.category} · ${b.date}</div>
+    html += `
+      <div class="adm-blog-item">
+        <div class="adm-blog-item-l">
+          <div class="adm-blog-item-title">${esc(b.title)}</div>
+          <div class="adm-blog-item-meta">${esc(b.author || '')} · ${esc(b.category || '')} · ${esc(b.date || '')} · ${esc(b.readTime || '')}</div>
+        </div>
+        <div class="adm-tree-item-actions">
+          <button class="adm-icon-btn" onclick="editBlog(${i})" title="Edit">✏️</button>
+          <button class="adm-icon-btn del" onclick="deleteBlog(${i})" title="Delete">🗑️</button>
+        </div>
       </div>
-      <div style="display:flex;gap:6px">
-        <button class="btn btn-outline btn-sm" onclick="editBlog(${i})">✏️</button>
-        <button class="btn btn-danger btn-sm" onclick="deleteBlog(${i})">🗑️</button>
-      </div>
-    </div>`;
+    `;
   });
   document.getElementById('blog-list').innerHTML = html;
   document.getElementById('add-blog-form').style.display = 'none';
 }
 
 function showAddBlogForm() {
+  document.getElementById('blog-form-title').textContent = '➕ Add Blog Post';
   document.getElementById('b-edit-id').value = '';
-  ['b-title','b-author','b-avatar','b-category','b-readtime','b-excerpt','b-tags','b-content'].forEach(id => document.getElementById(id).value = '');
+  ['b-title','b-author','b-avatar','b-category','b-readtime','b-excerpt','b-tags','b-cover','b-content','b-reads','b-linkedin','b-li-name'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  blogImages = [];
+  refreshBlogImages();
+  refreshCoverPreview();
   document.getElementById('add-blog-form').style.display = 'block';
+  document.getElementById('add-blog-form').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function editBlog(idx) {
   const b = blogData[idx];
+  document.getElementById('blog-form-title').textContent = '✏️ Edit: ' + (b.title || '');
   document.getElementById('b-edit-id').value = idx;
-  document.getElementById('b-title').value = b.title;
-  document.getElementById('b-author').value = b.author;
-  document.getElementById('b-avatar').value = b.authorAvatar;
-  document.getElementById('b-category').value = b.category;
-  document.getElementById('b-readtime').value = b.readTime;
-  document.getElementById('b-excerpt').value = b.excerpt;
+  document.getElementById('b-title').value = b.title || '';
+  document.getElementById('b-author').value = b.author || '';
+  document.getElementById('b-avatar').value = b.authorAvatar || '';
+  document.getElementById('b-category').value = b.category || '';
+  document.getElementById('b-readtime').value = b.readTime || '';
+  document.getElementById('b-excerpt').value = b.excerpt || '';
   document.getElementById('b-tags').value = (b.tags || []).join(', ');
   document.getElementById('b-cover').value = b.coverImage || '';
-  document.getElementById('b-content').value = b.content;
+  document.getElementById('b-content').value = b.content || '';
+  document.getElementById('b-reads').value = (b.furtherReads || []).map(r => (r.title || '') + ' | ' + r.url).join('\n');
+  document.getElementById('b-linkedin').value = b.linkedin || '';
+  document.getElementById('b-li-name').value = b.linkedinName || '';
+  blogImages = b.images ? JSON.parse(JSON.stringify(b.images)) : [];
+  refreshBlogImages();
+  refreshCoverPreview();
   document.getElementById('add-blog-form').style.display = 'block';
+  document.getElementById('add-blog-form').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function cancelBlogForm() {
@@ -442,7 +1098,7 @@ function cancelBlogForm() {
 
 function saveBlog() {
   const title = document.getElementById('b-title').value.trim();
-  if (!title) { showMsg('Title is required', 'error'); return; }
+  if (!title) return showMsg('Title is required', 'error');
 
   const post = {
     id: Date.now(),
@@ -452,23 +1108,28 @@ function saveBlog() {
     category: document.getElementById('b-category').value.trim() || 'General',
     readTime: document.getElementById('b-readtime').value.trim() || '5 min',
     excerpt: document.getElementById('b-excerpt').value.trim(),
-    tags: document.getElementById('b-tags').value.split(',').map(s => s.trim()).filter(Boolean),
+    tags: splitCSV(document.getElementById('b-tags').value),
     coverImage: document.getElementById('b-cover').value.trim() || undefined,
     content: document.getElementById('b-content').value.trim(),
     date: new Date().toISOString().split('T')[0],
+    furtherReads: parseLinks(document.getElementById('b-reads').value),
+    images: blogImages.length ? blogImages.slice() : undefined,
+    linkedin: document.getElementById('b-linkedin').value.trim() || undefined,
+    linkedinName: document.getElementById('b-li-name').value.trim() || undefined,
   };
+  if (!post.furtherReads || post.furtherReads.length === 0) delete post.furtherReads;
 
   const editIdx = document.getElementById('b-edit-id').value;
   if (editIdx !== '') {
-    post.id = blogData[parseInt(editIdx)].id;
-    post.date = blogData[parseInt(editIdx)].date;
+    const existing = blogData[parseInt(editIdx)];
+    post.id = existing.id;
+    post.date = existing.date;
     blogData[parseInt(editIdx)] = post;
   } else {
-    blogData.push(post);
+    blogData.unshift(post);
   }
-
-  saveLS('instantpursuit-blogs', blogData);
-  showMsg(`Post "${title}" saved!`, 'success');
+  saveData('instantpursuit-blogs', blogData);
+  showMsg(`Saved "${title}"`, 'success');
   cancelBlogForm();
   renderBlogList();
 }
@@ -476,75 +1137,292 @@ function saveBlog() {
 function deleteBlog(idx) {
   if (!confirm(`Delete "${blogData[idx].title}"?`)) return;
   blogData.splice(idx, 1);
-  saveLS('instantpursuit-blogs', blogData);
+  saveData('instantpursuit-blogs', blogData);
   showMsg('Post deleted', 'success');
   renderBlogList();
 }
 
-// === IMPORT / EXPORT ===
+// ── Sync with site defaults ──
+function checkBlogSync() {
+  const bar = document.getElementById('blog-sync-bar');
+  const detail = document.getElementById('blog-sync-detail');
+  if (!bar || !detail) return;
+  if (typeof DEFAULT_BLOG_DATA === 'undefined' || !Array.isArray(DEFAULT_BLOG_DATA)) {
+    bar.style.display = 'none';
+    return;
+  }
+  const localIds = new Set(blogData.map(b => b.id));
+  const newOnes = DEFAULT_BLOG_DATA.filter(b => !localIds.has(b.id));
+  // Also detect when data.js has *different* content for the same id (title/coverImage)
+  const updatedOnes = DEFAULT_BLOG_DATA.filter(d => {
+    const local = blogData.find(b => b.id === d.id);
+    if (!local) return false;
+    return local.title !== d.title || (local.coverImage || '') !== (d.coverImage || '');
+  });
+  const total = newOnes.length + updatedOnes.length;
+  if (total === 0) { bar.style.display = 'none'; return; }
+  const parts = [];
+  if (newOnes.length) parts.push(newOnes.length + ' new');
+  if (updatedOnes.length) parts.push(updatedOnes.length + ' updated');
+  detail.textContent = parts.join(' · ') + ' — e.g. "' + (newOnes[0]?.title || updatedOnes[0]?.title).slice(0, 60) + '"';
+  bar.style.display = 'flex';
+}
+
+function syncBlogFromDefaults() {
+  if (typeof DEFAULT_BLOG_DATA === 'undefined') {
+    showMsg('DEFAULT_BLOG_DATA unavailable — refresh the page', 'error');
+    return;
+  }
+  if (!confirm('Replace local blog data with the version from data.js?\n\nYour local custom posts that aren\'t in data.js will be kept and merged.')) return;
+  // Merge: take all DEFAULT_BLOG_DATA, then preserve any local posts not in defaults
+  const defaultIds = new Set(DEFAULT_BLOG_DATA.map(b => b.id));
+  const localOnly = blogData.filter(b => !defaultIds.has(b.id));
+  blogData = JSON.parse(JSON.stringify(DEFAULT_BLOG_DATA)).concat(localOnly);
+  saveData('instantpursuit-blogs', blogData);
+  showMsg('Pulled ' + DEFAULT_BLOG_DATA.length + ' posts from data.js' + (localOnly.length ? ' (kept ' + localOnly.length + ' local-only)' : ''), 'success');
+  renderBlogList();
+  renderDashboard();
+}
+
+// ── Import / Export ──
 function downloadJSON(data, filename) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = filename;
   a.click();
   URL.revokeObjectURL(a.href);
 }
-
 function exportCareer() { downloadJSON(careerData, 'instantpursuit-career.json'); showMsg('Career data exported', 'success'); }
 function exportBlog() { downloadJSON(blogData, 'instantpursuit-blogs.json'); showMsg('Blog data exported', 'success'); }
-function exportAll() { downloadJSON({career: careerData, blogs: blogData}, 'instantpursuit-all.json'); showMsg('All data exported', 'success'); }
+function exportAll() {
+  downloadJSON({ exportedAt: new Date().toISOString(), career: careerData, blogs: blogData }, 'instantpursuit-full-snapshot.json');
+  showMsg('Full snapshot exported', 'success');
+}
+
+// Export a full data.js file ready to drop into the repo.
+// Strategy: try fetch first (works on http/https); fall back to reconstruction
+// from in-memory globals when running from file:// or fetch is blocked.
+async function exportDataJs() {
+  try {
+    let src = null;
+    try {
+      const resp = await fetch('data.js', { cache: 'no-store' });
+      if (resp.ok) src = await resp.text();
+    } catch (fetchErr) {
+      // Likely file:// or CORS — fall through to reconstruction
+    }
+
+    if (src) {
+      src = injectExportedData(src);
+    } else {
+      src = reconstructDataJs();
+    }
+
+    // Stamp the export header on top (avoid duplicates on repeated exports)
+    src = src.replace(/^\/\* ═+\s*\n\s*data\.js — exported from admin[\s\S]*?═+ \*\/\n\n/, '');
+    const stamp = '/* ═══════════════════════════════════════════\n' +
+      '   data.js — exported from admin on ' + new Date().toISOString() + '\n' +
+      '   Drop this file into your repo root to deploy changes.\n' +
+      '   ═══════════════════════════════════════════ */\n\n';
+    src = stamp + src;
+
+    const blob = new Blob([src], { type: 'application/javascript' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'data.js';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showMsg('data.js exported — drop into your repo to deploy', 'success');
+  } catch (err) {
+    showMsg('Export failed: ' + err.message, 'error');
+    console.error(err);
+  }
+}
+
+// Replace a const-bound value (array OR object literal) in the source text
+function replaceConstLiteral(text, varName, valueJson) {
+  const startMarker = 'const ' + varName + ' = ';
+  const idx = text.indexOf(startMarker);
+  if (idx < 0) {
+    return text + '\n\nconst ' + varName + ' = ' + valueJson + ';\n';
+  }
+  const openIdx = idx + startMarker.length;
+  const opener = text[openIdx];
+  const closer = (opener === '[') ? ']' : (opener === '{' ? '}' : null);
+  if (!closer) return text;
+  let depth = 0, endIdx = -1;
+  for (let i = openIdx; i < text.length; i++) {
+    if (text[i] === opener) depth++;
+    else if (text[i] === closer) { depth--; if (depth === 0) { endIdx = i; break; } }
+  }
+  if (endIdx < 0) return text;
+  return text.slice(0, openIdx) + valueJson + text.slice(endIdx + 1);
+}
+
+function injectExportedData(src) {
+  src = replaceConstLiteral(src, 'DEFAULT_CAREER_DATA', JSON.stringify(careerData, null, 2));
+  src = replaceConstLiteral(src, 'DEFAULT_BLOG_DATA',   JSON.stringify(blogData, null, 2));
+  return src;
+}
+
+// Build a complete data.js from in-memory globals — used when fetch fails.
+function reconstructDataJs() {
+  const careerJson  = JSON.stringify(careerData, null, 2);
+  const blogsJson   = JSON.stringify(blogData,   null, 2);
+  const engBranches = (typeof ENG_BRANCHES !== 'undefined')
+    ? 'const ENG_BRANCHES = ' + safeStringify(ENG_BRANCHES) + ';\n\n'
+    : '';
+  const siteJson    = (typeof SITE !== 'undefined') ? JSON.stringify(SITE) : '{name:"Instant Pursuit",tagline:"Navigate your career with confidence.",url:"https://instantpursuit.in",icon:"🔥"}';
+  const navJson     = (typeof NAV_LINKS !== 'undefined') ? JSON.stringify(NAV_LINKS, null, 2) : '[]';
+
+  // Helper functions — these never change; we ship the canonical implementations
+  return [
+    '/* ═══════════════════════════════════════════',
+    '   INSTANT PURSUIT — Shared Data & Utilities',
+    '   ═══════════════════════════════════════════ */',
+    'const SITE = ' + siteJson + ';',
+    'const NAV_LINKS = ' + navJson + ';',
+    "function getTheme(){return localStorage.getItem('ip-theme')||'dark'}",
+    "function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ip-theme',t);const b=document.querySelector('.theme-toggle');if(b)b.textContent=t==='dark'?'☀️':'🌙'}",
+    "function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}",
+    "function initTheme(){setTheme(getTheme())}",
+    "function loadData(k,f){try{const d=localStorage.getItem(k);return d?JSON.parse(d):f}catch{return f}}",
+    "function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}",
+    (typeof injectNav === 'function' ? injectNav.toString() : ''),
+    (typeof injectFooter === 'function' ? injectFooter.toString() : ''),
+    "function initPage(){initTheme();if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter()})}else{injectNav();injectFooter()}}",
+    '',
+    '// ═══════════════════════════════════════════',
+    '// CAREER DATA',
+    '// ═══════════════════════════════════════════',
+    engBranches.trim(),
+    '',
+    'const DEFAULT_CAREER_DATA = ' + careerJson + ';',
+    '',
+    '// ═══════════════════════════════════════════',
+    '// BLOG DATA',
+    '// ═══════════════════════════════════════════',
+    'const DEFAULT_BLOG_DATA = ' + blogsJson + ';',
+    ''
+  ].join('\n');
+}
+
+// JSON.stringify but preserve `children:ENG_BRANCHES` references rather than expanding them.
+// For now we just expand them (the in-memory ENG_BRANCHES references are full objects);
+// the file will be larger but functionally identical.
+function safeStringify(obj) {
+  return JSON.stringify(obj, null, 2);
+}
 
 function loadFile(input) {
   const file = input.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = e => { document.getElementById('json-area').value = e.target.result; };
+  reader.onload = e => {
+    let txt = e.target.result;
+    // If user uploaded a .js file, EVALUATE it and pick the right export.
+    // data.js has comments + multiple const declarations (ENG_BRANCHES, DEFAULT_CAREER_DATA, DEFAULT_BLOG_DATA, SITE, NAV_LINKS, helpers).
+    // We run it in a sandboxed Function scope and capture window-like assignments.
+    if (file.name.endsWith('.js')) {
+      try {
+        // Build a sandbox that captures `const X = ...` and `function fn()` declarations
+        // by wrapping in IIFE that returns named globals.
+        const sandbox = '"use strict";\n' +
+          'var window={},document={documentElement:{setAttribute:function(){}},addEventListener:function(){},body:{prepend:function(){},appendChild:function(){}},createElement:function(){return{}},querySelector:function(){},querySelectorAll:function(){return[]},readyState:""};\n' +
+          'var localStorage={getItem:function(){return null},setItem:function(){}};\n' +
+          'var location={pathname:""};\n' +
+          txt + '\n' +
+          'return { career: (typeof DEFAULT_CAREER_DATA !== "undefined") ? DEFAULT_CAREER_DATA : null,' +
+          '         blogs:  (typeof DEFAULT_BLOG_DATA !== "undefined") ? DEFAULT_BLOG_DATA : null };';
+        const out = (new Function(sandbox))();
+        const type = document.getElementById('import-type').value;
+        if (type === 'career' && out.career) {
+          document.getElementById('json-area').value = JSON.stringify(out.career, null, 2);
+        } else if (type === 'blog' && out.blogs) {
+          document.getElementById('json-area').value = JSON.stringify(out.blogs, null, 2);
+        } else if (type === 'all') {
+          document.getElementById('json-area').value = JSON.stringify({career: out.career, blogs: out.blogs}, null, 2);
+        } else {
+          // Fallback — load whichever exists
+          document.getElementById('json-area').value = JSON.stringify(out.career || out.blogs, null, 2);
+        }
+        showMsg('Loaded ' + file.name + ' — review below and click Import', 'success');
+        return;
+      } catch (err) {
+        // Fall through to plain text load on eval failure
+        console.warn('JS eval failed, falling back to raw load:', err.message);
+      }
+    }
+    document.getElementById('json-area').value = txt.trim();
+  };
   reader.readAsText(file);
 }
 
 function importData() {
   const raw = document.getElementById('json-area').value.trim();
-  if (!raw) { showMsg('Paste JSON data first', 'error'); return; }
+  if (!raw) return showMsg('Paste JSON data first', 'error');
+  let data;
   try {
-    const data = JSON.parse(raw);
+    data = JSON.parse(raw);
+  } catch (e1) {
+    // Allow JS-object literal too (admin can paste raw {...} from data.js)
+    try {
+      data = (new Function('return (' + raw + ')'))();
+    } catch (e2) {
+      return showMsg('Could not parse: ' + e1.message, 'error');
+    }
+  }
+  try {
     const type = document.getElementById('import-type').value;
     if (type === 'career') {
-      if (!confirm('This will REPLACE all career data. Continue?')) return;
+      if (!confirm('Replace ALL career data?')) return;
       careerData = data;
-      saveLS('instantpursuit-career', careerData);
-      showMsg('Career data imported!', 'success');
-    } else {
-      if (!confirm('This will REPLACE all blog data. Continue?')) return;
+      saveData('instantpursuit-career', careerData);
+      showMsg('Career data imported', 'success');
+    } else if (type === 'blog') {
+      if (!confirm('Replace ALL blog data?')) return;
       blogData = Array.isArray(data) ? data : [];
-      saveLS('instantpursuit-blogs', blogData);
-      showMsg('Blog data imported!', 'success');
+      saveData('instantpursuit-blogs', blogData);
+      showMsg('Blog data imported', 'success');
+    } else {
+      if (!data.career && !data.blogs) return showMsg('Snapshot missing career/blogs keys', 'error');
+      if (!confirm('Replace BOTH career and blog data from snapshot?')) return;
+      if (data.career) { careerData = data.career; saveData('instantpursuit-career', careerData); }
+      if (data.blogs) { blogData = data.blogs; saveData('instantpursuit-blogs', blogData); }
+      showMsg('Full snapshot imported', 'success');
     }
+    renderDashboard();
   } catch (e) {
-    showMsg('Invalid JSON: ' + e.message, 'error');
+    showMsg('Import failed: ' + e.message, 'error');
   }
 }
 
 function resetCareer() {
-  if (!confirm('Reset career data to defaults?')) return;
+  if (!confirm('Reset career data to site defaults? Custom changes lost.')) return;
   localStorage.removeItem('instantpursuit-career');
-  try { careerData = typeof DEFAULT_CAREER_DATA !== 'undefined' ? JSON.parse(JSON.stringify(DEFAULT_CAREER_DATA)) : {}; } catch { careerData = {}; }
-  showMsg('Career data reset to defaults', 'success');
+  try { careerData = JSON.parse(JSON.stringify(DEFAULT_CAREER_DATA)); } catch { careerData = {}; }
+  showMsg('Career data reset', 'success');
   renderTree();
+  renderDashboard();
 }
-
 function resetBlog() {
-  if (!confirm('Reset blog data to defaults?')) return;
+  if (!confirm('Reset blog data to site defaults? Custom posts lost.')) return;
   localStorage.removeItem('instantpursuit-blogs');
-  try { blogData = typeof DEFAULT_BLOG_DATA !== 'undefined' ? [...DEFAULT_BLOG_DATA] : []; } catch { blogData = []; }
-  showMsg('Blog data reset to defaults', 'success');
+  try { blogData = JSON.parse(JSON.stringify(DEFAULT_BLOG_DATA)); } catch { blogData = []; }
+  showMsg('Blog data reset', 'success');
   renderBlogList();
+  renderDashboard();
+}
+function resetAll() {
+  if (!confirm('⚠️ Reset BOTH career and blog data to defaults?')) return;
+  resetCareer();
+  resetBlog();
 }
 
-// Init
-renderTree();
+// ── Init ──
+renderDashboard();
 </script>
-<!-- Optionally include data.js for defaults access -->
-<script src="data.js" onerror="console.log('data.js not loaded — defaults unavailable for reset')"></script>
+<script>initPage();</script>
 </body>
 </html>
