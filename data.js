@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-05-29T07:01:30.860Z
+   data.js — exported from admin on 2026-05-29T07:08:10.099Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -17444,11 +17444,11 @@ const DEFAULT_BLOG_DATA = [
   {
     "id": 1780038082018,
     "title": "Five Sanskrit Shlokas that Give Amazing Career Advice",
-    "author": "Editor in Chief",
+    "author": "Editor-in-Chief",
     "authorAvatar": "U",
-    "category": "Career Advice, Sanskrit",
+    "category": "Career Advice",
     "readTime": "6 min",
-    "excerpt": "",
+    "excerpt": "Evergreen teachings brought from the Vedic times!",
     "tags": [
       "Shlokas",
       "Sanskrit Teachings",
