@@ -9,13 +9,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260526">
+<script>window.IPV=(new Date()).toISOString().slice(0,10).replace(/-/g,"");</script>
+<script>document.write('<link rel="stylesheet" href="styles.css?v='+IPV+'">');</script>
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
-<script src="data.js?v=20260526"></script>
+<script>document.write('<scr'+'ipt src="data.js?v='+IPV+'"></scr'+'ipt>');</script>
 </head>
 <body>
-<script src="bg.js?v=20260526"></script>
-<script src="side-graphics.js?v=20260526"></script>
+<script>document.write('<scr'+'ipt src="bg.js?v='+IPV+'"></scr'+'ipt>');</script>
+<script>document.write('<scr'+'ipt src="side-graphics.js?v='+IPV+'"></scr'+'ipt>');</script>
 
 <main style="padding-top:64px">
   <!-- Hero -->
@@ -78,6 +79,19 @@
   display:flex;align-items:center;gap:6px;
 }
 .bento-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.bento-card-link{cursor:pointer;color:inherit}
+.bento-card-link:hover{border-color:var(--accent);box-shadow:var(--shadow-glow);transform:translateY(-3px)}
+.bento-cue{
+  margin-top:14px;font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:.5px;color:var(--accent2);text-transform:uppercase;
+  opacity:.75;transition:opacity .2s,transform .2s;
+}
+.bento-card-link:hover .bento-cue{opacity:1;transform:translateX(3px)}
+.pc-meta-job{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:.4px;color:var(--accent2);
+  margin-bottom:10px;
+}
 .bento-title{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1.25;margin-bottom:6px;color:var(--text);letter-spacing:-.2px}
 .bento-desc{color:var(--text2);font-size:.88rem;line-height:1.55}
 
@@ -312,6 +326,7 @@
 // Story palette cycles through 3 gradient swatches
 var storyPalette = ['story-a1','story-a2','story-a3','story-a4'];
 var storyHtml = '';
+var storyCount = (typeof DEFAULT_BLOG_DATA !== 'undefined') ? DEFAULT_BLOG_DATA.length : 0;
 if (typeof DEFAULT_BLOG_DATA !== 'undefined') {
   var stories = DEFAULT_BLOG_DATA.slice(0, 3);
   stories.forEach(function(s, i){
@@ -385,7 +400,7 @@ var bentoCards = [
     body:
       '<div class="story-list">' + storyHtml + '</div>' +
       '<div class="story-foot">' +
-        '<div class="story-foot-count"><strong>50+ stories</strong> · students, doctors, engineers, artists</div>' +
+        '<div class="story-foot-count"><strong>' + storyCount + ' ' + (storyCount === 1 ? 'story' : 'stories') + '</strong> · students, founders, doctors, engineers</div>' +
         '<a href="blog.html">All stories →</a>' +
       '</div>'
   },
@@ -393,13 +408,14 @@ var bentoCards = [
     cls: 'b-tree',
     eyebrow: 'CAREER MAP',
     title: 'Interactive Skill Tree',
-    desc: 'Drill from your class down to a career, branch by branch.',
+    desc: 'e.g. the path into the automotive field — tap to explore it live.',
+    link: 'explore.html#6-10/science/pcm/engineering/jee_main/mech/automotive',
     body: `
       <div class="tree-mini-v">
         <div class="tn"><span class="emo">📚</span><span>Class 10</span></div>
-        <div class="tn"><span class="emo">🔬</span><span>Science</span></div>
-        <div class="tn"><span class="emo">💻</span><span>CS</span></div>
-        <div class="tn tn-end"><span class="emo">🖥️</span><span>Software Dev</span></div>
+        <div class="tn"><span class="emo">🔬</span><span>Science (PCM)</span></div>
+        <div class="tn"><span class="emo">⚙️</span><span>B.Tech · Mechanical</span></div>
+        <div class="tn tn-end"><span class="emo">🚗</span><span>Automotive Engineer</span></div>
       </div>`
   },
   {
@@ -419,18 +435,20 @@ var bentoCards = [
     cls: 'b-pros',
     eyebrow: 'BOTH SIDES',
     title: 'Pros & Cons',
-    desc: 'Honest benefits and drawbacks — no sugar-coating.',
+    desc: 'Honest benefits and drawbacks for every job — no sugar-coating.',
+    link: 'explore.html#6-10/science/pcm/engineering/jee_main/mech/automotive',
     body: `
+      <div class="pc-meta-job">🚗 Automotive Engineer</div>
       <div class="pc-grid">
         <div class="pc-col pc-col-pro">
           <h5>✅ Benefits</h5>
-          <div class="pc-item">₹8–40 LPA at top firms</div>
-          <div class="pc-item">Remote-friendly</div>
+          <div class="pc-item">EV boom is hiring</div>
+          <div class="pc-item">Work with top OEMs</div>
         </div>
         <div class="pc-col pc-col-con">
           <h5>⚠️ Drawbacks</h5>
-          <div class="pc-item">Leetcode grind</div>
-          <div class="pc-item">Burnout common</div>
+          <div class="pc-item">Location-dependent</div>
+          <div class="pc-item">Slow initial growth</div>
         </div>
       </div>`
   },
@@ -449,10 +467,11 @@ var bentoCards = [
     eyebrow: 'REAL DATA',
     title: 'Salary & College Data',
     desc: 'Average CTC, top colleges, and top recruiters for every path.',
+    link: 'explore.html#6-10/science/pcm/engineering/jee_main/mech/automotive',
     body: `
-      <div class="salary-figure">₹8–40 <span style="font-size:.55em;letter-spacing:0">LPA</span></div>
+      <div class="salary-figure">₹5–15 <span style="font-size:.55em;letter-spacing:0">LPA</span></div>
       <div class="salary-row">
-        <div class="salary-meta">CSE · top engineering schools</div>
+        <div class="salary-meta">Automotive · Tata, Mahindra, Ola</div>
         <div class="salary-bars">
           <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
@@ -462,16 +481,19 @@ var bentoCards = [
 
 var bento = document.getElementById('bento');
 bentoCards.forEach(function(c, i){
-  var d = document.createElement('div');
-  d.className = 'bento-card ' + c.cls;
+  var d = document.createElement(c.link ? 'a' : 'div');
+  d.className = 'bento-card ' + c.cls + (c.link ? ' bento-card-link' : '');
+  if (c.link) { d.href = c.link; d.style.textDecoration = 'none'; }
   d.style.animationDelay = (i * 0.06) + 's';
   var descHtml = c.desc ? '<div class="bento-desc">' + c.desc + '</div>' : '';
   var titleHtml = c.title ? '<div class="bento-title">' + c.title + '</div>' : '';
+  var cueHtml = c.link ? '<div class="bento-cue">Open in explorer →</div>' : '';
   d.innerHTML =
     '<div class="bento-eyebrow"><span class="dot"></span>' + c.eyebrow + '</div>' +
     titleHtml +
     descHtml +
-    c.body;
+    c.body +
+    cueHtml;
   bento.appendChild(d);
 });
 

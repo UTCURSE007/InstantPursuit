@@ -8,14 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260526">
+<script>window.IPV=(new Date()).toISOString().slice(0,10).replace(/-/g,"");</script>
+<script>document.write('<link rel="stylesheet" href="styles.css?v='+IPV+'">');</script>
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
-<script src="data.js?v=20260526"></script>
-<script src="share.js?v=20260526"></script>
+<script>document.write('<scr'+'ipt src="data.js?v='+IPV+'"></scr'+'ipt>');</script>
+<script>document.write('<scr'+'ipt src="share.js?v='+IPV+'"></scr'+'ipt>');</script>
 </head>
 <body>
-<script src="bg.js?v=20260526"></script>
-<script src="side-graphics.js?v=20260526"></script>
+<script>document.write('<scr'+'ipt src="bg.js?v='+IPV+'"></scr'+'ipt>');</script>
+<script>document.write('<scr'+'ipt src="side-graphics.js?v='+IPV+'"></scr'+'ipt>');</script>
 
 <main style="padding-top:64px">
 <section class="ip-section" style="max-width:1080px">
@@ -189,6 +190,35 @@ function getNode(p) {
     if (node.children && node.children[k]) node = node.children[k];
     else if (node[k]) node = node[k];
     else return null;
+    node = resolveLink(node);
+  }
+  return node;
+}
+
+// If a node is a "linked" stub (has linkTo: [...path]), resolve to the live
+// source node so its content (info, children) mirrors automatically.
+function resolveLink(node, depth) {
+  depth = depth || 0;
+  if (node && node.linkTo && depth < 10) {
+    var src = careerData;
+    var ok = true;
+    for (var j = 0; j < node.linkTo.length; j++) {
+      var key = node.linkTo[j];
+      if (src.children && src.children[key]) src = src.children[key];
+      else if (src[key]) src = src[key];
+      else { ok = false; break; }
+    }
+    if (ok && src) {
+      var resolved = resolveLink(src, depth + 1);
+      // Keep the stub's own label/icon if it overrode them, else use source's
+      return {
+        label: node.label || resolved.label,
+        icon: node.icon || resolved.icon,
+        description: resolved.description,
+        info: resolved.info,
+        children: resolved.children
+      };
+    }
   }
   return node;
 }
@@ -376,7 +406,7 @@ function render() {
     h += '<div class="tree-vline"></div>';
     for (var ki = 0; ki < keys.length; ki++) {
       var k = keys[ki];
-      var child = children[k];
+      var child = resolveLink(children[k]);
       var hasKids = child.children && Object.keys(child.children).length > 0;
       var cc = hasKids ? Object.keys(child.children).length : 0;
       h += '<div class="tree-child-item career-node" style="animation-delay:' + (ki * 0.06) + 's">';
@@ -421,7 +451,7 @@ function render() {
     h += '<div class="journey-track">';
     for (var ri2 = 0; ri2 < keys.length; ri2++) {
       var rk = keys[ri2];
-      var rc = children[rk];
+      var rc = resolveLink(children[rk]);
       var meta = stageMeta[rk] || { age: '', short: rc.description || '' };
       var leaves = countLeaves(rc);
       totalPaths += leaves;

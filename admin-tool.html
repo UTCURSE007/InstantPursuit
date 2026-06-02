@@ -8,13 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260526">
+<script>window.IPV=(new Date()).toISOString().slice(0,10).replace(/-/g,"");</script>
+<script>document.write('<link rel="stylesheet" href="styles.css?v='+IPV+'">');</script>
 <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
 <!-- data.js MUST load before our inline script so DEFAULT_* are available on first render -->
-<script src="data.js?v=20260526"></script>
+<script>document.write('<scr'+'ipt src="data.js?v='+IPV+'"></scr'+'ipt>');</script>
 </head>
 <body>
-<script src="bg.js?v=20260526"></script>
+<script>document.write('<scr'+'ipt src="bg.js?v='+IPV+'"></scr'+'ipt>');</script>
 
 <main style="padding-top:64px;position:relative;z-index:1">
 <section class="ip-section" style="max-width:1100px">
@@ -115,8 +116,13 @@
     </div>
     <div class="adm-tree-toolbar">
       <span class="adm-tree-count" id="tree-count"></span>
-      <button class="ip-btn ip-btn-primary" onclick="showAddNodeForm()">+ Add Node</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="ip-btn ip-btn-outline" id="paste-btn" onclick="pasteNode()" style="display:none"></button>
+        <button class="ip-btn ip-btn-outline" id="link-btn" onclick="linkNodeHere()" style="display:none"></button>
+        <button class="ip-btn ip-btn-primary" onclick="showAddNodeForm()">+ Add Node</button>
+      </div>
     </div>
+    <div id="clipboard-bar" class="adm-clip-bar" style="display:none"></div>
     <div id="tree-list" class="adm-tree-list"></div>
 
     <div id="add-node-form" class="adm-form" style="display:none">
@@ -470,6 +476,24 @@
 .adm-tree-item-label{font-weight:600;font-size:.92rem;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .adm-tree-item-meta{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);letter-spacing:.5px}
 .adm-tree-item-actions{display:flex;gap:6px;flex-shrink:0}
+.adm-clip-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 16px;margin-bottom:14px;border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(0,184,148,0.14),rgba(108,92,231,0.08));
+  border:1px solid rgba(0,184,148,0.3);
+  font-size:.85rem;
+}
+.adm-clip-bar .clip-txt{display:flex;align-items:center;gap:8px;min-width:0}
+.adm-clip-bar code{font-family:var(--font-mono);font-size:.8rem;color:var(--accent2);background:var(--bg2);padding:2px 8px;border-radius:5px}
+.adm-clip-bar button{background:none;border:none;color:var(--text3);cursor:pointer;font-size:.78rem;font-family:var(--font-mono);text-decoration:underline}
+.adm-clip-bar button:hover{color:var(--red)}
+.adm-link-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-family:var(--font-mono);font-size:.6rem;font-weight:700;
+  letter-spacing:.5px;color:var(--cyan);
+  background:var(--cyan-soft);border:1px solid rgba(129,236,236,0.3);
+  padding:2px 7px;border-radius:10px;
+}
 .adm-icon-btn{
   width:32px;height:32px;border-radius:7px;
   background:transparent;border:1px solid var(--border);
@@ -766,16 +790,18 @@ function renderTree() {
     const childCount = c.children ? Object.keys(c.children).length : 0;
     const ctc = c.info?.avgCTC ? `<span class="adm-tree-item-meta">${esc(c.info.avgCTC)}</span>` : '';
     const counter = childCount > 0 ? `<span class="adm-tree-item-meta">${childCount} subs</span>` : '<span class="adm-tree-item-meta">leaf</span>';
+    const linkBadge = c.linkTo ? `<span class="adm-link-badge" title="Mirrors ${esc((c.linkTo||[]).join(' › '))}">🔗 linked</span>` : '';
     html += `
       <div class="adm-tree-item">
         <div class="adm-tree-item-l" onclick="treePath.push('${esc(k)}');renderTree()">
           <div class="adm-tree-item-icon">${c.icon || '📁'}</div>
           <div style="flex:1;min-width:0">
-            <div class="adm-tree-item-label">${esc(c.label || k)}</div>
+            <div class="adm-tree-item-label">${esc(c.label || k)} ${linkBadge}</div>
             <div style="display:flex;gap:10px;margin-top:3px">${counter} ${ctc}</div>
           </div>
         </div>
         <div class="adm-tree-item-actions">
+          <button class="adm-icon-btn" onclick="copyNode('${esc(k)}')" title="Copy node + children">📋</button>
           <button class="adm-icon-btn" onclick="editNode('${esc(k)}')" title="Edit">✏️</button>
           <button class="adm-icon-btn del" onclick="deleteNode('${esc(k)}')" title="Delete">🗑️</button>
         </div>
@@ -784,6 +810,81 @@ function renderTree() {
   });
   document.getElementById('tree-list').innerHTML = html;
   document.getElementById('add-node-form').style.display = 'none';
+  renderClipboardUI();
+}
+
+// ── Copy / Paste / Link nodes ──
+let nodeClipboard = null;      // { key, node (deep clone), srcPath }
+let nodeClipboardMode = null;  // 'copy' | 'link'
+
+function copyNode(key) {
+  const node = getChildrenAtPath(treePath)[key];
+  if (!node) return;
+  nodeClipboard = { key: key, node: JSON.parse(JSON.stringify(node)), srcPath: treePath.concat(key) };
+  showMsg('Copied "' + (node.label || key) + '" (+ children). Navigate anywhere and click Paste or Link.', 'success');
+  renderClipboardUI();
+}
+
+function renderClipboardUI() {
+  const bar = document.getElementById('clipboard-bar');
+  const pasteBtn = document.getElementById('paste-btn');
+  const linkBtn = document.getElementById('link-btn');
+  if (!nodeClipboard) {
+    if (bar) bar.style.display = 'none';
+    if (pasteBtn) pasteBtn.style.display = 'none';
+    if (linkBtn) linkBtn.style.display = 'none';
+    return;
+  }
+  const label = nodeClipboard.node.label || nodeClipboard.key;
+  if (bar) {
+    bar.style.display = 'flex';
+    bar.innerHTML = '<div class="clip-txt">📋 Clipboard: <code>' + esc(label) + '</code> <span style="color:var(--text3)">from ' + esc(nodeClipboard.srcPath.join(' › ')) + '</span></div>' +
+      '<button onclick="clearClipboard()">clear</button>';
+  }
+  if (pasteBtn) { pasteBtn.style.display = 'inline-flex'; pasteBtn.textContent = '📥 Paste copy here'; }
+  if (linkBtn)  { linkBtn.style.display = 'inline-flex';  linkBtn.textContent = '🔗 Paste as linked'; }
+}
+
+function clearClipboard() { nodeClipboard = null; renderClipboardUI(); }
+
+function uniqueKey(baseKey, container) {
+  let k = baseKey;
+  let n = 2;
+  while (container[k]) { k = baseKey + '_' + n; n++; }
+  return k;
+}
+
+function pasteNode() {
+  if (!nodeClipboard) return;
+  const container = (treePath.length === 0) ? careerData : (getNodeAtPath(treePath).children || (getNodeAtPath(treePath).children = {}));
+  // Prevent pasting a node into itself / its own descendants
+  if (treePath.join('/').startsWith(nodeClipboard.srcPath.join('/'))) {
+    return showMsg('Cannot paste a node inside itself.', 'error');
+  }
+  const newKey = uniqueKey(nodeClipboard.key, container);
+  container[newKey] = JSON.parse(JSON.stringify(nodeClipboard.node));
+  saveData('instantpursuit-career', careerData);
+  showMsg('Pasted as "' + newKey + '" (independent copy).', 'success');
+  renderTree();
+}
+
+function linkNodeHere() {
+  if (!nodeClipboard) return;
+  const container = (treePath.length === 0) ? careerData : (getNodeAtPath(treePath).children || (getNodeAtPath(treePath).children = {}));
+  if (treePath.concat(nodeClipboard.key).join('/') === nodeClipboard.srcPath.join('/')) {
+    return showMsg('Source and destination are the same.', 'error');
+  }
+  const newKey = uniqueKey(nodeClipboard.key, container);
+  // A linked node is a thin stub that points to the source path. The explore
+  // page resolves linkTo at render time, so edits to the source auto-appear here.
+  container[newKey] = {
+    label: nodeClipboard.node.label,
+    icon: nodeClipboard.node.icon,
+    linkTo: nodeClipboard.srcPath.slice()
+  };
+  saveData('instantpursuit-career', careerData);
+  showMsg('Linked "' + newKey + '" → mirrors ' + nodeClipboard.srcPath.join(' › ') + '. Edits to the source now appear here too.', 'success');
+  renderTree();
 }
 
 function showAddNodeForm() {
