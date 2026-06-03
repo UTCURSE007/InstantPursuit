@@ -117,6 +117,8 @@
     <div class="adm-tree-toolbar">
       <span class="adm-tree-count" id="tree-count"></span>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="ip-btn ip-btn-outline" id="copyall-btn" onclick="copyAllChildren()" style="display:none"></button>
+        <button class="ip-btn ip-btn-outline" id="pasteall-btn" onclick="pasteAllChildren()" style="display:none"></button>
         <button class="ip-btn ip-btn-outline" id="paste-btn" onclick="pasteNode()" style="display:none"></button>
         <button class="ip-btn ip-btn-outline" id="link-btn" onclick="linkNodeHere()" style="display:none"></button>
         <button class="ip-btn ip-btn-primary" onclick="showAddNodeForm()">+ Add Node</button>
@@ -781,6 +783,18 @@ function renderTree() {
   const keys = Object.keys(children);
   document.getElementById('tree-count').textContent = keys.length + ' direct child' + (keys.length === 1 ? '' : 'ren');
 
+  // "Copy all" copies every child at the current level in one shot
+  const copyAllBtn = document.getElementById('copyall-btn');
+  if (copyAllBtn) {
+    const copyableCount = keys.filter(k => children[k] && children[k].label && !children[k].linkTo).length;
+    if (copyableCount > 0) {
+      copyAllBtn.style.display = 'inline-flex';
+      copyAllBtn.textContent = '📦 Copy all ' + copyableCount;
+    } else {
+      copyAllBtn.style.display = 'none';
+    }
+  }
+
   let html = '';
   if (keys.length === 0) {
     html = `<div style="color:var(--text3);text-align:center;padding:2rem;font-size:.9rem">No child nodes here. Click <strong style="color:var(--accent2)">+ Add Node</strong> above.</div>`;
@@ -816,6 +830,45 @@ function renderTree() {
 // ── Copy / Paste / Link nodes ──
 let nodeClipboard = null;      // { key, node (deep clone), srcPath }
 let nodeClipboardMode = null;  // 'copy' | 'link'
+let bulkClipboard = null;      // { items:[{key,node}], src:[path] } — copy ALL children at once
+
+function copyAllChildren() {
+  const children = getChildrenAtPath(treePath);
+  const keys = Object.keys(children).filter(k => children[k] && children[k].label && !children[k].linkTo);
+  if (keys.length === 0) return showMsg('No copyable child nodes here.', 'error');
+  bulkClipboard = {
+    items: keys.map(k => ({ key: k, node: JSON.parse(JSON.stringify(children[k])) })),
+    src: treePath.slice()
+  };
+  const srcLabel = treePath.length ? (getNodeAtPath(treePath).label || treePath[treePath.length - 1]) : 'Root';
+  showMsg('Copied all ' + keys.length + ' nodes from "' + srcLabel + '" (+ their children). Navigate to a destination and click Paste all.', 'success');
+  renderClipboardUI();
+}
+
+function pasteAllChildren() {
+  if (!bulkClipboard) return;
+  const destPath = treePath.slice();
+  if (destPath.join('/') === bulkClipboard.src.join('/')) {
+    return showMsg('Destination is the same as the source.', 'error');
+  }
+  // Block pasting into a descendant of any copied subtree
+  for (const it of bulkClipboard.items) {
+    const itemPath = bulkClipboard.src.concat(it.key).join('/');
+    if ((destPath.join('/') + '/').startsWith(itemPath + '/')) {
+      return showMsg('Cannot paste these nodes inside one of themselves.', 'error');
+    }
+  }
+  const container = (destPath.length === 0) ? careerData : (getNodeAtPath(destPath).children || (getNodeAtPath(destPath).children = {}));
+  let count = 0;
+  bulkClipboard.items.forEach(it => {
+    const newKey = uniqueKey(it.key, container);
+    container[newKey] = JSON.parse(JSON.stringify(it.node));
+    count++;
+  });
+  saveData('instantpursuit-career', careerData);
+  showMsg('Pasted ' + count + ' nodes here (independent copies).', 'success');
+  renderTree();
+}
 
 function copyNode(key) {
   const node = getChildrenAtPath(treePath)[key];
@@ -829,23 +882,34 @@ function renderClipboardUI() {
   const bar = document.getElementById('clipboard-bar');
   const pasteBtn = document.getElementById('paste-btn');
   const linkBtn = document.getElementById('link-btn');
-  if (!nodeClipboard) {
-    if (bar) bar.style.display = 'none';
-    if (pasteBtn) pasteBtn.style.display = 'none';
-    if (linkBtn) linkBtn.style.display = 'none';
-    return;
+  const pasteAllBtn = document.getElementById('pasteall-btn');
+
+  // Single-node clipboard buttons
+  if (pasteBtn) { pasteBtn.style.display = nodeClipboard ? 'inline-flex' : 'none'; pasteBtn.textContent = '📥 Paste copy here'; }
+  if (linkBtn)  { linkBtn.style.display  = nodeClipboard ? 'inline-flex' : 'none'; linkBtn.textContent  = '🔗 Paste as linked'; }
+
+  // Bulk clipboard button
+  if (pasteAllBtn) {
+    if (bulkClipboard) { pasteAllBtn.style.display = 'inline-flex'; pasteAllBtn.textContent = '📥 Paste all ' + bulkClipboard.items.length + ' here'; }
+    else pasteAllBtn.style.display = 'none';
   }
-  const label = nodeClipboard.node.label || nodeClipboard.key;
-  if (bar) {
-    bar.style.display = 'flex';
-    bar.innerHTML = '<div class="clip-txt">📋 Clipboard: <code>' + esc(label) + '</code> <span style="color:var(--text3)">from ' + esc(nodeClipboard.srcPath.join(' › ')) + '</span></div>' +
-      '<button onclick="clearClipboard()">clear</button>';
+
+  if (!bar) return;
+  if (!nodeClipboard && !bulkClipboard) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  let txt = '';
+  if (nodeClipboard) {
+    const label = nodeClipboard.node.label || nodeClipboard.key;
+    txt += '<span class="clip-txt">📋 <code>' + esc(label) + '</code> <span style="color:var(--text3)">from ' + esc(nodeClipboard.srcPath.join(' › ')) + '</span></span>';
   }
-  if (pasteBtn) { pasteBtn.style.display = 'inline-flex'; pasteBtn.textContent = '📥 Paste copy here'; }
-  if (linkBtn)  { linkBtn.style.display = 'inline-flex';  linkBtn.textContent = '🔗 Paste as linked'; }
+  if (bulkClipboard) {
+    const srcLabel = bulkClipboard.src.length ? bulkClipboard.src.join(' › ') : 'Root';
+    txt += '<span class="clip-txt">📦 <code>' + bulkClipboard.items.length + ' nodes</code> <span style="color:var(--text3)">from ' + esc(srcLabel) + '</span></span>';
+  }
+  bar.innerHTML = '<div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;min-width:0">' + txt + '</div><button onclick="clearClipboard()">clear</button>';
 }
 
-function clearClipboard() { nodeClipboard = null; renderClipboardUI(); }
+function clearClipboard() { nodeClipboard = null; bulkClipboard = null; renderClipboardUI(); }
 
 function uniqueKey(baseKey, container) {
   let k = baseKey;

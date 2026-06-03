@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-06-02T17:41:29.266Z
+   data.js — exported from admin on 2026-06-03T01:58:47.788Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -1737,26 +1737,843 @@ const DEFAULT_CAREER_DATA = {
                       "cs": {
                         "label": "Computer Science",
                         "icon": "💻",
-                        "linkTo": [
-                          "6-10",
-                          "science",
-                          "pcm",
-                          "engineering",
-                          "jee_main",
-                          "cs"
-                        ]
+                        "info": {
+                          "benefits": [
+                            "Highest demand in job market",
+                            "Startup-friendly skills",
+                            "Remote work options"
+                          ],
+                          "drawbacks": [
+                            "Rapidly evolving — constant learning",
+                            "Highly competitive",
+                            "Screen-heavy lifestyle"
+                          ],
+                          "tip": "Learn to code early — even basic Python opens huge doors.",
+                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani",
+                            "IIT Kanpur"
+                          ],
+                          "topRecruiters": [
+                            "Google",
+                            "Microsoft",
+                            "Amazon",
+                            "Meta",
+                            "Apple",
+                            "Goldman Sachs",
+                            "Uber",
+                            "Flipkart",
+                            "Atlassian"
+                          ],
+                          "avgCTC": "₹8-40 LPA (top colleges)",
+                          "furtherLinks": [
+                            {
+                              "title": "How to Start Coding — CS50 Lecture 0",
+                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                            },
+                            {
+                              "title": "Complete Roadmap to CS Careers",
+                              "url": "https://roadmap.sh/computer-science"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "sde": {
+                            "label": "Software Development",
+                            "icon": "🖥️",
+                            "info": {
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                              "benefits": [
+                                "Core tech role everywhere",
+                                "Product-building skills",
+                                "Remote-friendly"
+                              ],
+                              "drawbacks": [
+                                "Leetcode grind",
+                                "Long startup hours",
+                                "Burnout common"
+                              ],
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Delhi",
+                                "IIIT Hyderabad",
+                                "BITS Pilani"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Amazon",
+                                "Flipkart",
+                                "Atlassian",
+                                "Uber",
+                                "Razorpay",
+                                "PhonePe"
+                              ],
+                              "avgCTC": "₹12-50 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DSA Roadmap for Placements — Striver",
+                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
+                                },
+                                {
+                                  "title": "Roadmap.sh — Full Stack Developer",
+                                  "url": "https://roadmap.sh/full-stack"
+                                },
+                                {
+                                  "title": "Top Advices",
+                                  "url": "https://youtu.be/suATPK45sjk?si=kzYSKR3xT4vZUG_e"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "datascience": {
+                            "label": "Data Science / Analytics",
+                            "icon": "📊",
+                            "info": {
+                              "benefits": [
+                                "Data-driven decisions",
+                                "Every industry needs it",
+                                "Stats + coding mix"
+                              ],
+                              "drawbacks": [
+                                "Needs strong statistics",
+                                "Tool landscape changes fast"
+                              ],
+                              "tip": "Master SQL and Python — bread and butter of data roles.",
+                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                              "topColleges": [
+                                "ISI Kolkata",
+                                "IIT Madras",
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "CMI Chennai"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Amazon",
+                                "McKinsey",
+                                "Tiger Analytics",
+                                "Fractal",
+                                "Mu Sigma",
+                                "Walmart Labs"
+                              ],
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Data Science Full Course — freeCodeCamp",
+                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                                },
+                                {
+                                  "title": "Kaggle Learn",
+                                  "url": "https://www.kaggle.com/learn"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "cybersecurity": {
+                            "label": "Cybersecurity",
+                            "icon": "🔐",
+                            "info": {
+                              "benefits": [
+                                "Massive talent shortage",
+                                "Critical for every org",
+                                "Ethical hacking is exciting"
+                              ],
+                              "drawbacks": [
+                                "Constant threat updates",
+                                "Certifications expensive",
+                                "On-call pressure"
+                              ],
+                              "tip": "Start with CompTIA Security+ and CTF competitions.",
+                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                              "topColleges": [
+                                "IIT Kanpur",
+                                "IIT Madras",
+                                "IIIT Delhi",
+                                "NIT Surathkal"
+                              ],
+                              "topRecruiters": [
+                                "Deloitte",
+                                "PwC",
+                                "CrowdStrike",
+                                "Palo Alto Networks",
+                                "Cisco",
+                                "TCS"
+                              ],
+                              "avgCTC": "₹8-25 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Cybersecurity Career Roadmap",
+                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
+                                },
+                                {
+                                  "title": "TryHackMe — Learn Hacking",
+                                  "url": "https://tryhackme.com"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "devops": {
+                            "label": "DevOps / Cloud",
+                            "icon": "☁️",
+                            "info": {
+                              "benefits": [
+                                "Bridges dev and ops",
+                                "Cloud skills future-proof",
+                                "Automation focus"
+                              ],
+                              "drawbacks": [
+                                "Steep learning curve",
+                                "On-call duties",
+                                "Less creative than frontend"
+                              ],
+                              "tip": "Get AWS Certified — most recognized cloud certification.",
+                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Amazon AWS",
+                                "Microsoft Azure",
+                                "Google Cloud",
+                                "Hashicorp",
+                                "Red Hat",
+                                "Razorpay"
+                              ],
+                              "avgCTC": "₹10-35 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "DevOps Roadmap",
+                                  "url": "https://roadmap.sh/devops"
+                                },
+                                {
+                                  "title": "AWS Cloud Practitioner Course",
+                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          }
+                        }
                       },
                       "mech": {
                         "label": "Mechanical Engineering",
                         "icon": "🔧",
-                        "linkTo": [
-                          "6-10",
-                          "science",
-                          "pcm",
-                          "engineering",
-                          "jee_main",
-                          "mech"
-                        ]
+                        "info": {
+                          "benefits": [
+                            "Core engineering fundamentals",
+                            "Auto, aero, manufacturing sectors",
+                            "Design & innovation"
+                          ],
+                          "drawbacks": [
+                            "Fewer IT jobs",
+                            "May need masters for research",
+                            "Limited remote work"
+                          ],
+                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
+                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Tata Motors",
+                            "Mahindra",
+                            "Maruti Suzuki",
+                            "Bosch",
+                            "L&T",
+                            "ISRO",
+                            "DRDO",
+                            "Cummins"
+                          ],
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Mechanical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
+                            },
+                            {
+                              "title": "NPTEL Mechanical Courses",
+                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "automotive": {
+                            "label": "Automotive Engineering",
+                            "icon": "🚗",
+                            "info": {
+                              "benefits": [
+                                "EV revolution creating roles",
+                                "Work with top OEMs"
+                              ],
+                              "drawbacks": [
+                                "Location-dependent",
+                                "Slow initial growth"
+                              ],
+                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
+                              "topColleges": [
+                                "IIT Madras",
+                                "IIT Delhi",
+                                "BITS Pilani",
+                                "COEP Pune"
+                              ],
+                              "topRecruiters": [
+                                "Tata Motors",
+                                "Mahindra",
+                                "Ola Electric",
+                                "Ather Energy",
+                                "Hyundai India",
+                                "Bosch"
+                              ],
+                              "avgCTC": "₹5-15 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How Electric Vehicles Work",
+                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
+                                },
+                                {
+                                  "title": "India EV Revolution",
+                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "robotics": {
+                            "label": "Robotics & Automation",
+                            "icon": "🦾",
+                            "info": {
+                              "benefits": [
+                                "Cutting-edge field",
+                                "Industry 4.0 demand",
+                                "Interdisciplinary"
+                              ],
+                              "drawbacks": [
+                                "Requires coding + hardware",
+                                "Expensive self-learning"
+                              ],
+                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Addverb Technologies",
+                                "GreyOrange",
+                                "Bosch",
+                                "ABB",
+                                "Amazon Robotics"
+                              ],
+                              "avgCTC": "₹6-20 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Robotics Full Course",
+                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
+                                },
+                                {
+                                  "title": "ROS Tutorials",
+                                  "url": "https://wiki.ros.org/ROS/Tutorials"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "aerospace": {
+                            "label": "Aerospace / Defence",
+                            "icon": "✈️",
+                            "info": {
+                              "benefits": [
+                                "Prestigious sector",
+                                "ISRO, DRDO, HAL",
+                                "High intellectual satisfaction"
+                              ],
+                              "drawbacks": [
+                                "Limited private sector",
+                                "Security clearance",
+                                "Slow hiring"
+                              ],
+                              "tip": "GATE exam is your gateway to ISRO.",
+                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IIT Kanpur",
+                                "IIST Trivandrum"
+                              ],
+                              "topRecruiters": [
+                                "ISRO",
+                                "DRDO",
+                                "HAL",
+                                "Skyroot Aerospace",
+                                "Agnikul",
+                                "Boeing India"
+                              ],
+                              "avgCTC": "₹6-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "How to Join ISRO",
+                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
+                                },
+                                {
+                                  "title": "ISRO Careers",
+                                  "url": "https://www.isro.gov.in/careers.html"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "ece": {
+                        "label": "Electronics & Communication",
+                        "icon": "📡",
+                        "info": {
+                          "benefits": [
+                            "VLSI, telecom, IoT industries",
+                            "Hardware & software mix",
+                            "Semiconductor boom"
+                          ],
+                          "drawbacks": [
+                            "Overlap with CS",
+                            "Lab-intensive",
+                            "Hardware roles less flexible"
+                          ],
+                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "NIT Trichy",
+                            "BITS Pilani",
+                            "IIIT Hyderabad"
+                          ],
+                          "topRecruiters": [
+                            "Qualcomm",
+                            "Intel",
+                            "Texas Instruments",
+                            "Samsung",
+                            "MediaTek",
+                            "Broadcom",
+                            "Nvidia"
+                          ],
+                          "avgCTC": "₹6-20 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "ECE Career Options India",
+                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
+                            },
+                            {
+                              "title": "NPTEL Electronics",
+                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "vlsi": {
+                            "label": "VLSI / Chip Design",
+                            "icon": "🔌",
+                            "info": {
+                              "benefits": [
+                                "India semiconductor push",
+                                "Deep technical work"
+                              ],
+                              "drawbacks": [
+                                "Very niche",
+                                "Long learning curve",
+                                "Limited to Bangalore/Hyderabad"
+                              ],
+                              "tip": "Learn Verilog/VHDL and EDA tools.",
+                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIT Madras",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Intel",
+                                "Qualcomm",
+                                "Texas Instruments",
+                                "Synopsys",
+                                "Cadence",
+                                "Samsung",
+                                "AMD",
+                                "Nvidia"
+                              ],
+                              "avgCTC": "₹10-30 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "VLSI Design Flow Explained",
+                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
+                                },
+                                {
+                                  "title": "India Semiconductor Mission",
+                                  "url": "https://www.indiasmconductormission.in"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "iot": {
+                            "label": "IoT & Embedded Systems",
+                            "icon": "📶",
+                            "info": {
+                              "benefits": [
+                                "Smart devices everywhere",
+                                "Startup opportunities"
+                              ],
+                              "drawbacks": [
+                                "Hardware debugging painful",
+                                "Fragmented ecosystem"
+                              ],
+                              "tip": "Build a home automation project — best portfolio piece.",
+                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "BITS Pilani",
+                                "NIT Trichy",
+                                "VIT"
+                              ],
+                              "topRecruiters": [
+                                "Bosch",
+                                "Honeywell",
+                                "Siemens",
+                                "Samsung",
+                                "Tata Elxsi",
+                                "KPIT"
+                              ],
+                              "avgCTC": "₹5-18 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "IoT Full Course",
+                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                                },
+                                {
+                                  "title": "Arduino Project Hub",
+                                  "url": "https://projecthub.arduino.cc"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
+                        },
+                        "children": {}
                       }
                     }
                   },
@@ -1857,6 +2674,8 @@ const DEFAULT_CAREER_DATA = {
                             "label": "Software Development",
                             "icon": "🖥️",
                             "info": {
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
                               "benefits": [
                                 "Core tech role everywhere",
                                 "Product-building skills",
@@ -1867,8 +2686,6 @@ const DEFAULT_CAREER_DATA = {
                                 "Long startup hours",
                                 "Burnout common"
                               ],
-                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
-                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
                               "topColleges": [
                                 "IIT Bombay",
                                 "IIT Delhi",
@@ -1894,6 +2711,10 @@ const DEFAULT_CAREER_DATA = {
                                 {
                                   "title": "Roadmap.sh — Full Stack Developer",
                                   "url": "https://roadmap.sh/full-stack"
+                                },
+                                {
+                                  "title": "Top Advices",
+                                  "url": "https://youtu.be/suATPK45sjk?si=kzYSKR3xT4vZUG_e"
                                 }
                               ]
                             },
@@ -2673,839 +3494,14 @@ const DEFAULT_CAREER_DATA = {
                       "cs": {
                         "label": "Computer Science",
                         "icon": "💻",
-                        "info": {
-                          "benefits": [
-                            "Highest demand in job market",
-                            "Startup-friendly skills",
-                            "Remote work options"
-                          ],
-                          "drawbacks": [
-                            "Rapidly evolving — constant learning",
-                            "Highly competitive",
-                            "Screen-heavy lifestyle"
-                          ],
-                          "tip": "Learn to code early — even basic Python opens huge doors.",
-                          "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Delhi",
-                            "IIT Madras",
-                            "IIIT Hyderabad",
-                            "BITS Pilani",
-                            "IIT Kanpur"
-                          ],
-                          "topRecruiters": [
-                            "Google",
-                            "Microsoft",
-                            "Amazon",
-                            "Meta",
-                            "Apple",
-                            "Goldman Sachs",
-                            "Uber",
-                            "Flipkart",
-                            "Atlassian"
-                          ],
-                          "avgCTC": "₹8-40 LPA (top colleges)",
-                          "furtherLinks": [
-                            {
-                              "title": "How to Start Coding — CS50 Lecture 0",
-                              "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
-                            },
-                            {
-                              "title": "Complete Roadmap to CS Careers",
-                              "url": "https://roadmap.sh/computer-science"
-                            }
-                          ]
-                        },
-                        "children": {
-                          "sde": {
-                            "label": "Software Development",
-                            "icon": "🖥️",
-                            "info": {
-                              "benefits": [
-                                "Core tech role everywhere",
-                                "Product-building skills",
-                                "Remote-friendly"
-                              ],
-                              "drawbacks": [
-                                "Leetcode grind",
-                                "Long startup hours",
-                                "Burnout common"
-                              ],
-                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
-                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "IIT Delhi",
-                                "IIIT Hyderabad",
-                                "BITS Pilani"
-                              ],
-                              "topRecruiters": [
-                                "Google",
-                                "Microsoft",
-                                "Amazon",
-                                "Flipkart",
-                                "Atlassian",
-                                "Uber",
-                                "Razorpay",
-                                "PhonePe"
-                              ],
-                              "avgCTC": "₹12-50 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "DSA Roadmap for Placements — Striver",
-                                  "url": "https://www.youtube.com/watch?v=rZ41y93P2Qo"
-                                },
-                                {
-                                  "title": "Roadmap.sh — Full Stack Developer",
-                                  "url": "https://roadmap.sh/full-stack"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "datascience": {
-                            "label": "Data Science / Analytics",
-                            "icon": "📊",
-                            "info": {
-                              "benefits": [
-                                "Data-driven decisions",
-                                "Every industry needs it",
-                                "Stats + coding mix"
-                              ],
-                              "drawbacks": [
-                                "Needs strong statistics",
-                                "Tool landscape changes fast"
-                              ],
-                              "tip": "Master SQL and Python — bread and butter of data roles.",
-                              "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
-                              "topColleges": [
-                                "ISI Kolkata",
-                                "IIT Madras",
-                                "IIT Bombay",
-                                "IIIT Hyderabad",
-                                "CMI Chennai"
-                              ],
-                              "topRecruiters": [
-                                "Google",
-                                "Amazon",
-                                "McKinsey",
-                                "Tiger Analytics",
-                                "Fractal",
-                                "Mu Sigma",
-                                "Walmart Labs"
-                              ],
-                              "avgCTC": "₹10-30 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "Data Science Full Course — freeCodeCamp",
-                                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
-                                },
-                                {
-                                  "title": "Kaggle Learn",
-                                  "url": "https://www.kaggle.com/learn"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "cybersecurity": {
-                            "label": "Cybersecurity",
-                            "icon": "🔐",
-                            "info": {
-                              "benefits": [
-                                "Massive talent shortage",
-                                "Critical for every org",
-                                "Ethical hacking is exciting"
-                              ],
-                              "drawbacks": [
-                                "Constant threat updates",
-                                "Certifications expensive",
-                                "On-call pressure"
-                              ],
-                              "tip": "Start with CompTIA Security+ and CTF competitions.",
-                              "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
-                              "topColleges": [
-                                "IIT Kanpur",
-                                "IIT Madras",
-                                "IIIT Delhi",
-                                "NIT Surathkal"
-                              ],
-                              "topRecruiters": [
-                                "Deloitte",
-                                "PwC",
-                                "CrowdStrike",
-                                "Palo Alto Networks",
-                                "Cisco",
-                                "TCS"
-                              ],
-                              "avgCTC": "₹8-25 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "Cybersecurity Career Roadmap",
-                                  "url": "https://www.youtube.com/watch?v=lpa8uy244wk"
-                                },
-                                {
-                                  "title": "TryHackMe — Learn Hacking",
-                                  "url": "https://tryhackme.com"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "devops": {
-                            "label": "DevOps / Cloud",
-                            "icon": "☁️",
-                            "info": {
-                              "benefits": [
-                                "Bridges dev and ops",
-                                "Cloud skills future-proof",
-                                "Automation focus"
-                              ],
-                              "drawbacks": [
-                                "Steep learning curve",
-                                "On-call duties",
-                                "Less creative than frontend"
-                              ],
-                              "tip": "Get AWS Certified — most recognized cloud certification.",
-                              "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "BITS Pilani",
-                                "NIT Trichy",
-                                "IIIT Hyderabad"
-                              ],
-                              "topRecruiters": [
-                                "Amazon AWS",
-                                "Microsoft Azure",
-                                "Google Cloud",
-                                "Hashicorp",
-                                "Red Hat",
-                                "Razorpay"
-                              ],
-                              "avgCTC": "₹10-35 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "DevOps Roadmap",
-                                  "url": "https://roadmap.sh/devops"
-                                },
-                                {
-                                  "title": "AWS Cloud Practitioner Course",
-                                  "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          }
-                        }
-                      },
-                      "mech": {
-                        "label": "Mechanical Engineering",
-                        "icon": "🔧",
-                        "info": {
-                          "benefits": [
-                            "Core engineering fundamentals",
-                            "Auto, aero, manufacturing sectors",
-                            "Design & innovation"
-                          ],
-                          "drawbacks": [
-                            "Fewer IT jobs",
-                            "May need masters for research",
-                            "Limited remote work"
-                          ],
-                          "tip": "Combine with coding (CAD, robotics) for best opportunities.",
-                          "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Delhi",
-                            "IIT Madras",
-                            "IIT Kanpur",
-                            "NIT Trichy",
-                            "BITS Pilani"
-                          ],
-                          "topRecruiters": [
-                            "Tata Motors",
-                            "Mahindra",
-                            "Maruti Suzuki",
-                            "Bosch",
-                            "L&T",
-                            "ISRO",
-                            "DRDO",
-                            "Cummins"
-                          ],
-                          "avgCTC": "₹5-15 LPA",
-                          "furtherLinks": [
-                            {
-                              "title": "Mechanical Engineering Career India",
-                              "url": "https://www.youtube.com/watch?v=3Swqk8sFDcE"
-                            },
-                            {
-                              "title": "NPTEL Mechanical Courses",
-                              "url": "https://nptel.ac.in/courses/discipline/Mechanical"
-                            }
-                          ]
-                        },
-                        "children": {
-                          "automotive": {
-                            "label": "Automotive Engineering",
-                            "icon": "🚗",
-                            "info": {
-                              "benefits": [
-                                "EV revolution creating roles",
-                                "Work with top OEMs"
-                              ],
-                              "drawbacks": [
-                                "Location-dependent",
-                                "Slow initial growth"
-                              ],
-                              "tip": "EV and autonomous vehicle skills are the golden ticket.",
-                              "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software.",
-                              "topColleges": [
-                                "IIT Madras",
-                                "IIT Delhi",
-                                "BITS Pilani",
-                                "COEP Pune"
-                              ],
-                              "topRecruiters": [
-                                "Tata Motors",
-                                "Mahindra",
-                                "Ola Electric",
-                                "Ather Energy",
-                                "Hyundai India",
-                                "Bosch"
-                              ],
-                              "avgCTC": "₹5-15 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "How Electric Vehicles Work",
-                                  "url": "https://www.youtube.com/watch?v=GO_Iv3PsMeE"
-                                },
-                                {
-                                  "title": "India EV Revolution",
-                                  "url": "https://www.youtube.com/watch?v=_tkBNEHf62Y"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "robotics": {
-                            "label": "Robotics & Automation",
-                            "icon": "🦾",
-                            "info": {
-                              "benefits": [
-                                "Cutting-edge field",
-                                "Industry 4.0 demand",
-                                "Interdisciplinary"
-                              ],
-                              "drawbacks": [
-                                "Requires coding + hardware",
-                                "Expensive self-learning"
-                              ],
-                              "tip": "ROS (Robot Operating System) is the skill to invest in.",
-                              "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "IIT Madras",
-                                "IIIT Hyderabad"
-                              ],
-                              "topRecruiters": [
-                                "Addverb Technologies",
-                                "GreyOrange",
-                                "Bosch",
-                                "ABB",
-                                "Amazon Robotics"
-                              ],
-                              "avgCTC": "₹6-20 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "Robotics Full Course",
-                                  "url": "https://www.youtube.com/watch?v=DhRwbVaQbGI"
-                                },
-                                {
-                                  "title": "ROS Tutorials",
-                                  "url": "https://wiki.ros.org/ROS/Tutorials"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "aerospace": {
-                            "label": "Aerospace / Defence",
-                            "icon": "✈️",
-                            "info": {
-                              "benefits": [
-                                "Prestigious sector",
-                                "ISRO, DRDO, HAL",
-                                "High intellectual satisfaction"
-                              ],
-                              "drawbacks": [
-                                "Limited private sector",
-                                "Security clearance",
-                                "Slow hiring"
-                              ],
-                              "tip": "GATE exam is your gateway to ISRO.",
-                              "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "IIT Madras",
-                                "IIT Kanpur",
-                                "IIST Trivandrum"
-                              ],
-                              "topRecruiters": [
-                                "ISRO",
-                                "DRDO",
-                                "HAL",
-                                "Skyroot Aerospace",
-                                "Agnikul",
-                                "Boeing India"
-                              ],
-                              "avgCTC": "₹6-18 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "How to Join ISRO",
-                                  "url": "https://www.youtube.com/watch?v=RfKnLw5mUYw"
-                                },
-                                {
-                                  "title": "ISRO Careers",
-                                  "url": "https://www.isro.gov.in/careers.html"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          }
-                        }
-                      },
-                      "ece": {
-                        "label": "Electronics & Communication",
-                        "icon": "📡",
-                        "info": {
-                          "benefits": [
-                            "VLSI, telecom, IoT industries",
-                            "Hardware & software mix",
-                            "Semiconductor boom"
-                          ],
-                          "drawbacks": [
-                            "Overlap with CS",
-                            "Lab-intensive",
-                            "Hardware roles less flexible"
-                          ],
-                          "tip": "Focus on embedded systems or VLSI for niche advantage.",
-                          "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Madras",
-                            "NIT Trichy",
-                            "BITS Pilani",
-                            "IIIT Hyderabad"
-                          ],
-                          "topRecruiters": [
-                            "Qualcomm",
-                            "Intel",
-                            "Texas Instruments",
-                            "Samsung",
-                            "MediaTek",
-                            "Broadcom",
-                            "Nvidia"
-                          ],
-                          "avgCTC": "₹6-20 LPA",
-                          "furtherLinks": [
-                            {
-                              "title": "ECE Career Options India",
-                              "url": "https://www.youtube.com/watch?v=1_5JuMJl-TQ"
-                            },
-                            {
-                              "title": "NPTEL Electronics",
-                              "url": "https://nptel.ac.in/courses/discipline/Electronics"
-                            }
-                          ]
-                        },
-                        "children": {
-                          "vlsi": {
-                            "label": "VLSI / Chip Design",
-                            "icon": "🔌",
-                            "info": {
-                              "benefits": [
-                                "India semiconductor push",
-                                "Deep technical work"
-                              ],
-                              "drawbacks": [
-                                "Very niche",
-                                "Long learning curve",
-                                "Limited to Bangalore/Hyderabad"
-                              ],
-                              "tip": "Learn Verilog/VHDL and EDA tools.",
-                              "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "IIT Madras",
-                                "IISc Bangalore",
-                                "IIIT Hyderabad"
-                              ],
-                              "topRecruiters": [
-                                "Intel",
-                                "Qualcomm",
-                                "Texas Instruments",
-                                "Synopsys",
-                                "Cadence",
-                                "Samsung",
-                                "AMD",
-                                "Nvidia"
-                              ],
-                              "avgCTC": "₹10-30 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "VLSI Design Flow Explained",
-                                  "url": "https://www.youtube.com/watch?v=lse5MK7JRXM"
-                                },
-                                {
-                                  "title": "India Semiconductor Mission",
-                                  "url": "https://www.indiasmconductormission.in"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "iot": {
-                            "label": "IoT & Embedded Systems",
-                            "icon": "📶",
-                            "info": {
-                              "benefits": [
-                                "Smart devices everywhere",
-                                "Startup opportunities"
-                              ],
-                              "drawbacks": [
-                                "Hardware debugging painful",
-                                "Fragmented ecosystem"
-                              ],
-                              "tip": "Build a home automation project — best portfolio piece.",
-                              "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "BITS Pilani",
-                                "NIT Trichy",
-                                "VIT"
-                              ],
-                              "topRecruiters": [
-                                "Bosch",
-                                "Honeywell",
-                                "Siemens",
-                                "Samsung",
-                                "Tata Elxsi",
-                                "KPIT"
-                              ],
-                              "avgCTC": "₹5-18 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "IoT Full Course",
-                                  "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
-                                },
-                                {
-                                  "title": "Arduino Project Hub",
-                                  "url": "https://projecthub.arduino.cc"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          }
-                        }
-                      },
-                      "civil": {
-                        "label": "Civil Engineering",
-                        "icon": "🏗️",
-                        "info": {
-                          "benefits": [
-                            "Infrastructure always in demand",
-                            "Govt job options",
-                            "Tangible impact"
-                          ],
-                          "drawbacks": [
-                            "Field work in tough conditions",
-                            "Slower growth vs IT"
-                          ],
-                          "tip": "GATE score is crucial for PSU recruitment.",
-                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Delhi",
-                            "IIT Madras",
-                            "IIT Roorkee",
-                            "NIT Trichy"
-                          ],
-                          "topRecruiters": [
-                            "L&T Construction",
-                            "Tata Projects",
-                            "NHAI",
-                            "CPWD",
-                            "Shapoorji Pallonji"
-                          ],
-                          "avgCTC": "₹4-12 LPA",
-                          "furtherLinks": [
-                            {
-                              "title": "Civil Engineering Career India",
-                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
-                            },
-                            {
-                              "title": "GATE CE — Made Easy",
-                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
-                            }
-                          ]
-                        },
-                        "children": {}
-                      },
-                      "electrical": {
-                        "label": "Electrical Engineering",
-                        "icon": "⚡",
-                        "info": {
-                          "benefits": [
-                            "Power sector backbone",
-                            "Govt PSU jobs",
-                            "Renewable energy growth"
-                          ],
-                          "drawbacks": [
-                            "Field postings common",
-                            "Less glamorous perception"
-                          ],
-                          "tip": "Renewable energy and EVs are making this hot again.",
-                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Delhi",
-                            "IIT Madras",
-                            "IIT Kanpur",
-                            "NIT Trichy"
-                          ],
-                          "topRecruiters": [
-                            "NTPC",
-                            "PGCIL",
-                            "BHEL",
-                            "Tata Power",
-                            "Adani Green",
-                            "Siemens",
-                            "Schneider Electric"
-                          ],
-                          "avgCTC": "₹5-14 LPA",
-                          "furtherLinks": [
-                            {
-                              "title": "Electrical Engineering Scope India",
-                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
-                            },
-                            {
-                              "title": "NPTEL Electrical",
-                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
-                            }
-                          ]
-                        },
-                        "children": {}
-                      },
-                      "aiml": {
-                        "label": "AI & Machine Learning",
-                        "icon": "🤖",
-                        "info": {
-                          "benefits": [
-                            "Cutting edge",
-                            "Extremely high demand",
-                            "Research + industry paths"
-                          ],
-                          "drawbacks": [
-                            "Requires strong math",
-                            "Rapidly changing",
-                            "Curriculum evolving"
-                          ],
-                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
-                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Hyderabad",
-                            "IIT Madras",
-                            "IIIT Hyderabad",
-                            "BITS Pilani"
-                          ],
-                          "topRecruiters": [
-                            "Google DeepMind",
-                            "Microsoft Research",
-                            "Amazon AI",
-                            "Nvidia",
-                            "Adobe Research",
-                            "Flipkart"
-                          ],
-                          "avgCTC": "₹12-50 LPA (top tier)",
-                          "furtherLinks": [
-                            {
-                              "title": "ML Full Course — Andrew Ng",
-                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
-                            },
-                            {
-                              "title": "Fast.ai — Practical Deep Learning",
-                              "url": "https://course.fast.ai"
-                            }
-                          ]
-                        },
-                        "children": {
-                          "nlp": {
-                            "label": "NLP / LLMs",
-                            "icon": "🗣️",
-                            "info": {
-                              "benefits": [
-                                "Hottest AI subfield",
-                                "Research + product roles"
-                              ],
-                              "drawbacks": [
-                                "Compute-intensive",
-                                "Moves extremely fast"
-                              ],
-                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
-                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "IIIT Hyderabad",
-                                "IIT Madras",
-                                "IISc"
-                              ],
-                              "topRecruiters": [
-                                "Google",
-                                "Microsoft",
-                                "Meta",
-                                "Anthropic",
-                                "Sarvam AI",
-                                "Adobe"
-                              ],
-                              "avgCTC": "₹15-60 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "Stanford CS224N — NLP Course",
-                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
-                                },
-                                {
-                                  "title": "Hugging Face NLP Course",
-                                  "url": "https://huggingface.co/learn/nlp-course"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          },
-                          "cv": {
-                            "label": "Computer Vision",
-                            "icon": "👁️",
-                            "info": {
-                              "benefits": [
-                                "Self-driving cars, medical imaging",
-                                "Tangible visual output"
-                              ],
-                              "drawbacks": [
-                                "Large dataset needs",
-                                "GPU-intensive"
-                              ],
-                              "tip": "Start with OpenCV, then PyTorch.",
-                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
-                              "topColleges": [
-                                "IIT Bombay",
-                                "IISc Bangalore",
-                                "IIIT Hyderabad"
-                              ],
-                              "topRecruiters": [
-                                "Google",
-                                "Nvidia",
-                                "Tesla",
-                                "Qualcomm",
-                                "Samsung"
-                              ],
-                              "avgCTC": "₹12-40 LPA",
-                              "furtherLinks": [
-                                {
-                                  "title": "Computer Vision with OpenCV",
-                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
-                                },
-                                {
-                                  "title": "PyTorch Tutorials",
-                                  "url": "https://pytorch.org/tutorials/"
-                                }
-                              ]
-                            },
-                            "children": {}
-                          }
-                        }
-                      },
-                      "chemical": {
-                        "label": "Chemical Engineering",
-                        "icon": "🧪",
-                        "info": {
-                          "benefits": [
-                            "Petrochemical, pharma, FMCG",
-                            "PSU opportunities"
-                          ],
-                          "drawbacks": [
-                            "Limited private roles",
-                            "Factory locations"
-                          ],
-                          "tip": "Combine with data skills for process analytics.",
-                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
-                          "topColleges": [
-                            "IIT Bombay",
-                            "IIT Madras",
-                            "IIT Delhi",
-                            "NIT Trichy",
-                            "BITS Pilani"
-                          ],
-                          "topRecruiters": [
-                            "IOCL",
-                            "BPCL",
-                            "Reliance",
-                            "HUL",
-                            "Shell",
-                            "BASF"
-                          ],
-                          "avgCTC": "₹5-15 LPA",
-                          "furtherLinks": [
-                            {
-                              "title": "Chemical Engineering Career India",
-                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
-                            }
-                          ]
-                        },
-                        "children": {}
-                      },
-                      "biotech": {
-                        "label": "Biotech Engineering",
-                        "icon": "🧬",
-                        "info": {
-                          "benefits": [
-                            "Post-COVID pharma boom",
-                            "Research-oriented",
-                            "Genomics"
-                          ],
-                          "drawbacks": [
-                            "Masters almost mandatory",
-                            "Slow start",
-                            "Limited core companies"
-                          ],
-                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
-                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
-                          "topColleges": [
-                            "IIT Madras",
-                            "IIT Delhi",
-                            "IIT Guwahati",
-                            "VIT Vellore"
-                          ],
-                          "topRecruiters": [
-                            "Biocon",
-                            "Serum Institute",
-                            "Dr. Reddy's",
-                            "Cipla",
-                            "Bharat Biotech"
-                          ],
-                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
-                          "furtherLinks": [
-                            {
-                              "title": "Biotechnology Career Scope",
-                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
-                            },
-                            {
-                              "title": "Bioinformatics Guide",
-                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
-                            }
-                          ]
-                        },
-                        "children": {}
+                        "linkTo": [
+                          "6-10",
+                          "science",
+                          "pcm",
+                          "engineering",
+                          "jee_main",
+                          "cs"
+                        ]
                       }
                     }
                   },
@@ -13073,6 +13069,304 @@ const DEFAULT_CAREER_DATA = {
                       "avgCTC": "₹5-15 LPA (IET Lucknow/HBTU CSE); ₹3-8 LPA (other colleges)"
                     },
                     "children": {
+                      "civil": {
+                        "label": "Civil Engineering",
+                        "icon": "🏗️",
+                        "info": {
+                          "benefits": [
+                            "Infrastructure always in demand",
+                            "Govt job options",
+                            "Tangible impact"
+                          ],
+                          "drawbacks": [
+                            "Field work in tough conditions",
+                            "Slower growth vs IT"
+                          ],
+                          "tip": "GATE score is crucial for PSU recruitment.",
+                          "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Roorkee",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "L&T Construction",
+                            "Tata Projects",
+                            "NHAI",
+                            "CPWD",
+                            "Shapoorji Pallonji"
+                          ],
+                          "avgCTC": "₹4-12 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Civil Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=_RaWh1SFr1s"
+                            },
+                            {
+                              "title": "GATE CE — Made Easy",
+                              "url": "https://www.youtube.com/watch?v=xnCAZz3sSXw"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "electrical": {
+                        "label": "Electrical Engineering",
+                        "icon": "⚡",
+                        "info": {
+                          "benefits": [
+                            "Power sector backbone",
+                            "Govt PSU jobs",
+                            "Renewable energy growth"
+                          ],
+                          "drawbacks": [
+                            "Field postings common",
+                            "Less glamorous perception"
+                          ],
+                          "tip": "Renewable energy and EVs are making this hot again.",
+                          "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Delhi",
+                            "IIT Madras",
+                            "IIT Kanpur",
+                            "NIT Trichy"
+                          ],
+                          "topRecruiters": [
+                            "NTPC",
+                            "PGCIL",
+                            "BHEL",
+                            "Tata Power",
+                            "Adani Green",
+                            "Siemens",
+                            "Schneider Electric"
+                          ],
+                          "avgCTC": "₹5-14 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Electrical Engineering Scope India",
+                              "url": "https://www.youtube.com/watch?v=_5dn27FY3Kk"
+                            },
+                            {
+                              "title": "NPTEL Electrical",
+                              "url": "https://nptel.ac.in/courses/discipline/Electrical"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "aiml": {
+                        "label": "AI & Machine Learning",
+                        "icon": "🤖",
+                        "info": {
+                          "benefits": [
+                            "Cutting edge",
+                            "Extremely high demand",
+                            "Research + industry paths"
+                          ],
+                          "drawbacks": [
+                            "Requires strong math",
+                            "Rapidly changing",
+                            "Curriculum evolving"
+                          ],
+                          "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                          "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Hyderabad",
+                            "IIT Madras",
+                            "IIIT Hyderabad",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "Google DeepMind",
+                            "Microsoft Research",
+                            "Amazon AI",
+                            "Nvidia",
+                            "Adobe Research",
+                            "Flipkart"
+                          ],
+                          "avgCTC": "₹12-50 LPA (top tier)",
+                          "furtherLinks": [
+                            {
+                              "title": "ML Full Course — Andrew Ng",
+                              "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                            },
+                            {
+                              "title": "Fast.ai — Practical Deep Learning",
+                              "url": "https://course.fast.ai"
+                            }
+                          ]
+                        },
+                        "children": {
+                          "nlp": {
+                            "label": "NLP / LLMs",
+                            "icon": "🗣️",
+                            "info": {
+                              "benefits": [
+                                "Hottest AI subfield",
+                                "Research + product roles"
+                              ],
+                              "drawbacks": [
+                                "Compute-intensive",
+                                "Moves extremely fast"
+                              ],
+                              "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                              "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IIIT Hyderabad",
+                                "IIT Madras",
+                                "IISc"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Microsoft",
+                                "Meta",
+                                "Anthropic",
+                                "Sarvam AI",
+                                "Adobe"
+                              ],
+                              "avgCTC": "₹15-60 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Stanford CS224N — NLP Course",
+                                  "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                                },
+                                {
+                                  "title": "Hugging Face NLP Course",
+                                  "url": "https://huggingface.co/learn/nlp-course"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          },
+                          "cv": {
+                            "label": "Computer Vision",
+                            "icon": "👁️",
+                            "info": {
+                              "benefits": [
+                                "Self-driving cars, medical imaging",
+                                "Tangible visual output"
+                              ],
+                              "drawbacks": [
+                                "Large dataset needs",
+                                "GPU-intensive"
+                              ],
+                              "tip": "Start with OpenCV, then PyTorch.",
+                              "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                              "topColleges": [
+                                "IIT Bombay",
+                                "IISc Bangalore",
+                                "IIIT Hyderabad"
+                              ],
+                              "topRecruiters": [
+                                "Google",
+                                "Nvidia",
+                                "Tesla",
+                                "Qualcomm",
+                                "Samsung"
+                              ],
+                              "avgCTC": "₹12-40 LPA",
+                              "furtherLinks": [
+                                {
+                                  "title": "Computer Vision with OpenCV",
+                                  "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                                },
+                                {
+                                  "title": "PyTorch Tutorials",
+                                  "url": "https://pytorch.org/tutorials/"
+                                }
+                              ]
+                            },
+                            "children": {}
+                          }
+                        }
+                      },
+                      "chemical": {
+                        "label": "Chemical Engineering",
+                        "icon": "🧪",
+                        "info": {
+                          "benefits": [
+                            "Petrochemical, pharma, FMCG",
+                            "PSU opportunities"
+                          ],
+                          "drawbacks": [
+                            "Limited private roles",
+                            "Factory locations"
+                          ],
+                          "tip": "Combine with data skills for process analytics.",
+                          "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                          "topColleges": [
+                            "IIT Bombay",
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "NIT Trichy",
+                            "BITS Pilani"
+                          ],
+                          "topRecruiters": [
+                            "IOCL",
+                            "BPCL",
+                            "Reliance",
+                            "HUL",
+                            "Shell",
+                            "BASF"
+                          ],
+                          "avgCTC": "₹5-15 LPA",
+                          "furtherLinks": [
+                            {
+                              "title": "Chemical Engineering Career India",
+                              "url": "https://www.youtube.com/watch?v=DXaFI2s3VA0"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
+                      "biotech": {
+                        "label": "Biotech Engineering",
+                        "icon": "🧬",
+                        "info": {
+                          "benefits": [
+                            "Post-COVID pharma boom",
+                            "Research-oriented",
+                            "Genomics"
+                          ],
+                          "drawbacks": [
+                            "Masters almost mandatory",
+                            "Slow start",
+                            "Limited core companies"
+                          ],
+                          "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                          "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                          "topColleges": [
+                            "IIT Madras",
+                            "IIT Delhi",
+                            "IIT Guwahati",
+                            "VIT Vellore"
+                          ],
+                          "topRecruiters": [
+                            "Biocon",
+                            "Serum Institute",
+                            "Dr. Reddy's",
+                            "Cipla",
+                            "Bharat Biotech"
+                          ],
+                          "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                          "furtherLinks": [
+                            {
+                              "title": "Biotechnology Career Scope",
+                              "url": "https://www.youtube.com/watch?v=xnAz5ySLx6M"
+                            },
+                            {
+                              "title": "Bioinformatics Guide",
+                              "url": "https://www.youtube.com/watch?v=Os4GLU8gPAs"
+                            }
+                          ]
+                        },
+                        "children": {}
+                      },
                       "cs": {
                         "label": "Computer Science",
                         "icon": "💻",
@@ -13125,6 +13419,8 @@ const DEFAULT_CAREER_DATA = {
                             "label": "Software Development",
                             "icon": "🖥️",
                             "info": {
+                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
                               "benefits": [
                                 "Core tech role everywhere",
                                 "Product-building skills",
@@ -13135,8 +13431,6 @@ const DEFAULT_CAREER_DATA = {
                                 "Long startup hours",
                                 "Burnout common"
                               ],
-                              "tip": "Build projects on GitHub — they speak louder than CGPA.",
-                              "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
                               "topColleges": [
                                 "IIT Bombay",
                                 "IIT Delhi",
@@ -13162,6 +13456,10 @@ const DEFAULT_CAREER_DATA = {
                                 {
                                   "title": "Roadmap.sh — Full Stack Developer",
                                   "url": "https://roadmap.sh/full-stack"
+                                },
+                                {
+                                  "title": "Top Advices",
+                                  "url": "https://youtu.be/suATPK45sjk?si=kzYSKR3xT4vZUG_e"
                                 }
                               ]
                             },
@@ -13612,7 +13910,7 @@ const DEFAULT_CAREER_DATA = {
                           }
                         }
                       },
-                      "civil": {
+                      "civil_2": {
                         "label": "Civil Engineering",
                         "icon": "🏗️",
                         "info": {
@@ -13655,7 +13953,7 @@ const DEFAULT_CAREER_DATA = {
                         },
                         "children": {}
                       },
-                      "electrical": {
+                      "electrical_2": {
                         "label": "Electrical Engineering",
                         "icon": "⚡",
                         "info": {
@@ -13700,7 +13998,7 @@ const DEFAULT_CAREER_DATA = {
                         },
                         "children": {}
                       },
-                      "aiml": {
+                      "aiml_2": {
                         "label": "AI & Machine Learning",
                         "icon": "🤖",
                         "info": {
@@ -13828,7 +14126,7 @@ const DEFAULT_CAREER_DATA = {
                           }
                         }
                       },
-                      "chemical": {
+                      "chemical_2": {
                         "label": "Chemical Engineering",
                         "icon": "🧪",
                         "info": {
@@ -13867,7 +14165,7 @@ const DEFAULT_CAREER_DATA = {
                         },
                         "children": {}
                       },
-                      "biotech": {
+                      "biotech_2": {
                         "label": "Biotech Engineering",
                         "icon": "🧬",
                         "info": {

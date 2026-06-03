@@ -95,17 +95,17 @@
 .bento-title{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1.25;margin-bottom:6px;color:var(--text);letter-spacing:-.2px}
 .bento-desc{color:var(--text2);font-size:.88rem;line-height:1.55}
 
-/* Layout assignments — Career Stories is the hero; Skill Tree is compact vertical */
-.b-stories{grid-column:span 8;grid-row:span 2}
+/* Layout assignments — Latest Stories is a compact 3-item tile; Quote is a wide footer banner */
+.b-stories{grid-column:span 8}
 .b-tree{grid-column:span 4}
 .b-free{grid-column:span 4}
 .b-pros{grid-column:span 4}
-.b-tips{grid-column:span 4}
 .b-salary{grid-column:span 4}
+.b-tips{grid-column:span 12}
 
 @media(max-width:880px){
   .bento{grid-template-columns:repeat(6,1fr)}
-  .b-stories{grid-column:span 6;grid-row:span 1}
+  .b-stories{grid-column:span 6}
   .b-tree,.b-free{grid-column:span 3}
   .b-pros,.b-tips,.b-salary{grid-column:span 6}
 }
@@ -214,26 +214,28 @@
 .pc-col-pro .pc-item{background:var(--green-soft);border-left:2px solid var(--green)}
 .pc-col-con .pc-item{background:var(--orange-soft);border-left:2px solid var(--orange)}
 
-/* ── Card 5: Tips quote ── */
+/* ── Card 5: Quote of the Day — wide footer banner ── */
 .b-tips{
-  /* Let the quote breathe — make it the focal point */
-  justify-content:center;
+  /* Let the quote breathe — centered focal point spanning the full row */
+  justify-content:center;align-items:center;text-align:center;
 }
 .tip-quote{
   position:relative;
   font-family:var(--font-display);
   font-style:italic;font-weight:600;
-  font-size:clamp(1.05rem,1.55vw,1.35rem);
+  font-size:clamp(1.2rem,2vw,1.7rem);
   line-height:1.4;color:var(--text);
-  padding:18px 0 0 32px;
-  margin:auto 0;
+  padding:10px 0 0;
+  margin:0 auto;
+  max-width:860px;
   text-wrap:pretty;
 }
 .tip-quote::before{
   content:"\201C";
-  position:absolute;left:-4px;top:-8px;
+  display:block;
   font-family:var(--font-display);
-  font-size:4rem;line-height:1;
+  font-size:3.6rem;line-height:1;
+  margin:0 0 -8px;
   color:var(--accent);
   background:var(--grad-brand);
   -webkit-background-clip:text;background-clip:text;
@@ -395,7 +397,7 @@ var bentoCards = [
   {
     cls: 'b-stories',
     eyebrow: 'FIRST-PERSON',
-    title: 'Career Stories',
+    title: 'Latest Stories',
     desc: 'Real journeys from students &amp; professionals who walked these paths. Click to read.',
     body:
       '<div class="story-list">' + storyHtml + '</div>' +
@@ -436,19 +438,34 @@ var bentoCards = [
     eyebrow: 'BOTH SIDES',
     title: 'Pros & Cons',
     desc: 'Honest benefits and drawbacks for every job — no sugar-coating.',
-    link: 'explore.html#6-10/science/pcm/engineering/jee_main/mech/automotive',
+    link: 'explore.html#6-10/science/pcm/engineering/jee_main/cs/datascience',
     body: `
-      <div class="pc-meta-job">🚗 Automotive Engineer</div>
+      <div class="pc-meta-job">📊 Data Scientist</div>
       <div class="pc-grid">
         <div class="pc-col pc-col-pro">
           <h5>✅ Benefits</h5>
-          <div class="pc-item">EV boom is hiring</div>
-          <div class="pc-item">Work with top OEMs</div>
+          <div class="pc-item">Every industry needs it</div>
+          <div class="pc-item">Stats + coding mix</div>
         </div>
         <div class="pc-col pc-col-con">
           <h5>⚠️ Drawbacks</h5>
-          <div class="pc-item">Location-dependent</div>
-          <div class="pc-item">Slow initial growth</div>
+          <div class="pc-item">Needs strong statistics</div>
+          <div class="pc-item">Tools change fast</div>
+        </div>
+      </div>`
+  },
+  {
+    cls: 'b-salary',
+    eyebrow: 'REAL DATA',
+    title: 'Salary & College Data',
+    desc: 'Average CTC, top colleges, and top recruiters for every path.',
+    link: 'explore.html#6-10/arts/law',
+    body: `
+      <div class="salary-figure">₹12–28 <span style="font-size:.55em;letter-spacing:0">LPA</span></div>
+      <div class="salary-row">
+        <div class="salary-meta">Law · NLSIU, NALSAR, NLU Delhi</div>
+        <div class="salary-bars">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
       </div>`
   },
@@ -460,21 +477,6 @@ var bentoCards = [
     body: `
       <div class="tip-quote">${todaysQuote.q}
         <div class="tip-attr">— ${todaysQuote.a}</div>
-      </div>`
-  },
-  {
-    cls: 'b-salary',
-    eyebrow: 'REAL DATA',
-    title: 'Salary & College Data',
-    desc: 'Average CTC, top colleges, and top recruiters for every path.',
-    link: 'explore.html#6-10/science/pcm/engineering/jee_main/mech/automotive',
-    body: `
-      <div class="salary-figure">₹5–15 <span style="font-size:.55em;letter-spacing:0">LPA</span></div>
-      <div class="salary-row">
-        <div class="salary-meta">Automotive · Tata, Mahindra, Ola</div>
-        <div class="salary-bars">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
       </div>`
   }
 ];
