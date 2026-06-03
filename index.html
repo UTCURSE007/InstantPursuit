@@ -501,8 +501,8 @@ bentoCards.forEach(function(c, i){
 
 // Defensive: data.js may not have defined these yet (load race). Fall back to
 // safe defaults so the stats band always populates instead of throwing.
-function safePathsLabel(){ try{ return (typeof careerPathsLabel==='function') ? careerPathsLabel() : '300+'; }catch(e){ return '128+'; } }
-function safeLifeStages(){ try{ return (typeof countLifeStages==='function') ? String(countLifeStages()) : '4'; }catch(e){ return '8'; } }
+function safePathsLabel(){ try{ return (typeof careerPathsLabel==='function') ? careerPathsLabel() : '300+'; }catch(e){ return '300+'; } }
+function safeLifeStages(){ try{ return (typeof countLifeStages==='function') ? String(countLifeStages()) : '4'; }catch(e){ return '4'; } }
 // Original homepage tile format, with Explore-matched numbers/labels
 var stats=[{num:safePathsLabel(),label:'Total Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges'},{num:'\u20b90',label:'Cost to You'}];
 var sEl=document.getElementById('stats');
