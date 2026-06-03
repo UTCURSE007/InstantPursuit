@@ -35,6 +35,77 @@ function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}
 function initTheme(){setTheme(getTheme())}
 function loadData(k,f){try{const d=localStorage.getItem(k);return d?JSON.parse(d):f}catch{return f}}
 function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function countCareerPaths(data){
+  data = data || loadData('instantpursuit-career', (typeof DEFAULT_CAREER_DATA!=='undefined'?DEFAULT_CAREER_DATA:{}));
+  function leaves(n){
+    if(!n||typeof n!=='object') return 0;
+    var ks = n.children ? Object.keys(n.children) : [];
+    if(ks.length===0) return 1;
+    var t=0; for(var i=0;i<ks.length;i++) t+=leaves(n.children[ks[i]]);
+    return t;
+  }
+  var total=0;
+  for(var k in data){ if(Object.prototype.hasOwnProperty.call(data,k)) total+=leaves(data[k]); }
+  return total;
+}
+function careerPathsLabel(data){ return countCareerPaths(data) + '+'; }
+// Top-level stages (Classes 6-10, Graduation, Post-grad, Working) — matches Explore's "Life Stages".
+function countLifeStages(data){
+  data = data || loadData('instantpursuit-career', (typeof DEFAULT_CAREER_DATA!=='undefined'?DEFAULT_CAREER_DATA:{}));
+  return Object.keys(data).length;
+}
+
+// ── Stat count-up animation (shared across Home / Explore / About) ──────────
+// Animate one number element from `from`→`to`, preserving any non-digit
+// prefix (e.g. ₹) and suffix (e.g. +). easeOutCubic = decelerating finish.
+function ipCountUp(el, from, to, duration, prefix, suffix){
+  prefix = prefix||''; suffix = suffix||'';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ el.textContent = prefix + to + suffix; return; }
+  var startTs = null;
+  function ease(t){ return 1 - Math.pow(1 - t, 3); }
+  function frame(ts){
+    if(startTs === null) startTs = ts;
+    var t = Math.min(1, (ts - startTs) / duration);
+    var v = Math.round(from + (to - from) * ease(t));
+    el.textContent = prefix + v + suffix;
+    if(t < 1) requestAnimationFrame(frame);
+    else el.textContent = prefix + to + suffix;
+  }
+  requestAnimationFrame(frame);
+}
+// Parse "₹0" / "309+" / "14+" / "4" → {prefix, value, suffix}
+function ipParseStat(text){
+  var m = String(text).match(/^(\D*?)(\d[\d,]*)(\D*)$/);
+  if(!m) return null;
+  return { prefix:m[1]||'', value:parseInt(m[2].replace(/,/g,''),10), suffix:m[3]||'' };
+}
+// Animate every number element in `els` the first time `container` scrolls into
+// view. Zero-valued stats (the ₹0 cost) count DOWN from 100; every other stat
+// counts UP from 0. Durations are 0.5× speed (2× longer) per request.
+function ipAnimateStats(container, els){
+  var targets = [];
+  for(var i=0;i<els.length;i++){
+    var p = ipParseStat(els[i].textContent);
+    if(p) targets.push({ el: els[i], p: p });
+  }
+  if(!targets.length) return;
+  function run(){
+    targets.forEach(function(t){
+      if(t.p.value === 0) ipCountUp(t.el, 100, 0, 1300, t.p.prefix, t.p.suffix);  // cost: down
+      else ipCountUp(t.el, 0, t.p.value, 3400, t.p.prefix, t.p.suffix);           // others: up
+    });
+  }
+  if('IntersectionObserver' in window){
+    var done = false;
+    var io = new IntersectionObserver(function(entries){
+      for(var j=0;j<entries.length;j++){
+        if(entries[j].isIntersecting && !done){ done = true; io.disconnect(); run(); }
+      }
+    }, { threshold: 0.4 });
+    io.observe(container);
+  } else { run(); }
+}
 function injectNav(){
   const cur=location.pathname.split('/').pop()||'index.html';
   const n=document.createElement('nav');n.className='ip-nav';
@@ -11959,6 +12030,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1780038082018,
     "title": "Five Sanskrit Shlokas that Give Amazing Career Advice",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Advice",
     "readTime": "6 min",
@@ -11976,6 +12048,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779825119175,
     "title": "Top 7 Organizations Hiring from GATE",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Exam Guide",
     "readTime": "5 min",
@@ -12025,6 +12098,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779400000000,
     "title": "A Founder's Story : Broken Cycle, Unshaken Dreams and the Start of Learning Ant",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Paths",
     "readTime": "9 min",
@@ -12054,6 +12128,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779300651991,
     "title": "From the Banks of Tungabhadra to the Control Room of a 210 MW Power Plant",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Paths",
     "readTime": "5 min",
