@@ -45,7 +45,7 @@
   </section>
 
   <!-- Stats -->
-  <section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 1.5rem;position:relative;z-index:1">
+  <section style="padding:3rem 1.5rem;position:relative;z-index:1">
     <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;text-align:center" id="stats"></div>
   </section>
 
@@ -503,7 +503,8 @@ bentoCards.forEach(function(c, i){
 // safe defaults so the stats band always populates instead of throwing.
 function safePathsLabel(){ try{ return (typeof careerPathsLabel==='function') ? careerPathsLabel() : '128+'; }catch(e){ return '128+'; } }
 function safeLifeStages(){ try{ return (typeof countLifeStages==='function') ? String(countLifeStages()) : '8'; }catch(e){ return '8'; } }
-var stats=[{num:safePathsLabel(),label:'Career Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges Listed'},{num:'0',label:'Cost to You'}];
+// Original homepage tile format, with Explore-matched numbers/labels
+var stats=[{num:safePathsLabel(),label:'Total Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges'},{num:'\u20b90',label:'Cost to You'}];
 var sEl=document.getElementById('stats');
 for(var si=0;si<stats.length;si++){
   var s=stats[si];var sd=document.createElement('div');
