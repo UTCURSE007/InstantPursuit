@@ -499,7 +499,11 @@ bentoCards.forEach(function(c, i){
   bento.appendChild(d);
 });
 
-var stats=[{num:careerPathsLabel(),label:'Career Paths'},{num:countLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges Listed'},{num:'0',label:'Cost to You'}];
+// Defensive: data.js may not have defined these yet (load race). Fall back to
+// safe defaults so the stats band always populates instead of throwing.
+function safePathsLabel(){ try{ return (typeof careerPathsLabel==='function') ? careerPathsLabel() : '128+'; }catch(e){ return '128+'; } }
+function safeLifeStages(){ try{ return (typeof countLifeStages==='function') ? String(countLifeStages()) : '8'; }catch(e){ return '8'; } }
+var stats=[{num:safePathsLabel(),label:'Career Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges Listed'},{num:'0',label:'Cost to You'}];
 var sEl=document.getElementById('stats');
 for(var si=0;si<stats.length;si++){
   var s=stats[si];var sd=document.createElement('div');
@@ -508,7 +512,7 @@ for(var si=0;si<stats.length;si++){
 }
 // Keep the CTA's career-path count in sync with the computed stat
 var ctaPaths=document.getElementById('cta-paths');
-if(ctaPaths) ctaPaths.textContent=careerPathsLabel();
+if(ctaPaths) ctaPaths.textContent=safePathsLabel();
 </script>
 <script>initPage();</script>
 </body>
