@@ -209,6 +209,8 @@
   flex-shrink:0;
 }
 .post-card-author{color:var(--text2);font-weight:600;font-family:var(--font-body)}
+.author-link{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-med);transition:border-color .15s,color .15s}
+.author-link:hover{color:var(--accent2);border-bottom-color:var(--accent)}
 
 /* Author avatar palette */
 .av-1{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
@@ -501,7 +503,7 @@ function renderBlog() {
           <div class="article-meta">
             <div class="ma ${avClass}">${b.authorAvatar}</div>
             <div style="text-align:left">
-              <div><strong>${b.author}</strong></div>
+              <div>${b.authorLink ? `<a href="${b.authorLink}" target="_blank" rel="noopener" class="author-link"><strong>${b.author}</strong></a>` : `<strong>${b.author}</strong>`}</div>
               <div>${dateStr} · ${b.readTime}</div>
             </div>
           </div>

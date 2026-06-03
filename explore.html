@@ -482,6 +482,9 @@ function render() {
   }
 
   el.innerHTML = h;
+  // Count-up the quick-stats strip the first time it scrolls into view
+  var js = el.querySelector('.journey-stats');
+  if(js && typeof ipAnimateStats==='function') ipAnimateStats(js, js.querySelectorAll('.journey-stat-num'));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

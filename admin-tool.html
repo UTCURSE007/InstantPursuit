@@ -190,6 +190,8 @@
         <div><label>Author</label><input id="b-author" placeholder="Author name"></div>
         <div><label>Author Initials (avatar)</label><input id="b-avatar" placeholder="AK" maxlength="3"></div>
       </div>
+      <label>Author Profile Link <span class="adm-hint">(optional — makes the byline author name clickable, e.g. LinkedIn)</span></label>
+      <input id="b-author-link" placeholder="https://www.linkedin.com/in/...">
       <div class="adm-row-2">
         <div><label>Category</label><input id="b-category" placeholder="Career Paths, Student Stories, Exam Guide…"></div>
         <div><label>Read Time</label><input id="b-readtime" placeholder="5 min"></div>
@@ -1228,7 +1230,7 @@ function renderBlogList() {
 function showAddBlogForm() {
   document.getElementById('blog-form-title').textContent = '➕ Add Blog Post';
   document.getElementById('b-edit-id').value = '';
-  ['b-title','b-author','b-avatar','b-category','b-readtime','b-excerpt','b-tags','b-cover','b-content','b-reads','b-linkedin','b-li-name'].forEach(id => {
+  ['b-title','b-author','b-avatar','b-category','b-readtime','b-excerpt','b-tags','b-cover','b-content','b-reads','b-linkedin','b-li-name','b-author-link'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
   });
   document.getElementById('b-featured').checked = false;
@@ -1245,6 +1247,7 @@ function editBlog(idx) {
   document.getElementById('b-edit-id').value = idx;
   document.getElementById('b-title').value = b.title || '';
   document.getElementById('b-author').value = b.author || '';
+  document.getElementById('b-author-link').value = b.authorLink || '';
   document.getElementById('b-avatar').value = b.authorAvatar || '';
   document.getElementById('b-category').value = b.category || '';
   document.getElementById('b-readtime').value = b.readTime || '';
@@ -1275,6 +1278,7 @@ function saveBlog() {
     id: Date.now(),
     title,
     author: document.getElementById('b-author').value.trim() || 'Anonymous',
+    authorLink: document.getElementById('b-author-link').value.trim() || undefined,
     authorAvatar: document.getElementById('b-avatar').value.trim() || 'A',
     category: document.getElementById('b-category').value.trim() || 'General',
     readTime: document.getElementById('b-readtime').value.trim() || '5 min',
