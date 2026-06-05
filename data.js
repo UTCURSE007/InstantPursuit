@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-06-04T16:55:31.968Z
+   data.js — exported from admin on 2026-06-05T17:20:34.986Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -49,15 +49,10 @@ function countCareerPaths(data){
   return total;
 }
 function careerPathsLabel(data){ return countCareerPaths(data) + '+'; }
-// Top-level stages (Classes 6-10, Graduation, Post-grad, Working) — matches Explore's "Life Stages".
 function countLifeStages(data){
   data = data || loadData('instantpursuit-career', (typeof DEFAULT_CAREER_DATA!=='undefined'?DEFAULT_CAREER_DATA:{}));
   return Object.keys(data).length;
 }
-
-// ── Stat count-up animation (shared across Home / Explore / About) ──────────
-// Animate one number element from `from`→`to`, preserving any non-digit
-// prefix (e.g. ₹) and suffix (e.g. +). easeOutCubic = decelerating finish.
 function ipCountUp(el, from, to, duration, prefix, suffix){
   prefix = prefix||''; suffix = suffix||'';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -74,15 +69,11 @@ function ipCountUp(el, from, to, duration, prefix, suffix){
   }
   requestAnimationFrame(frame);
 }
-// Parse "₹0" / "309+" / "14+" / "4" → {prefix, value, suffix}
 function ipParseStat(text){
   var m = String(text).match(/^(\D*?)(\d[\d,]*)(\D*)$/);
   if(!m) return null;
   return { prefix:m[1]||'', value:parseInt(m[2].replace(/,/g,''),10), suffix:m[3]||'' };
 }
-// Animate every number element in `els` the first time `container` scrolls into
-// view. Zero-valued stats (the ₹0 cost) count DOWN from 100; every other stat
-// counts UP from 0. Durations are 0.5× speed (2× longer) per request.
 function ipAnimateStats(container, els){
   var targets = [];
   for(var i=0;i<els.length;i++){
@@ -20047,23 +20038,27 @@ const DEFAULT_CAREER_DATA = {
         "label": "Arts / Humanities",
         "icon": "🎨",
         "info": {
+          "detail": "Arts and Humanities is India's most underrated stream — the direct pathway to law (CLAT), civil services (UPSC), design (NID/NIFT), media, psychology, and policy research. Develops critical thinking, communication, and creativity.",
+          "tip": "Arts is not a backup — it's a launchpad.",
           "benefits": [
             "Creative expression",
-            "Diverse paths — law, media, design, civil services",
+            "Diverse paths — law",
+            "media",
+            "design",
+            "civil services",
             "Critical thinking"
           ],
           "drawbacks": [
             "Often undervalued",
             "Lower average starting salaries"
-          ],
-          "tip": "Arts is not a backup — it's a launchpad.",
-          "detail": "Arts and Humanities is India's most underrated stream — the direct pathway to law (CLAT), civil services (UPSC), design (NID/NIFT), media, psychology, and policy research. Develops critical thinking, communication, and creativity."
+          ]
         },
         "children": {
           "entrance_exams": {
             "label": "Law Entrance — CLAT",
             "icon": "⚖️",
             "info": {
+              "tip": "Students who sleep well and exercise perform better.",
               "benefits": [
                 "Structured path to top institutes",
                 "Coaching ecosystem developed"
@@ -20071,8 +20066,7 @@ const DEFAULT_CAREER_DATA = {
               "drawbacks": [
                 "Immense pressure",
                 "Mental health impact"
-              ],
-              "tip": "Students who sleep well and exercise perform better."
+              ]
             },
             "children": {
               "clat": {
@@ -20300,6 +20294,7 @@ const DEFAULT_CAREER_DATA = {
             "label": "Political Science",
             "icon": "🌐",
             "info": {
+              "detail": "Political Science is the study of government systems, public policy, international relations, and political theory. A B.A. in Political Science is one of the strongest foundations for the UPSC Civil Services and state PSC exams, where Political Science & International Relations is also a popular optional subject. Beyond the bureaucracy, graduates work in policy think-tanks, journalism, law, diplomacy, NGOs, electoral analytics, and academia. Pair the degree with strong analytical writing and a daily current-affairs habit to stand out.",
               "tip": "IR specialization opens doors to UN and embassies.",
               "benefits": [
                 "UPSC alignment",
@@ -20310,7 +20305,6 @@ const DEFAULT_CAREER_DATA = {
                 "Limited private sector",
                 "Academic-oriented"
               ],
-              "detail": "Political Science is the study of government systems, public policy, international relations, and political theory. A B.A. in Political Science is one of the strongest foundations for the UPSC Civil Services and state PSC exams, where Political Science & International Relations is also a popular optional subject. Beyond the bureaucracy, graduates work in policy think-tanks, journalism, law, diplomacy, NGOs, electoral analytics, and academia. Pair the degree with strong analytical writing and a daily current-affairs habit to stand out.",
               "furtherLinks": [
                 {
                   "title": "UPSC — Union Public Service Commission (official)",
@@ -20697,6 +20691,8 @@ const DEFAULT_CAREER_DATA = {
         "label": "Higher Education",
         "icon": "📚",
         "info": {
+          "detail": "Higher education should be a deliberate career accelerator, not a default. M.Tech for specialization, MBA for career switching, MS abroad for immigration — ROI varies wildly by institution tier.",
+          "tip": "Only pursue if it adds clear value — not as a default.",
           "benefits": [
             "Deeper expertise",
             "Better career positioning"
@@ -20705,9 +20701,7 @@ const DEFAULT_CAREER_DATA = {
             "2-5 more years",
             "Opportunity cost",
             "Expensive abroad"
-          ],
-          "tip": "Only pursue if it adds clear value — not as a default.",
-          "detail": "Higher education should be a deliberate career accelerator, not a default. M.Tech for specialization, MBA for career switching, MS abroad for immigration — ROI varies wildly by institution tier."
+          ]
         },
         "children": {
           "mtech": {
@@ -21016,6 +21010,8 @@ const DEFAULT_CAREER_DATA = {
         "label": "Certifications",
         "icon": "📜",
         "info": {
+          "detail": "Industry certifications complement your degree with focused skills. Best certs are ones hiring managers actually ask for — AWS, CFA, PMP. Time them strategically alongside your degree.",
+          "tip": "Only invest in certs hiring managers actually ask for.",
           "benefits": [
             "Focused skill acquisition",
             "Industry-recognized",
@@ -21024,9 +21020,7 @@ const DEFAULT_CAREER_DATA = {
           "drawbacks": [
             "Some expensive",
             "Certificate ≠ competence"
-          ],
-          "tip": "Only invest in certs hiring managers actually ask for.",
-          "detail": "Industry certifications complement your degree with focused skills. Best certs are ones hiring managers actually ask for — AWS, CFA, PMP. Time them strategically alongside your degree."
+          ]
         },
         "children": {
           "cloud": {
@@ -21398,8 +21392,11 @@ const DEFAULT_CAREER_DATA = {
   },
   "working": {
     "label": "Working Professionals",
-    "description": "Level up from where you are!",
     "icon": "💼",
+    "description": "Level up from where you are!",
+    "info": {
+      "detail": "For working professionals, career growth requires deliberate strategy: moving up (management), going deeper (IC track), going global, or building side income. Continuous upskilling keeps you relevant."
+    },
     "children": {
       "growth": {
         "label": "Career Growth",
@@ -21530,8 +21527,11 @@ const DEFAULT_CAREER_DATA = {
             "label": "Content Creation / Teaching",
             "icon": "📹",
             "info": {
+              "detail": "Content creation and online teaching — YouTube, Instagram, newsletters, courses, and ed-tech platforms — has become a serious full-time and side career. It rewards consistency, a clear niche, and genuine expertise more than fancy gear. Monetisation comes from ads, sponsorships, digital products, cohort courses, and memberships. The first year is usually slow; creators who last treat it like a business — studying analytics, improving every upload, and owning their audience through an email list.",
+              "tip": "Technical content on YouTube has massive demand in India.",
               "benefits": [
-                "YouTube, Udemy courses",
+                "YouTube",
+                "Udemy courses",
                 "Passive income potential",
                 "Personal brand"
               ],
@@ -21539,13 +21539,7 @@ const DEFAULT_CAREER_DATA = {
                 "Consistency required",
                 "Results take 6-12 months"
               ],
-              "tip": "Technical content on YouTube has massive demand in India.",
-              "detail": "Content creation and online teaching — YouTube, Instagram, newsletters, courses, and ed-tech platforms — has become a serious full-time and side career. It rewards consistency, a clear niche, and genuine expertise more than fancy gear. Monetisation comes from ads, sponsorships, digital products, cohort courses, and memberships. The first year is usually slow; creators who last treat it like a business — studying analytics, improving every upload, and owning their audience through an email list.",
               "furtherLinks": [
-                {
-                  "title": "Start a Tech YouTube Channel",
-                  "url": "https://www.youtube.com/watch?v=ZPTSqKR7lnY"
-                },
                 {
                   "title": "YouTube Creators — official resources",
                   "url": "https://www.youtube.com/creators/"
@@ -21562,6 +21556,8 @@ const DEFAULT_CAREER_DATA = {
             "label": "Consulting / Freelancing",
             "icon": "📋",
             "info": {
+              "detail": "Side consulting and freelancing let experienced professionals monetise their expertise outside a 9-to-5 — via advisory calls (Topmate, Intro), project work (Upwork), or retainer clients. It is a low-risk way to test entrepreneurship, build a personal brand, and add income. Start by packaging a specific, sought-after skill, setting clear rates, and protecting your full-time commitments and any non-compete clauses. Referrals and a visible track record compound powerfully over time.",
+              "tip": "Start on Toptal or Upwork — build reputation first.",
               "benefits": [
                 "Premium rates for expertise",
                 "₹2-10 lakh/month possible",
@@ -21571,13 +21567,7 @@ const DEFAULT_CAREER_DATA = {
                 "Inconsistent income",
                 "Client management"
               ],
-              "tip": "Start on Toptal or Upwork — build reputation first.",
-              "detail": "Side consulting and freelancing let experienced professionals monetise their expertise outside a 9-to-5 — via advisory calls (Topmate, Intro), project work (Upwork), or retainer clients. It is a low-risk way to test entrepreneurship, build a personal brand, and add income. Start by packaging a specific, sought-after skill, setting clear rates, and protecting your full-time commitments and any non-compete clauses. Referrals and a visible track record compound powerfully over time.",
               "furtherLinks": [
-                {
-                  "title": "Freelance Consulting Side Income",
-                  "url": "https://www.youtube.com/watch?v=7-asmfnkjRo"
-                },
                 {
                   "title": "Topmate — paid 1:1 advisory & consulting",
                   "url": "https://topmate.io/"
@@ -21598,6 +21588,8 @@ const DEFAULT_CAREER_DATA = {
             "label": "Investing & Wealth",
             "icon": "📊",
             "info": {
+              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point.",
+              "tip": "Start with index funds (Nifty 50), learn 2 years, then explore stocks.",
               "benefits": [
                 "Money working for you",
                 "Compound interest",
@@ -21608,8 +21600,6 @@ const DEFAULT_CAREER_DATA = {
                 "Needs financial literacy",
                 "Emotional discipline"
               ],
-              "tip": "Start with index funds (Nifty 50), learn 2 years, then explore stocks.",
-              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point.",
               "furtherLinks": [
                 {
                   "title": "Index Fund Investing India",
@@ -21637,6 +21627,8 @@ const DEFAULT_CAREER_DATA = {
         "label": "Upskilling",
         "icon": "🔄",
         "info": {
+          "detail": "The two highest-ROI upskilling areas: AI literacy and communication skills. The challenge isn't finding resources — it's choosing the right thing and doing it consistently.",
+          "tip": "Learn in public — share your journey on LinkedIn.",
           "benefits": [
             "Stay relevant",
             "Salary bump",
@@ -21645,9 +21637,7 @@ const DEFAULT_CAREER_DATA = {
           "drawbacks": [
             "Time commitment",
             "Decision fatigue on what to learn"
-          ],
-          "tip": "Learn in public — share your journey on LinkedIn.",
-          "detail": "The two highest-ROI upskilling areas: AI literacy and communication skills. The challenge isn't finding resources — it's choosing the right thing and doing it consistently."
+          ]
         },
         "children": {
           "ai_skills": {
@@ -21723,9 +21713,6 @@ const DEFAULT_CAREER_DATA = {
           }
         }
       }
-    },
-    "info": {
-      "detail": "For working professionals, career growth requires deliberate strategy: moving up (management), going deeper (IC track), going global, or building side income. Continuous upskilling keeps you relevant."
     }
   }
 };
@@ -21738,7 +21725,6 @@ const DEFAULT_BLOG_DATA = [
     "id": 1780038082018,
     "title": "Five Sanskrit Shlokas that Give Amazing Career Advice",
     "author": "Editor-in-Chief",
-    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Advice",
     "readTime": "6 min",
@@ -21756,7 +21742,6 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779825119175,
     "title": "Top 7 Organizations Hiring from GATE",
     "author": "Editor-in-Chief",
-    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Exam Guide",
     "readTime": "5 min",
@@ -21806,7 +21791,6 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779400000000,
     "title": "A Founder's Story : Broken Cycle, Unshaken Dreams and the Start of Learning Ant",
     "author": "Editor-in-Chief",
-    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Paths",
     "readTime": "9 min",
@@ -21836,7 +21820,6 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779300651991,
     "title": "From the Banks of Tungabhadra to the Control Room of a 210 MW Power Plant",
     "author": "Editor-in-Chief",
-    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Paths",
     "readTime": "5 min",
