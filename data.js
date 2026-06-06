@@ -115,7 +115,7 @@ function injectFooter(){
       <img src="assets/logo.png" alt="" width="36" height="36">
     </span>
     <span class="ip-logo-word"><span class="ip-logo-word-1">Instant</span><span class="ip-logo-word-2">Pursuit</span></span>
-  </div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Free for every student.</div>`;
+  </div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Made for students with love 💜</div>`;
   document.body.appendChild(f);
 }
 function initPage(){initTheme();if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter()})}else{injectNav();injectFooter()}}
