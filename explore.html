@@ -136,7 +136,7 @@
 
 /* Quick-stats strip below the timeline */
 .journey-stats{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
   padding:1.4rem 1.6rem;
   background:var(--surface);
   border:1px solid var(--border);
@@ -471,7 +471,6 @@ function render() {
     h += '<div class="journey-stat"><div class="journey-stat-num">' + totalPaths + '+</div><div class="journey-stat-label">Total Paths</div></div>';
     h += '<div class="journey-stat"><div class="journey-stat-num">' + keys.length + '</div><div class="journey-stat-label">Life Stages</div></div>';
     h += '<div class="journey-stat"><div class="journey-stat-num">100+</div><div class="journey-stat-label">Colleges</div></div>';
-    h += '<div class="journey-stat"><div class="journey-stat-num">₹0</div><div class="journey-stat-label">Cost to You</div></div>';
     h += '</div>';
 
   } else if (path.length > 0) {

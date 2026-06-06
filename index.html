@@ -504,7 +504,7 @@ bentoCards.forEach(function(c, i){
 function safePathsLabel(){ try{ return (typeof careerPathsLabel==='function') ? careerPathsLabel() : '128+'; }catch(e){ return '128+'; } }
 function safeLifeStages(){ try{ return (typeof countLifeStages==='function') ? String(countLifeStages()) : '8'; }catch(e){ return '8'; } }
 // Original homepage tile format, with Explore-matched numbers/labels
-var stats=[{num:safePathsLabel(),label:'Total Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges'},{num:'\u20b90',label:'Cost to You'}];
+var stats=[{num:safePathsLabel(),label:'Total Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges'}];
 var sEl=document.getElementById('stats');
 for(var si=0;si<stats.length;si++){
   var s=stats[si];var sd=document.createElement('div');

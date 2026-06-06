@@ -36,7 +36,6 @@
     <div class="about-stat"><div class="num">4</div><div class="lbl">Life Stages</div></div>
     <div class="about-stat"><div class="num">100+</div><div class="lbl">Colleges Listed</div></div>
     <div class="about-stat"><div class="num">14+</div><div class="lbl">State MBBS Quotas</div></div>
-    <div class="about-stat"><div class="num">₹0</div><div class="lbl">Cost to You</div></div>
   </div>
 
   <!-- Mission split -->
@@ -124,7 +123,7 @@
       <h3 class="contrib-h">Walked a path? Share what you learned.</h3>
       <p>If you've finished an MBBS, switched from non-CS to tech, cracked CAT, or done a Toptal stint — your first-person account is more useful than any career counsellor's PDF. We especially welcome contributions from professionals 3–10 years in. Spotted incorrect data? Drop us a note.</p>
       <div class="contrib-actions">
-        <a href="mailto:instantpursuit@gmail.com" class="ip-btn ip-btn-primary">📧 instantpursuit@gmail.com</a>
+        <a href="#" class="ip-btn ip-btn-primary" onclick="window.location.href='mailto:'+['instantpursuit','gmail.com'].join('@');return false;">📧 Email</a>
         <a href="blog.html" class="ip-btn ip-btn-outline">📖 Read existing stories</a>
       </div>
     </div>
@@ -160,7 +159,7 @@
 
 /* Stat strip */
 .about-stats{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
   padding:1.5rem 1.6rem;
   background:var(--surface);
   border:1px solid var(--border);
@@ -356,7 +355,7 @@
 }
 
 @media(max-width:880px){
-  .about-stats{grid-template-columns:repeat(3,1fr)}
+  .about-stats{grid-template-columns:repeat(2,1fr)}
   .about-mission{grid-template-columns:1fr;gap:1.2rem;text-align:center}
   .about-mission-mark{text-align:center}
   .pillar-grid{grid-template-columns:1fr}
