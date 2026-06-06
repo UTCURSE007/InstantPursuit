@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-06-06T04:56:01.632Z
+   data.js — exported from admin on 2026-06-04T16:55:31.968Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -33,6 +33,72 @@ function getTheme(){return localStorage.getItem('ip-theme')||'dark'}
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ip-theme',t);const b=document.querySelector('.theme-toggle');if(b)b.textContent=t==='dark'?'☀️':'🌙'}
 function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}
 function initTheme(){setTheme(getTheme())}
+
+// ── Language (English + 8 Indian languages) via Google Website Translate ─────
+var IP_LANGS = [
+  {code:'en', native:'English'},
+  {code:'hi', native:'हिन्दी'},
+  {code:'bn', native:'বাংলা'},
+  {code:'as', native:'অসমীয়া'},
+  {code:'gu', native:'ગુજરાતી'},
+  {code:'ta', native:'தமிழ்'},
+  {code:'te', native:'తెలుగు'},
+  {code:'kn', native:'ಕನ್ನಡ'},
+  {code:'ml', native:'മലയാളം'}
+];
+function getLang(){return localStorage.getItem('ip-lang')||'en'}
+function ipLangNative(code){for(var i=0;i<IP_LANGS.length;i++){if(IP_LANGS[i].code===code)return IP_LANGS[i].native;}return 'English';}
+function setGoogTransCookie(lang){
+  // Widget reads the `googtrans` cookie at init: '/en/hi' = translate en→hi.
+  var v = (lang && lang!=='en') ? '/en/'+lang : '';
+  var expire = v ? '' : ';expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  var host = location.hostname;
+  document.cookie = 'googtrans=' + v + ';path=/' + expire;
+  if (host && host.indexOf('.') > -1){
+    document.cookie = 'googtrans=' + v + ';path=/;domain=' + host + expire;
+    document.cookie = 'googtrans=' + v + ';path=/;domain=.' + host + expire;
+  }
+}
+function setLang(lang){
+  localStorage.setItem('ip-lang', lang);
+  setGoogTransCookie(lang);
+  location.reload();   // cookie-driven re-translate on fresh load = most reliable
+}
+function toggleLangMenu(force){
+  var m=document.getElementById('ip-lang-menu'); if(!m) return;
+  var open = (typeof force==='boolean') ? force : (m.getAttribute('data-open')!=='1');
+  m.setAttribute('data-open', open ? '1' : '0');
+}
+function googleTranslateElementInit(){
+  var inc = IP_LANGS.filter(function(l){return l.code!=='en';}).map(function(l){return l.code;}).join(',');
+  new google.translate.TranslateElement(
+    {pageLanguage:'en', includedLanguages:inc, autoDisplay:false},
+    'google_translate_element'
+  );
+}
+function ensureTranslate(){
+  if (document.getElementById('google_translate_element')) return;
+  // Indic webfonts so each script renders properly (Assamese uses the Bengali face)
+  var f=document.createElement('link');
+  f.rel='stylesheet';
+  f.href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap';
+  document.head.appendChild(f);
+  // Hidden mount point for the widget
+  var d=document.createElement('div');
+  d.id='google_translate_element';
+  d.className='notranslate';
+  d.setAttribute('translate','no');
+  document.body.appendChild(d);
+  // Close the language menu when clicking anywhere outside it
+  document.addEventListener('click', function(e){
+    if(!e.target.closest || !e.target.closest('.ip-lang-wrap')) toggleLangMenu(false);
+  });
+  // Sync cookie to the saved choice BEFORE the widget initialises
+  setGoogTransCookie(getLang());
+  var s=document.createElement('script');
+  s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  document.body.appendChild(s);
+}
 function loadData(k,f){try{const d=localStorage.getItem(k);return d?JSON.parse(d):f}catch{return f}}
 function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function countCareerPaths(data){
@@ -49,10 +115,15 @@ function countCareerPaths(data){
   return total;
 }
 function careerPathsLabel(data){ return countCareerPaths(data) + '+'; }
+// Top-level stages (Classes 6-10, Graduation, Post-grad, Working) — matches Explore's "Life Stages".
 function countLifeStages(data){
   data = data || loadData('instantpursuit-career', (typeof DEFAULT_CAREER_DATA!=='undefined'?DEFAULT_CAREER_DATA:{}));
   return Object.keys(data).length;
 }
+
+// ── Stat count-up animation (shared across Home / Explore / About) ──────────
+// Animate one number element from `from`→`to`, preserving any non-digit
+// prefix (e.g. ₹) and suffix (e.g. +). easeOutCubic = decelerating finish.
 function ipCountUp(el, from, to, duration, prefix, suffix){
   prefix = prefix||''; suffix = suffix||'';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -69,11 +140,15 @@ function ipCountUp(el, from, to, duration, prefix, suffix){
   }
   requestAnimationFrame(frame);
 }
+// Parse "₹0" / "309+" / "14+" / "4" → {prefix, value, suffix}
 function ipParseStat(text){
   var m = String(text).match(/^(\D*?)(\d[\d,]*)(\D*)$/);
   if(!m) return null;
   return { prefix:m[1]||'', value:parseInt(m[2].replace(/,/g,''),10), suffix:m[3]||'' };
 }
+// Animate every number element in `els` the first time `container` scrolls into
+// view. Zero-valued stats (the ₹0 cost) count DOWN from 100; every other stat
+// counts UP from 0. Durations are 0.5× speed (2× longer) per request.
 function ipAnimateStats(container, els){
   var targets = [];
   for(var i=0;i<els.length;i++){
@@ -104,8 +179,8 @@ function injectNav(){
     <span class="ip-logo-mark" aria-hidden="true">
       <img src="assets/logo.png" alt="" width="40" height="40">
     </span>
-    <span class="ip-logo-word"><span class="ip-logo-word-1">Instant</span><span class="ip-logo-word-2">Pursuit</span></span>
-  </a><div class="ip-nav-links">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.label}</a>`).join('')}</div><div class="ip-nav-right"><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button><button class="ip-hamburger" onclick="document.querySelector('.ip-mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="ip-mobile-menu">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.icon} ${l.label}</a>`).join('')}</div>`;
+    <span class="ip-logo-word notranslate" translate="no"><span class="ip-logo-word-1">Instant</span><span class="ip-logo-word-2">Pursuit</span></span>
+  </a><div class="ip-nav-links">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.label}</a>`).join('')}</div><div class="ip-nav-right"><div class="ip-lang-wrap notranslate" translate="no"><button class="lang-toggle" onclick="event.stopPropagation();toggleLangMenu()" title="Change language / भाषा बदलें" aria-label="Change language" aria-haspopup="true"><span class="globe">🌐</span><span id="ip-lang-label">${ipLangNative(getLang())}</span><span class="lang-caret">▾</span></button><div class="lang-menu" id="ip-lang-menu" data-open="0" role="menu">${IP_LANGS.map(l=>`<button class="lang-opt ${getLang()===l.code?'active':''}" role="menuitem" onclick="setLang('${l.code}')">${l.native}</button>`).join('')}</div></div><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button><button class="ip-hamburger" onclick="document.querySelector('.ip-mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="ip-mobile-menu">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.icon} ${l.label}</a>`).join('')}</div>`;
   document.body.prepend(n);
 }
 function injectFooter(){
@@ -118,7 +193,7 @@ function injectFooter(){
   </div><div class="ip-footer-tagline">${SITE.tagline}</div><div class="ip-footer-links">${NAV_LINKS.map(l=>`<a href="${l.href}">${l.label}</a>`).join('')}</div><div class="ip-footer-disclaimer">Disclaimer: This website is maintained in a personal capacity for educational and informational purposes only. It does not represent the views of the Government of India or any department thereof.</div><div class="ip-footer-copy">&copy; 2026 ${SITE.name}. Made for students with love 💜</div>`;
   document.body.appendChild(f);
 }
-function initPage(){initTheme();if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter()})}else{injectNav();injectFooter()}}
+function initPage(){initTheme();if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){injectNav();injectFooter();ensureTranslate()})}else{injectNav();injectFooter();ensureTranslate()}}
 
 // ═══════════════════════════════════════════
 // CAREER DATA
@@ -20038,27 +20113,23 @@ const DEFAULT_CAREER_DATA = {
         "label": "Arts / Humanities",
         "icon": "🎨",
         "info": {
-          "detail": "Arts and Humanities is India's most underrated stream — the direct pathway to law (CLAT), civil services (UPSC), design (NID/NIFT), media, psychology, and policy research. Develops critical thinking, communication, and creativity.",
-          "tip": "Arts is not a backup — it's a launchpad.",
           "benefits": [
             "Creative expression",
-            "Diverse paths — law",
-            "media",
-            "design",
-            "civil services",
+            "Diverse paths — law, media, design, civil services",
             "Critical thinking"
           ],
           "drawbacks": [
             "Often undervalued",
             "Lower average starting salaries"
-          ]
+          ],
+          "tip": "Arts is not a backup — it's a launchpad.",
+          "detail": "Arts and Humanities is India's most underrated stream — the direct pathway to law (CLAT), civil services (UPSC), design (NID/NIFT), media, psychology, and policy research. Develops critical thinking, communication, and creativity."
         },
         "children": {
           "entrance_exams": {
             "label": "Law Entrance — CLAT",
             "icon": "⚖️",
             "info": {
-              "tip": "Students who sleep well and exercise perform better.",
               "benefits": [
                 "Structured path to top institutes",
                 "Coaching ecosystem developed"
@@ -20066,7 +20137,8 @@ const DEFAULT_CAREER_DATA = {
               "drawbacks": [
                 "Immense pressure",
                 "Mental health impact"
-              ]
+              ],
+              "tip": "Students who sleep well and exercise perform better."
             },
             "children": {
               "clat": {
@@ -20294,7 +20366,6 @@ const DEFAULT_CAREER_DATA = {
             "label": "Political Science",
             "icon": "🌐",
             "info": {
-              "detail": "Political Science is the study of government systems, public policy, international relations, and political theory. A B.A. in Political Science is one of the strongest foundations for the UPSC Civil Services and state PSC exams, where Political Science & International Relations is also a popular optional subject. Beyond the bureaucracy, graduates work in policy think-tanks, journalism, law, diplomacy, NGOs, electoral analytics, and academia. Pair the degree with strong analytical writing and a daily current-affairs habit to stand out.",
               "tip": "IR specialization opens doors to UN and embassies.",
               "benefits": [
                 "UPSC alignment",
@@ -20305,6 +20376,7 @@ const DEFAULT_CAREER_DATA = {
                 "Limited private sector",
                 "Academic-oriented"
               ],
+              "detail": "Political Science is the study of government systems, public policy, international relations, and political theory. A B.A. in Political Science is one of the strongest foundations for the UPSC Civil Services and state PSC exams, where Political Science & International Relations is also a popular optional subject. Beyond the bureaucracy, graduates work in policy think-tanks, journalism, law, diplomacy, NGOs, electoral analytics, and academia. Pair the degree with strong analytical writing and a daily current-affairs habit to stand out.",
               "furtherLinks": [
                 {
                   "title": "UPSC — Union Public Service Commission (official)",
@@ -20691,8 +20763,6 @@ const DEFAULT_CAREER_DATA = {
         "label": "Higher Education",
         "icon": "📚",
         "info": {
-          "detail": "Higher education should be a deliberate career accelerator, not a default. M.Tech for specialization, MBA for career switching, MS abroad for immigration — ROI varies wildly by institution tier.",
-          "tip": "Only pursue if it adds clear value — not as a default.",
           "benefits": [
             "Deeper expertise",
             "Better career positioning"
@@ -20701,7 +20771,9 @@ const DEFAULT_CAREER_DATA = {
             "2-5 more years",
             "Opportunity cost",
             "Expensive abroad"
-          ]
+          ],
+          "tip": "Only pursue if it adds clear value — not as a default.",
+          "detail": "Higher education should be a deliberate career accelerator, not a default. M.Tech for specialization, MBA for career switching, MS abroad for immigration — ROI varies wildly by institution tier."
         },
         "children": {
           "mtech": {
@@ -21010,8 +21082,6 @@ const DEFAULT_CAREER_DATA = {
         "label": "Certifications",
         "icon": "📜",
         "info": {
-          "detail": "Industry certifications complement your degree with focused skills. Best certs are ones hiring managers actually ask for — AWS, CFA, PMP. Time them strategically alongside your degree.",
-          "tip": "Only invest in certs hiring managers actually ask for.",
           "benefits": [
             "Focused skill acquisition",
             "Industry-recognized",
@@ -21020,7 +21090,9 @@ const DEFAULT_CAREER_DATA = {
           "drawbacks": [
             "Some expensive",
             "Certificate ≠ competence"
-          ]
+          ],
+          "tip": "Only invest in certs hiring managers actually ask for.",
+          "detail": "Industry certifications complement your degree with focused skills. Best certs are ones hiring managers actually ask for — AWS, CFA, PMP. Time them strategically alongside your degree."
         },
         "children": {
           "cloud": {
@@ -21392,11 +21464,8 @@ const DEFAULT_CAREER_DATA = {
   },
   "working": {
     "label": "Working Professionals",
-    "icon": "💼",
     "description": "Level up from where you are!",
-    "info": {
-      "detail": "For working professionals, career growth requires deliberate strategy: moving up (management), going deeper (IC track), going global, or building side income. Continuous upskilling keeps you relevant."
-    },
+    "icon": "💼",
     "children": {
       "growth": {
         "label": "Career Growth",
@@ -21527,11 +21596,8 @@ const DEFAULT_CAREER_DATA = {
             "label": "Content Creation / Teaching",
             "icon": "📹",
             "info": {
-              "detail": "Content creation and online teaching — YouTube, Instagram, newsletters, courses, and ed-tech platforms — has become a serious full-time and side career. It rewards consistency, a clear niche, and genuine expertise more than fancy gear. Monetisation comes from ads, sponsorships, digital products, cohort courses, and memberships. The first year is usually slow; creators who last treat it like a business — studying analytics, improving every upload, and owning their audience through an email list.",
-              "tip": "Technical content on YouTube has massive demand in India.",
               "benefits": [
-                "YouTube",
-                "Udemy courses",
+                "YouTube, Udemy courses",
                 "Passive income potential",
                 "Personal brand"
               ],
@@ -21539,7 +21605,13 @@ const DEFAULT_CAREER_DATA = {
                 "Consistency required",
                 "Results take 6-12 months"
               ],
+              "tip": "Technical content on YouTube has massive demand in India.",
+              "detail": "Content creation and online teaching — YouTube, Instagram, newsletters, courses, and ed-tech platforms — has become a serious full-time and side career. It rewards consistency, a clear niche, and genuine expertise more than fancy gear. Monetisation comes from ads, sponsorships, digital products, cohort courses, and memberships. The first year is usually slow; creators who last treat it like a business — studying analytics, improving every upload, and owning their audience through an email list.",
               "furtherLinks": [
+                {
+                  "title": "Start a Tech YouTube Channel",
+                  "url": "https://www.youtube.com/watch?v=ZPTSqKR7lnY"
+                },
                 {
                   "title": "YouTube Creators — official resources",
                   "url": "https://www.youtube.com/creators/"
@@ -21556,8 +21628,6 @@ const DEFAULT_CAREER_DATA = {
             "label": "Consulting / Freelancing",
             "icon": "📋",
             "info": {
-              "detail": "Side consulting and freelancing let experienced professionals monetise their expertise outside a 9-to-5 — via advisory calls (Topmate, Intro), project work (Upwork), or retainer clients. It is a low-risk way to test entrepreneurship, build a personal brand, and add income. Start by packaging a specific, sought-after skill, setting clear rates, and protecting your full-time commitments and any non-compete clauses. Referrals and a visible track record compound powerfully over time.",
-              "tip": "Start on Toptal or Upwork — build reputation first.",
               "benefits": [
                 "Premium rates for expertise",
                 "₹2-10 lakh/month possible",
@@ -21567,7 +21637,13 @@ const DEFAULT_CAREER_DATA = {
                 "Inconsistent income",
                 "Client management"
               ],
+              "tip": "Start on Toptal or Upwork — build reputation first.",
+              "detail": "Side consulting and freelancing let experienced professionals monetise their expertise outside a 9-to-5 — via advisory calls (Topmate, Intro), project work (Upwork), or retainer clients. It is a low-risk way to test entrepreneurship, build a personal brand, and add income. Start by packaging a specific, sought-after skill, setting clear rates, and protecting your full-time commitments and any non-compete clauses. Referrals and a visible track record compound powerfully over time.",
               "furtherLinks": [
+                {
+                  "title": "Freelance Consulting Side Income",
+                  "url": "https://www.youtube.com/watch?v=7-asmfnkjRo"
+                },
                 {
                   "title": "Topmate — paid 1:1 advisory & consulting",
                   "url": "https://topmate.io/"
@@ -21588,8 +21664,6 @@ const DEFAULT_CAREER_DATA = {
             "label": "Investing & Wealth",
             "icon": "📊",
             "info": {
-              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point.",
-              "tip": "Start with index funds (Nifty 50), learn 2 years, then explore stocks.",
               "benefits": [
                 "Money working for you",
                 "Compound interest",
@@ -21600,6 +21674,8 @@ const DEFAULT_CAREER_DATA = {
                 "Needs financial literacy",
                 "Emotional discipline"
               ],
+              "tip": "Start with index funds (Nifty 50), learn 2 years, then explore stocks.",
+              "detail": "Systematic investing in index funds, mutual funds, and stocks alongside salary is the most reliable wealth-building strategy. SIP in Nifty 50 index fund is the recommended starting point.",
               "furtherLinks": [
                 {
                   "title": "Index Fund Investing India",
@@ -21627,8 +21703,6 @@ const DEFAULT_CAREER_DATA = {
         "label": "Upskilling",
         "icon": "🔄",
         "info": {
-          "detail": "The two highest-ROI upskilling areas: AI literacy and communication skills. The challenge isn't finding resources — it's choosing the right thing and doing it consistently.",
-          "tip": "Learn in public — share your journey on LinkedIn.",
           "benefits": [
             "Stay relevant",
             "Salary bump",
@@ -21637,7 +21711,9 @@ const DEFAULT_CAREER_DATA = {
           "drawbacks": [
             "Time commitment",
             "Decision fatigue on what to learn"
-          ]
+          ],
+          "tip": "Learn in public — share your journey on LinkedIn.",
+          "detail": "The two highest-ROI upskilling areas: AI literacy and communication skills. The challenge isn't finding resources — it's choosing the right thing and doing it consistently."
         },
         "children": {
           "ai_skills": {
@@ -21713,6 +21789,9 @@ const DEFAULT_CAREER_DATA = {
           }
         }
       }
+    },
+    "info": {
+      "detail": "For working professionals, career growth requires deliberate strategy: moving up (management), going deeper (IC track), going global, or building side income. Continuous upskilling keeps you relevant."
     }
   }
 };
@@ -21725,6 +21804,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1780038082018,
     "title": "Five Sanskrit Shlokas that Give Amazing Career Advice",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Advice",
     "readTime": "6 min",
@@ -21742,6 +21822,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779825119175,
     "title": "Top 7 Organizations Hiring from GATE",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Exam Guide",
     "readTime": "5 min",
@@ -21791,6 +21872,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779400000000,
     "title": "A Founder's Story : Broken Cycle, Unshaken Dreams and the Start of Learning Ant",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Paths",
     "readTime": "9 min",
@@ -21820,6 +21902,7 @@ const DEFAULT_BLOG_DATA = [
     "id": 1779300651991,
     "title": "From the Banks of Tungabhadra to the Control Room of a 210 MW Power Plant",
     "author": "Editor-in-Chief",
+    "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
     "category": "Career Paths",
     "readTime": "5 min",
@@ -21833,7 +21916,7 @@ const DEFAULT_BLOG_DATA = [
       "Mechanical"
     ],
     "coverImage": "assets/pavan-cover.jpg",
-    "content": "Pavan Dola grew up in Kurnool, cracked IIT on his second attempt after turning his weakest subject into his strongest, survived five years at IIT Madras, and now runs a 210 MW thermal unit at NTPC. This article traces the arc of that journey — the 4 AM mornings, the coffee-fuelled classrooms, the year he barely made attendance at one of India's best colleges, and what it actually feels like when you step inside a power plant for the first time.\n\n## A Kurnool Childhood and the Tungabhadra Days\n\nPavan spent most of his growing-up years in Kurnool, a small city in Andhra Pradesh that punches well above its weight as an education hub. The Tungabhadra river ran close to home, and the town had a steady, grounded rhythm to it, the kind of place where academics were taken seriously, and the path forward was understood early.\n\"Kurnool is genuinely a good place for education,\" he tells, matter-of-factly. \"In Andhra, there are certain pockets that just have that culture, and Kurnool is one of them.\"\nAfter class 10, the trajectory shifted — as it does for lakhs of students every year — toward JEE coaching. Pavan moved to Hyderabad and enrolled at Chaitanya, one of the many coaching factories that dot the city's landscape. Life compressed into a single building: classes on the top floor, hostel rooms below. The world shrank to textbooks, test papers, and timetables.\nBut ask Pavan about the best part of that life, and he doesn't mention a rank or a mock test score. He smiles. \"Breakfast,\" he says. \"Breakfast used to be really good.\"\n\n## Maths, Medicine, and a Father's Instinct\n\nMaths was always the subject Pavan gravitated toward. Calculus, specifically — he'd finish one textbook and immediately reach for the next. There was a personal joy in it that went beyond marks, a kind of pull that most students who've felt it will recognise instantly.\nBut the choice to pursue engineering wasn't straightforward. Pavan had initially wanted to study biology. He wanted to become a doctor — a dream his grandfather shared and encouraged. It was his father who saw things differently. Engineering, he felt, was the better path.\nLooking back, that quiet push from his father would shape everything that followed.\n\n## The First Attempt, the Failure, and the Rebuild\n \nThe first crack at JEE Advanced didn't go well. Pavan didn't qualify. And in the aftermath of that result, there was a period of genuine uncertainty — the kind that doesn't get talked about enough in the success stories that eventually emerge.\n\"First time ke baad pata nahi tha karna kya hai,\" he recalls — after the first time, I didn't know what to do.\nBut instead of drifting, he introspected. The diagnosis was clear: physics was the problem. It had always been his weakest subject. So he made a decision that sounds simple but is brutally hard in practice — he would turn his biggest weakness into his biggest strength.\nHe shifted to Narayana in Hyderabad for the second attempt, and the environment helped. No social media access. No distractions. Just focused, enclosed preparation.\nThe strategy was methodical. In maths, Pavan had always been strong because his fundamentals were solid. He applied the same logic to physics — go back to basics, build from the ground up, and only then attempt the harder problems. For chemistry, which demanded a different kind of brain — memorisation, recall, endless facts — he created four large charts. Two for inorganic chemistry, two for organic (one for carbon reactions, one for benzene). Every reaction was etched onto a mind map. Every exception noted. \nHis daily routine hardened. Wake up at 4 AM. Sleep at 10 PM sharp. No napping in class — he'd drink coffee during the morning lectures to make sure of it. Less time with friends. More hours at the desk. Total concentration in the classroom, not just presence.\nThe second time, physics wasn't just manageable — it became his strongest subject.\n\n## IIT Madras: The Call That Changed Everything\n\nThe result came through while Pavan was still asleep. His father saw it first and woke him up at 6 AM.\nIIT Madras. Mechanical Engineering. Dual Degree with an M.Tech in Thermal Engineering.\nPavan's reaction was measured — he felt he could have done even better. But for the family, it was a watershed moment. Uncles called to congratulate. A shawl ceremony was held where his father was felicitated. There were no newspaper announcements, no public fanfare — just a private, deeply felt pride within the family.\nWhen Pavan's father and two uncles accompanied him to campus for the first time, the contrast hit hard. Three years of a closed, high-pressure coaching environment — and suddenly, one of the most beautiful campuses in India. Deer on the pathways. Trees everywhere. Freedom in every direction. It was a shockwave in Pavan’s social bubble. And yes, the bubble did burst!\nThe Year He Barely Showed Up\nWhat happened next is something Pavan talks about with the kind of honesty that only comes with distance: he did almost nothing in his first year.\n\"I was fatigued,\" he says simply. \"I didn't study anything in my first year. Barely made the attendance. Just enjoyed.\"\nFootball every day. FIFA games. Dota. The pendulum had swung the other way completely. After years of relentless JEE preparation, his mind and body had simply checked out. The second year wasn't much different.\nIt was only in the middle of the third year that Pavan found his way back to the study table. By then, the gap was significant — two years of accumulated coursework that he'd essentially sleepwalked through. Catching up was its own kind of battle.\n\n## The Final Year Project That Kept Him Three Extra Months\n\nThe turn came with his final year project, and it's where you can hear real excitement enter Pavan's voice for the first time when he talks about academics at IIT.\nThe project: analysing gasoline direct injection engine spray characteristics at various crank angles. MATLAB programming. Serious, hands-on research in the IC Engines lab.\nHow did he land it? He walked up to Dr. Mayank Mittal, the professor running the lab, and simply told him he wanted to work. No formal channel, no elaborate application — just a student showing up and expressing genuine interest.\nThe work consumed him. But toward the end, he couldn't produce a journal-level paper within the standard timeline. So he made a choice that tells you something about his character — he stayed three extra months at IIT Madras after his batch had left, purely to complete the manuscript. The paper was eventually published.\n\n## Delhi, GATE, and the 4 AM Roommate\n\nAfter five years at IIT Madras, the next chapter began not with a job offer but with a phone call from friends in Delhi. They were preparing for GATE and told Pavan about the opportunities it could unlock.\nSo he travelled to Delhi and joined them.\nHis father, remarkably, was unfazed. Five years of engineering, no job, and now more studying — but as long as Pavan wasn't idle and was working hard, his father was at peace. The financial support continued without pressure.\nDelhi was a shock after Hyderabad and Chennai. Glamorous, chaotic, impossibly crowded — especially in the preparation hubs around Ghittorni, where the density of GATE aspirants created a constant, almost suffocating sense of competition. It was easy to get distracted, to drift off track.\nWhat kept Pavan anchored was his roommate, Rahul Pradhan. Rahul studied until 4 AM every night and woke Pavan up before he used to go to sleep. Previous year questions, solved again and again. Another friend, Dashrath, was his library companion — supportive but occasionally distracted himself.\nPavan enrolled in two test series: Made Easy and ACE Academy. In some subjects like Strength of Materials, he consistently topped. In others like Manufacturing, he struggled, had to recalibrate his approach, and eventually found his footing.\n\n## NTPC: The Training, the Plant, and the Reality\n\nWhen the GATE result came out, Pavan wasn't optimistic. He didn't think he'd get anything worthwhile and had already started preparing for a second attempt. But NTPC had released a large number of seats that cycle, and by the end of the year, he was in.\nTraining was smooth — the easiest phase of his professional life, he says. Plenty of learning, football on the side, and scheme tracing sessions with colleagues Brajesh and Utkarsh.\nBut the real moment came when he first stepped inside the power plant.\n\"It was very intriguing,\" Pavan says. \"It looked beautiful at first. And then, when you start knowing the ins and outs, the picture changes — and you become responsible.\"\nHe now works as a Unit Controller for a 210 MW thermal power unit. It's a role that carries real weight — the kind where understanding every system isn't academic anymore; it's an operational necessity.\n\n## On the Changing Landscape of PSUs\n\nPavan is thoughtful when the conversation turns to the broader picture. Workloads across PSUs have increased as the nation builds — the man-to-megawatt ratio is getting steeper. The privilege that was once offered to people in these roles has shifted. The country has progressed, and the same jobs that once carried a certain prestige and challenge have, comparatively, become less demanding in some ways.\nBut he's not cynical about it. NTPC is moving into green energy transition, and Pavan is looking forward to being part of that shift. His view on career choices is clear-eyed: \"If you can offer something to any company that is helping the country prosper, then go.\"\n\n## The Mantra\n\nPavan was asked if there's a single line he lives by — something he'd pass along.\nHe doesn't hesitate.\n\n\"Do not just keep dreaming. Go out and do it.\"",
+    "content": "Pavan Dola grew up in Kurnool, cracked IIT on his second attempt after turning his weakest subject into his strongest, survived five years at IIT Madras, and now runs a 210 MW thermal unit at NTPC. This article traces the arc of that journey — the 4 AM mornings, the coffee-fuelled classrooms, the year he barely made attendance at one of India's best colleges, and what it actually feels like when you step inside a power plant for the first time.\n\n## A Kurnool Childhood and the Tungabhadra Days\n\nPavan spent most of his growing-up years in Kurnool, a small city in Andhra Pradesh that punches well above its weight as an education hub. The Tungabhadra river ran close to home, and the town had a steady, grounded rhythm to it, the kind of place where academics were taken seriously, and the path forward was understood early.\n\"Kurnool is genuinely a good place for education,\" he tells, matter-of-factly. \"In Andhra, there are certain pockets that just have that culture, and Kurnool is one of them.\"\nAfter class 10, the trajectory shifted — as it does for lakhs of students every year — toward JEE coaching. Pavan moved to Hyderabad and enrolled at Chaitanya, one of the many coaching factories that dot the city's landscape. Life compressed into a single building: classes on the top floor, hostel rooms below. The world shrank to textbooks, test papers, and timetables.\nBut ask Pavan about the best part of that life, and he doesn't mention a rank or a mock test score. He smiles. \"Breakfast,\" he says. \"Breakfast used to be really good.\"\n\n## Maths, Medicine, and a Father's Instinct\n\nMaths was always the subject Pavan gravitated toward. Calculus, specifically — he'd finish one textbook and immediately reach for the next. There was a personal joy in it that went beyond marks, a kind of pull that most students who've felt it will recognise instantly.\nBut the choice to pursue engineering wasn't straightforward. Pavan had initially wanted to study biology. He wanted to become a doctor — a dream his grandfather shared and encouraged. It was his father who saw things differently. Engineering, he felt, was the better path.\nLooking back, that quiet push from his father would shape everything that followed.\n\n## The First Attempt, the Failure, and the Rebuild\n \nThe first crack at JEE Advanced didn't go well. Pavan didn't qualify. And in the aftermath of that result, there was a period of genuine uncertainty — the kind that doesn't get talked about enough in the success stories that eventually emerge.\n\"First time ke baad pata nahi tha karna kya hai,\" he recalls — after the first time, I didn't know what to do.\nBut instead of drifting, he introspected. The diagnosis was clear: physics was the problem. It had always been his weakest subject. So he made a decision that sounds simple but is brutally hard in practice — he would turn his biggest weakness into his biggest strength.\nHe shifted to Narayana in Hyderabad for the second attempt, and the environment helped. No social media access. No distractions. Just focused, enclosed preparation.\nThe strategy was methodical. In maths, Pavan had always been strong because his fundamentals were solid. He applied the same logic to physics — go back to basics, build from the ground up, and only then attempt the harder problems. For chemistry, which demanded a different kind of brain — memorisation, recall, endless facts — he created four large charts. Two for inorganic chemistry, two for organic (one for carbon reactions, one for benzene). Every reaction was etched onto a mind map. Every exception noted. \nHis daily routine hardened. Wake up at 4 AM. Sleep at 10 PM sharp. No napping in class — he'd drink coffee during the morning lectures to make sure of it. Less time with friends. More hours at the desk. Total concentration in the classroom, not just presence.\nThe second time, physics wasn't just manageable — it became his strongest subject.\n\n## IIT Madras: The Call That Changed Everything\n\nThe result came through while Pavan was still asleep. His father saw it first and woke him up at 6 AM.\nIIT Madras. Mechanical Engineering. Dual Degree with an M.Tech in Thermal Engineering.\nPavan's reaction was measured — he felt he could have done even better. But for the family, it was a watershed moment. Uncles called to congratulate. A shawl ceremony was held where his father was felicitated. There were no newspaper announcements, no public fanfare — just a private, deeply felt pride within the family.\nWhen Pavan's father and two uncles accompanied him to campus for the first time, the contrast hit hard. Three years of a closed, high-pressure coaching environment — and suddenly, one of the most beautiful campuses in India. Deer on the pathways. Trees everywhere. Freedom in every direction. It was a shockwave in Pavan’s social bubble. And yes, the bubble did burst!\nThe Year He Barely Showed Up\nWhat happened next is something Pavan talks about with the kind of honesty that only comes with distance: he did almost nothing in his first year.\n\"I was fatigued,\" he says simply. \"I didn't study anything in my first year. Barely made the attendance. Just enjoyed.\"\nFootball every day. FIFA games. Dota. The pendulum had swung the other way completely. After years of relentless JEE preparation, his mind and body had simply checked out. The second year wasn't much different.\nIt was only in the middle of the third year that Pavan found his way back to the study table. By then, the gap was significant — two years of accumulated coursework that he'd essentially sleepwalked through. Catching up was its own kind of battle.\n\n## The Final Year Project That Kept Him Three Extra Months\n\nThe turn came with his final year project, and it's where you can hear real excitement enter Pavan's voice for the first time when he talks about academics at IIT.\nThe project: analysing gasoline direct injection engine spray characteristics at various crank angles. MATLAB programming. Serious, hands-on research in the IC Engines lab.\nHow did he land it? He walked up to Dr. Mayank Mittal, the professor running the lab, and simply told him he wanted to work. No formal channel, no elaborate application — just a student showing up and expressing genuine interest.\nThe work consumed him. But toward the end, he couldn't produce a journal-level paper within the standard timeline. So he made a choice that tells you something about his character — he stayed three extra months at IIT Madras after his batch had left, purely to complete the manuscript. The paper was eventually published.\n\n## Delhi, GATE, and the 4 AM Roommate\n\nAfter five years at IIT Madras, the next chapter began not with a job offer but with a phone call from friends in Delhi. They were preparing for GATE and told Pavan about the opportunities it could unlock.\nSo he travelled to Delhi and joined them.\nHis father, remarkably, was unfazed. Five years of engineering, no job, and now more studying — but as long as Pavan wasn't idle and was working hard, his father was at peace. The financial support continued without pressure.\nDelhi was a shock after Hyderabad and Chennai. Glamorous, chaotic, impossibly crowded — especially in the preparation hubs around Ghittorni, where the density of GATE aspirants created a constant, almost suffocating sense of competition. It was easy to get distracted, to drift off track.\nWhat kept Pavan anchored was his roommate, Rahul Pradhan. Rahul studied until 4 AM every night, and Pavan, who had to cling on with his partner, found himself solving problems mentally in the predawn hours — not wanting to touch a pen and disturb the rhythm. Previous year questions, solved again and again. Another friend, Dashrath, was his library companion — supportive but occasionally distracted himself.\nPavan enrolled in two test series: Made Easy and ACE Academy. In some subjects like Strength of Materials, he consistently topped. In others like Manufacturing, he struggled, had to recalibrate his approach, and eventually found his footing.\n\n## NTPC: The Training, the Plant, and the Reality\n\nWhen the GATE result came out, Pavan wasn't optimistic. He didn't think he'd get anything worthwhile and had already started preparing for a second attempt. But NTPC had released a large number of seats that cycle, and by the end of the year, he was in.\nTraining was smooth — the easiest phase of his professional life, he says. Plenty of learning, football on the side, and scheme tracing sessions with colleagues Brajesh and Utkarsh.\nBut the real moment came when he first stepped inside the power plant.\n\"It was very intriguing,\" Pavan says. \"It looked beautiful at first. And then, when you start knowing the ins and outs, the picture changes — and you become responsible.\"\nHe now works as a Unit Controller for a 210 MW thermal power unit. It's a role that carries real weight — the kind where understanding every system isn't academic anymore; it's an operational necessity.\n\n## On the Changing Landscape of PSUs\n\nPavan is thoughtful when the conversation turns to the broader picture. Workloads across PSUs have increased as the nation builds — the man-to-megawatt ratio is getting steeper. The privilege that was once offered to people in these roles has shifted. The country has progressed, and the same jobs that once carried a certain prestige and challenge have, comparatively, become less demanding in some ways.\nBut he's not cynical about it. NTPC is moving into green energy transition, and Pavan is looking forward to being part of that shift. His view on career choices is clear-eyed: \"If you can offer something to any company that is helping the country prosper, then go.\"\n\n## The Mantra\n\nPavan was asked if there's a single line he lives by — something he'd pass along.\nHe doesn't hesitate.\n\n\"Do not just keep dreaming. Go out and do it.\"",
     "date": "2026-05-20",
     "linkedin": "http://linkedin.com/in/pavan-dola-002b81175/",
     "linkedinName": "Pavan Dola"
