@@ -35,8 +35,20 @@ function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}
 function initTheme(){setTheme(getTheme())}
 function loadData(k,f){try{const d=localStorage.getItem(k);return d?JSON.parse(d):f}catch{return f}}
 function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}
-// ── Language (EN ⇄ हिंदी) via Google Website Translate ──
+// ── Language (English + 8 Indian languages) via Google Website Translate ─────
+var IP_LANGS = [
+  {code:'en', native:'English'},
+  {code:'hi', native:'हिन्दी'},
+  {code:'bn', native:'বাংলা'},
+  {code:'as', native:'অসমীয়া'},
+  {code:'gu', native:'ગુજરાતી'},
+  {code:'ta', native:'தமிழ்'},
+  {code:'te', native:'తెలుగు'},
+  {code:'kn', native:'ಕನ್ನಡ'},
+  {code:'ml', native:'മലയാളം'}
+];
 function getLang(){return localStorage.getItem('ip-lang')||'en'}
+function ipLangNative(code){for(var i=0;i<IP_LANGS.length;i++){if(IP_LANGS[i].code===code)return IP_LANGS[i].native;}return 'English';}
 function setGoogTransCookie(lang){
   // Widget reads the `googtrans` cookie at init: '/en/hi' = translate en→hi.
   var v = (lang && lang!=='en') ? '/en/'+lang : '';
@@ -53,19 +65,24 @@ function setLang(lang){
   setGoogTransCookie(lang);
   location.reload();   // cookie-driven re-translate on fresh load = most reliable
 }
-function toggleLang(){ setLang(getLang()==='en' ? 'hi' : 'en'); }
+function toggleLangMenu(force){
+  var m=document.getElementById('ip-lang-menu'); if(!m) return;
+  var open = (typeof force==='boolean') ? force : (m.getAttribute('data-open')!=='1');
+  m.setAttribute('data-open', open ? '1' : '0');
+}
 function googleTranslateElementInit(){
+  var inc = IP_LANGS.filter(function(l){return l.code!=='en';}).map(function(l){return l.code;}).join(',');
   new google.translate.TranslateElement(
-    {pageLanguage:'en', includedLanguages:'hi,en', autoDisplay:false},
+    {pageLanguage:'en', includedLanguages:inc, autoDisplay:false},
     'google_translate_element'
   );
 }
 function ensureTranslate(){
   if (document.getElementById('google_translate_element')) return;
-  // Devanagari webfonts so Hindi glyphs render in proper script
+  // Indic webfonts so each script renders properly (Assamese uses the Bengali face)
   var f=document.createElement('link');
   f.rel='stylesheet';
-  f.href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800&display=swap';
+  f.href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap';
   document.head.appendChild(f);
   // Hidden mount point for the widget
   var d=document.createElement('div');
@@ -73,6 +90,10 @@ function ensureTranslate(){
   d.className='notranslate';
   d.setAttribute('translate','no');
   document.body.appendChild(d);
+  // Close the language menu when clicking anywhere outside it
+  document.addEventListener('click', function(e){
+    if(!e.target.closest || !e.target.closest('.ip-lang-wrap')) toggleLangMenu(false);
+  });
   // Sync cookie to the saved choice BEFORE the widget initialises
   setGoogTransCookie(getLang());
   var s=document.createElement('script');
@@ -149,7 +170,7 @@ function injectNav(){
       <img src="assets/logo.png" alt="" width="40" height="40">
     </span>
     <span class="ip-logo-word notranslate" translate="no"><span class="ip-logo-word-1">Instant</span><span class="ip-logo-word-2">Pursuit</span></span>
-  </a><div class="ip-nav-links">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.label}</a>`).join('')}</div><div class="ip-nav-right"><button class="lang-toggle notranslate" translate="no" onclick="toggleLang()" title="Change language / भाषा बदलें" aria-label="Change language"><span class="globe">🌐</span><span id="ip-lang-label">${getLang()==='en'?'हिंदी':'ENG'}</span></button><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button><button class="ip-hamburger" onclick="document.querySelector('.ip-mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="ip-mobile-menu">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.icon} ${l.label}</a>`).join('')}</div>`;
+  </a><div class="ip-nav-links">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.label}</a>`).join('')}</div><div class="ip-nav-right"><div class="ip-lang-wrap notranslate" translate="no"><button class="lang-toggle" onclick="event.stopPropagation();toggleLangMenu()" title="Change language / भाषा बदलें" aria-label="Change language" aria-haspopup="true"><span class="globe">🌐</span><span id="ip-lang-label">${ipLangNative(getLang())}</span><span class="lang-caret">▾</span></button><div class="lang-menu" id="ip-lang-menu" data-open="0" role="menu">${IP_LANGS.map(l=>`<button class="lang-opt ${getLang()===l.code?'active':''}" role="menuitem" onclick="setLang('${l.code}')">${l.native}</button>`).join('')}</div></div><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button><button class="ip-hamburger" onclick="document.querySelector('.ip-mobile-menu').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button></div></div><div class="ip-mobile-menu">${NAV_LINKS.map(l=>`<a href="${l.href}" class="${cur===l.href?'active':''}">${l.icon} ${l.label}</a>`).join('')}</div>`;
   document.body.prepend(n);
 }
 function injectFooter(){
