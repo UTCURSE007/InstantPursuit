@@ -376,6 +376,9 @@ function buildReview(){
   // order: add, modify, remove; within, by path
   const rank={add:0,modify:1,remove:2};
   items.sort((a,b)=>rank[a.type]-rank[b.type]||a.path.join('\u0000').localeCompare(b.path.join('\u0000')));
+  // Assign DOM-safe sequential ids — path-based ids contain a NUL char that the
+  // HTML parser strips out of onclick attributes, breaking accept/reject lookups.
+  items.forEach((it,i)=>{ it.id='it'+i; });
 
   // contributor banner
   const c=suggestion.contributor||{};
