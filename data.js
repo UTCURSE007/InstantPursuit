@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-06-07T02:59:03.049Z
-   Drop this file into your repo root to deploy changes.
+   data.js — career tree merged by reviewer on 2026-06-07T16:20:49.488Z
+   Source: Ajay
+   Drop this file into your repo root to deploy the approved changes.
    ═══════════════════════════════════════════ */
 
 /* ═══════════════════════════════════════════
@@ -20220,7 +20221,7 @@ const DEFAULT_CAREER_DATA = {
             "label": "Design (B.Des)",
             "icon": "🎭",
             "info": {
-              "detail": "Design (B.Des) spans product, communication, UX/UI, fashion, animation, and industrial design. Entry is through UCEED (for IITs & IIITDM Jabalpur), the NID DAT, and the NIFT entrance — all of which test creativity, observation, and visualisation rather than rote learning. India's booming startup and D2C ecosystem has made UX and product designers especially sought-after, while NID and NIFT graduates feed top design studios, e-commerce firms, and global brands. A strong portfolio matters far more than marks.",
+              "detail": "Design (B.Des) spans product, communication, UX/UI, fashion, animation, and industrial design. Entry is through UCEED (for IITs & IIITDM Jabalpur), the NID DAT, and the NIFT entrance — all of which test creativity, observation, and visualisation rather than rote learning. India's booming startup and D2C ecosystem has made UX and product designers especially sought-after, while NID and NIFT graduates feed top design studios, e-commerce firms, and global brands. A strong portfolio matters far more than marks!",
               "tip": "Start building a portfolio — NID and NIFT love raw creativity.",
               "benefits": [
                 "High UX/UI demand",
