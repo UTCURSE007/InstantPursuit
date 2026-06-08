@@ -36,12 +36,16 @@ function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}
 function initTheme(){setTheme(getTheme())}
 function loadData(k,f){try{const d=localStorage.getItem(k);return d?JSON.parse(d):f}catch{return f}}
 function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}
-// ── Language (English + 8 Indian languages) via Google Website Translate ─────
+// ── Language (English + 12 Indian languages) via Google Website Translate ─────
 var IP_LANGS = [
   {code:'en', native:'English'},
   {code:'hi', native:'हिन्दी'},
+  {code:'mr', native:'मराठी'},
+  {code:'mai', native:'मैथिली'},
+  {code:'pa', native:'ਪੰਜਾਬੀ'},
   {code:'bn', native:'বাংলা'},
   {code:'as', native:'অসমীয়া'},
+  {code:'or', native:'ଓଡ଼ିଆ'},
   {code:'gu', native:'ગુજરાતી'},
   {code:'ta', native:'தமிழ்'},
   {code:'te', native:'తెలుగు'},
@@ -83,7 +87,7 @@ function ensureTranslate(){
   // Indic webfonts so each script renders properly (Assamese uses the Bengali face)
   var f=document.createElement('link');
   f.rel='stylesheet';
-  f.href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap';
+  f.href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap';
   document.head.appendChild(f);
   // Hidden mount point for the widget
   var d=document.createElement('div');
