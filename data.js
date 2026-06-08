@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════
-   data.js — career tree merged by reviewer on 2026-06-07T16:20:49.488Z
-   Source: Ajay
-   Drop this file into your repo root to deploy the approved changes.
+   data.js — exported from admin on 2026-06-08T13:52:26.638Z
+   Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
 /* ═══════════════════════════════════════════
@@ -36,22 +35,8 @@ function toggleTheme(){setTheme(getTheme()==='dark'?'light':'dark')}
 function initTheme(){setTheme(getTheme())}
 function loadData(k,f){try{const d=localStorage.getItem(k);return d?JSON.parse(d):f}catch{return f}}
 function saveData(k,v){localStorage.setItem(k,JSON.stringify(v))}
-// ── Language (English + 12 Indian languages) via Google Website Translate ─────
-var IP_LANGS = [
-  {code:'en', native:'English'},
-  {code:'hi', native:'हिन्दी'},
-  {code:'mr', native:'मराठी'},
-  {code:'mai', native:'मैथिली'},
-  {code:'pa', native:'ਪੰਜਾਬੀ'},
-  {code:'bn', native:'বাংলা'},
-  {code:'as', native:'অসমীয়া'},
-  {code:'or', native:'ଓଡ଼ିଆ'},
-  {code:'gu', native:'ગુજરાતી'},
-  {code:'ta', native:'தமிழ்'},
-  {code:'te', native:'తెలుగు'},
-  {code:'kn', native:'ಕನ್ನಡ'},
-  {code:'ml', native:'മലയാളം'}
-];
+// ── Language (English + Indian languages) via Google Website Translate ──
+var IP_LANGS = [{"code":"en","native":"English"},{"code":"hi","native":"हिन्दी"},{"code":"mr","native":"मराठी"},{"code":"mai","native":"मैथिली"},{"code":"pa","native":"ਪੰਜਾਬੀ"},{"code":"bn","native":"বাংলা"},{"code":"as","native":"অসমীয়া"},{"code":"or","native":"ଓଡ଼ିଆ"},{"code":"gu","native":"ગુજરાતી"},{"code":"ta","native":"தமிழ்"},{"code":"te","native":"తెలుగు"},{"code":"kn","native":"ಕನ್ನಡ"},{"code":"ml","native":"മലയാളം"}];
 function getLang(){return localStorage.getItem('ip-lang')||'en'}
 function ipLangNative(code){for(var i=0;i<IP_LANGS.length;i++){if(IP_LANGS[i].code===code)return IP_LANGS[i].native;}return 'English';}
 function setGoogTransCookie(lang){
@@ -20225,7 +20210,7 @@ const DEFAULT_CAREER_DATA = {
             "label": "Design (B.Des)",
             "icon": "🎭",
             "info": {
-              "detail": "Design (B.Des) spans product, communication, UX/UI, fashion, animation, and industrial design. Entry is through UCEED (for IITs & IIITDM Jabalpur), the NID DAT, and the NIFT entrance — all of which test creativity, observation, and visualisation rather than rote learning. India's booming startup and D2C ecosystem has made UX and product designers especially sought-after, while NID and NIFT graduates feed top design studios, e-commerce firms, and global brands. A strong portfolio matters far more than marks!",
+              "detail": "Design (B.Des) spans product, communication, UX/UI, fashion, animation, and industrial design. Entry is through UCEED (for IITs & IIITDM Jabalpur), the NID DAT, and the NIFT entrance — all of which test creativity, observation, and visualisation rather than rote learning. India's booming startup and D2C ecosystem has made UX and product designers especially sought-after, while NID and NIFT graduates feed top design studios, e-commerce firms, and global brands. A strong portfolio matters far more than marks.",
               "tip": "Start building a portfolio — NID and NIFT love raw creativity.",
               "benefits": [
                 "High UX/UI demand",
@@ -20760,80 +20745,115 @@ const DEFAULT_CAREER_DATA = {
       "higher_ed": {
         "label": "Higher Education",
         "icon": "📚",
+        "description": "Which degree — and how to get in.",
         "info": {
-          "detail": "Higher education should be a deliberate career accelerator, not a default. M.Tech for specialization, MBA for career switching, MS abroad for immigration — ROI varies wildly by institution tier.",
-          "tip": "Only pursue if it adds clear value — not as a default.",
+          "detail": "Higher education after graduation means a master's, PhD, or professional programme — but each one is gated by a specific entrance exam. M.Tech needs GATE, MS abroad needs the GRE, an MBA needs CAT or GMAT, and so on. This node maps the major higher-education degrees to exactly how you get enrolled: the entrance exam, eligibility, and timeline. Pick the degree that fits your goal, then work backwards from its admission test. (For what each degree does for your career, see the Post-Graduation stage.)",
+          "tip": "Choose the degree for your goal first, then reverse-engineer prep from its entrance exam.",
           "benefits": [
-            "Deeper expertise",
-            "Better career positioning"
+            "One clear exam per degree",
+            "Funded options exist (GATE, JAM)",
+            "Start prep 8-12 months ahead"
           ],
           "drawbacks": [
-            "2-5 more years",
-            "Opportunity cost",
-            "Expensive abroad"
+            "Entrance exams are competitive",
+            "Deadlines & timelines are strict",
+            "Abroad routes add tests + cost"
+          ],
+          "furtherLinks": [
+            {
+              "title": "How to plan higher studies after graduation — guides",
+              "url": "https://www.youtube.com/results?search_query=how%20to%20plan%20higher%20education%20after%20graduation%20india%20entrance%20exams"
+            }
           ]
         },
         "children": {
           "mtech": {
-            "label": "M.Tech / MS",
+            "label": "M.Tech / M.E. — via GATE",
             "icon": "⚙️",
             "info": {
-              "detail": "M.Tech from IITs via GATE is fully funded with ₹12,400/month stipend — India's best-value higher education. MS abroad costs ₹25-60 lakh but provides global exposure. Germany's tuition-free programs are underexplored.",
-              "tip": "India: GATE → IIT M.Tech (free + stipend). Abroad: GRE → US/Germany MS.",
+              "detail": "M.Tech/M.E. is a 2-year postgraduate engineering degree. The gateway is GATE (Graduate Aptitude Test in Engineering) — a single national exam whose score (valid 3 years) drives admission and IIT/NIT counselling (COAP/CCMT). Eligibility is a B.E./B.Tech (or equivalent). At IITs/NITs, an M.Tech seat comes with a monthly stipend (~₹12,400), making it nearly free. Applications open mid-year; the exam is in February.",
+              "tip": "Start GATE prep 8-12 months early; your subject score decides IIT vs NIT vs PSU.",
               "benefits": [
-                "Specialization depth",
-                "GATE scholarship for M.Tech",
-                "MS abroad = immigration"
+                "Entrance: GATE",
+                "Score valid 3 years",
+                "IIT/NIT seats are funded + stipend"
               ],
               "drawbacks": [
-                "2-3 years more",
-                "ROI unclear for some branches"
+                "Highly competitive",
+                "One exam window per year",
+                "Branch-specific syllabus"
               ],
               "topColleges": [
                 "IIT Bombay",
                 "IIT Madras",
                 "IISc",
-                "Stanford",
-                "CMU (US)",
-                "TU Munich (Germany)"
+                "IIT Delhi",
+                "NIT Trichy"
               ],
-              "topRecruiters": [
-                "Google",
-                "Microsoft",
-                "Intel",
-                "Qualcomm",
-                "Samsung Research",
-                "Nvidia"
-              ],
-              "avgCTC": "₹12-30 LPA (M.Tech); $100-180K (MS US)",
               "furtherLinks": [
                 {
-                  "title": "GATE — Graduate Aptitude Test in Engineering (Wikipedia)",
-                  "url": "https://en.wikipedia.org/wiki/Graduate_Aptitude_Test_in_Engineering"
+                  "title": "GATE — official website",
+                  "url": "https://gate.iitk.ac.in/"
                 },
                 {
-                  "title": "M.Tech vs MS vs job after B.Tech — video guides",
-                  "url": "https://www.youtube.com/results?search_query=mtech%20vs%20ms%20vs%20job%20after%20btech%20gate%20india"
+                  "title": "GATE preparation strategy — guides",
+                  "url": "https://www.youtube.com/results?search_query=gate%20exam%20preparation%20strategy%20mtech%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "ms_abroad": {
+            "label": "MS Abroad — via GRE",
+            "icon": "🌍",
+            "info": {
+              "detail": "An MS (Master of Science) abroad — US, Germany, Canada, Australia — is the route to global research and tech careers plus immigration. Admission needs the GRE (general test), an English test (TOEFL/IELTS), a strong SOP, letters of recommendation, and your transcripts. The US offers up to 3 years of post-study work (STEM OPT); Germany has tuition-free public universities. Apply 9-12 months before the intake (Fall/Spring).",
+              "tip": "GRE + TOEFL/IELTS + a sharp SOP and 2-3 strong LORs — start a year ahead.",
+              "benefits": [
+                "Entrance: GRE + TOEFL/IELTS",
+                "SOP + LORs matter as much as scores",
+                "US STEM OPT = 3 yrs work"
+              ],
+              "drawbacks": [
+                "Expensive (₹25-60 lakh)",
+                "Visa uncertainty",
+                "Long application cycle"
+              ],
+              "topColleges": [
+                "MIT",
+                "Stanford",
+                "CMU",
+                "TU Munich",
+                "University of Toronto"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "GRE — official (ETS)",
+                  "url": "https://www.ets.org/gre.html"
+                },
+                {
+                  "title": "MS abroad application process — guides",
+                  "url": "https://www.youtube.com/results?search_query=ms%20abroad%20application%20process%20gre%20toefl%20sop%20india"
                 }
               ]
             },
             "children": {}
           },
           "mba": {
-            "label": "MBA",
+            "label": "MBA — via CAT / GMAT",
             "icon": "📊",
             "info": {
-              "detail": "MBA with CAT as primary entrance for IIMs. IIM ABC produce median packages of ₹25-35 LPA. Valuable as career switch tool — engineers to consulting/finance. Specializations: finance, marketing, operations, analytics.",
-              "tip": "2-4 years work experience before MBA gives best ROI.",
+              "detail": "An MBA is the premier management degree. In India, admission runs through CAT (for IIMs and most top schools), with XAT (XLRI) and NMAT/SNAP as alternatives; ISB and global schools take the GMAT/GRE. The process is exam score → shortlist → WAT/GD + Personal Interview. Most top programmes value 0-4 years of work experience. CAT is held in November; applications open mid-year.",
+              "tip": "CAT for IIMs, GMAT for ISB/abroad — and prep your profile (work-ex, extracurriculars), not just the score.",
               "benefits": [
-                "Career accelerator",
-                "₹15-40 LPA from IIMs",
-                "Network worth crores"
+                "Entrance: CAT / GMAT (XAT, NMAT, SNAP)",
+                "Then WAT-GD + Interview",
+                "Work-ex helps admissions"
               ],
               "drawbacks": [
-                "CAT competitive",
-                "₹15-25L fees",
-                "2 years opportunity cost"
+                "CAT is fiercely competitive",
+                "Multi-stage selection",
+                "High fees at top schools"
               ],
               "topColleges": [
                 "IIM Ahmedabad",
@@ -20843,75 +20863,266 @@ const DEFAULT_CAREER_DATA = {
                 "XLRI",
                 "FMS Delhi"
               ],
-              "topRecruiters": [
-                "McKinsey",
-                "BCG",
-                "Bain",
-                "Goldman Sachs",
-                "Amazon",
-                "HUL",
-                "P&G"
-              ],
-              "avgCTC": "₹25-35 LPA (IIM ABC median)",
               "furtherLinks": [
                 {
-                  "title": "CAT — Common Admission Test (IIMs, official)",
+                  "title": "CAT — official (IIMs)",
                   "url": "https://iimcat.ac.in/"
                 },
                 {
-                  "title": "Is an MBA worth it? CAT & B-school guide",
-                  "url": "https://www.youtube.com/results?search_query=mba%20worth%20it%20india%20cat%20iim%20placements"
+                  "title": "GMAT — official (mba.com)",
+                  "url": "https://www.mba.com/exams/gmat-exam"
                 }
               ]
             },
             "children": {}
           },
-          "abroad_ms": {
-            "label": "Study Abroad (Masters)",
-            "icon": "🌍",
+          "msc": {
+            "label": "M.Sc — via IIT JAM / CUET-PG",
+            "icon": "🔬",
             "info": {
-              "detail": "US remains top for STEM MS with 3-year OPT. Germany offers tuition-free public universities. Canada's PR pathway makes it attractive. ROI depends on university, program, and job market.",
-              "tip": "Germany offers tuition-free MS — explore DAAD scholarships.",
+              "detail": "M.Sc is a 2-year science master's. The premier entrance is IIT JAM (Joint Admission test for Masters) for funded M.Sc seats at IITs and IISc; central universities admit via CUET-PG, and many state universities run their own tests. Eligibility is a relevant B.Sc. JAM is held in February with applications from September; it also feeds integrated PhD programmes.",
+              "tip": "Crack IIT JAM for IIT/IISc M.Sc — the best-value, research-friendly science path.",
               "benefits": [
-                "Global education",
-                "Immigration pathway",
-                "Better research infra"
+                "Entrance: IIT JAM / CUET-PG",
+                "Funded M.Sc at IITs/IISc",
+                "Feeds integrated PhD too"
               ],
               "drawbacks": [
-                "₹25-60 lakh investment",
-                "Visa uncertainty"
+                "JAM is competitive",
+                "Subject-specific syllabus",
+                "University exams vary"
               ],
               "topColleges": [
-                "MIT",
-                "Stanford",
-                "CMU (US)",
-                "TU Munich",
-                "RWTH Aachen (Germany)",
-                "UofT",
-                "Waterloo (Canada)"
+                "IISc",
+                "IITs (JAM)",
+                "IISERs",
+                "Delhi University",
+                "Hyderabad University"
               ],
-              "topRecruiters": [
-                "Google",
-                "Amazon",
-                "Microsoft (US)",
-                "SAP",
-                "Siemens (Germany)",
-                "Shopify",
-                "RBC (Canada)"
-              ],
-              "avgCTC": "$80-180K (US); €50-80K (Germany)",
               "furtherLinks": [
                 {
-                  "title": "GRE — ETS (official)",
-                  "url": "https://www.ets.org/gre"
+                  "title": "IIT JAM — official",
+                  "url": "https://jam.iitm.ac.in/"
                 },
                 {
-                  "title": "IELTS — official",
-                  "url": "https://www.ielts.org/"
+                  "title": "CUET-PG — official (NTA)",
+                  "url": "https://cuet.nta.nic.in/"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mca": {
+            "label": "MCA — via NIMCET / CUET-PG",
+            "icon": "💻",
+            "info": {
+              "detail": "MCA (Master of Computer Applications) is the master's route into software for BCA, B.Sc, and other graduates. The main entrance for NIT MCA programmes is NIMCET (NIT MCA Common Entrance Test); central universities admit via CUET-PG, and several states run their own tests. Eligibility typically requires Mathematics at 10+2 or graduation level. NIMCET is held mid-year.",
+              "tip": "Target NIT MCA via NIMCET — strong placements at an affordable fee.",
+              "benefits": [
+                "Entrance: NIMCET / CUET-PG",
+                "Maths eligibility required",
+                "Strong NIT placement access"
+              ],
+              "drawbacks": [
+                "NIMCET competitive",
+                "2-3 year duration",
+                "DSA prep still needed"
+              ],
+              "topColleges": [
+                "NIT Trichy",
+                "NIT Warangal",
+                "NIT Surathkal",
+                "HCU",
+                "Pune University"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "NIMCET — official",
+                  "url": "https://www.nimcet.in/"
                 },
                 {
-                  "title": "MS abroad from India — application guide",
-                  "url": "https://www.youtube.com/results?search_query=ms%20abroad%20from%20india%20application%20guide%20gre%20toefl"
+                  "title": "NIMCET preparation — guides",
+                  "url": "https://www.youtube.com/results?search_query=nimcet%20preparation%20mca%20nit%20india%20strategy"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "llm": {
+            "label": "LLM — via CLAT-PG",
+            "icon": "⚖️",
+            "info": {
+              "detail": "The LLM is a 1-year postgraduate law degree. Admission to the National Law Universities is through CLAT-PG (the postgraduate Common Law Admission Test); some institutes (like DU) and foreign universities have their own processes. Eligibility is an LLB / 5-year integrated law degree. CLAT-PG tests comprehension of constitutional and other core law subjects, and is held in December.",
+              "tip": "CLAT-PG opens NLU LLM seats; abroad (Harvard LLM, Oxford BCL) needs separate applications.",
+              "benefits": [
+                "Entrance: CLAT-PG",
+                "1-year degree",
+                "Specialise: corporate, IP, constitutional"
+              ],
+              "drawbacks": [
+                "CLAT-PG competitive",
+                "Limited NLU seats",
+                "Abroad routes costly"
+              ],
+              "topColleges": [
+                "NLSIU Bangalore",
+                "NALSAR",
+                "NLU Delhi",
+                "Faculty of Law DU",
+                "Harvard (LLM)"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "CLAT — official (Consortium of NLUs)",
+                  "url": "https://consortiumofnlus.ac.in/"
+                },
+                {
+                  "title": "CLAT-PG & LLM admissions — guides",
+                  "url": "https://www.youtube.com/results?search_query=clat%20pg%20llm%20admission%20preparation%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mpharm": {
+            "label": "M.Pharm — via GPAT",
+            "icon": "💊",
+            "info": {
+              "detail": "M.Pharm is a 2-year pharmacy master's specialising in pharmaceutics, pharmacology, analysis, or pharma management. The national entrance is GPAT (Graduate Pharmacy Aptitude Test); a good GPAT score also brings AICTE scholarships and admission to top institutes like NIPER (via the NIPER JEE). Eligibility is a B.Pharm. GPAT is conducted annually, usually early in the year.",
+              "tip": "Crack GPAT for scholarships and NIPER JEE for India's top pharma research seats.",
+              "benefits": [
+                "Entrance: GPAT (NIPER JEE for NIPERs)",
+                "AICTE scholarship with GPAT",
+                "Specialise R&D/QA/regulatory"
+              ],
+              "drawbacks": [
+                "GPAT competitive",
+                "Specialisation locks focus",
+                "Lab-intensive"
+              ],
+              "topColleges": [
+                "NIPER Mohali",
+                "Jamia Hamdard",
+                "BITS Pilani",
+                "ICT Mumbai",
+                "Manipal"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "GPAT — official (NTA)",
+                  "url": "https://natboard.edu.in/"
+                },
+                {
+                  "title": "GPAT & NIPER preparation — guides",
+                  "url": "https://www.youtube.com/results?search_query=gpat%20niper%20jee%20preparation%20mpharm%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mdes": {
+            "label": "M.Des — via CEED",
+            "icon": "🎨",
+            "info": {
+              "detail": "M.Des (Master of Design) specialises in product, UX/interaction, communication, or industrial design. Admission to the IITs (IDC) and IISc is through CEED (Common Entrance Exam for Design); NID runs its own DAT (Design Aptitude Test). Both test visualisation, drawing, and design reasoning, followed by a portfolio review and interview. Any graduate can apply. CEED is held in January.",
+              "tip": "Crack CEED/NID DAT and obsess over your portfolio — it decides the final selection.",
+              "benefits": [
+                "Entrance: CEED (IITs) / NID DAT",
+                "Open to any graduate",
+                "Portfolio + interview round"
+              ],
+              "drawbacks": [
+                "Portfolio pressure",
+                "Creative aptitude tested",
+                "Limited seats"
+              ],
+              "topColleges": [
+                "NID Ahmedabad",
+                "IIT Bombay (IDC)",
+                "IIT Delhi",
+                "IIT Guwahati",
+                "IISc"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "CEED — official (IIT Bombay)",
+                  "url": "https://www.ceed.iitb.ac.in/"
+                },
+                {
+                  "title": "CEED & NID prep — guides",
+                  "url": "https://www.youtube.com/results?search_query=ceed%20nid%20dat%20preparation%20m%20des%20portfolio%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mcom_ma": {
+            "label": "M.Com / MA — via CUET-PG",
+            "icon": "📖",
+            "info": {
+              "detail": "M.Com (commerce) and MA (arts & humanities) are 2-year master's degrees admitted largely through CUET-PG for central universities, with state and private universities running their own tests or merit-based admission. Eligibility is a relevant bachelor's. These degrees suit teaching (with UGC-NET), civil services, research, and policy. CUET-PG applications open early in the year.",
+              "tip": "CUET-PG for central universities; clear UGC-NET later to unlock college lecturing.",
+              "benefits": [
+                "Entrance: CUET-PG / university tests",
+                "Path to NET + teaching",
+                "Affordable, widely available"
+              ],
+              "drawbacks": [
+                "Many separate university tests",
+                "Modest standalone pay",
+                "NET/PhD for academia"
+              ],
+              "topColleges": [
+                "Delhi School of Economics",
+                "JNU",
+                "Hyderabad University",
+                "BHU",
+                "Christ University"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "CUET-PG — official (NTA)",
+                  "url": "https://cuet.nta.nic.in/"
+                },
+                {
+                  "title": "UGC NET — official",
+                  "url": "https://ugcnet.nta.ac.in/"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "phd": {
+            "label": "PhD — via NET / GATE / Institute Tests",
+            "icon": "🔬",
+            "info": {
+              "detail": "A PhD is the highest research degree (4-6 years). Admission routes include UGC-NET/CSIR-NET (with JRF for a funded fellowship), GATE (for engineering PhDs), and institute-specific written tests plus interviews. A master's is usually required, though some integrated and direct-PhD routes admit bright bachelor's graduates. Fellowships pay ~₹37,000-42,000/month. Most institutes admit twice a year.",
+              "tip": "Clear NET-JRF or CSIR-NET-JRF for a funded PhD; your research proposal and advisor fit are decisive.",
+              "benefits": [
+                "Entrance: NET-JRF / GATE / institute test",
+                "Funded fellowship (₹37-42k/mo)",
+                "Advisor fit is crucial"
+              ],
+              "drawbacks": [
+                "Long 4-6 year commitment",
+                "Competitive funding",
+                "Research uncertainty"
+              ],
+              "topColleges": [
+                "IISc",
+                "IITs",
+                "TIFR",
+                "IISERs",
+                "Central universities"
+              ],
+              "furtherLinks": [
+                {
+                  "title": "CSIR-UGC NET — official",
+                  "url": "https://csirnet.nta.ac.in/"
+                },
+                {
+                  "title": "How to get into a PhD in India — guides",
+                  "url": "https://www.youtube.com/results?search_query=how%20to%20get%20phd%20admission%20india%20net%20jrf%20funding"
                 }
               ]
             },
@@ -20936,257 +21147,3160 @@ const DEFAULT_CAREER_DATA = {
           ]
         },
         "children": {
-          "tech": {
-            "label": "Tech / IT Roles",
-            "icon": "💻",
+          "btech": {
+            "label": "B.Tech (Bachelor of Technology)",
+            "icon": "⚙️",
+            "description": "Welcome to the biggest job market!",
             "info": {
-              "detail": "Tech/IT roles — software development, data, QA, SRE/DevOps, and product — remain the largest graduate employer in India, spanning service giants (TCS, Infosys, Wipro), global product firms, and startups. Campus placements hinge on Data Structures & Algorithms, projects, and internships far more than on your degree branch. Building a GitHub portfolio, solving problems on LeetCode, and contributing to real projects matter more than marks for landing the higher-paying product roles.",
-              "tip": "DSA + system design + projects = placement trifecta.",
+              "detail": "B.Tech (Bachelor of Technology) is a 4-year professional engineering degree and India's largest graduate pipeline. It opens one of the most diverse job markets on earth — your desk could be an air-conditioned product office building games and software, or an offshore oil rig, or a construction site, or a chip-design lab. The branch you study matters, but so does how hard you push your skills beyond the syllabus. Explore the major engineering branches below and the career paths each one unlocks.",
+              "tip": "Keep improving and never settle for less",
               "benefits": [
-                "Largest campus recruiter",
-                "₹4-20 LPA",
-                "Remote options"
+                "High demand",
+                "Good pay (mostly)"
               ],
               "drawbacks": [
-                "Service companies monotonous",
-                "Bench periods",
-                "Support roles initially"
+                "Competitive",
+                "Hard work location (sometimes)"
               ],
-              "topColleges": [
-                "IITs",
-                "NITs",
-                "BITS",
-                "IIIT Hyderabad"
+              "avgCTC": "₹4-50 LPA"
+            },
+            "children": {
+              "cs": {
+                "label": "Computer Science",
+                "icon": "💻",
+                "info": {
+                  "detail": "Computer Science is the undisputed king of engineering branches by placements. CSE graduates from top colleges command ₹15-50 LPA, with some IIT grads receiving international offers above ₹1 Cr. The curriculum covers algorithms, OS, databases, networks, and AI/ML. The real edge comes from self-driven learning — competitive programming, open-source, and personal projects. There are several websites like hackerrank where you can start competing with fellow coders, earn badges and make yourself sharp in the field.",
+                  "tip": "Learn to code early — even basic Python opens huge doors.",
+                  "benefits": [
+                    "Highest demand in job market",
+                    "Startup-friendly skills",
+                    "Remote work options"
+                  ],
+                  "drawbacks": [
+                    "Rapidly evolving — constant learning",
+                    "Highly competitive",
+                    "Screen-heavy lifestyle"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Delhi",
+                    "IIT Madras",
+                    "IIIT Hyderabad",
+                    "BITS Pilani",
+                    "IIT Kanpur"
+                  ],
+                  "topRecruiters": [
+                    "Google",
+                    "Microsoft",
+                    "Amazon",
+                    "Meta",
+                    "Apple",
+                    "Goldman Sachs",
+                    "Uber",
+                    "Flipkart",
+                    "Atlassian"
+                  ],
+                  "avgCTC": "₹8-40 LPA (top colleges)",
+                  "furtherLinks": [
+                    {
+                      "title": "How to Start Coding — CS50 Lecture 0",
+                      "url": "https://www.youtube.com/watch?v=IDDmrzzB14M"
+                    },
+                    {
+                      "title": "Complete Roadmap to CSE",
+                      "url": "https://roadmap.sh/computer-science"
+                    }
+                  ]
+                },
+                "children": {
+                  "sde": {
+                    "label": "Software Development",
+                    "icon": "🖥️",
+                    "info": {
+                      "detail": "Software Development Engineers design, build, and maintain applications powering modern businesses. From frontend web apps to backend microservices and mobile apps, SDE is the most versatile tech role. The interview process at top companies focuses on DSA, system design, and behavioral questions.",
+                      "tip": "Build projects on GitHub — they speak louder than CGPA.",
+                      "benefits": [
+                        "Core tech role everywhere",
+                        "Product-building skills",
+                        "Remote-friendly"
+                      ],
+                      "drawbacks": [
+                        "Leetcode grind",
+                        "Long startup hours",
+                        "Burnout common"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IIT Delhi",
+                        "IIIT Hyderabad",
+                        "BITS Pilani"
+                      ],
+                      "topRecruiters": [
+                        "Google",
+                        "Microsoft",
+                        "Amazon",
+                        "Flipkart",
+                        "Atlassian",
+                        "Uber",
+                        "Razorpay",
+                        "PhonePe"
+                      ],
+                      "avgCTC": "₹12-50 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "DSA Roadmap for Placements",
+                          "url": "https://youtu.be/pcICfCvzlQw?si=VrCzRpTysJqZWR_5"
+                        },
+                        {
+                          "title": "Roadmap.sh — Full Stack Developer",
+                          "url": "https://roadmap.sh/full-stack"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "datascience": {
+                    "label": "Data Science / Analytics",
+                    "icon": "📊",
+                    "info": {
+                      "detail": "Data Science sits at the intersection of statistics, programming, and domain expertise. Companies now want specialists (NLP, CV, recommendation systems) over generalists. A strong statistics foundation is non-negotiable.",
+                      "tip": "Master SQL and Python — bread and butter of data roles.",
+                      "benefits": [
+                        "Data-driven decisions",
+                        "Every industry needs it",
+                        "Stats + coding mix"
+                      ],
+                      "drawbacks": [
+                        "Needs strong statistics",
+                        "Tool landscape changes fast"
+                      ],
+                      "topColleges": [
+                        "ISI Kolkata",
+                        "IIT Madras",
+                        "IIT Bombay",
+                        "IIIT Hyderabad",
+                        "CMI Chennai"
+                      ],
+                      "topRecruiters": [
+                        "Google",
+                        "Amazon",
+                        "McKinsey",
+                        "Tiger Analytics",
+                        "Fractal",
+                        "Mu Sigma",
+                        "Walmart Labs"
+                      ],
+                      "avgCTC": "₹10-30 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "Data Science Full Course — freeCodeCamp",
+                          "url": "https://www.youtube.com/watch?v=ua-CiDNNj30"
+                        },
+                        {
+                          "title": "Kaggle Learn Data Visualization",
+                          "url": "https://www.kaggle.com/learn/data-visualization"
+                        },
+                        {
+                          "title": "Data Analytics with Python (IIT Roorkee Course)",
+                          "url": "https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs86"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "cybersecurity": {
+                    "label": "Cybersecurity",
+                    "icon": "🔐",
+                    "info": {
+                      "detail": "Cybersecurity professionals protect organizations from digital threats. India alone needs over 1 million cybersecurity professionals and the gap is widening. Bug bounty platforms like HackerOne offer lucrative side income.",
+                      "tip": "Start with CompTIA Security+ and CTF competitions.",
+                      "benefits": [
+                        "Massive talent shortage",
+                        "Critical for every org",
+                        "Ethical hacking is exciting"
+                      ],
+                      "drawbacks": [
+                        "Constant threat updates",
+                        "Certifications expensive",
+                        "On-call pressure"
+                      ],
+                      "topColleges": [
+                        "IIT Kanpur",
+                        "IIT Madras",
+                        "IIIT Delhi",
+                        "NIT Surathkal"
+                      ],
+                      "topRecruiters": [
+                        "Deloitte",
+                        "PwC",
+                        "CrowdStrike",
+                        "Palo Alto Networks",
+                        "Cisco",
+                        "TCS"
+                      ],
+                      "avgCTC": "₹8-25 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "Cybersecurity Career Roadmap",
+                          "url": "https://roadmap.sh/cyber-security"
+                        },
+                        {
+                          "title": "TryHackMe — Learn Hacking",
+                          "url": "https://tryhackme.com"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "devops": {
+                    "label": "DevOps / Cloud",
+                    "icon": "☁️",
+                    "info": {
+                      "detail": "DevOps engineers automate the pipeline between development and operations. They manage CI/CD, containerization (Docker, Kubernetes), infrastructure-as-code (Terraform), and cloud platforms. With every company moving to cloud, DevOps/SRE roles are essential.",
+                      "tip": "Get AWS Certified — most recognized cloud certification.",
+                      "benefits": [
+                        "Bridges dev and ops",
+                        "Cloud skills future-proof",
+                        "Automation focus"
+                      ],
+                      "drawbacks": [
+                        "Steep learning curve",
+                        "On-call duties",
+                        "Less creative than frontend"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "BITS Pilani",
+                        "NIT Trichy",
+                        "IIIT Hyderabad"
+                      ],
+                      "topRecruiters": [
+                        "Amazon AWS",
+                        "Microsoft Azure",
+                        "Google Cloud",
+                        "Hashicorp",
+                        "Red Hat",
+                        "Razorpay"
+                      ],
+                      "avgCTC": "₹10-35 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "DevOps Roadmap",
+                          "url": "https://roadmap.sh/devops"
+                        },
+                        {
+                          "title": "AWS Cloud Practitioner Course",
+                          "url": "https://www.youtube.com/watch?v=SOTamWNgDKc"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  }
+                }
+              },
+              "mech": {
+                "label": "Mechanical Engineering",
+                "icon": "🔧",
+                "info": {
+                  "detail": "Mechanical Engineering covers thermodynamics, fluid mechanics, manufacturing, and machine design. The smart move is combining mechanical skills with emerging tech — robotics, 3D printing, EV design, and CFD. Mech engineers with coding skills are significantly more employable. \n\nThis is the field for you if classical mechanics excited you in school. For most of your life you will be dealing with forces, pressures, stress, strain and so on. From mammoth rockets to computer cooling systems, you will find mechanical engineers' contributions everywhere. In our country, they are one of the highest recruits in institutions like ISRO, DRDO and BARC. Definitely monetary opportunities won't be as high as computer science and it's allied fields but you can survive nicely, the field is ever evolving filled with new advancements every other day.",
+                  "tip": "Combine with coding, CAD and robotics for best opportunities.",
+                  "benefits": [
+                    "Core engineering fundamentals",
+                    "Auto",
+                    "aero",
+                    "manufacturing sectors",
+                    "Design & innovation"
+                  ],
+                  "drawbacks": [
+                    "Fewer IT jobs",
+                    "May need masters for research",
+                    "Limited remote work"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Delhi",
+                    "IIT Madras",
+                    "IIT Kanpur",
+                    "NIT Trichy",
+                    "BITS Pilani"
+                  ],
+                  "topRecruiters": [
+                    "Tata Motors",
+                    "Mahindra",
+                    "Maruti Suzuki",
+                    "Bosch",
+                    "L&T",
+                    "ISRO",
+                    "DRDO",
+                    "Cummins"
+                  ],
+                  "avgCTC": "₹5-15 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Mechanical Engineering Careers (Engineering Gone Wild Channel)",
+                      "url": "https://youtu.be/lQzFxV2vPy8?si=SUjfiYflc2ApMTTn"
+                    },
+                    {
+                      "title": "Mechanical Engineering Roadmap",
+                      "url": "https://roadmap.sh/r/mechanical-engineer-0yi5s"
+                    },
+                    {
+                      "title": "Best Certifications to Gain for Mech Engineers",
+                      "url": "https://youtu.be/vqjzfw8pUSc?si=yAVzTSYmTnI10NBs"
+                    }
+                  ]
+                },
+                "children": {
+                  "automotive": {
+                    "label": "Automotive Engineering",
+                    "icon": "🚗",
+                    "info": {
+                      "detail": "The automotive sector is undergoing its biggest transformation with EVs. Companies like Tata Motors, Ola Electric, and Ather Energy are hiring for battery tech, motor design, and vehicle software. If mobility, speed and art excite you, my friend, revv up, this is your field. Since the invention of wheel, the field has come a long way to the development of F1 racecars where every millimeter of wing and milligram of mass matters for the performance.",
+                      "tip": "EV and autonomous vehicle skills are the golden ticket.",
+                      "benefits": [
+                        "EV revolution creating roles",
+                        "Work with top OEMs"
+                      ],
+                      "drawbacks": [
+                        "Location-dependent",
+                        "Slow initial growth"
+                      ],
+                      "topColleges": [
+                        "IIT Madras",
+                        "IIT Delhi",
+                        "BITS Pilani",
+                        "COEP Pune"
+                      ],
+                      "topRecruiters": [
+                        "Tata Motors",
+                        "Mahindra",
+                        "Ola Electric",
+                        "Ather Energy",
+                        "Hyundai India",
+                        "Bosch"
+                      ],
+                      "avgCTC": "₹5-15 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "Intro to Racecar Engineering",
+                          "url": "https://youtu.be/iIKHocge9Sc?si=OaQC9ziTK8zNuV_p"
+                        },
+                        {
+                          "title": "Career Opportunities",
+                          "url": "https://www.lpu.in/blog/top-career-opportunities-after-automobile-engineering-course-india/"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "robotics": {
+                    "label": "Robotics & Automation",
+                    "icon": "🦾",
+                    "info": {
+                      "detail": "Robotics combines mechanical, electrical, and computer science. Industrial and service robots are growing rapidly. In India, Addverb Technologies and GreyOrange are leading players. You can also build your career in this field by joining top research labs in colleges like IISc Bangalore for post-grad who have focused center of excellence for robotics with all the fundings you would need to work efficiently.",
+                      "tip": "ROS (Robot Operating System) is the skill to invest in.",
+                      "benefits": [
+                        "Cutting-edge field",
+                        "Industry 4.0 demand",
+                        "Interdisciplinary"
+                      ],
+                      "drawbacks": [
+                        "Requires coding + hardware",
+                        "Expensive self-learning"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IIT Madras",
+                        "IIIT Hyderabad"
+                      ],
+                      "topRecruiters": [
+                        "Addverb Technologies",
+                        "GreyOrange",
+                        "Bosch",
+                        "ABB",
+                        "Amazon Robotics"
+                      ],
+                      "avgCTC": "₹6-20 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "Robotics CNBC",
+                          "url": "https://youtu.be/z_uGhq2ayVA?si=6YxxJprtAluMh2bT"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "aerospace": {
+                    "label": "Aerospace / Defence",
+                    "icon": "✈️",
+                    "info": {
+                      "detail": "India's aerospace sector is at an inflection point with ISRO's commercial arm, private players like Skyroot and Agnikul, and defence modernization. The Indian Space Policy 2023 opened the sector to private investment. On the other hand, the defense sector is a huge ecosystem in itself with govt organization like DRDO working alongside with several private industries like TATA Advanced Systems Limited. This sector sits on top of the mechanical engineering due to the cutting edge technologies used. From cryogenic temperatures to supersonic speed, this sector leads you to some regimes of physics you won't be able to deal in other sectors.",
+                      "tip": "GATE exam is your key gateway to ISRO and DRDO!",
+                      "benefits": [
+                        "Prestigious sector",
+                        "ISRO",
+                        "DRDO",
+                        "HAL",
+                        "High intellectual satisfaction"
+                      ],
+                      "drawbacks": [
+                        "Limited private sector",
+                        "Security clearance",
+                        "Slow hiring"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IIT Madras",
+                        "IIT Kanpur",
+                        "IIST Trivandrum",
+                        "BIT Mesra"
+                      ],
+                      "topRecruiters": [
+                        "ISRO",
+                        "DRDO",
+                        "HAL",
+                        "Skyroot Aerospace",
+                        "Agnikul",
+                        "Boeing India",
+                        "Godrej Aerospace",
+                        "TASL"
+                      ],
+                      "avgCTC": "₹6-18 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "ISRO Careers",
+                          "url": "https://www.isro.gov.in/careers.html"
+                        },
+                        {
+                          "title": "Prof Satya Podcast on Building Career in Aerospace",
+                          "url": "https://youtu.be/v1mxH959jM4?si=2RP5_VSkWNgkTU5r"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  }
+                }
+              },
+              "ece": {
+                "label": "Electronics & Communication",
+                "icon": "📡",
+                "info": {
+                  "detail": "ECE bridges the physical and digital worlds. India's ₹76,000 crore semiconductor mission has made ECE graduates more valuable. VLSI design, embedded systems, IoT, and 5G are high-growth areas.",
+                  "tip": "Focus on embedded systems or VLSI for niche advantage.",
+                  "benefits": [
+                    "VLSI",
+                    "telecom",
+                    "IoT industries",
+                    "Hardware & software mix",
+                    "Semiconductor boom"
+                  ],
+                  "drawbacks": [
+                    "Overlap with CS",
+                    "Lab-intensive",
+                    "Hardware roles less flexible"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Madras",
+                    "NIT Trichy",
+                    "BITS Pilani",
+                    "IIIT Hyderabad"
+                  ],
+                  "topRecruiters": [
+                    "Qualcomm",
+                    "Intel",
+                    "Texas Instruments",
+                    "Samsung",
+                    "MediaTek",
+                    "Broadcom",
+                    "Nvidia"
+                  ],
+                  "avgCTC": "₹6-20 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "ECE Career Options",
+                      "url": "https://youtu.be/W5l2XLGh1ig?si=bfPZwL4rnR26spfS"
+                    },
+                    {
+                      "title": "ECE Career Paths (LPU Blog)",
+                      "url": "https://www.lpu.in/blog/career-paths-after-b-tech-electronics-and-communication-engineering-ece/"
+                    }
+                  ]
+                },
+                "children": {
+                  "vlsi": {
+                    "label": "VLSI / Chip Design",
+                    "icon": "🔌",
+                    "info": {
+                      "detail": "VLSI engineers design the chips that power every electronic device. With India's semiconductor mission, this is a strategic national priority. Bangalore and Hyderabad are the twin hubs.",
+                      "tip": "Learn Verilog/VHDL and EDA tools.",
+                      "benefits": [
+                        "India semiconductor push",
+                        "Deep technical work"
+                      ],
+                      "drawbacks": [
+                        "Very niche",
+                        "Long learning curve",
+                        "Limited to Bangalore/Hyderabad"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IIT Madras",
+                        "IISc Bangalore",
+                        "IIIT Hyderabad"
+                      ],
+                      "topRecruiters": [
+                        "Intel",
+                        "Qualcomm",
+                        "Texas Instruments",
+                        "Synopsys",
+                        "Cadence",
+                        "Samsung",
+                        "AMD",
+                        "Nvidia"
+                      ],
+                      "avgCTC": "₹10-30 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "VLSI Career Explained",
+                          "url": "https://youtu.be/8WdYWx48ac8?si=pzjNTHgwieyG7LlN"
+                        },
+                        {
+                          "title": "India Semiconductor Mission",
+                          "url": "https://ism.gov.in/"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "iot": {
+                    "label": "IoT & Embedded Systems",
+                    "icon": "📶",
+                    "info": {
+                      "detail": "IoT connects physical devices to the internet for smart homes, industrial monitoring, and wearable health devices. Embedded engineers write firmware in C/C++ for microcontrollers.",
+                      "tip": "Build a home automation project — best portfolio piece.",
+                      "benefits": [
+                        "Smart devices everywhere",
+                        "Startup opportunities"
+                      ],
+                      "drawbacks": [
+                        "Hardware debugging painful",
+                        "Fragmented ecosystem"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "BITS Pilani",
+                        "NIT Trichy",
+                        "VIT"
+                      ],
+                      "topRecruiters": [
+                        "Bosch",
+                        "Honeywell",
+                        "Siemens",
+                        "Samsung",
+                        "Tata Elxsi",
+                        "KPIT"
+                      ],
+                      "avgCTC": "₹5-18 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "What is IoT",
+                          "url": "https://www.youtube.com/watch?v=LlhmzVL5bm8"
+                        },
+                        {
+                          "title": "IoT Careers",
+                          "url": "https://youtu.be/MR3sW6vTm5Y?si=FU1ozGDUFHsNUHv_"
+                        },
+                        {
+                          "title": "Prof Florian on Embedded Systems Career in 2026",
+                          "url": "https://youtu.be/vkgGmkR7gIo?si=47ENzptij67CHUiK"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  }
+                }
+              },
+              "civil": {
+                "label": "Civil Engineering",
+                "icon": "🏗️",
+                "info": {
+                  "detail": "Civil Engineering covers structural design, construction management, transportation, and water resources. India's highway, metro, and smart city projects ensure steady demand. PSUs (NHAI, NHPC) and L&T are major employers. Several indian colleges are exploring cutting edge techs like 3D printing in construction. India is a developing country, indeed a lot of construction is on our way. The field is still evolving and if you are really passionate about building things that touch sky, this is the field for you.",
+                  "tip": "GATE score is crucial for PSU recruitment.",
+                  "benefits": [
+                    "Infrastructure always in demand",
+                    "Govt job options",
+                    "Tangible impact"
+                  ],
+                  "drawbacks": [
+                    "Field work in tough conditions",
+                    "Slower growth vs IT"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Delhi",
+                    "IIT Madras",
+                    "IIT Roorkee",
+                    "NIT Trichy"
+                  ],
+                  "topRecruiters": [
+                    "L&T Construction",
+                    "Tata Projects",
+                    "NHAI",
+                    "CPWD",
+                    "Shapoorji Pallonji"
+                  ],
+                  "avgCTC": "₹4-12 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Civil Engineering Career in 2026 by Nishant",
+                      "url": "https://youtu.be/cmNZfmOkg6Q?si=oKoQGTe0mXkq44p-"
+                    },
+                    {
+                      "title": "Career Opportunities after GATE — Made Easy",
+                      "url": "https://youtu.be/i8kX1b2Q4kI?si=CALcVjCW6rQBONbx"
+                    },
+                    {
+                      "title": "What Civil Engineers Design and Build - Hoover Dam",
+                      "url": "https://youtu.be/hopBzK6BOwo?si=gcbSIods7Zjajh03"
+                    },
+                    {
+                      "title": "What Civil Engineers Design and Build - Burj Khalifa",
+                      "url": "https://youtu.be/SqFx0cBR0oo?si=mFITeP0ubVTM-pSb"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "electrical": {
+                "label": "Electrical Engineering",
+                "icon": "⚡",
+                "info": {
+                  "detail": "Electrical Engineering covers power generation, transmission, and distribution. The transition to renewables and EVs has revitalized the field. PSUs like NTPC and PGCIL offer excellent packages through GATE.",
+                  "tip": "Renewable energy and EVs are making this hot again.",
+                  "benefits": [
+                    "Power sector backbone",
+                    "Govt PSU jobs",
+                    "Renewable energy growth"
+                  ],
+                  "drawbacks": [
+                    "Field postings common",
+                    "Less glamorous perception"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Delhi",
+                    "IIT Madras",
+                    "IIT Kanpur",
+                    "NIT Trichy"
+                  ],
+                  "topRecruiters": [
+                    "NTPC",
+                    "PGCIL",
+                    "BHEL",
+                    "Tata Power",
+                    "Adani Green",
+                    "Siemens",
+                    "Schneider Electric"
+                  ],
+                  "avgCTC": "₹5-14 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Electrical Engineering Scope India",
+                      "url": "https://youtu.be/yA8RJA2rAbo?si=v94-0RZulSTfWZ76"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "aiml": {
+                "label": "AI & Machine Learning",
+                "icon": "🤖",
+                "info": {
+                  "detail": "AI/ML is now a dedicated B.Tech branch at many IITs. The curriculum covers deep learning, NLP, computer vision, and reinforcement learning. The field rewards strong math (linear algebra, probability) and hands-on project experience.",
+                  "tip": "Build projects on Kaggle and GitHub — portfolio > marks.",
+                  "benefits": [
+                    "Cutting edge",
+                    "Extremely high demand",
+                    "Research + industry paths"
+                  ],
+                  "drawbacks": [
+                    "Requires strong math",
+                    "Rapidly changing",
+                    "Curriculum evolving"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Hyderabad",
+                    "IIT Madras",
+                    "IIIT Hyderabad",
+                    "BITS Pilani"
+                  ],
+                  "topRecruiters": [
+                    "Google DeepMind",
+                    "Microsoft Research",
+                    "Amazon AI",
+                    "Nvidia",
+                    "Adobe Research",
+                    "Flipkart"
+                  ],
+                  "avgCTC": "₹12-50 LPA (top tier)",
+                  "furtherLinks": [
+                    {
+                      "title": "ML Full Course — Andrew Ng",
+                      "url": "https://www.youtube.com/watch?v=jGwO_UgTS7I"
+                    },
+                    {
+                      "title": "Fast.ai — Practical Deep Learning",
+                      "url": "https://course.fast.ai"
+                    }
+                  ]
+                },
+                "children": {
+                  "nlp": {
+                    "label": "NLP / LLMs",
+                    "icon": "🗣️",
+                    "info": {
+                      "detail": "NLP has been transformed by Large Language Models. NLP engineers work on chatbots, document understanding, translation, and text generation. Indian companies like Sarvam AI and Krutrim are building India-specific language models.",
+                      "tip": "Fine-tune an open-source LLM — best portfolio piece in 2026.",
+                      "benefits": [
+                        "Hottest AI subfield",
+                        "Research + product roles"
+                      ],
+                      "drawbacks": [
+                        "Compute-intensive",
+                        "Moves extremely fast"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IIIT Hyderabad",
+                        "IIT Madras",
+                        "IISc"
+                      ],
+                      "topRecruiters": [
+                        "Google",
+                        "Microsoft",
+                        "Meta",
+                        "Anthropic",
+                        "Sarvam AI",
+                        "Adobe"
+                      ],
+                      "avgCTC": "₹15-60 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "Stanford CS224N — NLP Course",
+                          "url": "https://www.youtube.com/watch?v=8rXD5-xhemo"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  },
+                  "cv": {
+                    "label": "Computer Vision",
+                    "icon": "👁️",
+                    "info": {
+                      "detail": "Computer Vision enables machines to interpret visual data. Applications include autonomous driving, medical imaging, quality inspection, and AR.",
+                      "tip": "Start with OpenCV, then PyTorch.",
+                      "benefits": [
+                        "Self-driving cars",
+                        "medical imaging",
+                        "Tangible visual output"
+                      ],
+                      "drawbacks": [
+                        "Large dataset needs",
+                        "GPU-intensive"
+                      ],
+                      "topColleges": [
+                        "IIT Bombay",
+                        "IISc Bangalore",
+                        "IIIT Hyderabad"
+                      ],
+                      "topRecruiters": [
+                        "Google",
+                        "Nvidia",
+                        "Tesla",
+                        "Qualcomm",
+                        "Samsung"
+                      ],
+                      "avgCTC": "₹12-40 LPA",
+                      "furtherLinks": [
+                        {
+                          "title": "Computer Vision with OpenCV",
+                          "url": "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+                        },
+                        {
+                          "title": "PyTorch Tutorials",
+                          "url": "https://pytorch.org/tutorials/"
+                        }
+                      ]
+                    },
+                    "children": {}
+                  }
+                }
+              },
+              "chemical": {
+                "label": "Chemical Engineering",
+                "icon": "🧪",
+                "info": {
+                  "detail": "Chemical engineers optimize processes transforming raw materials into products. PSUs like IOCL, BPCL recruit through GATE. Private roles exist in FMCG and specialty chemicals.",
+                  "tip": "Combine with data skills for process analytics.",
+                  "benefits": [
+                    "Petrochemical",
+                    "pharma",
+                    "FMCG",
+                    "PSU opportunities"
+                  ],
+                  "drawbacks": [
+                    "Limited private roles",
+                    "Factory locations"
+                  ],
+                  "topColleges": [
+                    "IIT Bombay",
+                    "IIT Madras",
+                    "IIT Delhi",
+                    "NIT Trichy",
+                    "BITS Pilani"
+                  ],
+                  "topRecruiters": [
+                    "IOCL",
+                    "BPCL",
+                    "Reliance",
+                    "HUL",
+                    "Shell",
+                    "BASF"
+                  ],
+                  "avgCTC": "₹5-15 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Chemical Engineering Career India",
+                      "url": "https://youtu.be/DX-I4lt4pQ8?si=iux58Xkn87fYtXL5"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "biotech": {
+                "label": "Biotech Engineering",
+                "icon": "🧬",
+                "info": {
+                  "detail": "Biotechnology applies biological systems for healthcare, agriculture, and industrial products. Career prospects with just B.Tech are limited — most impactful roles require M.Tech, MS, or PhD. Bioinformatics is the highest-paying niche.",
+                  "tip": "Bioinformatics (biology + coding) is where the real jobs are.",
+                  "benefits": [
+                    "Post-COVID pharma boom",
+                    "Research-oriented",
+                    "Genomics"
+                  ],
+                  "drawbacks": [
+                    "Masters almost mandatory",
+                    "Slow start",
+                    "Limited core companies"
+                  ],
+                  "topColleges": [
+                    "IIT Madras",
+                    "IIT Delhi",
+                    "IIT Guwahati",
+                    "BIT Mesra"
+                  ],
+                  "topRecruiters": [
+                    "Biocon",
+                    "Serum Institute",
+                    "Dr. Reddy's",
+                    "Cipla",
+                    "Bharat Biotech"
+                  ],
+                  "avgCTC": "₹4-10 LPA (₹12-25 with MS/PhD)",
+                  "furtherLinks": [
+                    {
+                      "title": "Biotechnology Career Scope",
+                      "url": "https://youtu.be/wmDzmIZCtcM?si=_uTmjNPF9GFHwpwO"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "bca": {
+            "label": "BCA (Bachelor of Computer Applications)",
+            "icon": "🖥️",
+            "description": "The practical, code-first route into IT.",
+            "info": {
+              "detail": "BCA is a 3-year undergraduate degree centred on software, programming, and computer applications — a maths-light, application-focused alternative to B.Tech CSE. It is one of the cheapest, fastest ways into India's IT industry. The degree label matters far less than your coding portfolio: graduates who solve problems on LeetCode, ship projects on GitHub, and learn one stack deeply land the same roles as engineers. Many BCA grads add an MCA or a specialised certification to climb into product companies.",
+              "tip": "Your GitHub and projects beat your marksheet. Pick one stack and go deep.",
+              "benefits": [
+                "Direct entry into IT/software",
+                "Affordable & only 3 years",
+                "Skill-based — degree tier matters less"
               ],
-              "topRecruiters": [
-                "Google",
-                "Microsoft",
-                "Amazon",
-                "Goldman Sachs",
-                "TCS",
-                "Infosys",
-                "Wipro"
+              "drawbacks": [
+                "Some product firms prefer B.Tech",
+                "Often needs MCA for senior roles",
+                "Maths/core-CS gaps vs engineers"
               ],
-              "avgCTC": "₹3.5-7 LPA (mass); ₹12-25 LPA (dream); ₹30-80 LPA (super-dream)",
+              "avgCTC": "₹3-12 LPA (entry); much higher with strong DSA",
               "furtherLinks": [
                 {
-                  "title": "roadmap.sh — developer role roadmaps",
+                  "title": "Bachelor of Computer Applications (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Computer_Applications"
+                },
+                {
+                  "title": "roadmap.sh — developer career roadmaps",
                   "url": "https://roadmap.sh/"
-                },
-                {
-                  "title": "LeetCode — coding interview practice",
-                  "url": "https://leetcode.com/"
-                },
-                {
-                  "title": "Placement / SDE interview prep — video guides",
-                  "url": "https://www.youtube.com/results?search_query=software%20engineer%20placement%20preparation%20dsa%20india"
                 }
               ]
             },
-            "children": {}
+            "children": {
+              "sde": {
+                "label": "Software Development",
+                "icon": "💻",
+                "info": {
+                  "detail": "Build web apps, backend services, and mobile apps as a Software Development Engineer. This is the highest-paying and most abundant path for BCA grads. Top companies test Data Structures & Algorithms and system design — not your degree. A portfolio of deployed projects and consistent DSA practice is the fastest route to product-company offers.",
+                  "tip": "Grind DSA on LeetCode + ship 3 real projects. That's the placement formula.",
+                  "benefits": [
+                    "Highest pay ceiling for BCA",
+                    "Remote-friendly",
+                    "Skills transfer globally"
+                  ],
+                  "drawbacks": [
+                    "Leetcode grind is real",
+                    "Constant upskilling",
+                    "Competitive interviews"
+                  ],
+                  "topRecruiters": [
+                    "TCS",
+                    "Infosys",
+                    "Cognizant",
+                    "Accenture",
+                    "Zoho",
+                    "Razorpay",
+                    "Startups"
+                  ],
+                  "avgCTC": "₹4-18 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "LeetCode — interview practice",
+                      "url": "https://leetcode.com/"
+                    },
+                    {
+                      "title": "Full-stack developer roadmap",
+                      "url": "https://roadmap.sh/full-stack"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "webapp": {
+                "label": "Web & App Development",
+                "icon": "🌐",
+                "info": {
+                  "detail": "Specialise in building and shipping websites, web apps, and mobile apps end-to-end. Demand is enormous from agencies, startups, and freelance clients. Frontend (React), backend (Node/Django), or mobile (Flutter/React Native) are all viable. This path rewards a strong public portfolio and is the easiest to start freelancing in while still studying.",
+                  "tip": "A live, polished portfolio site lands more interviews than any certificate.",
+                  "benefits": [
+                    "Easy to freelance early",
+                    "Visible portfolio",
+                    "Huge SME demand"
+                  ],
+                  "drawbacks": [
+                    "Client/deadline pressure",
+                    "Fast-moving frameworks",
+                    "Lower floor at agencies"
+                  ],
+                  "topRecruiters": [
+                    "Agencies",
+                    "D2C startups",
+                    "Freelance platforms",
+                    "Zoho",
+                    "Freshworks"
+                  ],
+                  "avgCTC": "₹3.5-12 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Frontend roadmap",
+                      "url": "https://roadmap.sh/frontend"
+                    },
+                    {
+                      "title": "The Odin Project — free full-stack curriculum",
+                      "url": "https://www.theodinproject.com/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "data": {
+                "label": "Data Analytics & BI",
+                "icon": "📊",
+                "info": {
+                  "detail": "Turn raw data into business decisions using SQL, Excel, Python, and BI tools like Power BI and Tableau. Analytics is one of the most accessible high-growth fields for BCA grads — it needs less heavy coding than SDE but strong logical thinking. Entry roles (Data/Business Analyst) lead naturally to Data Scientist and Analytics Engineer paths.",
+                  "tip": "Master SQL first — it appears in almost every analytics interview.",
+                  "benefits": [
+                    "Lower coding barrier",
+                    "Cross-industry demand",
+                    "Clear path to data science"
+                  ],
+                  "drawbacks": [
+                    "Can be report-heavy",
+                    "Needs business sense",
+                    "Tool churn"
+                  ],
+                  "topRecruiters": [
+                    "Deloitte",
+                    "EY",
+                    "Accenture",
+                    "Mu Sigma",
+                    "Tiger Analytics",
+                    "Banks"
+                  ],
+                  "avgCTC": "₹4-10 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Data Analyst roadmap",
+                      "url": "https://roadmap.sh/data-analyst"
+                    },
+                    {
+                      "title": "Google Data Analytics Certificate",
+                      "url": "https://www.coursera.org/professional-certificates/google-data-analytics"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "cloud": {
+                "label": "Cloud & DevOps",
+                "icon": "☁️",
+                "info": {
+                  "detail": "Manage the infrastructure that runs modern software — AWS/Azure/GCP, CI/CD pipelines, containers (Docker, Kubernetes), and monitoring. Cloud and DevOps roles are in acute shortage in India and pay well above generic IT-support jobs. Industry certifications (AWS Solutions Architect, CKA) carry real weight here and can fast-track BCA grads.",
+                  "tip": "Get AWS-certified — cloud certs convert directly into interviews and pay bumps.",
+                  "benefits": [
+                    "High demand, talent shortage",
+                    "Certs accelerate growth",
+                    "Strong pay"
+                  ],
+                  "drawbacks": [
+                    "On-call rotations",
+                    "Steep tooling learning curve",
+                    "Production pressure"
+                  ],
+                  "topRecruiters": [
+                    "Amazon",
+                    "Microsoft",
+                    "Accenture",
+                    "Wipro",
+                    "Red Hat",
+                    "Startups"
+                  ],
+                  "avgCTC": "₹5-16 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "DevOps roadmap",
+                      "url": "https://roadmap.sh/devops"
+                    },
+                    {
+                      "title": "AWS Certification overview",
+                      "url": "https://aws.amazon.com/certification/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "mca": {
+                "label": "MCA / Higher Studies",
+                "icon": "🎓",
+                "info": {
+                  "detail": "A Master of Computer Applications (MCA) deepens core CS — algorithms, OS, databases, networks — and is the most common upgrade for BCA grads aiming at product companies or teaching. NIMCET is the national entrance for NIT MCA programmes. MCA from a good college meaningfully widens the recruiter pool and starting pay.",
+                  "tip": "Target NIT MCA via NIMCET — strong ROI and product-company access.",
+                  "benefits": [
+                    "Deeper CS foundation",
+                    "Better recruiter access",
+                    "Teaching/PhD option"
+                  ],
+                  "drawbacks": [
+                    "2 more years",
+                    "Opportunity cost",
+                    "ROI varies by college"
+                  ],
+                  "topColleges": [
+                    "NIT Trichy",
+                    "NIT Warangal",
+                    "NIT Surathkal",
+                    "HCU",
+                    "Pune University"
+                  ],
+                  "avgCTC": "₹6-20 LPA (post good MCA)",
+                  "furtherLinks": [
+                    {
+                      "title": "Master of Computer Applications (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Master_of_Computer_Applications"
+                    },
+                    {
+                      "title": "NIMCET — NIT MCA entrance (official)",
+                      "url": "https://www.nimcet.in/"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
           },
-          "consulting": {
-            "label": "Consulting",
-            "icon": "📋",
+          "bsc": {
+            "label": "B.Sc (Bachelor of Science)",
+            "icon": "🔬",
+            "description": "A versatile base for research, data & healthcare.",
             "info": {
-              "detail": "Management consulting firms (McKinsey, BCG, Bain, plus Big-4 advisory arms) hire sharp problem-solvers to advise companies on strategy, operations, and transformation. Entry is fiercely competitive — through top B-schools, or as a business analyst straight from premier UG colleges. The work means steep learning, structured thinking, heavy travel, and long hours, but it is a launchpad into leadership, private equity, and entrepreneurship. Case-interview practice and a crisp personal story are essential.",
-              "tip": "Case interview prep is everything — practice 50+ cases.",
+              "detail": "B.Sc is a 3-year science degree across streams like Physics, Chemistry, Mathematics, Biology, Statistics, Computer Science, and Agriculture. On its own it is a foundation; its real power comes from what you build on top — an M.Sc/PhD for research, a pivot into data science, or a professional path in healthcare and labs. B.Sc graduates are valued anywhere analytical rigour matters, from ISRO and DRDO to analytics firms and hospitals.",
+              "tip": "B.Sc is a launchpad, not a destination — plan your M.Sc, pivot, or exam early.",
               "benefits": [
-                "MBB prestige",
-                "Steep learning curve",
-                "Diverse problems"
+                "Keeps many doors open",
+                "Strong analytical base",
+                "Gateway to research & data"
               ],
               "drawbacks": [
-                "80+ hour weeks",
-                "Up-or-out culture",
-                "Burnout"
+                "Modest pay without specialisation",
+                "Often needs M.Sc/PhD",
+                "Less job-ready than professional degrees"
               ],
-              "topColleges": [
-                "IIM ABC",
-                "ISB",
-                "IIT Bombay",
-                "XLRI"
-              ],
-              "topRecruiters": [
-                "McKinsey",
-                "BCG",
-                "Bain",
-                "Kearney",
-                "Accenture Strategy",
-                "Deloitte Consulting"
-              ],
-              "avgCTC": "₹15-30 LPA (entry); ₹40-80 LPA (Partner)",
+              "avgCTC": "₹2.5-8 LPA (UG); far higher post specialisation",
               "furtherLinks": [
                 {
-                  "title": "Management consulting — overview (Wikipedia)",
-                  "url": "https://en.wikipedia.org/wiki/Management_consulting"
+                  "title": "Bachelor of Science (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Science"
                 },
                 {
-                  "title": "How to break into consulting (MBB) — video guides",
-                  "url": "https://www.youtube.com/results?search_query=management%20consulting%20career%20india%20mbb%20case%20interview"
+                  "title": "NPTEL — free science courses by IITs/IISc",
+                  "url": "https://nptel.ac.in/"
                 }
               ]
             },
-            "children": {}
+            "children": {
+              "research": {
+                "label": "Research & Academia",
+                "icon": "🧪",
+                "info": {
+                  "detail": "Pursue M.Sc then PhD to become a scientist or professor. IIT/IISc/IISER M.Sc programmes (via IIT JAM) are fully funded gateways. Research careers span universities, national labs (CSIR, TIFR), and R&D arms of industry. Fellowships like INSPIRE and CSIR-UGC NET-JRF fund your studies and pay a stipend.",
+                  "tip": "Crack IIT JAM for a funded M.Sc at IITs/IISc — the best-value science path.",
+                  "benefits": [
+                    "Funded via JAM/NET-JRF",
+                    "Intellectual depth",
+                    "Path to professorship"
+                  ],
+                  "drawbacks": [
+                    "Long timeline (5-7 yrs)",
+                    "Modest early pay",
+                    "Few permanent posts"
+                  ],
+                  "topColleges": [
+                    "IISc",
+                    "IISERs",
+                    "TIFR",
+                    "IITs (JAM)",
+                    "Delhi University"
+                  ],
+                  "avgCTC": "Stipend ₹37k-42k (JRF); ₹8-15 LPA post-PhD",
+                  "furtherLinks": [
+                    {
+                      "title": "IIT JAM — M.Sc entrance (official)",
+                      "url": "https://jam.iitm.ac.in/"
+                    },
+                    {
+                      "title": "CSIR-UGC NET (official)",
+                      "url": "https://csirnet.nta.ac.in/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "datasci": {
+                "label": "Data Science & Analytics",
+                "icon": "📈",
+                "info": {
+                  "detail": "B.Sc grads — especially Statistics, Maths, and CS majors — are prime candidates for data science. The field rewards statistics, Python, SQL, and machine learning over any specific degree. A focused 6-12 month upskilling sprint plus a portfolio of analyses can land strong analytics and data-science roles across every industry.",
+                  "tip": "Statistics + Python + a public project portfolio = your fastest pivot.",
+                  "benefits": [
+                    "High pay & demand",
+                    "Cross-industry",
+                    "Builds on B.Sc maths/stats"
+                  ],
+                  "drawbacks": [
+                    "Self-study heavy",
+                    "Competitive entry",
+                    "Maths-intensive"
+                  ],
+                  "topRecruiters": [
+                    "Mu Sigma",
+                    "Tiger Analytics",
+                    "Fractal",
+                    "Deloitte",
+                    "Amazon",
+                    "Banks"
+                  ],
+                  "avgCTC": "₹5-15 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "AI & Data Scientist roadmap",
+                      "url": "https://roadmap.sh/ai-data-scientist"
+                    },
+                    {
+                      "title": "StatQuest — statistics & ML (YouTube)",
+                      "url": "https://www.youtube.com/results?search_query=statquest%20machine%20learning%20statistics"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "health": {
+                "label": "Healthcare, Biotech & Labs",
+                "icon": "🧬",
+                "info": {
+                  "detail": "Biology, Microbiology, Biochemistry, and Biotech majors can enter clinical labs, diagnostics, pharma QA/QC, hospitals, and biotech R&D. Roles range from lab technologist and research associate to clinical-trial coordinator. An M.Sc or specialised certification (clinical research, bioinformatics) significantly raises the ceiling.",
+                  "tip": "Bioinformatics (biology + coding) is where biotech pay is climbing fastest.",
+                  "benefits": [
+                    "Stable healthcare demand",
+                    "Meaningful work",
+                    "Many specialisations"
+                  ],
+                  "drawbacks": [
+                    "Lower entry pay",
+                    "M.Sc often needed",
+                    "Lab/shift work"
+                  ],
+                  "topRecruiters": [
+                    "Dr Lal PathLabs",
+                    "SRL Diagnostics",
+                    "Biocon",
+                    "Serum Institute",
+                    "Thermo Fisher"
+                  ],
+                  "avgCTC": "₹3-9 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Biotechnology (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Biotechnology"
+                    },
+                    {
+                      "title": "Clinical research & bioinformatics — career guides",
+                      "url": "https://www.youtube.com/results?search_query=clinical%20research%20bioinformatics%20career%20india%20bsc"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "it": {
+                "label": "IT / Software Transition",
+                "icon": "💻",
+                "info": {
+                  "detail": "A B.Sc (CS/IT/Maths) graduate can move straight into software roles. Service companies (TCS, Infosys, Wipro) hire B.Sc grads in large numbers through campus and off-campus drives, and product roles open up with strong DSA. The transition is identical to BCA: learn one stack deeply, practise DSA, and build a portfolio.",
+                  "tip": "B.Sc CS + solid DSA = the same product-company doors as a CS degree.",
+                  "benefits": [
+                    "Large IT recruiter base",
+                    "Remote options",
+                    "Skill-driven growth"
+                  ],
+                  "drawbacks": [
+                    "Product firms may prefer B.Tech",
+                    "DSA grind",
+                    "Constant upskilling"
+                  ],
+                  "topRecruiters": [
+                    "TCS",
+                    "Infosys",
+                    "Wipro",
+                    "Cognizant",
+                    "Accenture",
+                    "Capgemini"
+                  ],
+                  "avgCTC": "₹3.5-10 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Computer Science roadmap",
+                      "url": "https://roadmap.sh/computer-science"
+                    },
+                    {
+                      "title": "LeetCode — interview practice",
+                      "url": "https://leetcode.com/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "govtsci": {
+                "label": "Government & PSU Science Jobs",
+                "icon": "🛰️",
+                "info": {
+                  "detail": "Science graduates are eligible for prestigious government and PSU roles — ISRO, DRDO, BARC, CSIR labs, and ordnance factories — usually via competitive exams or GATE-based recruitment. These jobs offer stability, world-class research facilities, and the chance to work on national missions in space, defence, and atomic energy.",
+                  "tip": "GATE and organisation-specific exams (ISRO/BARC) are your entry tickets.",
+                  "benefits": [
+                    "National-mission work",
+                    "Job security + benefits",
+                    "Top research infra"
+                  ],
+                  "drawbacks": [
+                    "Highly competitive",
+                    "Long prep cycles",
+                    "Limited vacancies"
+                  ],
+                  "topRecruiters": [
+                    "ISRO",
+                    "DRDO",
+                    "BARC",
+                    "CSIR labs",
+                    "SAC",
+                    "Ordnance factories"
+                  ],
+                  "avgCTC": "₹6-14 LPA (Scientist 'B' entry)",
+                  "furtherLinks": [
+                    {
+                      "title": "ISRO — careers (official)",
+                      "url": "https://www.isro.gov.in/Careers.html"
+                    },
+                    {
+                      "title": "DRDO — careers (official)",
+                      "url": "https://www.drdo.gov.in/drdo/careers"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
           },
-          "govt": {
-            "label": "Government Exams",
-            "icon": "🏛️",
+          "bcom": {
+            "label": "B.Com (Bachelor of Commerce)",
+            "icon": "📒",
+            "description": "India's gateway to finance, accounting & banking.",
             "info": {
-              "detail": "Government exams open doors to some of India's most secure and respected careers — UPSC Civil Services (IAS/IPS/IFS), SSC (CGL/CHSL), banking (IBPS/SBI PO), railways (RRB), defence, and state PSCs. They reward disciplined, long-haul preparation in aptitude, reasoning, current affairs, and general studies. Beyond stability and prestige, these roles offer genuine public impact. Start early, pick the exam that fits your strengths, and build a consistent daily study and revision habit.",
-              "tip": "Have a Plan B — average UPSC aspirant takes 3-4 attempts.",
+              "detail": "B.Com is India's most-enrolled commerce degree, covering accounting, finance, taxation, economics, and business law. By itself it leads to entry accounting and banking roles, but its real value is unlocked by stacking a professional qualification — CA, CS, CMA — or an MBA on top. B.Com is the standard launchpad for the finance, audit, and corporate-services professions.",
+              "tip": "B.Com + a professional cert (CA/CS/CMA) is where the serious money begins.",
               "benefits": [
-                "Job security",
-                "Pension + benefits",
-                "Respect"
+                "Foundation for CA/CS/CMA/MBA",
+                "Always-in-demand finance skills",
+                "Low-cost, flexible degree"
               ],
               "drawbacks": [
-                "1-5 year preparation",
-                "Low selection rates",
-                "Age limit"
+                "Plain B.Com pays modestly",
+                "Certs are long & tough",
+                "Crowded field"
               ],
-              "topColleges": [
-                "Any graduation qualifies",
-                "Coaching: Vajiram & Ravi",
-                "Vision IAS",
-                "Drishti IAS"
-              ],
-              "topRecruiters": [
-                "UPSC (IAS",
-                "IPS",
-                "IFS)",
-                "SSC (CGL",
-                "CHSL)",
-                "IBPS/SBI",
-                "Railways"
-              ],
-              "avgCTC": "₹6-12 LPA (Group B); ₹10-18 LPA (IAS starting)",
+              "avgCTC": "₹2.5-6 LPA (plain); ₹8-25 LPA+ with CA/MBA",
               "furtherLinks": [
                 {
-                  "title": "UPSC — Union Public Service Commission (official)",
-                  "url": "https://www.upsc.gov.in/"
+                  "title": "Bachelor of Commerce (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Commerce"
                 },
                 {
-                  "title": "Government job exams — UPSC / SSC / banking guides",
-                  "url": "https://www.youtube.com/results?search_query=government%20job%20exams%20india%20upsc%20ssc%20banking%20preparation"
+                  "title": "Career options after B.Com — guides",
+                  "url": "https://www.youtube.com/results?search_query=career%20options%20after%20bcom%20ca%20cs%20cma%20mba%20india"
                 }
               ]
             },
-            "children": {}
+            "children": {
+              "ca": {
+                "label": "Chartered Accountancy (CA)",
+                "icon": "🧮",
+                "info": {
+                  "detail": "The CA, regulated by ICAI, is India's premier accounting qualification — covering audit, taxation, financial reporting, and corporate law across Foundation, Intermediate, and Final levels plus articleship. CAs work in audit firms, industry finance teams, and independent practice, and the Big Four recruit heavily. It is demanding (multi-year, low pass rates) but among the highest-ROI paths from B.Com.",
+                  "tip": "Start CA Foundation right after Class 12 / alongside B.Com — time is your ally.",
+                  "benefits": [
+                    "Elite finance credential",
+                    "₹8-25 LPA+ potential",
+                    "Own practice option"
+                  ],
+                  "drawbacks": [
+                    "Low pass rates",
+                    "3-5 year grind",
+                    "Tough articleship"
+                  ],
+                  "topRecruiters": [
+                    "Deloitte",
+                    "PwC",
+                    "EY",
+                    "KPMG",
+                    "Industry finance teams"
+                  ],
+                  "avgCTC": "₹8-15 LPA (fresher); much higher with experience",
+                  "furtherLinks": [
+                    {
+                      "title": "ICAI — Chartered Accountants of India (official)",
+                      "url": "https://www.icai.org/"
+                    },
+                    {
+                      "title": "Chartered Accountant (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Chartered_accountant"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "cscma": {
+                "label": "Company Secretary (CS) & CMA",
+                "icon": "📋",
+                "info": {
+                  "detail": "Company Secretary (ICSI) is the corporate-governance and compliance specialist who advises boards on company law and SEBI regulations. Cost & Management Accountant (CMA, ICMAI) focuses on costing, budgeting, and strategic financial management. Both pair powerfully with B.Com and with each other, and are essential roles in every mid-to-large company.",
+                  "tip": "CS + CA, or CMA in industry, makes you a corporate-governance/finance powerhouse.",
+                  "benefits": [
+                    "Statutory, in-demand roles",
+                    "Board-level exposure (CS)",
+                    "Strong industry pay"
+                  ],
+                  "drawbacks": [
+                    "Long exam journey",
+                    "Niche vs CA brand",
+                    "Compliance-heavy work"
+                  ],
+                  "topRecruiters": [
+                    "Listed companies",
+                    "Law/CS firms",
+                    "Manufacturing (CMA)",
+                    "Consulting"
+                  ],
+                  "avgCTC": "₹6-14 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "ICSI — Company Secretary (official)",
+                      "url": "https://www.icsi.edu/"
+                    },
+                    {
+                      "title": "ICMAI — Cost & Management Accountancy (official)",
+                      "url": "https://icmai.in/icmai/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "banking": {
+                "label": "Banking & Financial Services",
+                "icon": "🏦",
+                "info": {
+                  "detail": "B.Com graduates are natural fits for banking — as probationary officers (via IBPS/SBI exams), in private banks, NBFCs, insurance, and fintech. Roles span retail banking, operations, credit, and relationship management. Public-sector bank jobs offer stability and growth; private banks and fintechs offer faster pay progression.",
+                  "tip": "Prep for IBPS/SBI PO for stable govt-bank careers, or target private-bank/fintech grad programmes.",
+                  "benefits": [
+                    "Huge, steady hiring",
+                    "PSU job security",
+                    "Clear promotion ladder"
+                  ],
+                  "drawbacks": [
+                    "Exam competition (PSU)",
+                    "Sales targets (private)",
+                    "Transferable postings"
+                  ],
+                  "topRecruiters": [
+                    "SBI",
+                    "HDFC Bank",
+                    "ICICI Bank",
+                    "Axis Bank",
+                    "IBPS banks",
+                    "Bajaj Finance"
+                  ],
+                  "avgCTC": "₹4-10 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "IBPS — banking recruitment (official)",
+                      "url": "https://www.ibps.in/"
+                    },
+                    {
+                      "title": "Bank PO exam preparation — guides",
+                      "url": "https://www.youtube.com/results?search_query=ibps%20sbi%20po%20bank%20exam%20preparation%20strategy"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "ib": {
+                "label": "Investment Banking & Financial Analysis",
+                "icon": "💹",
+                "info": {
+                  "detail": "For the analytically inclined, investment banking, equity research, and financial analysis offer the highest pay in finance. Entry usually runs through top colleges, an MBA, or globally-recognised credentials like the CFA. The work — valuation, financial modelling, deals, and research — is intense but a launchpad into private equity and corporate strategy.",
+                  "tip": "CFA + strong Excel/financial-modelling skills open doors without an elite MBA.",
+                  "benefits": [
+                    "Top finance pay",
+                    "Fast learning curve",
+                    "PE/strategy exit options"
+                  ],
+                  "drawbacks": [
+                    "80+ hour weeks",
+                    "Very competitive entry",
+                    "High pressure"
+                  ],
+                  "topRecruiters": [
+                    "Goldman Sachs",
+                    "JP Morgan",
+                    "Morgan Stanley",
+                    "Nomura",
+                    "Boutique IBs"
+                  ],
+                  "avgCTC": "₹10-30 LPA (entry analyst)",
+                  "furtherLinks": [
+                    {
+                      "title": "CFA Program (CFA Institute, official)",
+                      "url": "https://www.cfainstitute.org/programs/cfa"
+                    },
+                    {
+                      "title": "Investment banking (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Investment_banking"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "tax": {
+                "label": "Taxation, Audit & Accounting",
+                "icon": "🧾",
+                "info": {
+                  "detail": "Every business needs accounting, audit, and tax compliance, making this the most reliable B.Com career floor. Roles include accountant, audit assistant, GST/tax executive, and accounts manager, in firms of every size. Tools like Tally and SAP plus GST knowledge make you immediately employable, and the path scales up with a CA/CMA.",
+                  "tip": "Learn Tally + GST + Excel well — it makes you hireable straight out of B.Com.",
+                  "benefits": [
+                    "Always in demand",
+                    "Easy first job",
+                    "Scales with certs"
+                  ],
+                  "drawbacks": [
+                    "Routine at junior levels",
+                    "Modest entry pay",
+                    "Seasonal crunch (tax season)"
+                  ],
+                  "topRecruiters": [
+                    "CA firms",
+                    "SMEs",
+                    "Corporates",
+                    "Consulting",
+                    "Accounting BPOs"
+                  ],
+                  "avgCTC": "₹2.5-7 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "GST — official portal",
+                      "url": "https://www.gst.gov.in/"
+                    },
+                    {
+                      "title": "Tally & GST accounting — tutorials",
+                      "url": "https://www.youtube.com/results?search_query=tally%20gst%20accounting%20course%20for%20jobs%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "bba": {
+            "label": "BBA (Bachelor of Business Administration)",
+            "icon": "📈",
+            "description": "Business fundamentals for the management track.",
+            "info": {
+              "detail": "BBA is a 3-year management degree covering marketing, finance, HR, operations, and strategy, with case studies and internships. It is the classic pre-MBA degree and a strong entry into sales, marketing, consulting, analytics, and family business. On its own it lands business-development and operations roles; paired with an MBA it becomes a fast track into management.",
+              "tip": "BBA shines when followed by an MBA or a strong analytics/marketing skill stack.",
+              "benefits": [
+                "Broad business grounding",
+                "Internship & soft-skill focus",
+                "Ideal MBA feeder"
+              ],
+              "drawbacks": [
+                "Generalist — needs specialisation",
+                "MBA often expected",
+                "Pay modest without it"
+              ],
+              "avgCTC": "₹3-7 LPA (UG); ₹12-35 LPA post top MBA",
+              "furtherLinks": [
+                {
+                  "title": "Bachelor of Business Administration (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Business_Administration"
+                },
+                {
+                  "title": "After BBA — career & MBA roadmap",
+                  "url": "https://www.youtube.com/results?search_query=career%20options%20after%20bba%20mba%20india%20roadmap"
+                }
+              ]
+            },
+            "children": {
+              "consulting": {
+                "label": "Management Consulting",
+                "icon": "🧩",
+                "info": {
+                  "detail": "Consulting firms hire sharp problem-solvers to advise companies on strategy, operations, and transformation. BBA grads enter as business analysts from premier colleges, or after an MBA at MBB and Big-4 firms. The work means structured thinking, client exposure, and heavy travel, and is a launchpad into leadership, PE, and entrepreneurship. Case-interview practice is everything.",
+                  "tip": "Practise 50+ cases — the case interview, not your CV, gets you in.",
+                  "benefits": [
+                    "Prestige & steep learning",
+                    "Diverse problems",
+                    "Strong exit options"
+                  ],
+                  "drawbacks": [
+                    "80+ hour weeks",
+                    "Up-or-out culture",
+                    "Heavy travel"
+                  ],
+                  "topRecruiters": [
+                    "McKinsey",
+                    "BCG",
+                    "Bain",
+                    "Kearney",
+                    "Deloitte",
+                    "Accenture Strategy"
+                  ],
+                  "avgCTC": "₹12-30 LPA (entry)",
+                  "furtherLinks": [
+                    {
+                      "title": "Management consulting (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Management_consulting"
+                    },
+                    {
+                      "title": "How to break into consulting — case interview guides",
+                      "url": "https://www.youtube.com/results?search_query=management%20consulting%20case%20interview%20preparation%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "marketing": {
+                "label": "Marketing & Brand Management",
+                "icon": "📣",
+                "info": {
+                  "detail": "Marketing spans brand management, digital marketing, performance ads, product marketing, and market research. FMCG and consumer-tech brand-manager roles (HUL, P&G) are prestigious and usually post-MBA, while digital and growth marketing are accessible straight from BBA with the right skills. Creativity plus data fluency (analytics, SEO/SEM) is the winning combination.",
+                  "tip": "Learn Google/Meta Ads + analytics — digital marketing hires straight out of BBA.",
+                  "benefits": [
+                    "Creative + analytical",
+                    "Fast-growing digital demand",
+                    "Entrepreneurial skills"
+                  ],
+                  "drawbacks": [
+                    "Target pressure",
+                    "Brand roles need MBA",
+                    "Always-on trends"
+                  ],
+                  "topRecruiters": [
+                    "HUL",
+                    "P&G",
+                    "Nestle",
+                    "Nykaa",
+                    "Zomato",
+                    "Ad & digital agencies"
+                  ],
+                  "avgCTC": "₹4-12 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Google Digital Marketing & E-commerce Certificate",
+                      "url": "https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce"
+                    },
+                    {
+                      "title": "Digital marketing career — guides",
+                      "url": "https://www.youtube.com/results?search_query=digital%20marketing%20career%20india%20complete%20roadmap"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "hr": {
+                "label": "Human Resource Management",
+                "icon": "🤝",
+                "info": {
+                  "detail": "HR professionals handle talent acquisition, employee relations, learning & development, and compensation. BBA-HR grads can start as recruiters or HR executives; an MBA-HR (XLRI, TISS) leads to HR-business-partner and leadership roles. People skills, labour-law basics, and HR analytics define success in this people-centric career.",
+                  "tip": "MBA-HR from XLRI/TISS is the gold standard for serious HR careers.",
+                  "benefits": [
+                    "People-centric work",
+                    "Every company needs HR",
+                    "Clear MBA-HR ladder"
+                  ],
+                  "drawbacks": [
+                    "Caught between staff & management",
+                    "Can be process-heavy",
+                    "Slower pay growth"
+                  ],
+                  "topRecruiters": [
+                    "Accenture",
+                    "Deloitte",
+                    "TCS",
+                    "Aditya Birla",
+                    "Startups",
+                    "Staffing firms"
+                  ],
+                  "avgCTC": "₹3.5-9 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Human resource management (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Human_resource_management"
+                    },
+                    {
+                      "title": "HR career & MBA-HR — guides",
+                      "url": "https://www.youtube.com/results?search_query=hr%20career%20mba%20hr%20xlri%20tiss%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "analytics": {
+                "label": "Business Analytics & Operations",
+                "icon": "📊",
+                "info": {
+                  "detail": "Business analysts and operations roles bridge business and data — defining requirements, analysing performance, and improving processes. BBA grads with SQL, Excel, and a BI tool (Power BI/Tableau) are highly employable across consulting, e-commerce, and BFSI. Operations and supply-chain roles in e-commerce and logistics are booming entry points.",
+                  "tip": "SQL + Excel + Power BI turns a generalist BBA into a hireable analyst.",
+                  "benefits": [
+                    "Bridges business & data",
+                    "Cross-industry demand",
+                    "Path to product/strategy"
+                  ],
+                  "drawbacks": [
+                    "Needs analytical upskilling",
+                    "Process-heavy ops roles",
+                    "Competitive"
+                  ],
+                  "topRecruiters": [
+                    "Amazon",
+                    "Flipkart",
+                    "Deloitte",
+                    "EY",
+                    "Delhivery",
+                    "Banks"
+                  ],
+                  "avgCTC": "₹4-11 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Business analyst roadmap",
+                      "url": "https://roadmap.sh/business-analyst"
+                    },
+                    {
+                      "title": "Business analytics career — guides",
+                      "url": "https://www.youtube.com/results?search_query=business%20analyst%20career%20india%20sql%20excel%20power%20bi"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "mba": {
+                "label": "MBA & Higher Studies",
+                "icon": "🎓",
+                "info": {
+                  "detail": "The MBA is the natural next step for BBA grads, with CAT (for IIMs) and GMAT (for ISB/global schools) as the main entrances. Top B-schools produce median packages of ₹25-35 LPA and unlock consulting, finance, and leadership roles. Two to four years of work experience before the MBA typically gives the best return on investment.",
+                  "tip": "2-4 years of work-ex before an MBA maximises ROI and placement quality.",
+                  "benefits": [
+                    "Career accelerator",
+                    "Elite networks",
+                    "₹15-40 LPA from top schools"
+                  ],
+                  "drawbacks": [
+                    "CAT/GMAT competitive",
+                    "High fees",
+                    "2-year opportunity cost"
+                  ],
+                  "topColleges": [
+                    "IIM Ahmedabad",
+                    "IIM Bangalore",
+                    "IIM Calcutta",
+                    "ISB Hyderabad",
+                    "XLRI",
+                    "FMS Delhi"
+                  ],
+                  "avgCTC": "₹25-35 LPA (IIM ABC median)",
+                  "furtherLinks": [
+                    {
+                      "title": "CAT — Common Admission Test (official)",
+                      "url": "https://iimcat.ac.in/"
+                    },
+                    {
+                      "title": "Is an MBA worth it? — guides",
+                      "url": "https://www.youtube.com/results?search_query=mba%20worth%20it%20india%20cat%20iim%20placements"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "ba": {
+            "label": "BA (Bachelor of Arts)",
+            "icon": "📖",
+            "description": "The most flexible degree — from UPSC to media.",
+            "info": {
+              "detail": "BA covers humanities and social sciences — English, Political Science, Economics, History, Psychology, Sociology, and languages. It is the most flexible undergraduate degree and the classic base for civil services, media, law, content, public policy, and academia. BA rewards reading, writing, and critical thinking, and its breadth is an advantage for careers built on communication and analysis.",
+              "tip": "BA is what you make of it — pair it with a clear exam, skill, or PG plan.",
+              "benefits": [
+                "Maximum career flexibility",
+                "Ideal for UPSC/law/media",
+                "Strong reading & writing base"
+              ],
+              "drawbacks": [
+                "Low pay without direction",
+                "Needs PG/exam to specialise",
+                "Perceived as 'generalist'"
+              ],
+              "avgCTC": "₹2.5-7 LPA (UG); high in civil services/media/law",
+              "furtherLinks": [
+                {
+                  "title": "Bachelor of Arts (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Arts"
+                },
+                {
+                  "title": "Best career options after BA — guides",
+                  "url": "https://www.youtube.com/results?search_query=best%20career%20options%20after%20ba%20degree%20india"
+                }
+              ]
+            },
+            "children": {
+              "upsc": {
+                "label": "Civil Services (UPSC / State PSC)",
+                "icon": "🏛️",
+                "info": {
+                  "detail": "BA subjects like Pol Science, History, and Sociology align closely with the UPSC Civil Services syllabus, making BA the most common degree among IAS/IPS aspirants. The exam — Prelims, Mains, and Interview — rewards disciplined, multi-year preparation in general studies and an optional subject. Beyond prestige and security, these roles offer genuine public impact, but demand a strong Plan B given low selection rates.",
+                  "tip": "Pick a BA optional you enjoy — overlap with the syllabus saves months.",
+                  "benefits": [
+                    "Prestige & public impact",
+                    "Job security + benefits",
+                    "BA subjects overlap syllabus"
+                  ],
+                  "drawbacks": [
+                    "3-4 attempts on average",
+                    "Very low selection rate",
+                    "Age limits"
+                  ],
+                  "topColleges": [
+                    "Any graduation qualifies",
+                    "Coaching: Vajiram & Ravi",
+                    "Vision IAS",
+                    "Drishti IAS"
+                  ],
+                  "avgCTC": "₹10-18 LPA (IAS starting); ₹6-12 LPA (Group B)",
+                  "furtherLinks": [
+                    {
+                      "title": "UPSC — Union Public Service Commission (official)",
+                      "url": "https://www.upsc.gov.in/"
+                    },
+                    {
+                      "title": "UPSC preparation strategy — guides",
+                      "url": "https://www.youtube.com/results?search_query=upsc%20cse%20preparation%20strategy%20beginners%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "media": {
+                "label": "Media, Journalism & Mass Comm",
+                "icon": "🎙️",
+                "info": {
+                  "detail": "Journalism, broadcasting, public relations, and content production are natural fits for BA grads, especially those with strong writing and communication. Entry runs through reporting, sub-editing, anchoring, or PR roles, often boosted by a Mass Communication PG (IIMC, Symbiosis). Digital media, podcasts, and creator-economy roles have widened opportunities well beyond traditional newsrooms.",
+                  "tip": "Build a public portfolio — bylines, a blog, or a YouTube channel beat a CV.",
+                  "benefits": [
+                    "Creative, varied work",
+                    "Digital-media boom",
+                    "Public platform"
+                  ],
+                  "drawbacks": [
+                    "Modest entry pay",
+                    "Deadline pressure",
+                    "Competitive newsrooms"
+                  ],
+                  "topRecruiters": [
+                    "Times Group",
+                    "NDTV",
+                    "India Today",
+                    "The Hindu",
+                    "PR firms",
+                    "Digital media"
+                  ],
+                  "avgCTC": "₹3-8 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "IIMC — Indian Institute of Mass Communication (official)",
+                      "url": "https://iimc.gov.in/"
+                    },
+                    {
+                      "title": "Journalism & media career — guides",
+                      "url": "https://www.youtube.com/results?search_query=journalism%20mass%20communication%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "content": {
+                "label": "Content & Digital Marketing",
+                "icon": "✍️",
+                "info": {
+                  "detail": "Content writing, copywriting, SEO, and social-media/digital marketing are among the most accessible, fast-growing careers for BA grads with strong language skills. You can start freelancing while studying and scale into content strategy, brand, or growth roles. The field rewards a visible body of work and data fluency (SEO, analytics) far more than any specific degree.",
+                  "tip": "Start a blog or write for brands now — published work is your real resume.",
+                  "benefits": [
+                    "Freelance from day one",
+                    "High remote demand",
+                    "Creative + analytical"
+                  ],
+                  "drawbacks": [
+                    "Crowded entry field",
+                    "Rate pressure early",
+                    "Constant trend-chasing"
+                  ],
+                  "topRecruiters": [
+                    "Agencies",
+                    "D2C brands",
+                    "SaaS startups",
+                    "Freelance platforms"
+                  ],
+                  "avgCTC": "₹3-9 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Content marketing (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Content_marketing"
+                    },
+                    {
+                      "title": "Content writing & SEO career — guides",
+                      "url": "https://www.youtube.com/results?search_query=content%20writing%20seo%20career%20freelance%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "psych": {
+                "label": "Psychology & Counselling",
+                "icon": "🧠",
+                "info": {
+                  "detail": "A BA in Psychology opens paths in counselling, clinical psychology, HR, and UX research, but most clinical and counselling roles require an MA/M.Phil and RCI registration. Demand for mental-health professionals, school counsellors, and organisational psychologists is rising sharply in India. Specialisation (clinical, counselling, industrial-organisational) defines the career and earning potential.",
+                  "tip": "Plan your MA early — most psychology careers need a postgraduate degree.",
+                  "benefits": [
+                    "Meaningful, growing field",
+                    "Multiple specialisations",
+                    "Private-practice option"
+                  ],
+                  "drawbacks": [
+                    "PG/registration usually required",
+                    "Emotionally demanding",
+                    "Slow early pay"
+                  ],
+                  "topColleges": [
+                    "TISS",
+                    "Christ University",
+                    "Delhi University",
+                    "Fergusson College",
+                    "NIMHANS (PG)"
+                  ],
+                  "avgCTC": "₹3-8 LPA (rises with MA/specialisation)",
+                  "furtherLinks": [
+                    {
+                      "title": "Psychology (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Psychology"
+                    },
+                    {
+                      "title": "Psychology career paths in India — guides",
+                      "url": "https://www.youtube.com/results?search_query=psychology%20career%20options%20after%20ba%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "law": {
+                "label": "Law & Public Policy",
+                "icon": "⚖️",
+                "info": {
+                  "detail": "A BA naturally feeds into law (via a 3-year LLB after graduation) and into public-policy careers in think tanks, NGOs, and government advisory. Economics and Political Science majors are especially well-placed for policy research and development-sector roles. A master's in public policy (or an LLB) sharply expands opportunities in this impact-driven field.",
+                  "tip": "BA → LLB or a Public Policy master's turns your degree into a profession.",
+                  "benefits": [
+                    "Path into law & policy",
+                    "Impact-driven work",
+                    "Builds on BA strengths"
+                  ],
+                  "drawbacks": [
+                    "Needs further study",
+                    "Policy roles competitive",
+                    "Variable NGO pay"
+                  ],
+                  "topRecruiters": [
+                    "Think tanks",
+                    "NGOs",
+                    "Law firms (post-LLB)",
+                    "Govt advisory",
+                    "Consultancies"
+                  ],
+                  "avgCTC": "₹4-12 LPA (post LLB/MPP)",
+                  "furtherLinks": [
+                    {
+                      "title": "Public policy (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Public_policy"
+                    },
+                    {
+                      "title": "Public policy & law careers — guides",
+                      "url": "https://www.youtube.com/results?search_query=public%20policy%20career%20india%20law%20after%20ba"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "teach": {
+                "label": "Teaching & Academia",
+                "icon": "🎓",
+                "info": {
+                  "detail": "BA grads can build careers in school teaching (with a B.Ed) and college/university lecturing (with a master's plus UGC-NET and a PhD). Teaching offers stability, long holidays, and meaningful impact, while academia rewards those who love their subject deeply. NET-JRF additionally funds research while you pursue a PhD.",
+                  "tip": "B.Ed for school teaching; master's + UGC-NET for college lecturing.",
+                  "benefits": [
+                    "Stable & respected",
+                    "Good work-life balance",
+                    "Subject mastery"
+                  ],
+                  "drawbacks": [
+                    "Modest school pay",
+                    "NET/PhD for college roles",
+                    "Slow progression"
+                  ],
+                  "topColleges": [
+                    "Delhi University",
+                    "JNU",
+                    "BHU",
+                    "Jamia Millia Islamia"
+                  ],
+                  "avgCTC": "₹3-8 LPA (school); ₹6-12 LPA (assistant professor)",
+                  "furtherLinks": [
+                    {
+                      "title": "UGC NET — eligibility for lectureship (official)",
+                      "url": "https://ugcnet.nta.ac.in/"
+                    },
+                    {
+                      "title": "Teaching & academia career — guides",
+                      "url": "https://www.youtube.com/results?search_query=teaching%20college%20professor%20career%20india%20ugc%20net"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "llb": {
+            "label": "LLB (Bachelor of Laws)",
+            "icon": "⚖️",
+            "description": "Enter the legal profession — courts to boardrooms.",
+            "info": {
+              "detail": "LLB is the professional law degree — a 3-year course after graduation, or a 5-year integrated programme (BA/BBA LLB) after Class 12. After clearing the Bar Council of India's All India Bar Examination, graduates can practise as advocates. Law is remarkably diverse: courtroom litigation, corporate and commercial law, judiciary, in-house counsel, and policy. The National Law Universities (via CLAT) sit at the top of the prestige and placement ladder.",
+              "tip": "Internships during the degree decide your specialisation and first job — start early.",
+              "benefits": [
+                "Respected, evergreen profession",
+                "Diverse career paths",
+                "High ceiling in corporate law"
+              ],
+              "drawbacks": [
+                "Slow, low-paid start in litigation",
+                "Long hours in top firms",
+                "Bar exam required to practise"
+              ],
+              "avgCTC": "₹3-6 LPA (early litigation); ₹12-25 LPA+ (top law firms)",
+              "furtherLinks": [
+                {
+                  "title": "Bachelor of Laws (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Laws"
+                },
+                {
+                  "title": "Bar Council of India (official)",
+                  "url": "https://www.barcouncilofindia.org/"
+                }
+              ]
+            },
+            "children": {
+              "litigation": {
+                "label": "Litigation (Advocate)",
+                "icon": "👨‍⚖️",
+                "info": {
+                  "detail": "Litigators argue cases before trial courts, High Courts, and the Supreme Court, typically starting under a senior advocate to learn drafting, procedure, and courtcraft. The early years are financially lean but build deep expertise and independence; established litigators and senior counsel earn very well. Specialisations include criminal, civil, constitutional, and commercial litigation.",
+                  "tip": "Join a good senior's chamber after the degree — apprenticeship is everything.",
+                  "benefits": [
+                    "Independence & courtcraft",
+                    "Very high senior-counsel ceiling",
+                    "Direct impact"
+                  ],
+                  "drawbacks": [
+                    "Lean early income",
+                    "Slow court timelines",
+                    "Build-your-own-practice grind"
+                  ],
+                  "topColleges": [
+                    "NLSIU Bangalore",
+                    "NALSAR Hyderabad",
+                    "Faculty of Law DU",
+                    "NLU Delhi"
+                  ],
+                  "avgCTC": "₹3-6 LPA early; ₹25 LPA+ as established counsel",
+                  "furtherLinks": [
+                    {
+                      "title": "All India Bar Examination (BCI, official)",
+                      "url": "https://www.barcouncilofindia.org/aibe"
+                    },
+                    {
+                      "title": "Career in litigation — guides",
+                      "url": "https://www.youtube.com/results?search_query=career%20in%20litigation%20advocate%20india%20after%20llb"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "corporate": {
+                "label": "Corporate & Commercial Law",
+                "icon": "🏢",
+                "info": {
+                  "detail": "Corporate lawyers at top law firms advise on M&A, capital markets, banking, contracts, and regulatory matters. This is the highest-paying entry path in law, recruiting heavily from National Law Universities through campus placements. The work is document- and deadline-intensive but offers prestige, structured growth, and strong compensation from day one.",
+                  "tip": "NLU + corporate internships = Tier-1 law-firm placements with top pay.",
+                  "benefits": [
+                    "Highest law-fresher pay",
+                    "Structured growth",
+                    "Marquee deals"
+                  ],
+                  "drawbacks": [
+                    "Long hours",
+                    "High pressure",
+                    "Document-heavy"
+                  ],
+                  "topRecruiters": [
+                    "Cyril Amarchand Mangaldas",
+                    "Shardul Amarchand",
+                    "AZB & Partners",
+                    "Khaitan & Co",
+                    "Trilegal"
+                  ],
+                  "avgCTC": "₹12-25 LPA (Tier-1 firms)",
+                  "furtherLinks": [
+                    {
+                      "title": "Corporate law (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Corporate_law"
+                    },
+                    {
+                      "title": "Corporate law firm career — guides",
+                      "url": "https://www.youtube.com/results?search_query=corporate%20law%20firm%20career%20india%20nlu%20placements"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "judiciary": {
+                "label": "Judicial Services (Judge)",
+                "icon": "🏛️",
+                "info": {
+                  "detail": "The Judicial Services Examination (state-conducted) recruits law graduates as Civil Judges / Judicial Magistrates — the entry to becoming a judge. It is prestigious, secure, and impactful, rewarding strong command of substantive and procedural law. Preparation is rigorous and competitive, but the role carries unmatched respect and a clear, stable career ladder.",
+                  "tip": "Begin judiciary prep during LLB — the syllabus overlaps your core subjects.",
+                  "benefits": [
+                    "Prestige & security",
+                    "Direct public impact",
+                    "Clear promotion path"
+                  ],
+                  "drawbacks": [
+                    "Highly competitive",
+                    "Intensive preparation",
+                    "Transferable postings"
+                  ],
+                  "topColleges": [
+                    "Any LLB qualifies",
+                    "Judiciary coaching institutes"
+                  ],
+                  "avgCTC": "₹8-15 LPA (Civil Judge entry, + perks)",
+                  "furtherLinks": [
+                    {
+                      "title": "Judiciary (India) overview (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Judiciary_of_India"
+                    },
+                    {
+                      "title": "Judicial services exam preparation — guides",
+                      "url": "https://www.youtube.com/results?search_query=judicial%20services%20exam%20preparation%20india%20civil%20judge"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "inhouse": {
+                "label": "In-house Legal Counsel",
+                "icon": "📑",
+                "info": {
+                  "detail": "Companies hire in-house counsel to manage contracts, compliance, intellectual property, and disputes from within the business. The role offers better work-life balance than law firms, business exposure, and a path to General Counsel. A few years at a law firm before moving in-house is a common and rewarding trajectory.",
+                  "tip": "Spend 2-4 years at a firm first, then move in-house for balance + business exposure.",
+                  "benefits": [
+                    "Better work-life balance",
+                    "Business exposure",
+                    "Path to General Counsel"
+                  ],
+                  "drawbacks": [
+                    "Fewer entry roles",
+                    "Needs prior experience",
+                    "Broad generalist load"
+                  ],
+                  "topRecruiters": [
+                    "Reliance",
+                    "Tata Group",
+                    "Infosys",
+                    "Amazon",
+                    "Banks",
+                    "MNCs"
+                  ],
+                  "avgCTC": "₹8-20 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "General counsel (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/General_counsel"
+                    },
+                    {
+                      "title": "In-house legal counsel career — guides",
+                      "url": "https://www.youtube.com/results?search_query=in%20house%20legal%20counsel%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "civilservices": {
+                "label": "Civil Services & Legal Academia",
+                "icon": "🎓",
+                "info": {
+                  "detail": "An LLB is excellent preparation for the UPSC Civil Services (Law optional) and for academia as a law professor (with an LLM + UGC-NET/PhD). Legal training sharpens reasoning, drafting, and constitutional knowledge that serve administrators and scholars alike. Both paths combine intellectual depth with stability and public impact.",
+                  "tip": "LLM + UGC-NET opens law teaching; Law optional helps in UPSC.",
+                  "benefits": [
+                    "Stable & respected",
+                    "Intellectual depth",
+                    "Public impact"
+                  ],
+                  "drawbacks": [
+                    "Further study/exams needed",
+                    "Competitive",
+                    "Slower pay growth"
+                  ],
+                  "topColleges": [
+                    "NLSIU",
+                    "NALSAR",
+                    "NLU Delhi",
+                    "Faculty of Law DU"
+                  ],
+                  "avgCTC": "₹6-14 LPA (academia/civil services)",
+                  "furtherLinks": [
+                    {
+                      "title": "UGC NET — Law (official)",
+                      "url": "https://ugcnet.nta.ac.in/"
+                    },
+                    {
+                      "title": "UPSC with Law optional — guides",
+                      "url": "https://www.youtube.com/results?search_query=upsc%20law%20optional%20preparation%20strategy%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "bpharm": {
+            "label": "B.Pharm (Bachelor of Pharmacy)",
+            "icon": "💊",
+            "description": "Careers across pharma, research & healthcare.",
+            "info": {
+              "detail": "B.Pharm is a 4-year professional degree in pharmaceutical sciences — drug chemistry, pharmacology, formulation, and quality. Registered with a State Pharmacy Council, graduates can work across the pharma industry, clinical research, hospital and community pharmacy, regulatory affairs, and drug inspection. India's position as the 'pharmacy of the world' keeps demand strong, and an M.Pharm or MBA (Pharma) widens the ceiling considerably.",
+              "tip": "Pick a specialisation (QA, clinical research, regulatory) early — it shapes your pay.",
+              "benefits": [
+                "Strong, stable pharma demand",
+                "Many specialisations",
+                "Healthcare impact"
+              ],
+              "drawbacks": [
+                "Modest entry pay",
+                "M.Pharm helps for R&D",
+                "Shift/lab work in industry"
+              ],
+              "avgCTC": "₹2.5-6 LPA (entry); higher with specialisation",
+              "furtherLinks": [
+                {
+                  "title": "Bachelor of Pharmacy (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Bachelor_of_Pharmacy"
+                },
+                {
+                  "title": "Pharmacy Council of India (official)",
+                  "url": "https://www.pci.nic.in/"
+                }
+              ]
+            },
+            "children": {
+              "industry": {
+                "label": "Pharma Industry (R&D, QA/QC, Production)",
+                "icon": "🏭",
+                "info": {
+                  "detail": "The pharmaceutical industry employs B.Pharm grads in R&D, formulation, quality assurance/control, and production. India's large generics sector (Sun Pharma, Cipla, Dr Reddy's) hires steadily, and QA/QC roles in particular value pharmacy graduates. An M.Pharm boosts entry into research and formulation development.",
+                  "tip": "QA/QC is the most reliable B.Pharm entry; M.Pharm unlocks R&D.",
+                  "benefits": [
+                    "Large, stable employer base",
+                    "Multiple functions",
+                    "Global generics demand"
+                  ],
+                  "drawbacks": [
+                    "Modest entry pay",
+                    "M.Pharm for R&D",
+                    "GMP/shift discipline"
+                  ],
+                  "topRecruiters": [
+                    "Sun Pharma",
+                    "Cipla",
+                    "Dr Reddy's",
+                    "Lupin",
+                    "Aurobindo",
+                    "Glenmark"
+                  ],
+                  "avgCTC": "₹3-7 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Pharmaceutical industry (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Pharmaceutical_industry"
+                    },
+                    {
+                      "title": "Pharma industry careers (QA/QC/production) — guides",
+                      "url": "https://www.youtube.com/results?search_query=pharma%20industry%20jobs%20qa%20qc%20production%20b%20pharm"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "clinical": {
+                "label": "Clinical Research & Pharmacovigilance",
+                "icon": "🔬",
+                "info": {
+                  "detail": "Clinical research associates and pharmacovigilance specialists manage drug trials and monitor drug safety for pharma companies and CROs. It is one of the fastest-growing, well-paying pharma paths, often entered via a PG diploma in clinical research. The work blends science, regulation, and data, with strong demand from global CROs operating in India.",
+                  "tip": "A clinical research / pharmacovigilance PG diploma fast-tracks this high-growth path.",
+                  "benefits": [
+                    "Fast-growing field",
+                    "Good pay vs other pharma",
+                    "Global CRO demand"
+                  ],
+                  "drawbacks": [
+                    "PG diploma usually needed",
+                    "Regulation-heavy",
+                    "Documentation-intensive"
+                  ],
+                  "topRecruiters": [
+                    "IQVIA",
+                    "Parexel",
+                    "ICON",
+                    "Syneos Health",
+                    "Novartis",
+                    "Cognizant (Life Sci)"
+                  ],
+                  "avgCTC": "₹3.5-9 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Clinical research (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Clinical_research"
+                    },
+                    {
+                      "title": "Clinical research & pharmacovigilance career — guides",
+                      "url": "https://www.youtube.com/results?search_query=clinical%20research%20pharmacovigilance%20career%20india%20b%20pharm"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "druginspector": {
+                "label": "Drug Inspector & Government",
+                "icon": "🏛️",
+                "info": {
+                  "detail": "B.Pharm graduates are eligible for prestigious government roles such as Drug Inspector, Drug Control Officer, and pharmacist posts, recruited via UPSC/State PSC and staff-selection exams. These jobs combine stability, authority, and public-health impact, regulating drug quality and safety. Competitive exam preparation in pharmacy and general aptitude is the route in.",
+                  "tip": "Track State PSC & SSC notifications — Drug Inspector posts open periodically.",
+                  "benefits": [
+                    "Govt stability + authority",
+                    "Public-health impact",
+                    "Respected role"
+                  ],
+                  "drawbacks": [
+                    "Limited vacancies",
+                    "Exam competition",
+                    "Periodic notifications"
+                  ],
+                  "topRecruiters": [
+                    "CDSCO",
+                    "State Drug Control depts",
+                    "ESIC",
+                    "Govt hospitals",
+                    "Railways"
+                  ],
+                  "avgCTC": "₹6-12 LPA (+ govt benefits)",
+                  "furtherLinks": [
+                    {
+                      "title": "CDSCO — Central Drugs Standard Control Organization (official)",
+                      "url": "https://cdsco.gov.in/opencms/opencms/en/Home/"
+                    },
+                    {
+                      "title": "Drug Inspector exam preparation — guides",
+                      "url": "https://www.youtube.com/results?search_query=drug%20inspector%20exam%20preparation%20india%20b%20pharm"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "hospital": {
+                "label": "Hospital & Community Pharmacy",
+                "icon": "🏥",
+                "info": {
+                  "detail": "Hospital and community (retail) pharmacists dispense medicines, advise patients, and manage drug inventories in hospitals, clinics, and pharmacies. It is the most direct, patient-facing pharmacy career and a stable option, with entrepreneurship potential in owning a pharmacy. Larger hospital chains and online pharmacies have created new, better-paying roles.",
+                  "tip": "Hospital-chain and e-pharmacy roles pay better than standalone retail.",
+                  "benefits": [
+                    "Direct patient care",
+                    "Stable & widespread",
+                    "Own-pharmacy option"
+                  ],
+                  "drawbacks": [
+                    "Lower pay in retail",
+                    "Long counter hours",
+                    "Limited upward mobility"
+                  ],
+                  "topRecruiters": [
+                    "Apollo Pharmacy",
+                    "Fortis",
+                    "Max Healthcare",
+                    "Tata 1mg",
+                    "PharmEasy"
+                  ],
+                  "avgCTC": "₹2.5-6 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Pharmacy (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Pharmacy"
+                    },
+                    {
+                      "title": "Hospital & community pharmacist career — guides",
+                      "url": "https://www.youtube.com/results?search_query=hospital%20community%20pharmacist%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "marketing": {
+                "label": "Pharma Marketing & Medical Rep",
+                "icon": "📣",
+                "info": {
+                  "detail": "Pharma marketing — starting as a Medical Representative (MR) — connects drug companies with doctors and chemists, and is a high-earning, incentive-driven path. Strong communicators can rise to Area and Regional Sales Manager and into product management, especially with an MBA (Pharma). It offers fast pay growth for those comfortable with targets and travel.",
+                  "tip": "An MBA (Pharma) accelerates the jump from MR to product/brand management.",
+                  "benefits": [
+                    "High earning via incentives",
+                    "Fast growth for performers",
+                    "People-facing"
+                  ],
+                  "drawbacks": [
+                    "Sales targets",
+                    "Heavy travel",
+                    "Pressure-driven"
+                  ],
+                  "topRecruiters": [
+                    "Sun Pharma",
+                    "Abbott",
+                    "Mankind",
+                    "Cipla",
+                    "Pfizer",
+                    "Alkem"
+                  ],
+                  "avgCTC": "₹3-8 LPA (+ incentives)",
+                  "furtherLinks": [
+                    {
+                      "title": "Pharmaceutical marketing (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Pharmaceutical_marketing"
+                    },
+                    {
+                      "title": "Medical representative & pharma marketing — guides",
+                      "url": "https://www.youtube.com/results?search_query=medical%20representative%20pharma%20marketing%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
           }
         }
       },
       "certifications": {
         "label": "Certifications",
         "icon": "📜",
+        "description": "Field-wise certs that boost any degree.",
         "info": {
-          "detail": "Industry certifications complement your degree with focused skills. Best certs are ones hiring managers actually ask for — AWS, CFA, PMP. Time them strategically alongside your degree.",
-          "tip": "Only invest in certs hiring managers actually ask for.",
+          "detail": "Industry certifications complement your degree with focused, job-ready skills — and the best ones are those hiring managers actually ask for. They're organised below by field, from technology and finance to healthcare, design, and marketing. Time them strategically alongside your degree, and always pair a certificate with demonstrable projects or results.",
+          "tip": "Only invest in certs that appear in the job descriptions you're targeting.",
           "benefits": [
-            "Focused skill acquisition",
-            "Industry-recognized",
-            "Done alongside degree"
+            "Focused, job-ready skills",
+            "Industry-recognised",
+            "Done alongside a degree"
           ],
           "drawbacks": [
-            "Some expensive",
-            "Certificate ≠ competence"
+            "Some are expensive",
+            "Certificate ≠ competence",
+            "Pair with real projects"
           ]
         },
         "children": {
-          "cloud": {
-            "label": "AWS / Azure / GCP",
-            "icon": "☁️",
+          "technology": {
+            "label": "Technology",
+            "icon": "💻",
             "info": {
-              "detail": "Cloud certifications from AWS, Microsoft Azure, and Google Cloud validate skills employers actively pay a premium for — architecting, deploying, and securing cloud infrastructure. Start with the foundational tiers (AWS Cloud Practitioner, AZ-900, GCP Cloud Digital Leader) before moving to associate and professional levels. Pair certs with hands-on labs and a couple of deployed projects; in a cloud-first industry this is one of the fastest ways to lift employability and salary, even without a CS degree.",
-              "tip": "AWS Solutions Architect Associate — start there.",
-              "benefits": [
-                "Cloud skills in massive demand",
-                "₹2-8 LPA salary bump"
-              ],
-              "drawbacks": [
-                "Exam fees ₹10-25K",
-                "Hands-on > cert alone"
-              ],
-              "topColleges": [
-                "Self-study: A Cloud Guru",
-                "Stephane Maarek (Udemy)"
-              ],
-              "topRecruiters": [
-                "Amazon",
-                "Microsoft",
-                "Google",
-                "Accenture",
-                "TCS",
-                "startups"
-              ],
-              "avgCTC": "₹2-8 LPA bump with relevant experience",
-              "furtherLinks": [
-                {
-                  "title": "AWS Roadmap",
-                  "url": "https://roadmap.sh/aws"
-                },
-                {
-                  "title": "AWS Certification (official)",
-                  "url": "https://aws.amazon.com/certification/"
-                },
-                {
-                  "title": "Microsoft Azure certifications (official)",
-                  "url": "https://learn.microsoft.com/en-us/credentials/"
-                },
-                {
-                  "title": "Google Cloud certification (official)",
-                  "url": "https://cloud.google.com/learn/certification"
-                },
-                {
-                  "title": "Cloud certification roadmap — video guides",
-                  "url": "https://www.youtube.com/results?search_query=cloud%20certification%20roadmap%20aws%20azure%20gcp%202026"
-                }
-              ]
+              "detail": "Tech certifications validate hands-on, job-ready skills and often matter more than a degree for hiring. Cloud, data/AI, cybersecurity, and developer credentials carry real salary premiums. Pair every cert with deployed projects — recruiters trust demonstrated work over a badge alone.",
+              "tip": "Pick certs hiring managers actually ask for — cloud, security, and data lead the list."
             },
-            "children": {}
+            "children": {
+              "cloud": {
+                "label": "Cloud — AWS / Azure / GCP",
+                "icon": "☁️",
+                "info": {
+                  "detail": "Cloud certifications from AWS, Microsoft Azure, and Google Cloud validate skills employers pay a premium for — architecting, deploying, and securing cloud infrastructure. Start with foundational tiers (AWS Cloud Practitioner, AZ-900, GCP Cloud Digital Leader) before associate and professional levels. In a cloud-first industry this is one of the fastest ways to lift employability and salary, even without a CS degree.",
+                  "tip": "AWS Solutions Architect Associate is the best-value starting cert.",
+                  "benefits": [
+                    "Cloud skills in massive demand",
+                    "₹2-8 LPA salary bump",
+                    "Entry without CS degree"
+                  ],
+                  "drawbacks": [
+                    "Exam fees ₹10-25K",
+                    "Hands-on > cert alone",
+                    "Renewals every 2-3 yrs"
+                  ],
+                  "topRecruiters": [
+                    "Amazon",
+                    "Microsoft",
+                    "Google",
+                    "Accenture",
+                    "TCS",
+                    "Startups"
+                  ],
+                  "avgCTC": "₹2-8 LPA bump with experience",
+                  "furtherLinks": [
+                    {
+                      "title": "AWS Certification (official)",
+                      "url": "https://aws.amazon.com/certification/"
+                    },
+                    {
+                      "title": "Azure certifications (official)",
+                      "url": "https://learn.microsoft.com/en-us/credentials/"
+                    },
+                    {
+                      "title": "Google Cloud certification (official)",
+                      "url": "https://cloud.google.com/learn/certification"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "data_ml": {
+                "label": "Data Science & AI/ML",
+                "icon": "🤖",
+                "info": {
+                  "detail": "Data and AI credentials — the Google Data Analytics / Advanced Data Analytics certificates, TensorFlow Developer, Azure AI Engineer, and Databricks — validate analytics and machine-learning skills for one of the highest-growth job markets. They suit graduates from any quantitative background. A public portfolio of analyses and ML projects is what converts these certs into offers.",
+                  "tip": "Master SQL + Python first; the cert plus 2-3 real projects gets interviews.",
+                  "benefits": [
+                    "Highest-growth field",
+                    "Cross-industry demand",
+                    "Strong pay"
+                  ],
+                  "drawbacks": [
+                    "Maths/stats heavy",
+                    "Portfolio essential",
+                    "Fast-moving tools"
+                  ],
+                  "topRecruiters": [
+                    "Fractal",
+                    "Tiger Analytics",
+                    "Mu Sigma",
+                    "Deloitte",
+                    "Amazon",
+                    "Banks"
+                  ],
+                  "avgCTC": "₹5-15 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Google Data Analytics Certificate",
+                      "url": "https://www.coursera.org/professional-certificates/google-data-analytics"
+                    },
+                    {
+                      "title": "TensorFlow Developer Certificate (official)",
+                      "url": "https://www.tensorflow.org/certificate"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "cyber": {
+                "label": "Cybersecurity",
+                "icon": "🛡️",
+                "info": {
+                  "detail": "Cybersecurity certifications — CompTIA Security+, CEH (Certified Ethical Hacker), and the advanced CISSP — validate skills in securing systems, ethical hacking, and risk management. With rising cyber threats, certified security professionals are scarce and well paid. Hands-on labs (TryHackMe, Hack The Box) plus a cert make a compelling profile.",
+                  "tip": "Security+ for entry, CEH for offensive roles, CISSP for senior/management.",
+                  "benefits": [
+                    "Acute talent shortage",
+                    "Strong, rising pay",
+                    "Global demand"
+                  ],
+                  "drawbacks": [
+                    "CISSP needs experience",
+                    "Continuous learning",
+                    "Exam fees high"
+                  ],
+                  "topRecruiters": [
+                    "Deloitte",
+                    "EY",
+                    "PwC",
+                    "Palo Alto",
+                    "TCS",
+                    "Banks"
+                  ],
+                  "avgCTC": "₹5-18 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "CompTIA Security+ (official)",
+                      "url": "https://www.comptia.org/certifications/security"
+                    },
+                    {
+                      "title": "CEH — EC-Council (official)",
+                      "url": "https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "dev": {
+                "label": "Developer & DevOps",
+                "icon": "⚙️",
+                "info": {
+                  "detail": "Role-focused developer and DevOps credentials — the Certified Kubernetes Administrator (CKA), Docker, HashiCorp Terraform, and Oracle/Java certifications — prove practical engineering depth. They are most valuable for backend, platform, and DevOps engineers looking to stand out. As always, a strong GitHub and shipped systems matter more than the certificate itself.",
+                  "tip": "CKA + a cloud cert is a powerful combo for platform/DevOps roles.",
+                  "benefits": [
+                    "Validates engineering depth",
+                    "DevOps shortage",
+                    "Pairs with cloud certs"
+                  ],
+                  "drawbacks": [
+                    "Hands-on exams are tough",
+                    "Renewals needed",
+                    "Projects matter more"
+                  ],
+                  "topRecruiters": [
+                    "Red Hat",
+                    "Amazon",
+                    "Microsoft",
+                    "Wipro",
+                    "Startups"
+                  ],
+                  "avgCTC": "₹5-16 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "CKA — Kubernetes (official)",
+                      "url": "https://www.cncf.io/training/certification/cka/"
+                    },
+                    {
+                      "title": "Developer roadmaps — roadmap.sh",
+                      "url": "https://roadmap.sh/"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
           },
-          "finance_cert": {
-            "label": "CFA / FRM",
+          "finance": {
+            "label": "Finance & Accounting",
             "icon": "📈",
             "info": {
-              "detail": "CFA (CFA Institute) and FRM (GARP) are globally respected finance credentials. The CFA — three levels covering investments, valuation, and portfolio management — is the gold standard for equity research, asset management, and investment banking. FRM specialises in risk management for banks and trading desks. Both are self-study, exam-based, and can be pursued alongside a job; clearing even Level 1 signals serious commitment to recruiters across high finance.",
-              "tip": "Start CFA Level 1 in final year.",
-              "benefits": [
-                "CFA: gold standard in finance",
-                "₹10-30 LPA with experience"
-              ],
-              "drawbacks": [
-                "3 levels over 2-4 years",
-                "40-50% pass rates"
-              ],
-              "topColleges": [
-                "Self-study: CFA Institute materials",
-                "Kaplan Schweser"
-              ],
-              "topRecruiters": [
-                "Goldman Sachs",
-                "JP Morgan",
-                "HDFC AMC",
-                "Kotak AMC",
-                "Edelweiss"
-              ],
-              "avgCTC": "₹8-15 LPA (L1); ₹15-40 LPA (charterholder)",
-              "furtherLinks": [
-                {
-                  "title": "CFA Program — CFA Institute (official)",
-                  "url": "https://www.cfainstitute.org/programs/cfa"
-                },
-                {
-                  "title": "FRM — GARP (official)",
-                  "url": "https://www.garp.org/frm"
-                },
-                {
-                  "title": "CFA vs FRM — which to choose — video guides",
-                  "url": "https://www.youtube.com/results?search_query=cfa%20vs%20frm%20career%20india%20which%20to%20choose"
-                }
-              ]
+              "detail": "Finance certifications open high-paying roles in investment, risk, valuation, and accounting — often without an MBA. The CFA, FRM, and CFP are globally respected and self-study friendly, letting you certify while working. Even clearing an early level signals serious commitment to recruiters across high finance.",
+              "tip": "Start CFA Level 1 in your final year — it compounds with experience."
             },
-            "children": {}
+            "children": {
+              "cfa_frm": {
+                "label": "CFA / FRM",
+                "icon": "💹",
+                "info": {
+                  "detail": "CFA (CFA Institute) and FRM (GARP) are the gold-standard finance credentials. The CFA — three levels covering investments, valuation, and portfolio management — is the standard for equity research, asset management, and investment banking. FRM specialises in risk management for banks and trading desks. Both are exam-based and can be pursued alongside a job.",
+                  "tip": "CFA for investments/equity research; FRM for risk roles in banks.",
+                  "benefits": [
+                    "Gold standard in finance",
+                    "₹10-30 LPA with experience",
+                    "Self-study, work alongside"
+                  ],
+                  "drawbacks": [
+                    "3 levels over 2-4 years",
+                    "40-50% pass rates",
+                    "Demanding alongside job"
+                  ],
+                  "topRecruiters": [
+                    "Goldman Sachs",
+                    "JP Morgan",
+                    "HDFC AMC",
+                    "Kotak AMC",
+                    "Edelweiss"
+                  ],
+                  "avgCTC": "₹8-15 LPA (L1); ₹15-40 LPA (charterholder)",
+                  "furtherLinks": [
+                    {
+                      "title": "CFA Program (CFA Institute, official)",
+                      "url": "https://www.cfainstitute.org/programs/cfa"
+                    },
+                    {
+                      "title": "FRM — GARP (official)",
+                      "url": "https://www.garp.org/frm"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "fmva": {
+                "label": "Financial Modelling & Valuation",
+                "icon": "🧮",
+                "info": {
+                  "detail": "Financial modelling and valuation credentials — like CFI's FMVA and various Wall Street Prep / Udemy programmes — teach the practical Excel, modelling, and valuation skills that investment banking, corporate finance, and FP&A roles demand day one. They are short, hands-on, and resume-ready, bridging the gap between theory and what analysts actually do.",
+                  "tip": "Strong Excel + DCF/comps modelling lands analyst roles even without an elite MBA.",
+                  "benefits": [
+                    "Immediately job-ready",
+                    "Short & practical",
+                    "Bridges to IB/FP&A"
+                  ],
+                  "drawbacks": [
+                    "Less prestige than CFA",
+                    "Quality varies by provider",
+                    "Needs practice"
+                  ],
+                  "topRecruiters": [
+                    "Boutique IBs",
+                    "Corporates (FP&A)",
+                    "KPOs",
+                    "Big-4 advisory"
+                  ],
+                  "avgCTC": "₹6-15 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "FMVA — Corporate Finance Institute",
+                      "url": "https://corporatefinanceinstitute.com/certifications/financial-modeling-valuation-analyst-fmva-program/"
+                    },
+                    {
+                      "title": "Financial modelling — guides",
+                      "url": "https://www.youtube.com/results?search_query=financial%20modelling%20valuation%20course%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "cfp": {
+                "label": "CFP / Accounting (US CPA, ACCA)",
+                "icon": "🧾",
+                "info": {
+                  "detail": "Beyond Indian CA, global accounting and planning credentials widen options: the US CPA and the UK's ACCA are recognised by multinationals and the Big Four worldwide, while the CFP (Certified Financial Planner) certifies personal wealth and financial-planning expertise. These suit B.Com/commerce graduates targeting global firms or advisory and wealth-management careers.",
+                  "tip": "US CPA/ACCA for global accounting roles; CFP for wealth management & advisory.",
+                  "benefits": [
+                    "Global recognition",
+                    "MNC & Big-4 roles",
+                    "Wealth-advisory path (CFP)"
+                  ],
+                  "drawbacks": [
+                    "Exam + experience requirements",
+                    "Fees in lakhs",
+                    "Long journey"
+                  ],
+                  "topRecruiters": [
+                    "Deloitte",
+                    "PwC",
+                    "EY",
+                    "KPMG",
+                    "Banks",
+                    "Wealth firms"
+                  ],
+                  "avgCTC": "₹7-20 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "ACCA — official",
+                      "url": "https://www.accaglobal.com/"
+                    },
+                    {
+                      "title": "US CPA & ACCA explained — guides",
+                      "url": "https://www.youtube.com/results?search_query=us%20cpa%20acca%20career%20india%20eligibility"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "management": {
+            "label": "Management & Business",
+            "icon": "📋",
+            "info": {
+              "detail": "Management certifications validate project, process, and agile skills that employers across every industry value. PMP, Six Sigma, and Scrum credentials accelerate moves into project and program management, often with immediate salary impact. They complement any degree and are especially powerful for experienced professionals.",
+              "tip": "PMP and CSM are the most-requested management certs in job descriptions."
+            },
+            "children": {
+              "pmp": {
+                "label": "Project Management (PMP / PRINCE2)",
+                "icon": "📌",
+                "info": {
+                  "detail": "The PMP (Project Management Professional, from PMI) is the world's most recognised project-management credential, validating your ability to lead projects on scope, time, and budget; PRINCE2 is its popular European counterpart. PMP requires documented project experience plus an exam, and consistently appears in senior PM job postings with a clear salary premium.",
+                  "tip": "PMP needs ~3 years of project experience — time it for your mid-career jump.",
+                  "benefits": [
+                    "Globally recognised",
+                    "Clear salary premium",
+                    "Cross-industry"
+                  ],
+                  "drawbacks": [
+                    "Experience prerequisite",
+                    "Exam + renewal fees",
+                    "PDUs to maintain"
+                  ],
+                  "topRecruiters": [
+                    "IT services",
+                    "Construction",
+                    "Consulting",
+                    "Manufacturing",
+                    "Banks"
+                  ],
+                  "avgCTC": "₹10-25 LPA (experienced PMs)",
+                  "furtherLinks": [
+                    {
+                      "title": "PMP — PMI (official)",
+                      "url": "https://www.pmi.org/certifications/project-management-pmp"
+                    },
+                    {
+                      "title": "PMP certification guide — videos",
+                      "url": "https://www.youtube.com/results?search_query=pmp%20certification%20worth%20it%20india%20eligibility"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "agile": {
+                "label": "Agile & Scrum (CSM / PSM / SAFe)",
+                "icon": "🔄",
+                "info": {
+                  "detail": "Agile certifications — Certified ScrumMaster (CSM), Professional Scrum Master (PSM), and SAFe Agilist — validate skills in running agile teams and delivery. As most product and tech organisations run on Scrum, these credentials help analysts, developers, and PMs move into Scrum Master and Agile Coach roles, which are in steady demand and pay well.",
+                  "tip": "PSM (scrum.org) is rigorous and resume-friendly; CSM is the popular entry point.",
+                  "benefits": [
+                    "High demand in tech/product",
+                    "Path to Scrum Master/Coach",
+                    "Quick to obtain"
+                  ],
+                  "drawbacks": [
+                    "Credential alone isn't enough",
+                    "Renewals (some)",
+                    "Needs team experience"
+                  ],
+                  "topRecruiters": [
+                    "IT services",
+                    "Product companies",
+                    "Banks",
+                    "Consulting"
+                  ],
+                  "avgCTC": "₹8-20 LPA (Scrum Master/Coach)",
+                  "furtherLinks": [
+                    {
+                      "title": "Professional Scrum Master — scrum.org",
+                      "url": "https://www.scrum.org/professional-scrum-certifications"
+                    },
+                    {
+                      "title": "Scrum Master career — guides",
+                      "url": "https://www.youtube.com/results?search_query=scrum%20master%20agile%20certification%20career%20india%20csm%20psm"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "sixsigma": {
+                "label": "Six Sigma & Operations",
+                "icon": "📐",
+                "info": {
+                  "detail": "Lean Six Sigma certifications (Yellow, Green, and Black Belt) validate process-improvement and quality-management expertise, prized in manufacturing, operations, supply chain, and consulting. They teach data-driven methods to cut waste and defects, and a Green/Black Belt is a strong differentiator for operations and process-excellence roles.",
+                  "tip": "Green Belt is the practical sweet spot; Black Belt for process-excellence leadership.",
+                  "benefits": [
+                    "Valued in ops & manufacturing",
+                    "Data-driven skillset",
+                    "Differentiator for ops roles"
+                  ],
+                  "drawbacks": [
+                    "Provider quality varies",
+                    "Needs real projects",
+                    "Less relevant outside ops"
+                  ],
+                  "topRecruiters": [
+                    "Manufacturing",
+                    "E-commerce ops",
+                    "Consulting",
+                    "BPOs",
+                    "Logistics"
+                  ],
+                  "avgCTC": "₹6-18 LPA (ops/quality roles)",
+                  "furtherLinks": [
+                    {
+                      "title": "Six Sigma (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Six_Sigma"
+                    },
+                    {
+                      "title": "Lean Six Sigma career — guides",
+                      "url": "https://www.youtube.com/results?search_query=lean%20six%20sigma%20certification%20career%20india%20green%20belt"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "medicine": {
+            "label": "Medicine & Healthcare",
+            "icon": "🩺",
+            "info": {
+              "detail": "Healthcare certifications open allied-health and pharma careers that don't require an MBBS. Clinical research, medical coding, and healthcare-quality credentials are in high demand from hospitals, pharma, and global health-IT firms. They suit life-science, pharmacy, and nursing graduates seeking specialised, stable roles.",
+              "tip": "Clinical research and medical coding are the fastest-growing non-MBBS healthcare paths."
+            },
+            "children": {
+              "clinical": {
+                "label": "Clinical Research & Pharmacovigilance",
+                "icon": "🔬",
+                "info": {
+                  "detail": "Certifications and PG diplomas in clinical research and pharmacovigilance (e.g., from ICRI, ACRP, or DIA) qualify life-science and pharmacy graduates to run drug trials and monitor drug safety for pharma companies and CROs. It is a fast-growing, well-paying field blending science, regulation, and data, with strong demand from global CROs operating in India.",
+                  "tip": "A clinical research / pharmacovigilance diploma fast-tracks entry into global CROs.",
+                  "benefits": [
+                    "Fast-growing field",
+                    "Good pay vs other pharma",
+                    "Global CRO demand"
+                  ],
+                  "drawbacks": [
+                    "Diploma usually needed",
+                    "Regulation-heavy",
+                    "Documentation-intensive"
+                  ],
+                  "topRecruiters": [
+                    "IQVIA",
+                    "Parexel",
+                    "ICON",
+                    "Syneos Health",
+                    "Novartis"
+                  ],
+                  "avgCTC": "₹3.5-9 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Clinical research (Wikipedia)",
+                      "url": "https://en.wikipedia.org/wiki/Clinical_research"
+                    },
+                    {
+                      "title": "Clinical research & pharmacovigilance career — guides",
+                      "url": "https://www.youtube.com/results?search_query=clinical%20research%20pharmacovigilance%20certification%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "coding": {
+                "label": "Medical Coding & Health Info",
+                "icon": "🧾",
+                "info": {
+                  "detail": "Medical coding certifications — chiefly the CPC (Certified Professional Coder) from AAPC — train you to translate diagnoses and procedures into standardised codes for billing and records. It is a booming, work-from-home-friendly career for life-science and paramedical graduates, driven by US healthcare outsourcing to India, with steady demand and clear progression.",
+                  "tip": "AAPC's CPC is the industry-standard cert — strong demand in health-IT hubs.",
+                  "benefits": [
+                    "High, steady demand",
+                    "Remote-friendly",
+                    "Quick entry for life-science grads"
+                  ],
+                  "drawbacks": [
+                    "Detail-intensive",
+                    "Certification fees",
+                    "Repetitive at junior levels"
+                  ],
+                  "topRecruiters": [
+                    "Optum",
+                    "Cognizant",
+                    "Omega Healthcare",
+                    "AGS Health",
+                    "Access Healthcare"
+                  ],
+                  "avgCTC": "₹3-7 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "CPC — AAPC (official)",
+                      "url": "https://www.aapc.com/certification/cpc/"
+                    },
+                    {
+                      "title": "Medical coding career — guides",
+                      "url": "https://www.youtube.com/results?search_query=medical%20coding%20cpc%20career%20india%20aapc"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "healthmgmt": {
+                "label": "Healthcare Quality & Management",
+                "icon": "🏥",
+                "info": {
+                  "detail": "Healthcare quality and management credentials — NABH/JCI quality, hospital administration certificates, and public-health (MPH-aligned) programmes — prepare graduates for hospital operations, accreditation, and health-systems roles. As India's hospital and diagnostics sector expands and professionalises, certified quality and administration professionals are increasingly in demand.",
+                  "tip": "NABH/JCI quality knowledge is a strong edge for hospital operations roles.",
+                  "benefits": [
+                    "Growing hospital sector",
+                    "Non-clinical healthcare path",
+                    "Stable demand"
+                  ],
+                  "drawbacks": [
+                    "Often needs experience",
+                    "Modest entry pay",
+                    "Process-heavy"
+                  ],
+                  "topRecruiters": [
+                    "Apollo",
+                    "Fortis",
+                    "Max Healthcare",
+                    "Manipal Hospitals",
+                    "Diagnostics chains"
+                  ],
+                  "avgCTC": "₹4-10 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "NABH — quality accreditation (official)",
+                      "url": "https://nabh.co/"
+                    },
+                    {
+                      "title": "Hospital administration career — guides",
+                      "url": "https://www.youtube.com/results?search_query=hospital%20administration%20healthcare%20management%20career%20india"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "design": {
+            "label": "Design & Creative",
+            "icon": "🎨",
+            "info": {
+              "detail": "Design certifications and structured programmes validate UX, visual, and product-design skills for a field where a portfolio rules. Google UX, Adobe, and Interaction Design Foundation credentials help non-design graduates break in. Pair any cert with case studies of real projects — that portfolio is what gets you hired.",
+              "tip": "Certs help you learn; your portfolio of case studies is what actually lands the job."
+            },
+            "children": {
+              "ux": {
+                "label": "UX / Product Design",
+                "icon": "🖌️",
+                "info": {
+                  "detail": "UX design credentials — the Google UX Design Certificate and Interaction Design Foundation courses — teach research, wireframing, prototyping (Figma), and usability for one of tech's best-paid creative roles. They are the most accessible way for non-design graduates to enter UX, provided you build 2-3 polished case studies that demonstrate your process end to end.",
+                  "tip": "Finish the Google UX cert, then ship 2-3 Figma case studies — that's your real CV.",
+                  "benefits": [
+                    "High UX demand & pay",
+                    "Accessible to non-designers",
+                    "Portfolio-driven hiring"
+                  ],
+                  "drawbacks": [
+                    "Portfolio is everything",
+                    "Crowded entry",
+                    "Cert ≠ job alone"
+                  ],
+                  "topRecruiters": [
+                    "Google",
+                    "Flipkart",
+                    "Swiggy",
+                    "Razorpay",
+                    "Zoho",
+                    "Agencies"
+                  ],
+                  "avgCTC": "₹6-20 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Google UX Design Certificate",
+                      "url": "https://www.coursera.org/professional-certificates/google-ux-design"
+                    },
+                    {
+                      "title": "Interaction Design Foundation",
+                      "url": "https://www.interaction-design.org/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "adobe": {
+                "label": "Graphic & Visual Design (Adobe)",
+                "icon": "🖼️",
+                "info": {
+                  "detail": "Adobe Certified Professional credentials validate proficiency in Photoshop, Illustrator, and InDesign — the core tools of graphic, brand, and visual design. They suit aspiring graphic designers, marketers, and content creators, and are a quick way to formalise creative skills. Freelancing and agency roles open early for those with a strong visual portfolio.",
+                  "tip": "Adobe certs + a Behance/Dribbble portfolio open freelance and agency doors fast.",
+                  "benefits": [
+                    "Industry-standard tools",
+                    "Freelance early",
+                    "Marketing & brand demand"
+                  ],
+                  "drawbacks": [
+                    "Crowded freelance market",
+                    "Rate pressure early",
+                    "Portfolio over cert"
+                  ],
+                  "topRecruiters": [
+                    "Agencies",
+                    "D2C brands",
+                    "Media houses",
+                    "Startups",
+                    "Freelance"
+                  ],
+                  "avgCTC": "₹3-9 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Adobe Certified Professional (official)",
+                      "url": "https://www.adobe.com/training/certification.html"
+                    },
+                    {
+                      "title": "Graphic design career — guides",
+                      "url": "https://www.youtube.com/results?search_query=graphic%20design%20career%20india%20adobe%20portfolio%20freelance"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
+          },
+          "marketing": {
+            "label": "Marketing & Sales",
+            "icon": "📣",
+            "info": {
+              "detail": "Digital marketing certifications validate skills in SEO, paid ads, analytics, and content that businesses of every size hire for. Google, Meta, and HubSpot credentials are free or low-cost and immediately practical, making this one of the most accessible high-demand fields for any graduate.",
+              "tip": "Run one real campaign (even a small budget) — results beat any certificate."
+            },
+            "children": {
+              "digital": {
+                "label": "Digital Marketing (Google / Meta / HubSpot)",
+                "icon": "🌐",
+                "info": {
+                  "detail": "Digital marketing certifications — Google Digital Marketing & E-commerce, Google Ads, Meta Blueprint, and HubSpot — cover SEO, SEM/paid ads, social media, email, and analytics. They are largely free or low-cost and immediately usable, letting graduates from any stream start freelancing or land performance-marketing roles. A live campaign with measurable results is the best proof of skill.",
+                  "tip": "Google Ads + Analytics certs plus one real campaign get you hired or freelancing.",
+                  "benefits": [
+                    "Free/low-cost & practical",
+                    "High SME demand",
+                    "Freelance from day one"
+                  ],
+                  "drawbacks": [
+                    "Crowded entry field",
+                    "Results-driven pressure",
+                    "Trends shift fast"
+                  ],
+                  "topRecruiters": [
+                    "Agencies",
+                    "D2C startups",
+                    "SaaS firms",
+                    "E-commerce",
+                    "Freelance"
+                  ],
+                  "avgCTC": "₹3-10 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Google Digital Marketing & E-commerce Certificate",
+                      "url": "https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce"
+                    },
+                    {
+                      "title": "HubSpot Academy (free certifications)",
+                      "url": "https://academy.hubspot.com/"
+                    }
+                  ]
+                },
+                "children": {}
+              },
+              "analytics_mktg": {
+                "label": "Marketing Analytics & Growth",
+                "icon": "📊",
+                "info": {
+                  "detail": "Growth and marketing-analytics credentials build on Google Analytics (GA4), CRO, and data-driven marketing to optimise funnels and spend. As companies demand measurable ROI from marketing, analysts who can connect campaigns to revenue are increasingly valued. This path blends creativity with data and leads toward growth-marketing and marketing-leadership roles.",
+                  "tip": "GA4 + SQL + a documented growth experiment make you stand out from generalists.",
+                  "benefits": [
+                    "ROI-focused, valued skill",
+                    "Blends data + creativity",
+                    "Path to growth lead"
+                  ],
+                  "drawbacks": [
+                    "Needs analytical rigour",
+                    "Tool churn",
+                    "Attribution is messy"
+                  ],
+                  "topRecruiters": [
+                    "Startups",
+                    "E-commerce",
+                    "SaaS",
+                    "Agencies",
+                    "Consumer brands"
+                  ],
+                  "avgCTC": "₹5-14 LPA",
+                  "furtherLinks": [
+                    {
+                      "title": "Google Analytics (GA4) — Skillshop",
+                      "url": "https://skillshop.withgoogle.com/"
+                    },
+                    {
+                      "title": "Growth marketing career — guides",
+                      "url": "https://www.youtube.com/results?search_query=marketing%20analytics%20growth%20career%20india%20ga4"
+                    }
+                  ]
+                },
+                "children": {}
+              }
+            }
           }
         }
       }
@@ -21200,6 +24314,485 @@ const DEFAULT_CAREER_DATA = {
     "description": "Specialize and accelerate!",
     "icon": "📜",
     "children": {
+      "masters": {
+        "label": "Master's Degrees (by field)",
+        "icon": "🎓",
+        "description": "Specialise deeper — pick your field's master's.",
+        "info": {
+          "detail": "A master's degree is the classic post-graduation move to specialise, switch fields, or qualify for research and senior roles. Every undergraduate stream has a natural master's path — engineering to M.Tech/MS, commerce to M.Com, arts to MA, and so on — plus cross-over options like an MBA or MCA for changing direction. The right master's from a strong institution can reset your trajectory; the wrong one is two expensive years. Explore the major master's degrees across fields and what each unlocks.",
+          "tip": "Pick a master's for a clear goal — specialisation, switch, or research — not as a default.",
+          "benefits": [
+            "Deeper expertise & credibility",
+            "Access to senior/research roles",
+            "Can switch or reset your field"
+          ],
+          "drawbacks": [
+            "2 years + fees / opportunity cost",
+            "ROI varies hugely by institution",
+            "Not always needed to advance"
+          ],
+          "avgCTC": "Varies by field — see each option",
+          "furtherLinks": [
+            {
+              "title": "Master's degree (Wikipedia)",
+              "url": "https://en.wikipedia.org/wiki/Master%27s_degree"
+            },
+            {
+              "title": "Which master's is worth it? — guides",
+              "url": "https://www.youtube.com/results?search_query=which%20masters%20degree%20worth%20it%20india%20career"
+            }
+          ]
+        },
+        "children": {
+          "mtech": {
+            "label": "M.Tech / MS (Engineering)",
+            "icon": "⚙️",
+            "info": {
+              "detail": "M.Tech (India) and MS (abroad) deepen engineering expertise for R&D, core-tech, and academic roles. M.Tech from IITs via GATE is fully funded with a monthly stipend — India's best-value postgraduate education. MS abroad (US/Germany) costs more but opens global jobs and immigration. Both are strongest when paired with research, publications, or specialised industry skills.",
+              "tip": "India: GATE → IIT M.Tech (free + stipend). Abroad: GRE → US/Germany MS.",
+              "benefits": [
+                "Funded M.Tech via GATE",
+                "Core-tech & R&D roles",
+                "MS abroad = immigration"
+              ],
+              "drawbacks": [
+                "2-3 years",
+                "ROI unclear for some branches",
+                "Research-heavy"
+              ],
+              "topColleges": [
+                "IIT Bombay",
+                "IIT Madras",
+                "IISc",
+                "Stanford",
+                "CMU",
+                "TU Munich"
+              ],
+              "topRecruiters": [
+                "Google",
+                "Intel",
+                "Qualcomm",
+                "Nvidia",
+                "Samsung Research",
+                "ISRO/DRDO"
+              ],
+              "avgCTC": "₹12-30 LPA (M.Tech); $100-180K (MS US)",
+              "furtherLinks": [
+                {
+                  "title": "GATE (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Graduate_Aptitude_Test_in_Engineering"
+                },
+                {
+                  "title": "M.Tech vs MS vs job — guides",
+                  "url": "https://www.youtube.com/results?search_query=mtech%20vs%20ms%20vs%20job%20after%20btech%20gate%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mba": {
+            "label": "MBA (Management)",
+            "icon": "📊",
+            "info": {
+              "detail": "The full-time MBA, with CAT for IIMs and GMAT for ISB/global schools, is the premier career accelerator and switch tool — engineers move into consulting, finance, and product. Top schools (IIM ABC, ISB) produce median packages of ₹25-35 LPA and networks worth crores. Two to four years of work experience before the MBA maximises ROI and placement quality.",
+              "tip": "2-4 years work-ex before a full-time MBA gives the best ROI.",
+              "benefits": [
+                "Career accelerator & switch",
+                "Elite networks",
+                "₹25-35 LPA from top schools"
+              ],
+              "drawbacks": [
+                "CAT/GMAT very competitive",
+                "High fees",
+                "2-year opportunity cost"
+              ],
+              "topColleges": [
+                "IIM Ahmedabad",
+                "IIM Bangalore",
+                "IIM Calcutta",
+                "ISB Hyderabad",
+                "XLRI",
+                "FMS Delhi"
+              ],
+              "topRecruiters": [
+                "McKinsey",
+                "BCG",
+                "Bain",
+                "Goldman Sachs",
+                "Amazon",
+                "HUL",
+                "P&G"
+              ],
+              "avgCTC": "₹25-35 LPA (IIM ABC median)",
+              "furtherLinks": [
+                {
+                  "title": "CAT — Common Admission Test (official)",
+                  "url": "https://iimcat.ac.in/"
+                },
+                {
+                  "title": "Is an MBA worth it? — guides",
+                  "url": "https://www.youtube.com/results?search_query=mba%20worth%20it%20india%20cat%20iim%20gmat%20placements"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "msc": {
+            "label": "M.Sc (Sciences)",
+            "icon": "🔬",
+            "info": {
+              "detail": "M.Sc deepens a science discipline (Physics, Chemistry, Maths, Biology, Statistics, CS) and is the gateway to PhD, research, and specialised industry roles. IIT/IISc M.Sc programmes via IIT JAM are funded and prestigious. M.Sc in Statistics/Data Science or Computer Science also pivots cleanly into high-paying analytics and tech careers.",
+              "tip": "Crack IIT JAM for a funded M.Sc at IITs/IISc — then PhD or industry.",
+              "benefits": [
+                "Path to PhD & research",
+                "Funded via JAM",
+                "Stats/CS M.Sc → data jobs"
+              ],
+              "drawbacks": [
+                "Modest pay without PhD",
+                "Research-oriented",
+                "Niche job market for some subjects"
+              ],
+              "topColleges": [
+                "IISc",
+                "IITs (JAM)",
+                "IISERs",
+                "Delhi University",
+                "TIFR (PhD)"
+              ],
+              "topRecruiters": [
+                "CSIR labs",
+                "ISRO/DRDO",
+                "Analytics firms",
+                "EdTech",
+                "Pharma R&D"
+              ],
+              "avgCTC": "₹4-12 LPA (rises sharply with PhD/data skills)",
+              "furtherLinks": [
+                {
+                  "title": "IIT JAM — M.Sc entrance (official)",
+                  "url": "https://jam.iitm.ac.in/"
+                },
+                {
+                  "title": "Master of Science (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Master_of_Science"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mcom": {
+            "label": "M.Com (Commerce)",
+            "icon": "📒",
+            "info": {
+              "detail": "M.Com advances accounting, finance, and economics knowledge and is popular for teaching, banking, research, and as a complement to CA/CS/CMA. It is especially valuable for those targeting academia (with NET/PhD) or specialised finance and taxation roles. Pairing M.Com with a professional certification or analytics skills boosts employability considerably.",
+              "tip": "M.Com + UGC-NET opens commerce lecturing; M.Com + CA/analytics boosts industry pay.",
+              "benefits": [
+                "Path to teaching/research",
+                "Complements CA/CS/CMA",
+                "Banking & finance roles"
+              ],
+              "drawbacks": [
+                "Modest standalone pay",
+                "NET/PhD for academia",
+                "Less job-ready than professional certs"
+              ],
+              "topColleges": [
+                "Delhi School of Economics",
+                "SRCC",
+                "Christ University",
+                "Loyola",
+                "Mumbai University"
+              ],
+              "topRecruiters": [
+                "Banks",
+                "Audit & accounting firms",
+                "Colleges",
+                "NBFCs",
+                "Corporates"
+              ],
+              "avgCTC": "₹3.5-9 LPA",
+              "furtherLinks": [
+                {
+                  "title": "Master of Commerce (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Master_of_Commerce"
+                },
+                {
+                  "title": "After M.Com — career options — guides",
+                  "url": "https://www.youtube.com/results?search_query=after%20mcom%20career%20options%20india%20net%20phd%20jobs"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "ma": {
+            "label": "MA (Arts & Humanities)",
+            "icon": "📖",
+            "info": {
+              "detail": "An MA specialises a humanities or social-science subject — Economics, Political Science, English, Psychology, Sociology, History, International Relations — and is key for academia, civil services, policy, and media leadership. MA Economics from top schools (DSE, ISI) feeds research and analytics; MA Psychology (with registration) enables counselling. With UGC-NET and a PhD, the MA leads to college teaching.",
+              "tip": "Top MA Economics (DSE/ISI) and MA Psychology have the strongest career outcomes.",
+              "benefits": [
+                "Specialised humanities depth",
+                "Path to academia & policy",
+                "Civil-services alignment"
+              ],
+              "drawbacks": [
+                "Pay depends on field/institution",
+                "Often needs NET/PhD",
+                "Generalist perception"
+              ],
+              "topColleges": [
+                "Delhi School of Economics",
+                "JNU",
+                "TISS",
+                "Ashoka University",
+                "Hyderabad University"
+              ],
+              "topRecruiters": [
+                "Think tanks",
+                "NGOs",
+                "Colleges",
+                "Media",
+                "Research firms",
+                "Govt"
+              ],
+              "avgCTC": "₹4-12 LPA (field-dependent)",
+              "furtherLinks": [
+                {
+                  "title": "Master of Arts (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Master_of_Arts"
+                },
+                {
+                  "title": "Career options after MA — guides",
+                  "url": "https://www.youtube.com/results?search_query=career%20options%20after%20ma%20humanities%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "llm": {
+            "label": "LLM (Law)",
+            "icon": "⚖️",
+            "info": {
+              "detail": "The LLM is a one-year postgraduate law degree (entry via CLAT-PG) that specialises in fields like corporate, constitutional, IP, or international law. It strengthens prospects in legal academia, policy, and specialised practice, and is often pursued by lawyers aiming for teaching or niche expertise. An LLM from a top NLU or a foreign university (Harvard, Oxford) carries significant prestige.",
+              "tip": "LLM + UGC-NET is the route to law teaching; specialise where demand is rising (IP, tech law).",
+              "benefits": [
+                "Specialised legal expertise",
+                "Path to law academia",
+                "Prestige from top NLUs/abroad"
+              ],
+              "drawbacks": [
+                "Limited pay jump in practice",
+                "Mainly for academia/niche",
+                "CLAT-PG competitive"
+              ],
+              "topColleges": [
+                "NLSIU Bangalore",
+                "NALSAR",
+                "NLU Delhi",
+                "Harvard (LLM)",
+                "Oxford (BCL)"
+              ],
+              "topRecruiters": [
+                "Law firms",
+                "Law schools",
+                "Policy bodies",
+                "Corporates (specialist counsel)"
+              ],
+              "avgCTC": "₹6-20 LPA (specialist/academia)",
+              "furtherLinks": [
+                {
+                  "title": "Master of Laws (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Master_of_Laws"
+                },
+                {
+                  "title": "CLAT PG & LLM — guides",
+                  "url": "https://www.youtube.com/results?search_query=llm%20clat%20pg%20specialization%20career%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mpharm": {
+            "label": "M.Pharm (Pharmacy)",
+            "icon": "💊",
+            "info": {
+              "detail": "M.Pharm specialises in areas like pharmaceutics, pharmacology, pharmaceutical analysis, or pharma management, and is the key to R&D, formulation, and regulatory-affairs roles. Entry is via GPAT, which also offers scholarships. M.Pharm graduates command better roles and pay than B.Pharm alone, especially in drug development and quality functions at major pharma companies.",
+              "tip": "Crack GPAT for scholarships and M.Pharm seats — it lifts pharma pay meaningfully.",
+              "benefits": [
+                "R&D & formulation roles",
+                "Better pay than B.Pharm",
+                "GPAT scholarships"
+              ],
+              "drawbacks": [
+                "2 more years",
+                "Specialisation locks focus",
+                "Lab/regulatory intensive"
+              ],
+              "topColleges": [
+                "NIPER Mohali",
+                "Jamia Hamdard",
+                "BITS Pilani",
+                "ICT Mumbai",
+                "Manipal"
+              ],
+              "topRecruiters": [
+                "Sun Pharma",
+                "Dr Reddy's",
+                "Cipla",
+                "Biocon",
+                "IQVIA",
+                "Novartis"
+              ],
+              "avgCTC": "₹4-10 LPA",
+              "furtherLinks": [
+                {
+                  "title": "GPAT (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Graduate_Pharmacy_Aptitude_Test"
+                },
+                {
+                  "title": "After M.Pharm — career & NIPER — guides",
+                  "url": "https://www.youtube.com/results?search_query=after%20mpharm%20career%20options%20niper%20gpat%20india"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mca": {
+            "label": "MCA (Computer Applications)",
+            "icon": "💻",
+            "info": {
+              "detail": "MCA is the master's route into software for non-CS and BCA/B.Sc graduates, with NIMCET as the entrance for NITs. The curriculum covers programming, data structures, databases, and software engineering — enough to clear product- and service-company interviews. Combined with self-driven DSA and projects, it is an affordable bridge into well-paid tech careers.",
+              "tip": "Target NIT MCA via NIMCET and build a strong GitHub + DSA profile alongside.",
+              "benefits": [
+                "Non-CS → tech switch",
+                "Affordable via NITs",
+                "Strong placement access"
+              ],
+              "drawbacks": [
+                "2-3 years",
+                "'Not real CS' stigma",
+                "DSA grind still needed"
+              ],
+              "topColleges": [
+                "NIT Trichy",
+                "NIT Warangal",
+                "NIT Surathkal",
+                "HCU",
+                "Pune University"
+              ],
+              "topRecruiters": [
+                "TCS",
+                "Infosys",
+                "Wipro",
+                "Amazon",
+                "Microsoft (with strong DSA)"
+              ],
+              "avgCTC": "₹6-20 LPA (with strong coding)",
+              "furtherLinks": [
+                {
+                  "title": "NIMCET — NIT MCA entrance (official)",
+                  "url": "https://www.nimcet.in/"
+                },
+                {
+                  "title": "Master of Computer Applications (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Master_of_Computer_Applications"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "mdes": {
+            "label": "M.Des (Design)",
+            "icon": "🎨",
+            "info": {
+              "detail": "M.Des specialises in design fields — product, UX/interaction, communication, or industrial design — with admission via CEED to IITs and NID. As digital products and manufacturing both invest in design, UX and product designers are in strong demand and well paid. A portfolio is everything in design careers, often outweighing marks entirely.",
+              "tip": "CEED → IIT/NID M.Des, and obsess over your portfolio — it gets you hired.",
+              "benefits": [
+                "High UX/product-design demand",
+                "Creative + well-paid",
+                "Portfolio-driven hiring"
+              ],
+              "drawbacks": [
+                "Portfolio pressure",
+                "CEED competitive",
+                "Subjective evaluation"
+              ],
+              "topColleges": [
+                "NID Ahmedabad",
+                "IIT Bombay (IDC)",
+                "IIT Delhi",
+                "IIT Guwahati",
+                "MIT Institute of Design"
+              ],
+              "topRecruiters": [
+                "Google",
+                "Microsoft",
+                "Flipkart",
+                "Swiggy",
+                "Titan",
+                "Tata Elxsi"
+              ],
+              "avgCTC": "₹8-25 LPA (UX/product design)",
+              "furtherLinks": [
+                {
+                  "title": "CEED — design entrance (official)",
+                  "url": "https://www.ceed.iitb.ac.in/"
+                },
+                {
+                  "title": "UX & product design career — guides",
+                  "url": "https://www.youtube.com/results?search_query=ux%20product%20design%20career%20india%20m%20des%20ceed%20nid"
+                }
+              ]
+            },
+            "children": {}
+          },
+          "msw": {
+            "label": "MSW (Social Work)",
+            "icon": "🤝",
+            "info": {
+              "detail": "The MSW prepares professionals for social work, community development, CSR, HR, and the non-profit and development sectors. Top schools like TISS place graduates into corporate CSR, foundations, and international NGOs at competitive salaries. It blends fieldwork with policy and is ideal for those seeking impact-driven careers.",
+              "tip": "TISS MSW opens corporate CSR and development-sector roles with solid pay.",
+              "benefits": [
+                "Impact-driven careers",
+                "Corporate CSR & HR roles",
+                "Development-sector demand"
+              ],
+              "drawbacks": [
+                "Variable NGO pay",
+                "Emotionally demanding",
+                "Fieldwork intensive"
+              ],
+              "topColleges": [
+                "TISS Mumbai",
+                "Delhi University",
+                "Christ University",
+                "Loyola College",
+                "Jamia Millia"
+              ],
+              "topRecruiters": [
+                "TISS-linked NGOs",
+                "Corporate CSR teams",
+                "UN agencies",
+                "Foundations",
+                "Govt"
+              ],
+              "avgCTC": "₹4-10 LPA (TISS placements higher)",
+              "furtherLinks": [
+                {
+                  "title": "Master of Social Work (Wikipedia)",
+                  "url": "https://en.wikipedia.org/wiki/Master_of_Social_Work"
+                },
+                {
+                  "title": "MSW career & TISS — guides",
+                  "url": "https://www.youtube.com/results?search_query=msw%20career%20options%20india%20tiss%20csr%20development%20sector"
+                }
+              ]
+            },
+            "children": {}
+          }
+        }
+      },
       "phd": {
         "label": "PhD / Research",
         "icon": "🔬",
@@ -21806,12 +25399,12 @@ const DEFAULT_BLOG_DATA = [
       "Career Guidance"
     ],
     "coverImage": "assets/article-manas.jpg",
-    "content": "## Welcome to the Glade in the Forest\n\nFlying into nostalgia, this is a beautiful story set in a glade. Flowers of different colours bloom across the glade, lovingly nurtured by the gardeners—the parents. These flowers are the children, each unique, each carrying a dream. This is a story of learning to fly towards a brighter future. But before taking flight, one must learn to move steadily and confidently through the river of challenges. For that, there are guides and trainers—your school, coaching institutes, and teachers.\n\nMugging through Objective Arithmetic by R.S. Aggarwal, studying the NCERT books of Classes V and VI, keeping up with current affairs, revising notes for General Science and General Knowledge, mastering Wren & Martin, Oxford Grammar and Composition, Hindi Vyakaran, and practising daily question papers—these are the prerequisites before entering the glade. Consistency is the key, as in every aspect of life. To taste the fruit of bliss, one must practise and persevere every day. Success is not achieved in a single moment; it is built through countless small efforts made with dedication and faith.\n\nThis is the first step in the journey towards the Ramakrishna Mission Class VI Entrance Examination.\n\n## Into the Abode of Forest Flowers\n\nIn the meadow flowed a river of purple radiance. Upon its tranquil waters glided countless white swans, their melodious calls filling the air. It seemed as though the sacred Mansarovar itself had descended to earth. Upon a luminous throne sat Mahashweta, gently playing the veena and chanting the eternal verses:\n\nॐ पूर्णमदः पूर्णमिदं\nपूर्णात् पूर्णमुदच्यते।\nपूर्णस्य पूर्णमादाय\nपूर्णमेवावशिष्यते॥\n\nHer mission was one of ethereal bliss—to distribute the nectar of wisdom and peace to the entire chara-achara vishwa, the moving and the unmoving universe.\n\nWe, the little swans, entered the purple waters as silent observers, our hearts filled with wonder and curiosity. Time and again, we immersed ourselves in the sacred Mansarovar, eager to explore its depths and absorb its hidden treasures. With every dive, we discovered something new; with every ripple, we moved a little closer to understanding.\n\nAs the day drew to a close, the sun descended gently into the western horizon. The heavens were painted in saffron, and the entire sky glowed with a divine brilliance. There stood a resolute figure, firm as a mountain, proclaiming:\n\n\"Arise, awake, and stop not till the goal is reached.\"\n\nThe atmosphere resonated with another sacred invocation:\n\nस्थापकाय च धर्मस्य\nसर्वधर्मस्वरूपिणे ।\nअवतारवरिष्ठाय\nरामकृष्णाय ते नमः ॥\n\nGuided by that call, nourished by those waters, and blessed by that wisdom, we slowly transformed. No longer were we merely wandering swans upon the river. We blossomed into the flowers of the glade—flowers of many colours, each unique in its fragrance and form, yet all rooted in the same soil of faith, knowledge, discipline, and service.\n\nAnd thus began our journey into the abode of forest flowers.\n\n## Clouds Swimming Over the Sargams\n\nThe clouds drifted gently over the sargams, as though the sky itself had become a melody. A paintbrush rested in our hands. Some among us painted colours upon empty canvases, while others lost themselves in the notes of the sitar. The strains of Raga Yaman flowed from the tanpura, and from afar the temple bell echoed through the air, weaving itself into the music of the day.\n\nIn those moments, we felt like creators in a universe alive with vibration and harmony. We spent our days playing with the sun, learning from its warmth and radiance. And once again, the man standing upon the horizon roared:\n\n\"What we want is muscles of iron and nerves of steel.\"\n\n\"You will be nearer to Heaven through football than through the study of the Gita.\"\n\nHis words stirred something within us. We were preparing ourselves for a movement of free thought, fearlessness, brotherhood, and service. We learned that Shiva resides in every living being. Every task became sacred. Cleaning our rooms, bathrooms, classrooms, and surroundings was no longer a duty imposed upon us; it was an expression of gratitude towards Mother Earth and a recognition of our responsibility as her children.\n\nLike the fragrant harsingar flowers gathered at dawn and offered at the feet of Maa Vishweshwari, we too wished to make ourselves worthy offerings through purity of thought and action.\n\nAt times, the gentle voice of Ajay Chakraborty floated through the air; at other times, the inspiring words of Swami Sarvaganand guided our thoughts. As evening approached, the birds returned to their nests after spending the day in the company of the sun, and we too returned inward.\n\nMorning swadhyaya and evening swadhyaya became the rhythm of our lives. Drills on the field, prayers in the temple, studies in the classroom, music, discipline, friendship, and countless small experiences quietly shaped us day after day. Slowly, we were emerging into the complete human being envisioned by Maharshi Aurobindo—not merely educated minds, but awakened selves. Before every meal, we paused in gratitude and offered our thanks to Brahman through the timeless prayer:\n\nब्रह्मार्पणं ब्रह्म हविर्ब्रह्माग्नौ ब्रह्मणा हुतम् ।\nब्रह्मैव तेन गन्तव्यं ब्रह्मकर्मसमाधिना ॥\n\nAnd so, without even realising it, the transformation continued. What had once been tender saplings were now growing into flowering plants. Rooted in discipline, nourished by knowledge, strengthened by service, and illuminated by spirituality, we were slowly becoming the blossoms we were meant to be.\n\n## Even the Moon Has Craters on It\n\nI was but an infant then. Dadi was weeping, and my own eyes were filled with tears, as though I were being sent away to prison. Yet there was no prison at all. It was a vast and beautiful painting, where young souls were coloured with vivid hues, adorned with glittering dreams, and gently brushed with the tincture of kindness.\n\nBut every painting has its shadows.\n\nIt is true that there was bullying by seniors. It had become a cycle, passed from one generation to another. Some said it would make us tough, and perhaps at times it did. Yet there were moments when it became tougher to endure than to learn from. The scars faded, but the memories remained.\n\nThen there was the politics of administration—occasional blotches upon an otherwise magnificent canvas, like dark clots of paint obscuring a beautiful landscape. And of course, there was a matter of fees. The cost was certainly high, yet the institution gave back far more than it ever took. In the final balance, it remained a heaven.\n\nYet even heaven has its clouds.\n\nSometimes Indra was not benevolent. Sometimes, a few gods sat upon their pedestals, draped in the robes of false pride. Such imperfections existed, just as craters exist upon the moon. Yet the moon remains beautiful, and so does this place.\n\nFor we were children of Swamiji.\n\nWe stood firm. We learned to rise after every fall, to serve without expectation, and to walk forward with courage. We carried within us the dream that Swamiji had kindled—a movement of strength, kindness, character, and service to humanity.\n\nI am grateful to have been a small part of that movement. Today we may be fireflies, flickering softly in the darkness, but one day we shall become suns in our own right, carrying light to places yet unseen.\n\nAnd so, with the final chant—\n\n\"नमः श्री यतिराजाय विवेकानन्द सूरये ।\nसच्चित्सुखस्वरूपाय स्वामिने तापहारिणे ॥\n\n—I bring this roller coaster of nostalgia to its gentle end.\n\nThe lessons were many. The memories were countless. The joys and struggles walked hand in hand. But among all the treasures that this journey gifted me, none was greater than the brothers I found in the form of friends—the sabse badi kunji to life's locked doors, the greatest key of all. The meadow still blooms somewhere in memory. The purple river still flows. The swans still glide upon Mansarovar. And whenever I close my eyes, I find myself there once again—a flower among flowers in the glade of the forest.",
+    "content": "## Welcome to the Glade in the Forest\n\nFlying into nostalgia, this is a beautiful story set in a glade. Flowers of different colours bloom across the glade, lovingly nurtured by the gardeners—the parents. These flowers are the children, each unique, each carrying a dream. This is a story of learning to fly towards a brighter future. But before taking flight, one must learn to move steadily and confidently through the river of challenges. For that, there are guides and trainers—your school, coaching institutes, and teachers.\n\nMugging through Objective Arithmetic by R.S. Aggarwal, studying the NCERT books of Classes V and VI, keeping up with current affairs, revising notes for General Science and General Knowledge, mastering Wren & Martin, Oxford Grammar and Composition, Hindi Vyakaran, and practising daily question papers—these are the prerequisites before entering the glade. Consistency is the key, as in every aspect of life. To taste the fruit of bliss, one must practise and persevere every day. Success is not achieved in a single moment; it is built through countless small efforts made with dedication and faith.\n\nThis is the first step in the journey towards the Ramakrishna Mission Class VI Entrance Examination.\n\n## Into the Abode of Forest Flowers\n\nIn the meadow flowed a river of purple radiance. Upon its tranquil waters glided countless white swans, their melodious calls filling the air. It seemed as though the sacred Mansarovar itself had descended to earth. Upon a luminous throne sat Mahashweta, gently playing the veena and chanting the eternal verses:\n\nॐ पूर्णमदः पूर्णमिदं\nपूर्णात् पूर्णमुदच्यते।\nपूर्णस्य पूर्णमादाय\nपूर्णमेवावशिष्यते॥\n\nHer mission was one of ethereal bliss—to distribute the nectar of wisdom and peace to the entire chara-achara vishwa, the moving and the unmoving universe.\n\nWe, the little swans, entered the purple waters as silent observers, our hearts filled with wonder and curiosity. Time and again, we immersed ourselves in the sacred Mansarovar, eager to explore its depths and absorb its hidden treasures. With every dive, we discovered something new; with every ripple, we moved a little closer to understanding.\n\nAs the day drew to a close, the sun descended gently into the western horizon. The heavens were painted in saffron, and the entire sky glowed with a divine brilliance. There stood a resolute figure, firm as a mountain, proclaiming:\n\n\"Arise, awake, and stop not till the goal is reached.\"\n\nThe atmosphere resonated with another sacred invocation:\n\nस्थापकाय च धर्मस्य\nसर्वधर्मस्वरूपिणे ।\nअवतारवरिष्ठाय\nरामकृष्णाय ते नमः ॥\n\nGuided by that call, nourished by those waters, and blessed by that wisdom, we slowly transformed. No longer were we merely wandering swans upon the river. We blossomed into the flowers of the glade—flowers of many colours, each unique in its fragrance and form, yet all rooted in the same soil of faith, knowledge, discipline, and service.\n\nAnd thus began our journey into the abode of forest flowers.\n\n## Clouds Swimming Over the Sargams\n\nThe clouds drifted gently over the sargams, as though the sky itself had become a melody. A paintbrush rested in our hands. Some among us painted colours upon empty canvases, while others lost themselves in the notes of the sitar. The strains of Raga Yaman flowed from the tanpura, and from afar the temple bell echoed through the air, weaving itself into the music of the day.\n\nIn those moments, we felt like creators in a universe alive with vibration and harmony. We spent our days playing with the sun, learning from its warmth and radiance. And once again, the man standing upon the horizon roared:\n\n\"What we want is muscles of iron and nerves of steel.\"\n\n\"You will be nearer to Heaven through football than through the study of the Gita.\"\n\nHis words stirred something within us. We were preparing ourselves for a movement of free thought, fearlessness, brotherhood, and service. We learned that Shiva resides in every living being. Every task became sacred. Cleaning our rooms, bathrooms, classrooms, and surroundings was no longer a duty imposed upon us; it was an expression of gratitude towards Mother Earth and a recognition of our responsibility as her children.\n\nLike the fragrant harsingar flowers gathered at dawn and offered at the feet of Maa Vishweshwari, we too wished to make ourselves worthy offerings through purity of thought and action.\n\nAt times, the gentle voice of Ajay Chakraborty floated through the air; at other times, the inspiring words of Swami Sarvanand guided our thoughts. As evening approached, the birds returned to their nests after spending the day in the company of the sun, and we too returned inward.\n\nMorning swadhyaya and evening swadhyaya became the rhythm of our lives. Drills on the field, prayers in the temple, studies in the classroom, music, discipline, friendship, and countless small experiences quietly shaped us day after day. Slowly, we were emerging into the complete human being envisioned by Maharshi Aurobindo—not merely educated minds, but awakened selves. Before every meal, we paused in gratitude and offered our thanks to Brahman through the timeless prayer:\n\nब्रह्मार्पणं ब्रह्म हविर्ब्रह्माग्नौ ब्रह्मणा हुतम् ।\nब्रह्मैव तेन गन्तव्यं ब्रह्मकर्मसमाधिना ॥\n\nAnd so, without even realising it, the transformation continued. What had once been tender saplings were now growing into flowering plants. Rooted in discipline, nourished by knowledge, strengthened by service, and illuminated by spirituality, we were slowly becoming the blossoms we were meant to be.\n\n## Even the Moon Has Craters on It\n\nI was but an infant then. Dadi was weeping, and my own eyes were filled with tears, as though I were being sent away to prison. Yet there was no prison at all. It was a vast and beautiful painting, where young souls were coloured with vivid hues, adorned with glittering dreams, and gently brushed with the tincture of kindness.\n\nBut every painting has its shadows.\n\nIt is true that there was bullying by seniors. It had become a cycle, passed from one generation to another. Some said it would make us tough, and perhaps at times it did. Yet there were moments when it became tougher to endure than to learn from. The scars faded, but the memories remained.\n\nThen there was the politics of administration—occasional blotches upon an otherwise magnificent canvas, like dark clots of paint obscuring a beautiful landscape. And of course, there was a matter of fees. The cost was certainly high, yet the institution gave back far more than it ever took. In the final balance, it remained a heaven.\n\nYet even heaven has its clouds.\n\nSometimes Indra was not benevolent. Sometimes, a few gods sat upon their pedestals, draped in the robes of false pride. Such imperfections existed, just as craters exist upon the moon. Yet the moon remains beautiful, and so does this place.\n\nFor we were children of Swamiji.\n\nWe stood firm. We learned to rise after every fall, to serve without expectation, and to walk forward with courage. We carried within us the dream that Swamiji had kindled—a movement of strength, kindness, character, and service to humanity.\n\nI am grateful to have been a small part of that movement. Today we may be fireflies, flickering softly in the darkness, but one day we shall become suns in our own right, carrying light to places yet unseen.\n\nAnd so, with the final chant—\n\n\"नमः श्री यतिराजाय विवेकानन्द सूरये ।\nसच्चित्सुखस्वरूपाय स्वामिने तापहारिणे ॥\n\n—I bring this roller coaster of nostalgia to its gentle end.\n\nThe lessons were many. The memories were countless. The joys and struggles walked hand in hand. But among all the treasures that this journey gifted me, none was greater than the brothers I found in the form of friends—the sabse badi kunji to life's locked doors, the greatest key of all. The meadow still blooms somewhere in memory. The purple river still flows. The swans still glide upon Mansarovar. And whenever I close my eyes, I find myself there once again—a flower among flowers in the glade of the forest.",
     "date": "2026-06-07"
   },
   {
     "id": 1780038082018,
-    "title": "Five Sanskrit Shlokas that Give Amazing Career Advice",
+    "title": "Five Sanskrit Stories that Give Amazing Career Advice",
     "author": "Utkarsh",
     "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
@@ -21819,7 +25412,7 @@ const DEFAULT_BLOG_DATA = [
     "readTime": "6 min",
     "excerpt": "Evergreen teachings brought from the Vedic times!",
     "tags": [
-      "Shlokas",
+      "Stories",
       "Sanskrit Teachings",
       "Vedic Learnings"
     ],
