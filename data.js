@@ -25404,7 +25404,7 @@ const DEFAULT_BLOG_DATA = [
   },
   {
     "id": 1780038082018,
-    "title": "Five Sanskrit Stories that Give Amazing Career Advice",
+    "title": "Five Sanskrit Shlokas that Give Amazing Career Advice",
     "author": "Utkarsh",
     "authorLink": "https://www.linkedin.com/in/utkarspace/",
     "authorAvatar": "U",
@@ -25412,7 +25412,7 @@ const DEFAULT_BLOG_DATA = [
     "readTime": "6 min",
     "excerpt": "Evergreen teachings brought from the Vedic times!",
     "tags": [
-      "Stories",
+      "Shlokas",
       "Sanskrit Teachings",
       "Vedic Learnings"
     ],
