@@ -366,6 +366,46 @@
   .post-card-cover{height:160px}
 }
 
+/* ── Explore career path CTA ── */
+.explore-cta{
+  position:relative;overflow:hidden;
+  margin:3rem auto 0;
+  padding:2.6rem 2rem;
+  text-align:center;
+  background:var(--grad-callout);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  animation:fadeUp .5s ease both;
+}
+.explore-cta-glow{
+  position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+  width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(108,92,231,.16),transparent 65%);
+  pointer-events:none;
+}
+.explore-cta-eyebrow{
+  position:relative;
+  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent2);
+}
+.explore-cta-title{
+  position:relative;
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.5rem,3.2vw,2rem);
+  line-height:1.18;letter-spacing:-.5px;
+  margin:12px 0 12px;color:var(--text);
+}
+.explore-cta-sub{
+  position:relative;
+  color:var(--text2);font-size:1rem;line-height:1.65;
+  max-width:520px;margin:0 auto 24px;
+}
+.explore-cta-btn{
+  position:relative;
+  padding:14px 32px;font-size:1rem;
+}
+
 /* ── Inline images inside articles ── */
 .blog-inline-img{
   margin:1.6rem 0;
@@ -500,6 +540,18 @@ function renderFurtherReads(reads) {
 
 function avatarClass(i){ return 'av-' + ((i % 6) + 1); }
 
+function exploreCTA() {
+  return `
+    <aside class="explore-cta" aria-label="Explore career paths">
+      <div class="explore-cta-glow"></div>
+      <span class="explore-cta-eyebrow">Your move</span>
+      <h3 class="explore-cta-title">Ready to map out <span class="ip-grad-text">your</span> career path?</h3>
+      <p class="explore-cta-sub">Walk from your current class to your dream job through an interactive skill tree &mdash; salaries, top colleges, and honest pros &amp; cons for every route.</p>
+      <a href="explore.html" class="ip-btn ip-btn-primary explore-cta-btn">🗺️ Explore Career Paths &rarr;</a>
+    </aside>
+  `;
+}
+
 function renderBlog() {
   const el = document.getElementById('blog-root');
 
@@ -545,6 +597,7 @@ function renderBlog() {
         </div>
         ${renderFurtherReads(b.furtherReads)}
         <div style="max-width:680px;margin:0 auto">${shareBar(b.title, blogUrl)}</div>
+        <div style="max-width:680px;margin:0 auto">${exploreCTA()}</div>
       </article>
     `;
     window.scrollTo({top:0,behavior:'smooth'});
@@ -623,6 +676,8 @@ function renderBlog() {
     });
     html += `</div>`;
   }
+
+  html += exploreCTA();
 
   el.innerHTML = html;
 }
