@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   data.js — exported from admin on 2026-06-12T14:34:02.070Z
+   data.js — exported from admin on 2026-06-13T08:29:09.396Z
    Drop this file into your repo root to deploy changes.
    ═══════════════════════════════════════════ */
 
@@ -22655,7 +22655,7 @@ const DEFAULT_BLOG_DATA = [
     "author": "Shashwat Prem",
     "authorLink": "https://www.linkedin.com/in/shashwatprem/",
     "authorAvatar": "SP",
-    "category": "Career Paths, Product Management, Consulting",
+    "category": "Career Paths",
     "readTime": "6 min",
     "excerpt": "A journey from doing titrations in chemical lab to commanding the language of products in Indian silicon valley",
     "tags": [
