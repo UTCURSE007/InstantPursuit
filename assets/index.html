@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HKYHX1TDZP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HKYHX1TDZP');
+</script>
+<meta name="description" content="Instant Pursuit — Free, gamified career exploration for Indian students. Navigate paths from Class 6 to working professional.">
+<title>Instant Pursuit — Career Explorer</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>window.IPV=(new Date()).toISOString().slice(0,10).replace(/-/g,"");</script>
+<script>document.write('<link rel="stylesheet" href="styles.css?v='+IPV+'">');</script>
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('ip-theme')||'dark')</script>
+<script>document.write('<scr'+'ipt src="data.js?v='+IPV+'"></scr'+'ipt>');</script>
+</head>
+<body>
+<script>document.write('<scr'+'ipt src="bg.js?v='+IPV+'"></scr'+'ipt>');</script>
+<script>document.write('<scr'+'ipt src="side-graphics.js?v='+IPV+'"></scr'+'ipt>');</script>
+
+<main style="padding-top:64px">
+  <!-- Hero -->
+  <section style="min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;position:relative;overflow:hidden">
+    <div style="position:relative;z-index:1;max-width:780px;animation:fadeUp 0.8s ease">
+      <div class="ip-eyebrow" style="margin-bottom:28px">✦ EXPLORE · DISCOVER · DECIDE</div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,6.5vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:24px;letter-spacing:-1px">
+        Your Career Journey,<br>
+        <span class="ip-grad-text">Mapped &amp; Gamified</span>
+      </h1>
+      <p style="font-size:1.1rem;color:var(--text2);max-width:580px;margin:0 auto 40px;line-height:1.7">Navigate from your current class to your dream career through an interactive skill tree. Every path is a quest. Every choice unlocks new possibilities.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="explore.html" class="ip-btn ip-btn-primary" style="padding:14px 32px;font-size:1rem">🗺️ Start Exploring</a>
+        <a href="blog.html" class="ip-btn ip-btn-outline" style="padding:14px 32px;font-size:1rem">✍️ Read Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features — bento grid -->
+  <section class="ip-section">
+    <div style="text-align:center;max-width:560px;margin:0 auto 2.5rem">
+      <div class="ip-eyebrow" style="margin-bottom:14px">✦ HOW IT WORKS</div>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.4rem);line-height:1.15;letter-spacing:-.5px">Everything you need to <span class="ip-grad-text">decide with clarity</span>.</h2>
+    </div>
+    <div class="bento" id="bento"></div>
+  </section>
+
+  <!-- Stats -->
+  <section style="padding:3rem 1.5rem;position:relative;z-index:1">
+    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;text-align:center" id="stats"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="ip-section" style="text-align:center;padding:5rem 1.5rem">
+    <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;margin-bottom:12px;letter-spacing:-.5px">Ready to explore your future?</h2>
+    <p style="color:var(--text2);margin-bottom:2rem;font-size:1.05rem"><span id="cta-paths">128+</span> career paths. Detailed insights. Zero cost.</p>
+    <a href="explore.html" class="ip-btn ip-btn-primary" style="padding:14px 36px;font-size:1rem">🗺️ Open Career Explorer</a>
+  </section>
+</main>
+
+<style>
+/* ── Bento feature grid ── */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(180px,auto);gap:1rem}
+.bento-card{
+  position:relative;overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:1.5rem;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  display:flex;flex-direction:column;
+  animation:fadeUp .5s ease both;
+}
+.bento-card:hover{border-color:var(--accent);box-shadow:var(--shadow-glow);transform:translateY(-3px)}
+.bento-eyebrow{
+  font-family:var(--font-mono);
+  font-size:.65rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.bento-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.bento-card-link{cursor:pointer;color:inherit}
+.bento-card-link:hover{border-color:var(--accent);box-shadow:var(--shadow-glow);transform:translateY(-3px)}
+.bento-cue{
+  margin-top:14px;font-family:var(--font-mono);font-size:.7rem;font-weight:700;
+  letter-spacing:.5px;color:var(--accent2);text-transform:uppercase;
+  opacity:.75;transition:opacity .2s,transform .2s;
+}
+.bento-card-link:hover .bento-cue{opacity:1;transform:translateX(3px)}
+.pc-meta-job{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:.4px;color:var(--accent2);
+  margin-bottom:10px;
+}
+.bento-title{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1.25;margin-bottom:6px;color:var(--text);letter-spacing:-.2px}
+.bento-desc{color:var(--text2);font-size:.88rem;line-height:1.55}
+
+/* Layout assignments — Latest Stories is a compact 3-item tile; Quote is a wide footer banner */
+.b-stories{grid-column:span 8}
+.b-tree{grid-column:span 4}
+.b-free{grid-column:span 4}
+.b-pros{grid-column:span 4}
+.b-salary{grid-column:span 4}
+.b-tips{grid-column:span 12}
+
+@media(max-width:880px){
+  .bento{grid-template-columns:repeat(6,1fr)}
+  .b-stories{grid-column:span 6}
+  .b-tree,.b-free{grid-column:span 3}
+  .b-pros,.b-tips,.b-salary{grid-column:span 6}
+}
+@media(max-width:560px){
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .b-tree,.b-salary,.b-free,.b-pros,.b-tips,.b-stories{grid-column:span 1;grid-row:auto}
+}
+
+/* ── Skill Tree — compact vertical ── */
+.tree-mini-v{
+  margin-top:14px;
+  display:flex;flex-direction:column;align-items:stretch;gap:6px;
+  flex:1;
+}
+.tree-mini-v .tn{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:8px 12px;
+  font-family:var(--font-body);
+  font-size:.78rem;font-weight:600;
+  color:var(--text);
+  display:flex;align-items:center;gap:8px;
+  position:relative;
+}
+.tree-mini-v .tn .emo{font-size:1rem;line-height:1}
+.tree-mini-v .tn-end{
+  background:var(--grad-cta);color:#fff;
+  border-color:transparent;
+  box-shadow:0 4px 14px rgba(108,92,231,0.4);
+}
+.tree-mini-v .tn-end span:not(.emo){color:#fff}
+.tree-mini-v .tn::after{
+  content:"";
+  position:absolute;left:18px;bottom:-7px;
+  width:2px;height:7px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent3));
+  opacity:.55;
+}
+.tree-mini-v .tn:last-child::after{display:none}
+
+/* ── Card 2: Salary ── */
+.salary-figure{
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2rem,4.5vw,2.6rem);line-height:1;
+  letter-spacing:-1px;
+  color:var(--accent2);
+  background:var(--grad-headline);
+  -webkit-background-clip:text;background-clip:text;
+  margin:auto 0 6px;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .salary-figure{ -webkit-text-fill-color:transparent; color:transparent; }
+}
+.salary-row{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:14px}
+.salary-meta{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);letter-spacing:.5px;text-transform:uppercase}
+.salary-bars{display:flex;gap:3px;align-items:flex-end;height:30px}
+.salary-bars span{
+  width:6px;background:var(--accent-med);border-radius:2px;
+  transition:transform .2s;
+}
+.salary-bars span:nth-child(1){height:30%;background:var(--accent-med)}
+.salary-bars span:nth-child(2){height:55%;background:var(--accent-med)}
+.salary-bars span:nth-child(3){height:40%;background:var(--accent-med)}
+.salary-bars span:nth-child(4){height:75%;background:var(--accent)}
+.salary-bars span:nth-child(5){height:60%;background:var(--accent)}
+.salary-bars span:nth-child(6){height:95%;background:var(--accent3)}
+.salary-bars span:nth-child(7){height:80%;background:var(--accent3)}
+
+/* ── Card 3: Free ── */
+.free-figure{
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(3.5rem,8vw,5.5rem);line-height:.9;
+  letter-spacing:-3px;
+  color:var(--accent);
+  background:var(--grad-brand);
+  -webkit-background-clip:text;background-clip:text;
+  margin:auto 0 4px;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .free-figure{ -webkit-text-fill-color:transparent; color:transparent; }
+}
+.free-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.free-chip{
+  font-family:var(--font-mono);font-size:.65rem;font-weight:700;
+  padding:3px 8px;border-radius:6px;
+  background:var(--bg2);border:1px solid var(--border);
+  color:var(--text2);
+  letter-spacing:.5px;
+}
+
+/* ── Card 4: Pros & Cons ── */
+.pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.pc-col h5{
+  font-family:var(--font-mono);font-size:.62rem;
+  text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:8px;font-weight:700;
+}
+.pc-col-pro h5{color:var(--green)}
+.pc-col-con h5{color:var(--orange)}
+.pc-item{
+  font-size:.78rem;color:var(--text2);
+  padding:5px 8px;margin-bottom:5px;
+  border-radius:6px;line-height:1.35;
+}
+.pc-col-pro .pc-item{background:var(--green-soft);border-left:2px solid var(--green)}
+.pc-col-con .pc-item{background:var(--orange-soft);border-left:2px solid var(--orange)}
+
+/* ── Card 5: Quote of the Day — wide footer banner ── */
+.b-tips{
+  /* Let the quote breathe — centered focal point spanning the full row */
+  justify-content:center;align-items:center;text-align:center;
+}
+.tip-quote{
+  position:relative;
+  font-family:var(--font-display);
+  font-style:italic;font-weight:600;
+  font-size:clamp(1.2rem,2vw,1.7rem);
+  line-height:1.4;color:var(--text);
+  padding:10px 0 0;
+  margin:0 auto;
+  max-width:860px;
+  text-wrap:pretty;
+}
+.tip-quote::before{
+  content:"\201C";
+  display:block;
+  font-family:var(--font-display);
+  font-size:3.6rem;line-height:1;
+  margin:0 0 -8px;
+  color:var(--accent);
+  background:var(--grad-brand);
+  -webkit-background-clip:text;background-clip:text;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .tip-quote::before{ -webkit-text-fill-color:transparent; color:transparent; }
+}
+.tip-attr{
+  margin-top:10px;font-family:var(--font-mono);
+  font-size:.7rem;color:var(--text3);letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+/* ── Card 6: Career Stories (now the hero tile) ── */
+.story-list{
+  display:flex;flex-direction:column;gap:10px;
+  margin-top:14px;flex:1;
+}
+.story-item{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 14px;border-radius:var(--radius);
+  background:var(--bg2);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:all .2s;
+  text-decoration:none!important;color:inherit;
+}
+.story-item:hover{
+  border-color:var(--accent);
+  background:var(--accent-soft);
+  transform:translateX(4px);
+}
+.story-item-avatar{
+  width:54px;height:54px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-body);font-weight:700;font-size:.92rem;
+  color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.25);
+  overflow:hidden;position:relative;
+}
+.story-item-avatar img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+.story-item-content{flex:1;min-width:0}
+.story-item-title{
+  font-family:var(--font-display);font-weight:700;
+  font-size:.98rem;line-height:1.3;
+  color:var(--text);
+  margin-bottom:4px;
+  overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;
+}
+.story-item-meta{
+  font-family:var(--font-mono);
+  font-size:.68rem;color:var(--text3);
+  letter-spacing:.4px;
+  display:flex;align-items:center;gap:8px;
+}
+.story-item-meta .cat{color:var(--accent2)}
+.story-item-arrow{
+  color:var(--text3);font-size:1rem;
+  transition:transform .2s,color .2s;
+}
+.story-item:hover .story-item-arrow{color:var(--accent);transform:translateX(2px)}
+
+.story-foot{
+  margin-top:14px;display:flex;align-items:center;justify-content:space-between;
+  padding-top:14px;border-top:1px solid var(--border);
+}
+.story-foot-count{
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.5px;
+  color:var(--text3);text-transform:uppercase;
+}
+.story-foot-count strong{color:var(--text);font-weight:700}
+.story-foot a{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;
+  color:var(--accent2);
+}
+.story-foot a:hover{color:var(--accent);text-decoration:underline}
+
+.story-a1{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
+.story-a2{background:linear-gradient(135deg,#fd79a8,#e84a8a)}
+.story-a3{background:linear-gradient(135deg,#81ecec,#3aa8a8);color:#0a3a3a}
+.story-a4{background:linear-gradient(135deg,#fdcb6e,#e17055);color:#3a1f10}
+
+/* ── Promo video card ── */
+.b-promo{grid-column:span 12}
+.promo-frame{
+  position:relative;margin-top:16px;
+  border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:16/9;max-height:62vh;
+  background:#000;border:1px solid var(--border);
+  cursor:pointer;
+}
+.promo-frame.playing{cursor:default}
+.promo-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;display:block;background:#000;
+}
+.promo-thumb{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;background:#000;
+}
+.promo-iframe{
+  position:absolute;inset:0;width:100%;height:100%;
+  border:0;display:block;z-index:3;
+}
+.promo-overlay{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:radial-gradient(120% 120% at 50% 50%,rgba(108,92,231,0.18),rgba(10,10,15,0.62));
+  transition:opacity .35s ease;
+}
+.promo-frame.playing .promo-overlay{opacity:0;pointer-events:none}
+.promo-play{
+  width:78px;height:78px;border-radius:50%;border:none;cursor:pointer;padding:0;
+  background:var(--grad-cta);
+  box-shadow:0 10px 34px rgba(108,92,231,0.55);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.promo-frame:hover .promo-play{transform:scale(1.07);box-shadow:0 12px 44px rgba(108,92,231,0.72)}
+.promo-play svg{width:30px;height:30px;fill:#fff;margin-left:4px}
+.promo-label{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:#fff;opacity:.92;
+  display:flex;align-items:center;gap:8px;
+}
+.promo-dur{
+  padding:2px 8px;border-radius:6px;
+  background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.18);
+}
+</style>
+
+<script>
+// Story palette cycles through 3 gradient swatches
+var storyPalette = ['story-a1','story-a2','story-a3','story-a4'];
+var storyHtml = '';
+var storyCount = (typeof DEFAULT_BLOG_DATA !== 'undefined') ? DEFAULT_BLOG_DATA.length : 0;
+if (typeof DEFAULT_BLOG_DATA !== 'undefined') {
+  var stories = DEFAULT_BLOG_DATA.slice(0, 3);
+  stories.forEach(function(s, i){
+    var thumb = s.coverImage
+      ? '<div class="story-item-avatar"><img src="' + s.coverImage + '" alt="" loading="lazy"></div>'
+      : '<div class="story-item-avatar ' + storyPalette[i % storyPalette.length] + '">' + (s.authorAvatar || '·') + '</div>';
+    storyHtml += '<a href="blog.html#post-' + s.id + '" class="story-item">' +
+      thumb +
+      '<div class="story-item-content">' +
+        '<div class="story-item-title">' + s.title + '</div>' +
+        '<div class="story-item-meta"><span class="cat">' + s.category + '</span><span>·</span><span>' + s.author + '</span><span>·</span><span>' + s.readTime + '</span></div>' +
+      '</div>' +
+      '<span class="story-item-arrow">→</span>' +
+    '</a>';
+  });
+}
+
+// ── Quote of the Day — rotates daily, deterministic ──
+var DAILY_QUOTES = [
+  {q:"Your time is limited, don't waste it living someone else's life.", a:"Steve Jobs"},
+  {q:"Try not to become a person of success, but rather try to become a person of value.", a:"Albert Einstein"},
+  {q:"Dream is not what you see in sleep, dream is the thing which does not let you sleep.", a:"Dr. APJ Abdul Kalam"},
+  {q:"When something is important enough, you do it even if the odds are not in your favor.", a:"Elon Musk"},
+  {q:"Genius is one percent inspiration and ninety-nine percent perspiration.", a:"Thomas Edison"},
+  {q:"The future depends on what you do today.", a:"Mahatma Gandhi"},
+  {q:"I don't believe in taking right decisions. I take decisions and then make them right.", a:"Ratan Tata"},
+  {q:"Success is a lousy teacher. It seduces smart people into thinking they can't lose.", a:"Bill Gates"},
+  {q:"Someone is sitting in the shade today because someone planted a tree a long time ago.", a:"Warren Buffett"},
+  {q:"Intelligence is the ability to adapt to change.", a:"Stephen Hawking"},
+  {q:"I would rather have questions that can't be answered than answers that can't be questioned.", a:"Richard Feynman"},
+  {q:"Chase your dreams, but always remember the road that led you to your destination.", a:"Sachin Tendulkar"},
+  {q:"It does not matter how slowly you go as long as you do not stop.", a:"Confucius"},
+  {q:"Whether you think you can, or you think you can't — you're right.", a:"Henry Ford"},
+  {q:"The two most important days in your life are the day you are born and the day you find out why.", a:"Mark Twain"},
+  {q:"We are what we repeatedly do. Excellence, then, is not an act, but a habit.", a:"Aristotle"},
+  {q:"Arise, awake, and stop not till the goal is reached.", a:"Swami Vivekananda"},
+  {q:"Performance leads to recognition. Recognition brings respect. Respect enhances power.", a:"N. R. Narayana Murthy"},
+  {q:"Success is a journey, not a destination. The doing is often more important than the outcome.", a:"Azim Premji"},
+  {q:"Nothing in life is to be feared, it is only to be understood.", a:"Marie Curie"},
+  {q:"The present is theirs; the future, for which I really worked, is mine.", a:"Nikola Tesla"},
+  {q:"The path from dreams to success does exist. May you have the vision to find it.", a:"Kalpana Chawla"},
+  {q:"If you don't have integrity, you might be successful for some time, but in the long run you will be a failure.", a:"Sudha Murthy"},
+  {q:"It's important to follow your dreams and passions, and don't put yourself in a box.", a:"Sundar Pichai"},
+  {q:"All our dreams can come true, if we have the courage to pursue them.", a:"Walt Disney"},
+  {q:"If you want to walk fast, walk alone. If you want to walk far, walk together.", a:"Ratan Tata"},
+  {q:"Be less curious about people and more curious about ideas.", a:"Marie Curie"},
+  {q:"Leadership is the capacity to translate vision into reality.", a:"Warren Bennis"},
+  {q:"You miss 100 percent of the shots you don't take.", a:"Wayne Gretzky"},
+  {q:"Hard work beats talent when talent doesn't work hard.", a:"Tim Notke"},
+  {q:"The only way to do great work is to love what you do.", a:"Steve Jobs"},
+  {q:"Don't watch the clock; do what it does. Keep going.", a:"Sam Levenson"},
+  {q:"Knowledge is power.", a:"Sir Francis Bacon"},
+  {q:"An investment in knowledge pays the best interest.", a:"Benjamin Franklin"},
+  {q:"Strive not to be a success, but rather to be of value.", a:"Albert Einstein"}
+];
+// Deterministic daily index — same quote for everyone on the same calendar day
+function getDailyQuote(){
+  var now = new Date();
+  // Days since epoch in local time (not UTC) so rollover matches the user's day
+  var localMs = now.getTime() - (now.getTimezoneOffset() * 60000);
+  var dayIdx = Math.floor(localMs / 86400000);
+  return DAILY_QUOTES[((dayIdx % DAILY_QUOTES.length) + DAILY_QUOTES.length) % DAILY_QUOTES.length];
+}
+var todaysQuote = getDailyQuote();
+var bentoCards = [
+  {
+    cls: 'b-stories',
+    eyebrow: 'FIRST-PERSON',
+    title: 'Latest Stories',
+    desc: 'Real journeys from students &amp; professionals who walked these paths. Click to read.',
+    body:
+      '<div class="story-list">' + storyHtml + '</div>' +
+      '<div class="story-foot">' +
+        '<div class="story-foot-count"><strong>' + storyCount + ' ' + (storyCount === 1 ? 'story' : 'stories') + '</strong> · students, founders, doctors, engineers</div>' +
+        '<a href="blog.html">All stories →</a>' +
+      '</div>'
+  },
+  {
+    cls: 'b-tree',
+    eyebrow: 'CAREER MAP',
+    title: 'Interactive Skill Tree',
+    desc: 'e.g. the path into the automotive field — tap to explore it live.',
+    link: 'explore.html#6-10/science/pcm/engineering/jee_main/mech/automotive',
+    body: `
+      <div class="tree-mini-v">
+        <div class="tn"><span class="emo">📚</span><span>Class 10</span></div>
+        <div class="tn"><span class="emo">🔬</span><span>Science (PCM)</span></div>
+        <div class="tn"><span class="emo">⚙️</span><span>B.Tech · Mechanical</span></div>
+        <div class="tn tn-end"><span class="emo">🚗</span><span>Automotive Engineer</span></div>
+      </div>`
+  },
+  {
+    cls: 'b-free',
+    eyebrow: 'NO STRINGS',
+    title: '100% Free',
+    desc: 'No ads. No paywalls. No data collection.',
+    body: `
+      <div class="free-figure">₹0</div>
+      <div class="free-chips">
+        <span class="free-chip">NO ADS</span>
+        <span class="free-chip">NO PAYWALL</span>
+        <span class="free-chip">NO TRACKING</span>
+      </div>`
+  },
+  {
+    cls: 'b-pros',
+    eyebrow: 'BOTH SIDES',
+    title: 'Pros & Cons',
+    desc: 'Honest benefits and drawbacks for every job — no sugar-coating.',
+    link: 'explore.html#6-10/science/pcm/engineering/jee_main/cs/datascience',
+    body: `
+      <div class="pc-meta-job">📊 Data Scientist</div>
+      <div class="pc-grid">
+        <div class="pc-col pc-col-pro">
+          <h5>✅ Benefits</h5>
+          <div class="pc-item">Every industry needs it</div>
+          <div class="pc-item">Stats + coding mix</div>
+        </div>
+        <div class="pc-col pc-col-con">
+          <h5>⚠️ Drawbacks</h5>
+          <div class="pc-item">Needs strong statistics</div>
+          <div class="pc-item">Tools change fast</div>
+        </div>
+      </div>`
+  },
+  {
+    cls: 'b-salary',
+    eyebrow: 'REAL DATA',
+    title: 'Salary & College Data',
+    desc: 'Average CTC, top colleges, and top recruiters for every path.',
+    link: 'explore.html#6-10/arts/law',
+    body: `
+      <div class="salary-figure">₹12–28 <span style="font-size:.55em;letter-spacing:0">LPA</span></div>
+      <div class="salary-row">
+        <div class="salary-meta">Law · NLSIU, NALSAR, NLU Delhi</div>
+        <div class="salary-bars">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>`
+  },
+  {
+    cls: 'b-tips',
+    eyebrow: 'QUOTE OF THE DAY',
+    title: '',
+    desc: '',
+    body: `
+      <div class="tip-quote">${todaysQuote.q}
+        <div class="tip-attr">— ${todaysQuote.a}</div>
+      </div>`
+  },
+  {
+    cls: 'b-promo',
+    eyebrow: 'WATCH · PROMO',
+    title: 'Get, Set, Ready, Pursuiiiiit!',
+    desc: 'Watch this quick video showing what the website does...',
+    body: `
+      <div class="promo-frame" id="promoFrame" style="aspect-ratio:16/9">
+        <img class="promo-thumb" id="promoThumb" src="https://img.youtube.com/vi/eLKUcsDsTLM/maxresdefault.jpg" alt="Promo video thumbnail" loading="lazy">
+        <div class="promo-overlay">
+          <button class="promo-play" id="promoPlay" aria-label="Play promo video">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+          <div class="promo-label"><span>Click to play</span></div>
+        </div>
+      </div>`
+  }
+];
+
+var bento = document.getElementById('bento');
+bentoCards.forEach(function(c, i){
+  var d = document.createElement(c.link ? 'a' : 'div');
+  d.className = 'bento-card ' + c.cls + (c.link ? ' bento-card-link' : '');
+  if (c.link) { d.href = c.link; d.style.textDecoration = 'none'; }
+  d.style.animationDelay = (i * 0.06) + 's';
+  var descHtml = c.desc ? '<div class="bento-desc">' + c.desc + '</div>' : '';
+  var titleHtml = c.title ? '<div class="bento-title">' + c.title + '</div>' : '';
+  var cueHtml = c.link ? '<div class="bento-cue">Open in explorer →</div>' : '';
+  d.innerHTML =
+    '<div class="bento-eyebrow"><span class="dot"></span>' + c.eyebrow + '</div>' +
+    titleHtml +
+    descHtml +
+    c.body +
+    cueHtml;
+  bento.appendChild(d);
+});
+
+// ── Promo video: click to load YouTube embed (no autoplay until clicked) ──
+(function(){
+  var frame=document.getElementById('promoFrame');
+  if(!frame) return;
+  var YT_ID='eLKUcsDsTLM';
+  var thumb=document.getElementById('promoThumb');
+  // maxresdefault is missing on some videos — fall back to hqdefault
+  if(thumb){ thumb.addEventListener('error',function(){ thumb.src='https://img.youtube.com/vi/'+YT_ID+'/hqdefault.jpg'; }); }
+  frame.addEventListener('click',function(){
+    if(frame.classList.contains('playing')) return;
+    frame.classList.add('playing');
+    var ifr=document.createElement('iframe');
+    ifr.className='promo-iframe';
+    ifr.src='https://www.youtube.com/embed/'+YT_ID+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    ifr.title='Instant Pursuit promo video';
+    ifr.setAttribute('frameborder','0');
+    ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    ifr.allowFullscreen=true;
+    frame.appendChild(ifr);
+  });
+})();
+
+// Defensive: data.js may not have defined these yet (load race). Fall back to
+// safe defaults so the stats band always populates instead of throwing.
+function safePathsLabel(){ try{ return (typeof careerPathsLabel==='function') ? careerPathsLabel() : '128+'; }catch(e){ return '128+'; } }
+function safeLifeStages(){ try{ return (typeof countLifeStages==='function') ? String(countLifeStages()) : '8'; }catch(e){ return '8'; } }
+// Original homepage tile format, with Explore-matched numbers/labels
+var stats=[{num:safePathsLabel(),label:'Total Paths'},{num:safeLifeStages(),label:'Life Stages'},{num:'100+',label:'Colleges'}];
+var sEl=document.getElementById('stats');
+for(var si=0;si<stats.length;si++){
+  var s=stats[si];var sd=document.createElement('div');
+  sd.innerHTML='<div style="font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--accent)" class="grad-brand-text">'+s.num+'</div><div style="color:var(--text3);font-size:.78rem;margin-top:4px;font-family:var(--font-mono);letter-spacing:.8px;text-transform:uppercase">'+s.label+'</div>';
+  sEl.appendChild(sd);
+}
+// Count-up on first view: paths/stages/colleges rise from 0 (slow); ₹ cost falls 100→0 (fast)
+if(typeof ipAnimateStats==='function') ipAnimateStats(sEl, sEl.querySelectorAll('.grad-brand-text'));
+// Keep the CTA's career-path count in sync with the computed stat
+var ctaPaths=document.getElementById('cta-paths');
+if(ctaPaths) ctaPaths.textContent=safePathsLabel();
+</script>
+<script>initPage();</script>
+</body>
+</html>
