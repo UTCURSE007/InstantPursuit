@@ -345,6 +345,14 @@
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:contain;display:block;background:#000;
 }
+.promo-thumb{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;background:#000;
+}
+.promo-iframe{
+  position:absolute;inset:0;width:100%;height:100%;
+  border:0;display:block;z-index:3;
+}
 .promo-overlay{
   position:absolute;inset:0;z-index:2;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
@@ -533,13 +541,13 @@ var bentoCards = [
     title: 'Get, Set, Ready, Pursuiiiiit!',
     desc: 'Watch this quick video showing what the website does...',
     body: `
-      <div class="promo-frame" id="promoFrame">
-        <video class="promo-video" id="promoVideo" src="assets/Promo.mp4" playsinline preload="metadata"></video>
+      <div class="promo-frame" id="promoFrame" style="aspect-ratio:16/9">
+        <img class="promo-thumb" id="promoThumb" src="https://img.youtube.com/vi/eLKUcsDsTLM/maxresdefault.jpg" alt="Promo video thumbnail" loading="lazy">
         <div class="promo-overlay">
           <button class="promo-play" id="promoPlay" aria-label="Play promo video">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
           </button>
-          <div class="promo-label"><span>Click to play</span><span class="promo-dur" id="promoDur">0:30</span></div>
+          <div class="promo-label"><span>Click to play</span></div>
         </div>
       </div>`
   }
@@ -563,24 +571,26 @@ bentoCards.forEach(function(c, i){
   bento.appendChild(d);
 });
 
-// ── Promo video: click to play (no autoplay) ──
+// ── Promo video: click to load YouTube embed (no autoplay until clicked) ──
 (function(){
   var frame=document.getElementById('promoFrame');
-  var vid=document.getElementById('promoVideo');
-  var dur=document.getElementById('promoDur');
-  if(!frame||!vid) return;
-  function fmt(t){ if(!isFinite(t)) return ''; var m=Math.floor(t/60), s=Math.round(t%60); return m+':'+(s<10?'0':'')+s; }
-  vid.addEventListener('loadedmetadata',function(){
-    if(vid.videoWidth&&vid.videoHeight) frame.style.aspectRatio=vid.videoWidth+' / '+vid.videoHeight;
-  });
-  function start(){
+  if(!frame) return;
+  var YT_ID='eLKUcsDsTLM';
+  var thumb=document.getElementById('promoThumb');
+  // maxresdefault is missing on some videos — fall back to hqdefault
+  if(thumb){ thumb.addEventListener('error',function(){ thumb.src='https://img.youtube.com/vi/'+YT_ID+'/hqdefault.jpg'; }); }
+  frame.addEventListener('click',function(){
     if(frame.classList.contains('playing')) return;
     frame.classList.add('playing');
-    vid.controls=true;
-    var p=vid.play();
-    if(p&&p.catch) p.catch(function(){});
-  }
-  frame.addEventListener('click',start);
+    var ifr=document.createElement('iframe');
+    ifr.className='promo-iframe';
+    ifr.src='https://www.youtube.com/embed/'+YT_ID+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    ifr.title='Instant Pursuit promo video';
+    ifr.setAttribute('frameborder','0');
+    ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    ifr.allowFullscreen=true;
+    frame.appendChild(ifr);
+  });
 })();
 
 // Defensive: data.js may not have defined these yet (load race). Fall back to
