@@ -330,6 +330,46 @@
 .story-a2{background:linear-gradient(135deg,#fd79a8,#e84a8a)}
 .story-a3{background:linear-gradient(135deg,#81ecec,#3aa8a8);color:#0a3a3a}
 .story-a4{background:linear-gradient(135deg,#fdcb6e,#e17055);color:#3a1f10}
+
+/* ── Promo video card ── */
+.b-promo{grid-column:span 12}
+.promo-frame{
+  position:relative;margin-top:16px;
+  border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:16/9;max-height:62vh;
+  background:#000;border:1px solid var(--border);
+  cursor:pointer;
+}
+.promo-frame.playing{cursor:default}
+.promo-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;display:block;background:#000;
+}
+.promo-overlay{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:radial-gradient(120% 120% at 50% 50%,rgba(108,92,231,0.18),rgba(10,10,15,0.62));
+  transition:opacity .35s ease;
+}
+.promo-frame.playing .promo-overlay{opacity:0;pointer-events:none}
+.promo-play{
+  width:78px;height:78px;border-radius:50%;border:none;cursor:pointer;padding:0;
+  background:var(--grad-cta);
+  box-shadow:0 10px 34px rgba(108,92,231,0.55);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.promo-frame:hover .promo-play{transform:scale(1.07);box-shadow:0 12px 44px rgba(108,92,231,0.72)}
+.promo-play svg{width:30px;height:30px;fill:#fff;margin-left:4px}
+.promo-label{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:#fff;opacity:.92;
+  display:flex;align-items:center;gap:8px;
+}
+.promo-dur{
+  padding:2px 8px;border-radius:6px;
+  background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.18);
+}
 </style>
 
 <script>
@@ -486,6 +526,22 @@ var bentoCards = [
       <div class="tip-quote">${todaysQuote.q}
         <div class="tip-attr">— ${todaysQuote.a}</div>
       </div>`
+  },
+  {
+    cls: 'b-promo',
+    eyebrow: 'WATCH · PROMO',
+    title: 'Get, Set, Ready, Pursuiiiiit!',
+    desc: 'Watch this quick video showing what the website does...',
+    body: `
+      <div class="promo-frame" id="promoFrame">
+        <video class="promo-video" id="promoVideo" src="assets/Promo.mp4" playsinline preload="metadata"></video>
+        <div class="promo-overlay">
+          <button class="promo-play" id="promoPlay" aria-label="Play promo video">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+          <div class="promo-label"><span>Click to play</span><span class="promo-dur" id="promoDur">0:30</span></div>
+        </div>
+      </div>`
   }
 ];
 
@@ -506,6 +562,26 @@ bentoCards.forEach(function(c, i){
     cueHtml;
   bento.appendChild(d);
 });
+
+// ── Promo video: click to play (no autoplay) ──
+(function(){
+  var frame=document.getElementById('promoFrame');
+  var vid=document.getElementById('promoVideo');
+  var dur=document.getElementById('promoDur');
+  if(!frame||!vid) return;
+  function fmt(t){ if(!isFinite(t)) return ''; var m=Math.floor(t/60), s=Math.round(t%60); return m+':'+(s<10?'0':'')+s; }
+  vid.addEventListener('loadedmetadata',function(){
+    if(vid.videoWidth&&vid.videoHeight) frame.style.aspectRatio=vid.videoWidth+' / '+vid.videoHeight;
+  });
+  function start(){
+    if(frame.classList.contains('playing')) return;
+    frame.classList.add('playing');
+    vid.controls=true;
+    var p=vid.play();
+    if(p&&p.catch) p.catch(function(){});
+  }
+  frame.addEventListener('click',start);
+})();
 
 // Defensive: data.js may not have defined these yet (load race). Fall back to
 // safe defaults so the stats band always populates instead of throwing.
