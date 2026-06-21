@@ -231,6 +231,35 @@
 .author-li svg{display:block}
 .author-li:hover{background:#0A66C2;border-color:#0A66C2;color:#fff;transform:translateY(-1px)}
 
+/* About-the-author card at the foot of an article */
+.author-bio-card{
+  max-width:680px;margin:2.5rem auto 0;
+  display:flex;gap:18px;align-items:flex-start;
+  padding:1.5rem 1.6rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.author-bio-avatar{
+  width:56px;height:56px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+.author-bio-eyebrow{
+  font-family:var(--font-mono);font-size:.66rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);
+  margin-bottom:5px;
+}
+.author-bio-name{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-display);font-weight:700;font-size:1.05rem;
+  color:var(--text);margin-bottom:7px;
+}
+.author-bio-text{
+  font-size:.95rem;line-height:1.6;color:var(--text2);
+}
+
 /* Author avatar palette */
 .av-1{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
 .av-2{background:linear-gradient(135deg,#fd79a8,#e84a8a)}
@@ -348,6 +377,20 @@
   margin:2rem 0 .85rem;
   color:var(--text);
 }
+.article-list{
+  margin:1.3rem 0;padding:0;list-style:none;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.article-list li{
+  position:relative;padding-left:1.7rem;
+  font-size:clamp(1.02rem,1.6vw,1.12rem);line-height:1.6;
+  color:var(--text);
+}
+.article-list li::before{
+  content:"";position:absolute;left:.35rem;top:.62em;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--grad-brand,var(--accent));
+}
 /* Don't drop-cap a paragraph that follows a heading — only the very first */
 .article-h2 + p::first-letter,
 .article-h3 + p::first-letter{
@@ -364,46 +407,6 @@
   .featured-cover{min-height:240px}
   .featured-body{padding:1.5rem}
   .post-card-cover{height:160px}
-}
-
-/* ── Explore career path CTA ── */
-.explore-cta{
-  position:relative;overflow:hidden;
-  margin:3rem auto 0;
-  padding:2.6rem 2rem;
-  text-align:center;
-  background:var(--grad-callout);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  animation:fadeUp .5s ease both;
-}
-.explore-cta-glow{
-  position:absolute;top:-40%;left:50%;transform:translateX(-50%);
-  width:480px;height:480px;border-radius:50%;
-  background:radial-gradient(circle,rgba(108,92,231,.16),transparent 65%);
-  pointer-events:none;
-}
-.explore-cta-eyebrow{
-  position:relative;
-  font-family:var(--font-mono);font-size:.7rem;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--accent2);
-}
-.explore-cta-title{
-  position:relative;
-  font-family:var(--font-display);font-weight:700;
-  font-size:clamp(1.5rem,3.2vw,2rem);
-  line-height:1.18;letter-spacing:-.5px;
-  margin:12px 0 12px;color:var(--text);
-}
-.explore-cta-sub{
-  position:relative;
-  color:var(--text2);font-size:1rem;line-height:1.65;
-  max-width:520px;margin:0 auto 24px;
-}
-.explore-cta-btn{
-  position:relative;
-  padding:14px 32px;font-size:1rem;
 }
 
 /* ── Inline images inside articles ── */
@@ -449,6 +452,8 @@
 function renderBlogContent(content, images) {
   if (!content) return '';
   function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  // Inline formatting: **bold** → <strong>
+  function inlineFmt(s){ return String(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
   // Normalize: collapse whitespace-only "blank" lines to true `\n\n` so
   // ## headings + their bodies split cleanly even if the source has stray spaces.
   var normalized = content
@@ -472,7 +477,14 @@ function renderBlogContent(content, images) {
         return '<figure class="blog-inline-img blog-inline-img-' + pos + '"><img src="' + img.data + '" alt="' + escHtml(img.caption || '').replace(/"/g, '&quot;') + '" loading="lazy">' + cap + '</figure>';
       }
     }
-    return '<p>' + p + '</p>';
+    // ── Bullet list: every non-empty line starts with • or - ──
+    var liLines = trimmed.split('\n').filter(function(l){ return l.trim(); });
+    if (liLines.length && liLines.every(function(l){ return /^\s*[•\-]\s+/.test(l); })) {
+      return '<ul class="article-list">' + liLines.map(function(l){
+        return '<li>' + inlineFmt(l.replace(/^\s*[•\-]\s+/, '')) + '</li>';
+      }).join('') + '</ul>';
+    }
+    return '<p>' + inlineFmt(p) + '</p>';
   }).join('');
 }
 
@@ -540,18 +552,6 @@ function renderFurtherReads(reads) {
 
 function avatarClass(i){ return 'av-' + ((i % 6) + 1); }
 
-function exploreCTA() {
-  return `
-    <aside class="explore-cta" aria-label="Explore career paths">
-      <div class="explore-cta-glow"></div>
-      <span class="explore-cta-eyebrow">Your move</span>
-      <h3 class="explore-cta-title">Ready to map out <span class="ip-grad-text">your</span> career path?</h3>
-      <p class="explore-cta-sub">Walk from your current class to your dream job through an interactive skill tree &mdash; salaries, top colleges, and honest pros &amp; cons for every route.</p>
-      <a href="explore.html" class="ip-btn ip-btn-primary explore-cta-btn">🗺️ Explore Career Paths &rarr;</a>
-    </aside>
-  `;
-}
-
 function renderBlog() {
   const el = document.getElementById('blog-root');
 
@@ -595,9 +595,17 @@ function renderBlog() {
         <div class="article-tags-wrap">
           ${b.tags.map(t => `<span class="ip-badge ip-badge-accent">#${t}</span>`).join('')}
         </div>
+        ${b.authorBio ? `
+        <div class="author-bio-card">
+          <div class="author-bio-avatar ${avClass}">${b.authorAvatar}</div>
+          <div class="author-bio-body">
+            <div class="author-bio-eyebrow">About the author</div>
+            <div class="author-bio-name">${b.author}${b.authorLink ? `<a href="${b.authorLink}" target="_blank" rel="noopener" class="author-li" title="${b.author} on LinkedIn" aria-label="${b.author} on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/></svg></a>` : ''}</div>
+            <div class="author-bio-text">${b.authorBio}</div>
+          </div>
+        </div>` : ''}
         ${renderFurtherReads(b.furtherReads)}
         <div style="max-width:680px;margin:0 auto">${shareBar(b.title, blogUrl)}</div>
-        <div style="max-width:680px;margin:0 auto">${exploreCTA()}</div>
       </article>
     `;
     window.scrollTo({top:0,behavior:'smooth'});
@@ -676,8 +684,6 @@ function renderBlog() {
     });
     html += `</div>`;
   }
-
-  html += exploreCTA();
 
   el.innerHTML = html;
 }
